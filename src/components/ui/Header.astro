@@ -1,87 +1,78 @@
 ---
-import logo from '../../assets/logo/young-dolphins.webp';
+import { t } from '../../i18n/utils';
+import LanguageSwitcher from '../ui/LanguageSwitcher.tsx';
+import logo from '../../assets/logo/logo.webp';
+
+const locale = Astro.currentLocale;
 ---
 
-<a href="/" class="flex items-center gap-3">
-  <img src={logo.src} alt="Young Dolphins logo" class="h-10 w-auto" />
-</a>
+<header class="fixed top-0 left-0 w-full z-50 bg-white/80 backdrop-blur border-b border-gray-200">
+  <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
 
-import Container from './Container.astro';
-import LanguageSwitcher from './LanguageSwitcher.tsx';
-import { t } from '../../i18n/ui';
-import type { Locale } from '../../i18n/types';
+    <!-- Logo -->
+    <a href="/" class="flex items-center gap-3">
+      <img 
+        src={logo.src} 
+        alt="Young Dolphins logo" 
+        class="h-10 w-auto"
+      />
+      <span class="text-xl font-semibold text-[#001F3F]">Young Dolphins</span>
+    </a>
 
-interface Props {
-  locale?: Locale;
-}
-
-const { locale = 'en' } = Astro.props;
-
-// Translations
-const navHome = await t(locale, 'nav.home');
-const navLessons = await t(locale, 'nav.lessons');
-const navPricing = await t(locale, 'nav.pricing');
-const navAbout = await t(locale, 'nav.about');
-const navContact = await t(locale, 'nav.contact');
-const ctaText = await t(locale, 'nav.cta');
----
-
-<header class="fixed top-0 left-0 right-0 z-50 bg-primary/80 backdrop-blur-xl shadow-lg">
-  <Container>
-    <div class="flex items-center justify-between h-16">
-
-      <!-- Logo -->
-      <a href="/" class="flex items-center gap-2 group">
-        <img 
-          src="/logo.png" 
-          alt="Young Dolphins Logo" 
-          class="h-10 w-auto opacity-90 group-hover:opacity-100 transition"
-        />
-        <span class="text-xl font-bold text-white tracking-wide group-hover:text-secondary transition">
-          Young Dolphins
-        </span>
+    <!-- Desktop Navigation -->
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+      <a href="/" class="text-gray-700 hover:text-[#001F3F] transition-colors">
+        {t(locale, 'nav.home')}
+      </a>
+      <a href="/#features" class="text-gray-700 hover:text-[#001F3F] transition-colors">
+        {t(locale, 'nav.lessons')}
+      </a>
+      <a href="/#pricing" class="text-gray-700 hover:text-[#001F3F] transition-colors">
+        {t(locale, 'nav.pricing')}
+      </a>
+      <a href="/#faq" class="text-gray-700 hover:text-[#001F3F] transition-colors">
+        {t(locale, 'nav.faq')}
       </a>
 
-      <!-- Navigation -->
-      <div class="flex items-center gap-6">
-
-        <nav class="hidden md:flex items-center gap-8">
-          <a href="/" class="text-sm font-medium text-white/80 hover:text-white transition">
-            {navHome}
-          </a>
-          <a href="#lessons" class="text-sm font-medium text-white/80 hover:text-white transition">
-            {navLessons}
-          </a>
-          <a href="#pricing" class="text-sm font-medium text-white/80 hover:text-white transition">
-            {navPricing}
-          </a>
-          <a href="#about" class="text-sm font-medium text-white/80 hover:text-white transition">
-            {navAbout}
-          </a>
-          <a href="#contact" class="text-sm font-medium text-white/80 hover:text-white transition">
-            {navContact}
-          </a>
-        </nav>
-
-        <!-- Language Switcher -->
-        <LanguageSwitcher 
-          client:load
-          variant="toggle"
-          size="sm"
-          className="hidden sm:block"
-        />
-
-        <!-- CTA Button -->
-        <a 
-          href="#hero"
-          class="inline-flex items-center px-4 py-2 bg-secondary text-primary font-semibold rounded-xl shadow-lg hover:shadow-xl hover:scale-[1.03] transition"
-        >
-          {ctaText}
-        </a>
-
-      </div>
+      <!-- Language Switcher -->
+      <LanguageSwitcher />
     </div>
-  </Container>
-</header>
 
-<div class="h-16" aria-hidden="true"></div>
+    <!-- Mobile Menu Button -->
+    <button 
+      id="mobile-menu-toggle"
+      class="md:hidden text-gray-700 hover:text-[#001F3F] transition-colors"
+    >
+      ☰
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+    <div class="flex flex-col px-6 py-4 gap-4 text-sm font-medium">
+      <a href="/" class="text-gray-700 hover:text-[#001F3F] transition-colors">
+        {t(locale, 'nav.home')}
+      </a>
+      <a href="/#features" class="text-gray-700 hover:text-[#001F3F] transition-colors">
+        {t(locale, 'nav.lessons')}
+      </a>
+      <a href="/#pricing" class="text-gray-700 hover:text-[#001F3F] transition-colors">
+        {t(locale, 'nav.pricing')}
+      </a>
+      <a href="/#faq" class="text-gray-700 hover:text-[#001F3F] transition-colors">
+        {t(locale, 'nav.faq')}
+      </a>
+
+      <LanguageSwitcher />
+    </div>
+  </div>
+
+  <script>
+    const toggle = document.getElementById('mobile-menu-toggle');
+    const menu = document.getElementById('mobile-menu');
+
+    toggle.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+  </script>
+</header>
