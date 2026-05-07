@@ -13,25 +13,22 @@ import PricingSection from '../components/sections/PricingSection.astro';
 import FAQSection from '../components/sections/FAQSection.astro';
 import FinalSections from '../components/sections/FinalSections.astro';
 
-// Get the locale - defaults to English for root pages
+// Voor nu blijft locale op 'en' staan omdat jouw template dat verwacht.
+// Later kunnen we NL toevoegen via i18n.
 const locale = 'en';
 ---
 
 <Layout 
-	title="Zeyn - Your novel deserves better than Word"
-	description="The only writing app built for novelists who want to finish their book—not fight their editor. Join 1000+ writers ditching Word for distraction-free writing. Launch in 14 days with lifetime deal."
-	locale={locale}
+    title="Young Dolphins – Zwemschool Amsterdam"
+    description="Zwemlessen voor kinderen in Amsterdam. Veilig leren zwemmen met plezier, vertrouwen en persoonlijke aandacht. A-, B- en C-diploma’s."
+    locale={locale}
 >
-	<Header locale={locale} />
-	<HeroSection locale={locale} />
-	<ProblemSection locale={locale} />
-	<FeaturesSection locale={locale} />
-	<TestimonialsSection locale={locale} />
-	<StatsSection locale={locale} />
-	<TeamSection locale={locale} />
-	<IntegrationsSection locale={locale} />
-	<SecuritySection locale={locale} />
-	<PricingSection locale={locale} />
-	<FAQSection locale={locale} />
-	<FinalSections locale={locale} />
-</Layout>
+    <!-- HEADER -->
+    <Header locale={locale} />
+
+    <!-- HERO (wordt door ons herschreven in de component zelf) -->
+    <HeroSection 
+        locale={locale}
+        title="Young Dolphins – Zwemschool Amsterdam"
+        subtitle="Veilig leren zwemmen. Met plezier, vertrouwen en persoonlijke aandacht."
+        button
