@@ -1,89 +1,90 @@
 ---
 import Container from '../ui/Container.astro';
+import { t } from '../../i18n/ui';
+import type { Locale } from '../../i18n/types';
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = 'en' } = Astro.props;
+
+const title = await t(locale, 'testimonials.title');
+const subtitle = await t(locale, 'testimonials.subtitle');
+
+// Testimonials (static content, but rewritten for Young Dolphins)
+const testimonials = [
+  {
+    quote:
+      locale === 'nl'
+        ? "Onze dochter had watervrees, maar na drie lessen straalde ze alweer. Ongelooflijk hoe geduldig en lief de instructeurs zijn."
+        : "Our daughter was afraid of water, but after just three lessons she was smiling again. The instructors are incredibly patient and kind.",
+    name: "Sanne de Vries",
+    role: locale === 'nl' ? "Moeder van Emma (6)" : "Mother of Emma (6)"
+  },
+  {
+    quote:
+      locale === 'nl'
+        ? "Binnen een paar maanden haalde mijn zoon zijn A‑diploma. De kleine groepen maken echt een verschil."
+        : "My son earned his A‑certificate within a few months. The small groups make a huge difference.",
+    name: "Mark Jansen",
+    role: locale === 'nl' ? "Vader van Liam (7)" : "Father of Liam (7)"
+  },
+  {
+    quote:
+      locale === 'nl'
+        ? "De privélessen waren precies wat mijn dochter nodig had. Haar zelfvertrouwen is enorm gegroeid."
+        : "The private lessons were exactly what my daughter needed. Her confidence has grown so much.",
+    name: "Elif Kaya",
+    role: locale === 'nl' ? "Moeder van Mila (5)" : "Mother of Mila (5)"
+  }
+];
 ---
 
-<section id="testimonials" class="py-16 bg-black">
+<section id="testimonials" class="py-16 bg-primary">
   <Container>
-    
+
     <!-- Section Header -->
     <div class="text-center mb-12">
-      <h2 class="text-4xl sm:text-5xl lg:text-6xl font-medium text-white mb-6">
-        Writers love Zeyn
+      <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
+        {title}
       </h2>
-      
-      <p class="text-xl text-gray-400 max-w-2xl mx-auto">
-        Join thousands who've already discovered focused writing.
+
+      <p class="text-xl text-white/70 max-w-2xl mx-auto">
+        {subtitle}
       </p>
     </div>
 
-    <!-- Testimonials Grid - Minimal style matching original -->
+    <!-- Testimonials Grid -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-      
-      <!-- Testimonial 1 -->
-      <div class="text-center">
-        <div class="mb-4">
-          <div class="flex justify-center text-gray-500 mb-4">
-            {[...Array(5)].map(() => (
-              <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-              </svg>
-            ))}
-          </div>
-        </div>
-        
-        <blockquote class="text-gray-400 text-sm mb-4 leading-relaxed">
-          "Finally, a writing app that gets out of my way. Finished my novel in 3 months."
-        </blockquote>
-        
-        <div class="text-sm">
-          <div class="text-white font-medium">Sarah Mitchell</div>
-          <div class="text-gray-500 text-xs">Fantasy Author</div>
-        </div>
-      </div>
 
-      <!-- Testimonial 2 -->
-      <div class="text-center">
-        <div class="mb-4">
-          <div class="flex justify-center text-gray-500 mb-4">
-            {[...Array(5)].map(() => (
-              <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-              </svg>
-            ))}
-          </div>
-        </div>
-        
-        <blockquote class="text-gray-400 text-sm mb-4 leading-relaxed">
-          "The chapter organization is brilliant. I can see my entire story at a glance."
-        </blockquote>
-        
-        <div class="text-sm">
-          <div class="text-white font-medium">Marcus Chen</div>
-          <div class="text-gray-500 text-xs">Thriller Novelist</div>
-        </div>
-      </div>
+      {testimonials.map((t) => (
+        <div class="text-center">
 
-      <!-- Testimonial 3 -->
-      <div class="text-center">
-        <div class="mb-4">
-          <div class="flex justify-center text-gray-500 mb-4">
-            {[...Array(5)].map(() => (
-              <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-              </svg>
-            ))}
+          <!-- Stars -->
+          <div class="mb-4">
+            <div class="flex justify-center text-secondary mb-4">
+              {[...Array(5)].map(() => (
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+              ))}
+            </div>
           </div>
+
+          <!-- Quote -->
+          <blockquote class="text-white/70 text-sm mb-4 leading-relaxed">
+            "{t.quote}"
+          </blockquote>
+
+          <!-- Person -->
+          <div class="text-sm">
+            <div class="text-white font-semibold">{t.name}</div>
+            <div class="text-white/50 text-xs">{t.role}</div>
+          </div>
+
         </div>
-        
-        <blockquote class="text-gray-400 text-sm mb-4 leading-relaxed">
-          "Word count tracking keeps me motivated. Best writing tool I've ever used."
-        </blockquote>
-        
-        <div class="text-sm">
-          <div class="text-white font-medium">Elena Rodriguez</div>
-          <div class="text-gray-500 text-xs">Romance Author</div>
-        </div>
-      </div>
+      ))}
 
     </div>
 
