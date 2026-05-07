@@ -1,0 +1,117 @@
+{
+  "nav": {
+    "home": "Home",
+    "lessons": "Zwemlessen",
+    "pricing": "Tarieven",
+    "about": "Over ons",
+    "contact": "Contact",
+    "cta": "Inschrijven"
+  },
+
+  "hero": {
+    "badge": "Nieuwe inschrijvingen geopend",
+    "countdown": "Volgende startdatum over:",
+    "headline1": "Zwemlessen voor kinderen in Amsterdam",
+    "typewriter": [
+      "Veilig leren zwemmen",
+      "Diploma A, B en C",
+      "Kleine groepen",
+      "Plezier staat centraal"
+    ],
+    "subheadline": "kregen al zwemles bij Young Dolphins. Sluit je aan en geef je kind een veilige start in het water.",
+    "joined_writers": "Meer dan 1200 kinderen",
+    "stats": {
+      "words_written": "Diploma’s behaald",
+      "finish_rate": "Slagingspercentage",
+      "writer_rating": "Ouderwaardering"
+    },
+    "email_placeholder": "E-mailadres voor inschrijving",
+    "cta_button": "Inschrijven",
+    "lifetime_deal": "Direct starten met zwemles",
+    "exclusive_offer": "Beperkte plekken beschikbaar",
+    "writers_count": "Ouders vertrouwen ons",
+    "writers_writing": "kinderen leren nu zwemmen",
+    "genres": {
+      "fantasy": "Baby & Peuter",
+      "romance": "Kinderen 4–12 jaar",
+      "mystery": "Privélessen",
+      "literary": "Diploma A/B/C"
+    },
+    "continue_reading": "Bekijk ons aanbod"
+  },
+
+  "problem": {
+    "title": "Waarom kiezen voor Young Dolphins?",
+    "points": [
+      "Kleine groepen voor maximale aandacht",
+      "Gediplomeerde en ervaren instructeurs",
+      "Warme en veilige zwembaden in Amsterdam",
+      "Geen lange wachtlijsten",
+      "Plezier en vertrouwen staan centraal"
+    ]
+  },
+
+  "features": {
+    "title": "Zwemlessen voor elke leeftijd",
+    "items": [
+      {
+        "title": "Baby & Peuter (0–4 jaar)",
+        "description": "Spelenderwijs wennen aan water, samen met ouder of verzorger."
+      },
+      {
+        "title": "Kinderen (4–12 jaar)",
+        "description": "Stap‑voor‑stap leren zwemmen volgens ENVOZ / NRZ‑normen."
+      },
+      {
+        "title": "Privé & Duo‑lessen",
+        "description": "Extra persoonlijke begeleiding voor sneller resultaat."
+      }
+    ]
+  },
+
+  "testimonials": {
+    "title": "Wat ouders zeggen",
+    "subtitle": "Echte ervaringen van gezinnen in Amsterdam"
+  },
+
+  "stats": {
+    "title": "Onze resultaten",
+    "items": {
+      "diplomas": "Diploma’s behaald",
+      "success": "Slagingspercentage",
+      "rating": "Ouderwaardering"
+    }
+  },
+
+  "team": {
+    "title": "Onze instructeurs",
+    "subtitle": "Gediplomeerd, ervaren en met hart voor kinderen"
+  },
+
+  "integrations": {
+    "title": "Onze locaties",
+    "subtitle": "Moderne, warme zwembaden in Amsterdam"
+  },
+
+  "security": {
+    "title": "Veiligheid staat voorop",
+    "subtitle": "Onze lessen volgen alle officiële zwemveiligheidsnormen"
+  },
+
+  "pricing": {
+    "title": "Tarieven",
+    "subtitle": "Duidelijke prijzen zonder verrassingen",
+    "cta": "Inschrijven"
+  },
+
+  "faq": {
+    "title": "Veelgestelde vragen",
+    "subtitle": "Alles wat ouders willen weten"
+  },
+
+  "final": {
+    "title": "Klaar om te starten?",
+    "subtitle": "Schrijf je kind vandaag nog in voor zwemles",
+    "cta": "Inschrijven"
+  }
+}
