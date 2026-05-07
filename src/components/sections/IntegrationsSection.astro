@@ -1,88 +1,99 @@
 ---
 import Container from '../ui/Container.astro';
+import { t } from '../../i18n/ui';
+import type { Locale } from '../../i18n/types';
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = 'en' } = Astro.props;
+
+const title = await t(locale, 'integrations.title');
+const subtitle = await t(locale, 'integrations.subtitle');
 ---
 
-<section id="integrations" class="py-16 bg-black">
+<section id="locations" class="py-16 bg-primary">
   <Container>
-    
+
     <!-- Section Header -->
     <div class="text-center mb-12">
-      <h2 class="text-4xl sm:text-5xl lg:text-6xl font-medium text-white mb-6">
-        Works with your tools
+      <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
+        {title}
       </h2>
-      
-      <p class="text-xl text-gray-400 max-w-2xl mx-auto">
-        Seamlessly integrate with the platforms and services you already use.
+
+      <p class="text-xl text-white/70 max-w-2xl mx-auto">
+        {subtitle}
       </p>
     </div>
 
-    <!-- Integration Categories - Minimal design -->
+    <!-- Locations Grid -->
     <div class="space-y-16">
-      
-      <!-- Export & Publishing -->
+
+      <!-- Location Group 1 -->
       <div>
-        <h3 class="text-2xl font-medium text-white text-center mb-8">
-          Export & Publishing
+        <h3 class="text-2xl font-semibold text-white text-center mb-8">
+          Amsterdam West
         </h3>
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 text-center max-w-4xl mx-auto">
-          <div class="text-gray-400 text-sm">Microsoft Word</div>
-          <div class="text-gray-400 text-sm">PDF Export</div>
-          <div class="text-gray-400 text-sm">EPUB</div>
-          <div class="text-gray-400 text-sm">Kindle Direct</div>
-          <div class="text-gray-400 text-sm">Markdown</div>
-          <div class="text-gray-400 text-sm">LaTeX</div>
+          <div class="text-white/70 text-sm">De Mirandabad</div>
+          <div class="text-white/70 text-sm">Sportfondsenbad</div>
+          <div class="text-white/70 text-sm">Sloterparkbad</div>
+          <div class="text-white/70 text-sm">Noorderparkbad</div>
+          <div class="text-white/70 text-sm">Het Marnix</div>
+          <div class="text-white/70 text-sm">Flevoparkbad</div>
         </div>
       </div>
 
-      <!-- Cloud Storage -->
+      <!-- Location Group 2 -->
       <div>
-        <h3 class="text-2xl font-medium text-white text-center mb-8">
-          Cloud Storage & Backup
+        <h3 class="text-2xl font-semibold text-white text-center mb-8">
+          Amsterdam Oost
         </h3>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center max-w-2xl mx-auto">
-          <div class="text-gray-400 text-sm">Google Drive</div>
-          <div class="text-gray-400 text-sm">Dropbox</div>
-          <div class="text-gray-400 text-sm">OneDrive</div>
-          <div class="text-gray-400 text-sm">iCloud</div>
+          <div class="text-white/70 text-sm">Zeeburgbad</div>
+          <div class="text-white/70 text-sm">Oosterparkbad</div>
+          <div class="text-white/70 text-sm">Wibautbad</div>
+          <div class="text-white/70 text-sm">Watergraafsmeerbad</div>
         </div>
       </div>
 
-      <!-- Writing Communities -->
+      <!-- Location Group 3 -->
       <div>
-        <h3 class="text-2xl font-medium text-white text-center mb-8">
-          Writing Communities
+        <h3 class="text-2xl font-semibold text-white text-center mb-8">
+          Special Programs
         </h3>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center max-w-xl mx-auto">
-          <div class="text-gray-400 text-sm">Critique Circle</div>
-          <div class="text-gray-400 text-sm">Scribophile</div>
-          <div class="text-gray-400 text-sm">WriteOn</div>
+          <div class="text-white/70 text-sm">Baby & Peuter lessen</div>
+          <div class="text-white/70 text-sm">Privélessen</div>
+          <div class="text-white/70 text-sm">Versneld A/B/C traject</div>
         </div>
       </div>
 
     </div>
 
-    <!-- Integration Features - Simplified -->
+    <!-- Facilities -->
     <div class="mt-16 max-w-3xl mx-auto">
       <div class="space-y-6">
-        
-        <div class="text-center border-b border-gray-800 pb-6">
-          <h4 class="text-lg font-medium text-white mb-2">One-Click Export</h4>
-          <p class="text-gray-400 text-sm">
-            Export your manuscript to any format with custom styling and formatting options.
+
+        <div class="text-center border-b border-white/10 pb-6">
+          <h4 class="text-lg font-semibold text-white mb-2">Warm Water Pools</h4>
+          <p class="text-white/70 text-sm">
+            All our pools are heated and child‑friendly, ensuring a comfortable learning environment.
           </p>
         </div>
 
-        <div class="text-center border-b border-gray-800 pb-6">
-          <h4 class="text-lg font-medium text-white mb-2">Auto-Sync</h4>
-          <p class="text-gray-400 text-sm">
-            Keep your work synchronized across all devices and cloud storage platforms.
+        <div class="text-center border-b border-white/10 pb-6">
+          <h4 class="text-lg font-semibold text-white mb-2">Certified Instructors</h4>
+          <p class="text-white/70 text-sm">
+            Our team is fully certified and trained to teach children of all ages and skill levels.
           </p>
         </div>
 
         <div class="text-center pb-6">
-          <h4 class="text-lg font-medium text-white mb-2">Secure Sharing</h4>
-          <p class="text-gray-400 text-sm">
-            Share drafts securely with beta readers, editors, and writing communities.
+          <h4 class="text-lg font-semibold text-white mb-2">Safe & Modern Facilities</h4>
+          <p class="text-white/70 text-sm">
+            We work only with pools that meet the highest safety and hygiene standards.
           </p>
         </div>
 
@@ -91,14 +102,14 @@ import Container from '../ui/Container.astro';
 
     <!-- Call to Action -->
     <div class="text-center mt-16">
-      <h3 class="text-3xl font-medium text-white mb-4">
-        Ready to connect your workflow?
+      <h3 class="text-3xl font-semibold text-white mb-4">
+        Ready to start swimming?
       </h3>
-      <p class="text-lg text-gray-400 mb-8">
-        Import your existing work and start writing with all your favorite tools integrated.
+      <p class="text-lg text-white/70 mb-8">
+        Choose the location that fits your schedule and enroll today.
       </p>
-      <a href="#hero" class="inline-flex items-center px-8 py-3 bg-white text-black hover:bg-gray-100 transition-colors font-medium rounded">
-        Start free trial
+      <a href="#hero" class="inline-flex items-center px-8 py-3 bg-secondary text-primary hover:bg-secondary/90 transition-colors font-semibold rounded">
+        Enroll now
         <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
         </svg>
