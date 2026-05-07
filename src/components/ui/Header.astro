@@ -10,33 +10,49 @@ interface Props {
 
 const { locale = 'en' } = Astro.props;
 
-// Get translations
-const featuresText = await t(locale, 'nav.features');
-const faqText = await t(locale, 'nav.faq'); 
+// Translations
+const navHome = await t(locale, 'nav.home');
+const navLessons = await t(locale, 'nav.lessons');
+const navPricing = await t(locale, 'nav.pricing');
+const navAbout = await t(locale, 'nav.about');
+const navContact = await t(locale, 'nav.contact');
 const ctaText = await t(locale, 'nav.cta');
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 bg-black/40 backdrop-blur-lg">
+<header class="fixed top-0 left-0 right-0 z-50 bg-primary/80 backdrop-blur-xl shadow-lg">
   <Container>
     <div class="flex items-center justify-between h-16">
-      
-      <!-- Logo/Brand -->
-      <a href="/" class="flex items-center group">
-        <span class="text-xl font-bold text-white group-hover:text-gray-300 transition-colors duration-200">
-          Zeyn
+
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-2 group">
+        <img 
+          src="/logo.png" 
+          alt="Young Dolphins Logo" 
+          class="h-10 w-auto opacity-90 group-hover:opacity-100 transition"
+        />
+        <span class="text-xl font-bold text-white tracking-wide group-hover:text-secondary transition">
+          Young Dolphins
         </span>
       </a>
 
-      <!-- Navigation & CTA -->
-      <div class="flex items-center gap-4">
-        
-        <!-- Navigation Links -->
+      <!-- Navigation -->
+      <div class="flex items-center gap-6">
+
         <nav class="hidden md:flex items-center gap-8">
-          <a href="#features" class="text-sm font-medium text-gray-400 hover:text-white transition-all duration-300 tracking-wide hover:tracking-wider">
-            {featuresText}
+          <a href="/" class="text-sm font-medium text-white/80 hover:text-white transition">
+            {navHome}
           </a>
-          <a href="#faq" class="text-sm font-medium text-gray-400 hover:text-white transition-all duration-300 tracking-wide hover:tracking-wider">
-            {faqText}
+          <a href="#lessons" class="text-sm font-medium text-white/80 hover:text-white transition">
+            {navLessons}
+          </a>
+          <a href="#pricing" class="text-sm font-medium text-white/80 hover:text-white transition">
+            {navPricing}
+          </a>
+          <a href="#about" class="text-sm font-medium text-white/80 hover:text-white transition">
+            {navAbout}
+          </a>
+          <a href="#contact" class="text-sm font-medium text-white/80 hover:text-white transition">
+            {navContact}
           </a>
         </nav>
 
@@ -50,8 +66,8 @@ const ctaText = await t(locale, 'nav.cta');
 
         <!-- CTA Button -->
         <a 
-          href="#hero" 
-          class="inline-flex items-center px-4 py-2 bg-white text-black hover:bg-gray-50 text-sm font-semibold transition-all duration-300 ease-out rounded-xl shadow-lg hover:shadow-xl hover:scale-[1.02] backdrop-blur-sm"
+          href="#hero"
+          class="inline-flex items-center px-4 py-2 bg-secondary text-primary font-semibold rounded-xl shadow-lg hover:shadow-xl hover:scale-[1.03] transition"
         >
           {ctaText}
         </a>
@@ -61,6 +77,4 @@ const ctaText = await t(locale, 'nav.cta');
   </Container>
 </header>
 
-<!-- Spacer to prevent content from hiding under fixed header -->
 <div class="h-16" aria-hidden="true"></div>
-
