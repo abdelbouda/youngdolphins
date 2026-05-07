@@ -1,136 +1,82 @@
 ---
 import Container from '../ui/Container.astro';
 import EmailSignupForm from '../ui/EmailSignupForm.tsx';
+import { t } from '../../i18n/ui';
+import type { Locale } from '../../i18n/types';
 
-// FAQ data
-const faqs = [
-  {
-    question: "Will this actually help me finish my novel?",
-    answer: "Zeyn removes every excuse except the one that matters: sitting down to write. When your tools get out of your way, your creativity takes center stage."
-  },
-  {
-    question: "Can I import my existing Word manuscript?",
-    answer: "Yes! Drag and drop your .docx files and we'll organize them into chapters automatically. No reformatting, no lost work, no hassle."
-  },
-  {
-    question: "What if I write on multiple devices?",
-    answer: "Your novel syncs everywhere instantly. Start on your laptop during lunch, continue on your iPad in bed. Your story follows you."
-  },
-  {
-    question: "How do I export for publishers/agents?",
-    answer: "One-click export to Word, PDF, or industry-standard manuscript format. Professional formatting that meets submission guidelines."
-  },
-  {
-    question: "What happens after the lifetime deal ends?",
-    answer: "Nothing! You write forever, we never charge again. No subscriptions, no surprise bills, just lifetime access to your writing sanctuary."
-  },
-  {
-    question: "Is my novel safe?",
-    answer: "Your work is automatically backed up to cloud + local device. Your novel is safer in Zeyn than scattered across Word documents on your desktop."
-  }
-];
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = 'en' } = Astro.props;
+
+const finalTitle = await t(locale, 'final.title');
+const finalSubtitle = await t(locale, 'final.subtitle');
+const finalCTA = await t(locale, 'final.cta');
 ---
 
-<!-- Early Access Section -->
-<section class="py-16 bg-black">
+<!-- Enrollment Section -->
+<section class="py-16 bg-primary">
   <Container>
     <div class="text-center">
-      <h2 class="text-4xl sm:text-5xl lg:text-6xl font-medium text-white mb-6">
-        Get early access
+      <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
+        {finalTitle}
       </h2>
-      
-      <p class="text-xl text-gray-400 mb-12 max-w-2xl mx-auto">
-        Join writers who are tired of fighting their tools. Free during launch week.
+
+      <p class="text-xl text-white/70 mb-12 max-w-2xl mx-auto">
+        {finalSubtitle}
       </p>
 
       <div class="max-w-md mx-auto">
         <EmailSignupForm 
           client:load
-          placeholder="Enter your email"
-          buttonText="Get early access"
+          placeholder={locale === 'nl' ? "Vul je e-mailadres in" : "Enter your email"}
+          buttonText={finalCTA}
           variant="default"
-          className=""
         />
       </div>
     </div>
   </Container>
 </section>
 
-<!-- FAQ Section -->
-<section class="py-16 bg-black border-t border-gray-800" id="faq">
-  <Container>
-    <div class="text-center mb-12">
-      <h2 class="text-4xl sm:text-5xl lg:text-6xl font-medium text-white mb-6">
-        Frequently asked questions
-      </h2>
-      
-      <p class="text-xl text-gray-400 max-w-2xl mx-auto">
-        Everything you need to know about Zeyn.
-      </p>
-    </div>
-
-    <div class="max-w-3xl mx-auto space-y-8">
-      {faqs.map((faq, index) => (
-        <div class="border-b border-gray-800 pb-8">
-          <details class="group">
-            <summary class="flex items-center justify-between cursor-pointer list-none py-4">
-              <h3 class="text-lg font-medium text-white pr-4">
-                {faq.question}
-              </h3>
-              <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform duration-200 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"/>
-              </svg>
-            </summary>
-            <div class="pb-4">
-              <p class="text-gray-400 leading-relaxed">
-                {faq.answer}
-              </p>
-            </div>
-          </details>
-        </div>
-      ))}
-    </div>
-  </Container>
-</section>
-
 <!-- Footer -->
-<footer class="py-12 bg-black border-t border-gray-800">
+<footer class="py-12 bg-primary border-t border-white/10">
   <Container>
     <div class="text-center">
+
       <!-- Logo -->
       <div class="mb-8">
-        <span class="text-xl font-bold text-white">Zeyn</span>
+        <span class="text-xl font-bold text-white tracking-wide">Young Dolphins</span>
       </div>
-      
+
       <!-- Links -->
       <div class="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8 mb-8">
-        <a href="#features" class="text-gray-400 hover:text-white transition-colors">
-          Features
+        <a href="#features" class="text-white/70 hover:text-white transition-colors">
+          {locale === 'nl' ? "Zwemlessen" : "Lessons"}
         </a>
-        <a href="#faq" class="text-gray-400 hover:text-white transition-colors">
-          FAQ
+        <a href="#pricing" class="text-white/70 hover:text-white transition-colors">
+          {locale === 'nl' ? "Tarieven" : "Pricing"}
         </a>
-        <a href="/terms" class="text-gray-400 hover:text-white transition-colors">
-          Terms of Use
+        <a href="#team" class="text-white/70 hover:text-white transition-colors">
+          {locale === 'nl' ? "Instructeurs" : "Instructors"}
         </a>
-        <a href="/privacy" class="text-gray-400 hover:text-white transition-colors">
-          Privacy Policy
+        <a href="#security" class="text-white/70 hover:text-white transition-colors">
+          {locale === 'nl' ? "Veiligheid" : "Safety"}
         </a>
-        <a href="mailto:hello@zeyn.app" class="text-gray-400 hover:text-white transition-colors">
-          Contact
+        <a href="/contact" class="text-white/70 hover:text-white transition-colors">
+          {locale === 'nl' ? "Contact" : "Contact"}
         </a>
       </div>
-      
+
       <!-- Copyright -->
-      <p class="text-gray-500 text-sm">
-        © 2025 Zeyn. All rights reserved.
+      <p class="text-white/50 text-sm">
+        © {new Date().getFullYear()} Young Dolphins. All rights reserved.
       </p>
     </div>
   </Container>
 </footer>
 
 <style>
-  /* FAQ accordion styling */
   details summary::-webkit-details-marker {
     display: none;
   }
@@ -138,7 +84,7 @@ const faqs = [
   details[open] div {
     animation: fadeIn 0.2s ease-out;
   }
-  
+
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(-10px); }
     to { opacity: 1; transform: translateY(0); }
