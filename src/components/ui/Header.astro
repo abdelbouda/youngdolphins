@@ -1,9 +1,12 @@
 ---
-import { t } from '../../i18n/utils';
+import { tSync, preloadTranslations } from '../../i18n/utils';
 import LanguageSwitcher from './LanguageSwitcher.tsx';
 import logo from '../../assets/logo.webp';
 
 const locale = Astro.currentLocale;
+
+// Zorg dat translations geladen zijn vóór render
+await preloadTranslations(locale);
 ---
 
 <header class="fixed top-0 left-0 w-full z-50 bg-white/80 backdrop-blur border-b border-gray-200">
@@ -22,16 +25,16 @@ const locale = Astro.currentLocale;
     <!-- Desktop Navigation -->
     <div class="hidden md:flex items-center gap-8 text-sm font-medium">
       <a href="/" class="text-gray-700 hover:text-[#001F3F] transition-colors">
-        {t(locale, 'nav.home')}
+        {tSync(locale, 'nav.home')}
       </a>
       <a href="/#features" class="text-gray-700 hover:text-[#001F3F] transition-colors">
-        {t(locale, 'nav.lessons')}
+        {tSync(locale, 'nav.lessons')}
       </a>
       <a href="/#pricing" class="text-gray-700 hover:text-[#001F3F] transition-colors">
-        {t(locale, 'nav.pricing')}
+        {tSync(locale, 'nav.pricing')}
       </a>
       <a href="/#faq" class="text-gray-700 hover:text-[#001F3F] transition-colors">
-        {t(locale, 'nav.faq')}
+        {tSync(locale, 'nav.faq')}
       </a>
 
       <LanguageSwitcher />
@@ -50,16 +53,16 @@ const locale = Astro.currentLocale;
   <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
     <div class="flex flex-col px-6 py-4 gap-4 text-sm font-medium">
       <a href="/" class="text-gray-700 hover:text-[#001F3F] transition-colors">
-        {t(locale, 'nav.home')}
+        {tSync(locale, 'nav.home')}
       </a>
       <a href="/#features" class="text-gray-700 hover:text-[#001F3F] transition-colors">
-        {t(locale, 'nav.lessons')}
+        {tSync(locale, 'nav.lessons')}
       </a>
       <a href="/#pricing" class="text-gray-700 hover:text-[#001F3F] transition-colors">
-        {t(locale, 'nav.pricing')}
+        {tSync(locale, 'nav.pricing')}
       </a>
       <a href="/#faq" class="text-gray-700 hover:text-[#001F3F] transition-colors">
-        {t(locale, 'nav.faq')}
+        {tSync(locale, 'nav.faq')}
       </a>
 
       <LanguageSwitcher />
