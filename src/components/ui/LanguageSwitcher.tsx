@@ -1,13 +1,11 @@
-export default function LanguageSwitcher() {
-  const currentLocale = Astro.currentLocale;
-  const alternativeLocale = currentLocale === 'en' ? 'nl' : 'en';
+---
+const locale = Astro.currentLocale;
+const alternativeLocale = locale === 'en' ? 'nl' : 'en';
+---
 
-  return (
-    <a
-      href={`/${alternativeLocale}`}
-      class="text-gray-700 hover:text-[#001F3F]"
-    >
-      {alternativeLocale.toUpperCase()}
-    </a>
-  );
-}
+<a 
+  href={`/${alternativeLocale}`} 
+  class="text-gray-700 hover:text-[#001F3F]"
+>
+  {alternativeLocale.toUpperCase()}
+</a>
