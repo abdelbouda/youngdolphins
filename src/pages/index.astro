@@ -1,4 +1,7 @@
 ---
+const locale = Astro.props.locale ?? 'en';
+import { tSync } from '../i18n/utils';
+---
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/ui/Header.astro';
 import HeroSection from '../components/sections/HeroSection.astro';
