@@ -1,7 +1,7 @@
 ---
 import { t } from '../../i18n/utils';
-import LanguageSwitcher from '../ui/LanguageSwitcher.tsx';
-import logo from '../../assets/logo/logo.webp';
+import LanguageSwitcher from './LanguageSwitcher.tsx';
+import logo from '../../../assets/logo.webp';
 
 const locale = Astro.currentLocale;
 ---
@@ -34,7 +34,6 @@ const locale = Astro.currentLocale;
         {t(locale, 'nav.faq')}
       </a>
 
-      <!-- Language Switcher -->
       <LanguageSwitcher />
     </div>
 
