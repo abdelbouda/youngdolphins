@@ -1,11 +1,11 @@
 ---
-import { tSync, preloadTranslations } from '../../i18n/utils';
+import { preloadTranslations, tSync } from '../../i18n/utils';
 import LanguageSwitcher from './LanguageSwitcher.tsx';
 import logo from '../../assets/logo.webp';
 
 const locale = Astro.currentLocale;
 
-// Zorg dat translations geladen zijn vóór render
+// Preload translations before rendering
 await preloadTranslations(locale);
 ---
 
