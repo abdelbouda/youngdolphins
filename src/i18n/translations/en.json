@@ -1,366 +1,117 @@
 {
   "nav": {
-    "features": "Features",
-    "faq": "FAQ",
-    "cta": "Get Early Access"
+    "home": "Home",
+    "lessons": "Lessons",
+    "pricing": "Pricing",
+    "about": "About us",
+    "contact": "Contact",
+    "cta": "Enroll now"
   },
+
   "hero": {
-    "badge": "Early Bird Access - Limited Spots",
-    "countdown": "Registration closes in:",
-    "headline1": "Finally finish your",
-    "typewriter": ["novel", "memoir", "masterpiece", "bestseller"],
-    "subheadline": "who stopped starting over. Write 3x faster with AI-powered focus mode, smart chapter management, and motivation that actually works.",
-    "joined_writers": "Join 1,247 writers",
+    "badge": "New enrollments open",
+    "countdown": "Next start date in:",
+    "headline1": "Swimming lessons for children in Amsterdam",
+    "typewriter": [
+      "Learn to swim safely",
+      "A, B and C certificates",
+      "Small groups",
+      "Fun comes first"
+    ],
+    "subheadline": "have already joined Young Dolphins. Give your child a safe and confident start in the water.",
+    "joined_writers": "Over 1200 children",
     "stats": {
-      "words_written": "words written",
-      "finish_rate": "finish rate",
-      "writer_rating": "writer rating"
+      "words_written": "Certificates earned",
+      "finish_rate": "Success rate",
+      "writer_rating": "Parent rating"
     },
-    "email_placeholder": "Enter your email",
-    "cta_button": "Join early access →",
-    "lifetime_deal": "Lifetime deal for early birds",
-    "exclusive_offer": "Be first to get exclusive offer",
-    "writers_count": "1,247 writers",
-    "writers_writing": "already writing their masterpiece",
+    "email_placeholder": "Email address for enrollment",
+    "cta_button": "Enroll now",
+    "lifetime_deal": "Start swimming lessons today",
+    "exclusive_offer": "Limited spots available",
+    "writers_count": "Parents trust us",
+    "writers_writing": "children are learning now",
     "genres": {
-      "fantasy": "📚 Fantasy & Sci-Fi",
-      "romance": "💕 Romance",
-      "mystery": "🔍 Mystery & Thriller",
-      "literary": "📖 Literary Fiction"
+      "fantasy": "Baby & Toddler",
+      "romance": "Kids 4–12",
+      "mystery": "Private lessons",
+      "literary": "A/B/C Certificates"
     },
-    "continue_reading": "Continue reading"
+    "continue_reading": "View our programs"
   },
-  "features": {
-    "title": "Everything you need to write",
-    "subtitle": "Powerful features designed specifically for novelists and creative writers"
-  },
+
   "problem": {
-    "title": "Writing tools that get in the way",
-    "subtitle": "You're not struggling with writer's block. You're struggling with your editor.",
-    "problems": {
-      "distractions": {
-        "title": "Too many distractions",
-        "description": "47 buttons, 12 menus, infinite ways to lose focus on your story."
-      },
-      "organization": {
-        "title": "Poor organization",
-        "description": "Files named \"Chapter_3_FINAL_v2_ACTUALLY_FINAL.docx\" scattered everywhere."
-      },
-      "tracking": {
-        "title": "No progress tracking",
-        "description": "How many words did you write today? Last week? You have no idea."
-      }
-    },
-    "solution": {
-      "title": "There's a better way",
-      "description": "A writing tool designed specifically for novelists. Clean interface, powerful organization, and meaningful progress tracking.",
-      "cta": "See how Zeyn solves this"
-    }
+    "title": "Why choose Young Dolphins?",
+    "points": [
+      "Small groups for maximum attention",
+      "Certified and experienced instructors",
+      "Warm and safe swimming pools in Amsterdam",
+      "No long waiting lists",
+      "Fun and confidence come first"
+    ]
   },
-  "testimonials": {
-    "title": "Writers love Zeyn",
-    "subtitle": "Join thousands who've already discovered focused writing.",
-    "testimonials": [
+
+  "features": {
+    "title": "Swimming lessons for every age",
+    "items": [
       {
-        "quote": "Finally, a writing app that gets out of my way. Finished my novel in 3 months.",
-        "author": "Sarah Mitchell",
-        "role": "Fantasy Author"
+        "title": "Baby & Toddler (0–4 years)",
+        "description": "Playful introduction to water together with a parent or guardian."
       },
       {
-        "quote": "The chapter organization is brilliant. I can see my entire story at a glance.",
-        "author": "Marcus Chen",
-        "role": "Thriller Novelist"
+        "title": "Kids (4–12 years)",
+        "description": "Step‑by‑step learning according to ENVOZ / NRZ standards."
       },
       {
-        "quote": "Word count tracking keeps me motivated. Best writing tool I've ever used.",
-        "author": "Elena Rodriguez",
-        "role": "Romance Author"
+        "title": "Private & Duo Lessons",
+        "description": "Extra personal guidance for faster progress."
       }
     ]
   },
-  "pricing": {
-    "title": "Simple, honest pricing",
-    "subtitle": "Choose the plan that works for your writing goals. Upgrade or downgrade at any time.",
-    "plans": {
-      "starter": {
-        "name": "Starter",
-        "price": "Free",
-        "description": "Perfect for getting started with your first novel.",
-        "features": [
-          "1 project",
-          "Basic writing tools",
-          "Local storage",
-          "Export to PDF/Word"
-        ],
-        "cta": "Get started free"
-      },
-      "professional": {
-        "name": "Professional",
-        "price": "$12",
-        "period": "/month",
-        "description": "Everything you need to write and publish your novels.",
-        "badge": "Most Popular",
-        "features": [
-          "Unlimited projects",
-          "Cloud sync & backup",
-          "Advanced writing stats",
-          "Goal tracking & rewards",
-          "Multiple export formats",
-          "Priority support"
-        ],
-        "cta": "Start 14-day free trial"
-      },
-      "team": {
-        "name": "Team",
-        "price": "$24",
-        "period": "/month",
-        "description": "Collaborative writing for writing groups and co-authors.",
-        "features": [
-          "Everything in Professional",
-          "Up to 5 collaborators",
-          "Real-time collaboration",
-          "Comments & suggestions",
-          "Version history",
-          "Team analytics"
-        ],
-        "cta": "Start team trial"
-      }
-    },
-    "compare": {
-      "title": "Compare plans",
-      "features": [
-        "Number of projects",
-        "Cloud sync & backup",
-        "Advanced statistics",
-        "Collaboration"
-      ]
+
+  "testimonials": {
+    "title": "What parents say",
+    "subtitle": "Real experiences from families in Amsterdam"
+  },
+
+  "stats": {
+    "title": "Our results",
+    "items": {
+      "diplomas": "Certificates earned",
+      "success": "Success rate",
+      "rating": "Parent rating"
     }
   },
+
+  "team": {
+    "title": "Our instructors",
+    "subtitle": "Certified, experienced and passionate about teaching children"
+  },
+
+  "integrations": {
+    "title": "Our locations",
+    "subtitle": "Modern, warm swimming pools in Amsterdam"
+  },
+
+  "security": {
+    "title": "Safety first",
+    "subtitle": "Our lessons follow all official swimming safety standards"
+  },
+
+  "pricing": {
+    "title": "Pricing",
+    "subtitle": "Clear prices with no surprises",
+    "cta": "Enroll now"
+  },
+
   "faq": {
     "title": "Frequently asked questions",
-    "subtitle": "Everything you need to know about Zeyn. Can't find the answer you're looking for?",
-    "contact_link": "Reach out to our team",
-    "questions": [
-      {
-        "question": "How is Zeyn different from Microsoft Word or Google Docs?",
-        "answer": "Unlike traditional word processors that are designed for documents, Zeyn is built specifically for novel writing. We focus on distraction-free writing with features like zen mode, chapter organization, progress tracking, and goal setting. You won't find unnecessary formatting options or business document features—just the tools you need to write your story."
-      },
-      {
-        "question": "Can I import my existing manuscript from Word or other apps?",
-        "answer": "Yes! Zeyn supports importing from Word (.docx), Google Docs, plain text (.txt), and Markdown (.md) files. Simply drag and drop your files or use the import function. The app will intelligently break your content into chapters if it detects chapter headings, or you can organize it manually after import."
-      },
-      {
-        "question": "Is my data safe? What happens if I lose internet connection?",
-        "answer": "Your data is automatically saved locally on your device every few seconds, so you never lose work even without internet. With a Professional or Team subscription, your projects are also continuously synced to the cloud with enterprise-grade encryption. We use the same security standards as banks, and you can export your data at any time."
-      },
-      {
-        "question": "Can I use Zeyn offline?",
-        "answer": "Absolutely! Zeyn works completely offline. All your writing, editing, and organization features are available without an internet connection. Your work is saved locally, and when you reconnect, any cloud sync (if you have a paid plan) will automatically update your backup."
-      },
-      {
-        "question": "What export formats are supported?",
-        "answer": "All plans support PDF and Word (.docx) export. Professional and Team plans also include EPUB for ebook publishing, Markdown, HTML, and plain text. You can export individual chapters, selected scenes, or your entire manuscript with custom formatting options for different publishing requirements."
-      },
-      {
-        "question": "Is there a mobile app?",
-        "answer": "Yes! Zeyn is available on iOS, Android, Windows, macOS, and Linux. The web version works on any device with a modern browser. All versions sync seamlessly with your paid plan, so you can write on your laptop at home and continue on your phone during your commute."
-      }
-    ],
-    "still_questions": {
-      "title": "Still have questions?",
-      "subtitle": "Our support team is here to help you succeed with your writing goals.",
-      "cta": "Contact support"
-    }
+    "subtitle": "Everything parents want to know"
   },
-  "stats": {
-    "title": "Trusted by writers worldwide",
-    "subtitle": "Join a growing community of authors who have chosen to focus on their craft.",
-    "numbers": {
-      "active_writers": "Active Writers",
-      "words_written": "Words Written",
-      "novels_completed": "Novels Completed",
-      "daily_writers": "Daily Writers",
-      "average_session": "Average session",
-      "longest_streak": "Longest streak",
-      "countries": "Countries"
-    },
-    "success_stories": [
-      {
-        "quote": "My novel reached #1 on Amazon in its category after I rewrote it completely in Zeyn. The focused environment helped me find my voice.",
-        "author": "Sarah M., Fantasy Author"
-      },
-      {
-        "quote": "Signed with a major publisher after finishing my manuscript in Zeyn. The chapter organization made pitching so much easier.",
-        "author": "Marcus C., Thriller Novelist"
-      },
-      {
-        "quote": "Wrote my entire first draft in 30 days using Zeyn's goal tracking. The progress visualization kept me motivated every single day.",
-        "author": "Elena R., Romance Author"
-      }
-    ],
-    "cta": {
-      "title": "Ready to join them?",
-      "subtitle": "Start your writing journey with thousands of successful authors.",
-      "button": "Start writing for free"
-    }
-  },
-  "team": {
-    "title": "Meet the team",
-    "subtitle": "Writers and creators passionate about helping you tell your story.",
-    "members": [
-      {
-        "name": "Alex Sterling",
-        "role": "Founder & CEO",
-        "bio": "Former novelist turned software creator. Published author of 3 fantasy novels. Built Zeyn after struggling with Word for years."
-      },
-      {
-        "name": "Maya Chen",
-        "role": "Lead Designer",
-        "bio": "Design systems expert with 8+ years at Linear and Figma. Believes that great design disappears, letting creativity flow."
-      },
-      {
-        "name": "David Rodriguez",
-        "role": "Senior Developer",
-        "bio": "Full-stack engineer with expertise in performance optimization. Obsessed with making Zeyn lightning-fast for writers worldwide."
-      }
-    ],
-    "values": {
-      "title": "Our values",
-      "items": [
-        {
-          "title": "Focus First",
-          "description": "We believe great writing happens when distractions disappear. Every feature is designed to help you focus."
-        },
-        {
-          "title": "Speed & Performance",
-          "description": "Your creativity shouldn't wait. We optimize every millisecond so your ideas flow as fast as you think."
-        },
-        {
-          "title": "Writers First",
-          "description": "We're writers building for writers. Every decision is made with your creative process in mind."
-        }
-      ]
-    },
-    "join": {
-      "title": "Want to join us?",
-      "subtitle": "We're always looking for talented people who share our passion for helping writers succeed. If you love building tools that empower creativity, we'd love to hear from you.",
-      "cta": "View open positions"
-    }
-  },
-  "integrations": {
-    "title": "Works with your tools",
-    "subtitle": "Seamlessly integrate with the platforms and services you already use.",
-    "categories": {
-      "export": "Export & Publishing",
-      "cloud": "Cloud Storage & Backup",
-      "communities": "Writing Communities"
-    },
-    "tools": {
-      "word": "Microsoft Word",
-      "pdf": "PDF Export",
-      "epub": "EPUB",
-      "kindle": "Kindle Direct",
-      "markdown": "Markdown",
-      "latex": "LaTeX",
-      "drive": "Google Drive",
-      "dropbox": "Dropbox",
-      "onedrive": "OneDrive",
-      "icloud": "iCloud",
-      "critique": "Critique Circle",
-      "scribophile": "Scribophile",
-      "writeon": "WriteOn"
-    },
-    "features": [
-      {
-        "title": "One-Click Export",
-        "description": "Export your manuscript to any format with custom styling and formatting options."
-      },
-      {
-        "title": "Auto-Sync",
-        "description": "Keep your work synchronized across all devices and cloud storage platforms."
-      },
-      {
-        "title": "Secure Sharing",
-        "description": "Share drafts securely with beta readers, editors, and writing communities."
-      }
-    ],
-    "cta": {
-      "title": "Ready to connect your workflow?",
-      "subtitle": "Import your existing work and start writing with all your favorite tools integrated.",
-      "button": "Start free trial"
-    }
-  },
-  "security": {
-    "title": "Your work is secure",
-    "subtitle": "Enterprise-grade security and privacy protection for your creative work.",
-    "features": [
-      {
-        "title": "End-to-End Encryption",
-        "description": "Your manuscripts are encrypted with AES-256 encryption, the same standard used by banks and government agencies. Only you have access to your creative work."
-      },
-      {
-        "title": "Local-First Storage",
-        "description": "Your work is stored locally on your device first. You maintain complete control and can work offline. Cloud sync is optional and encrypted."
-      },
-      {
-        "title": "Zero Knowledge",
-        "description": "We can't read your content even if we wanted to. Your encryption keys are generated locally and never leave your devices."
-      },
-      {
-        "title": "Automatic Backup",
-        "description": "Multiple backup systems ensure your work is never lost. Local auto-save, cloud sync, and version history protect your creativity."
-      },
-      {
-        "title": "GDPR Compliant",
-        "description": "Full compliance with GDPR, CCPA, and other privacy regulations. You own your data and can export or delete it anytime."
-      },
-      {
-        "title": "Transparent Code",
-        "description": "Our security practices are open source. Anyone can audit our encryption and verify our privacy claims."
-      }
-    ],
-    "trust": {
-      "title": "Trusted & Verified",
-      "items": [
-        "ISO 27001 Security Management",
-        "SOC 2 Type II Security Controls",
-        "GDPR Privacy Compliant",
-        "Quarterly Penetration Testing"
-      ]
-    },
-    "stats": {
-      "uptime": "Uptime SLA",
-      "breaches": "Data Breaches",
-      "response": "Response Time"
-    },
-    "commitment": {
-      "title": "Our Security Commitment",
-      "description": "Your creative work is precious. We've built Zeyn with security-first principles because we understand that trust is earned through action, not just words. Our entire team is committed to protecting your intellectual property with the highest standards of security.",
-      "cta": "View security details"
-    }
-  },
-  "footer": {
-    "tagline": "The writing tool that gets out of your way.",
-    "links": {
-      "product": "Product",
-      "company": "Company",
-      "resources": "Resources",
-      "legal": "Legal"
-    },
-    "copyright": "© 2024 Zeyn. All rights reserved."
-  },
-  "common": {
-    "loading": "Loading...",
-    "error": "Something went wrong",
-    "retry": "Try again",
-    "close": "Close",
-    "cancel": "Cancel",
-    "save": "Save",
-    "edit": "Edit",
-    "delete": "Delete",
-    "back": "Back",
-    "next": "Next",
-    "previous": "Previous",
-    "submit": "Submit"
+
+  "final": {
+    "title": "Ready to begin?",
+    "subtitle": "Enroll your child today for swimming lessons",
+    "cta": "Enroll now"
   }
 }
