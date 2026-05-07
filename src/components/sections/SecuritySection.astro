@@ -1,129 +1,138 @@
 ---
 import Container from '../ui/Container.astro';
+import { t } from '../../i18n/ui';
+import type { Locale } from '../../i18n/types';
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = 'en' } = Astro.props;
+
+const title = await t(locale, 'security.title');
+const subtitle = await t(locale, 'security.subtitle');
 ---
 
-<section id="security" class="py-16 bg-black">
+<section id="security" class="py-16 bg-primary">
   <Container>
-    
+
     <!-- Section Header -->
     <div class="text-center mb-12">
-      <h2 class="text-4xl sm:text-5xl lg:text-6xl font-medium text-white mb-6">
-        Your work is secure
+      <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
+        {title}
       </h2>
-      
-      <p class="text-xl text-gray-400 max-w-2xl mx-auto">
-        Enterprise-grade security and privacy protection for your creative work.
+
+      <p class="text-xl text-white/70 max-w-2xl mx-auto">
+        {subtitle}
       </p>
     </div>
 
-    <!-- Security Features - Minimal design -->
+    <!-- Safety Features -->
     <div class="max-w-4xl mx-auto mb-16">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        
+
         <div class="text-center">
-          <h3 class="text-lg font-medium text-white mb-3">
-            End-to-End Encryption
+          <h3 class="text-lg font-semibold text-white mb-3">
+            Certified Instructors
           </h3>
-          <p class="text-gray-400 text-sm leading-relaxed">
-            Your manuscripts are encrypted with AES-256 encryption, the same standard used by banks and government agencies. Only you have access to your creative work.
+          <p class="text-white/70 text-sm leading-relaxed">
+            All instructors are ENVOZ/NRZ certified and trained in child‑friendly teaching methods, safety protocols, and first aid.
           </p>
         </div>
 
         <div class="text-center">
-          <h3 class="text-lg font-medium text-white mb-3">
-            Local-First Storage
+          <h3 class="text-lg font-semibold text-white mb-3">
+            Warm & Safe Pools
           </h3>
-          <p class="text-gray-400 text-sm leading-relaxed">
-            Your work is stored locally on your device first. You maintain complete control and can work offline. Cloud sync is optional and encrypted.
+          <p class="text-white/70 text-sm leading-relaxed">
+            We only teach in pools that meet strict safety and hygiene standards, with constant temperature monitoring.
           </p>
         </div>
 
         <div class="text-center">
-          <h3 class="text-lg font-medium text-white mb-3">
-            Zero Knowledge
+          <h3 class="text-lg font-semibold text-white mb-3">
+            Lifeguard Supervision
           </h3>
-          <p class="text-gray-400 text-sm leading-relaxed">
-            We can't read your content even if we wanted to. Your encryption keys are generated locally and never leave your devices.
+          <p class="text-white/70 text-sm leading-relaxed">
+            Every lesson is supervised by certified lifeguards to ensure maximum safety for all children.
           </p>
         </div>
 
         <div class="text-center">
-          <h3 class="text-lg font-medium text-white mb-3">
-            Automatic Backup
+          <h3 class="text-lg font-semibold text-white mb-3">
+            Clean & Hygienic Facilities
           </h3>
-          <p class="text-gray-400 text-sm leading-relaxed">
-            Multiple backup systems ensure your work is never lost. Local auto-save, cloud sync, and version history protect your creativity.
+          <p class="text-white/70 text-sm leading-relaxed">
+            Pools are cleaned daily and water quality is tested multiple times per day according to Dutch regulations.
           </p>
         </div>
 
         <div class="text-center">
-          <h3 class="text-lg font-medium text-white mb-3">
-            GDPR Compliant
+          <h3 class="text-lg font-semibold text-white mb-3">
+            Emergency Preparedness
           </h3>
-          <p class="text-gray-400 text-sm leading-relaxed">
-            Full compliance with GDPR, CCPA, and other privacy regulations. You own your data and can export or delete it anytime.
+          <p class="text-white/70 text-sm leading-relaxed">
+            Our team is trained in emergency response, CPR, and child rescue techniques to ensure a safe environment.
           </p>
         </div>
 
         <div class="text-center">
-          <h3 class="text-lg font-medium text-white mb-3">
-            Transparent Code
+          <h3 class="text-lg font-semibold text-white mb-3">
+            Parent Transparency
           </h3>
-          <p class="text-gray-400 text-sm leading-relaxed">
-            Our security practices are open source. Anyone can audit our encryption and verify our privacy claims.
+          <p class="text-white/70 text-sm leading-relaxed">
+            Parents can always observe lessons and receive updates on progress, safety, and comfort levels.
           </p>
         </div>
 
       </div>
     </div>
 
-    <!-- Trust & Compliance - Simplified -->
+    <!-- Safety Standards -->
     <div class="text-center mb-16">
-      <h3 class="text-2xl font-medium text-white mb-8">
-        Trusted & Verified
+      <h3 class="text-2xl font-semibold text-white mb-8">
+        Certified & Compliant
       </h3>
-      
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-2xl mx-auto text-sm text-gray-400">
-        <div>ISO 27001 Security Management</div>
-        <div>SOC 2 Type II Security Controls</div>
-        <div>GDPR Privacy Compliant</div>
-        <div>Quarterly Penetration Testing</div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-2xl mx-auto text-sm text-white/70">
+        <div>NRZ Safety Standards</div>
+        <div>ENVOZ Certified Instructors</div>
+        <div>Child‑Friendly Teaching</div>
+        <div>Daily Water Quality Checks</div>
       </div>
     </div>
 
-    <!-- Security Stats - Minimal -->
+    <!-- Safety Stats -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 max-w-2xl mx-auto">
-      
+
       <div class="text-center">
-        <div class="text-3xl font-medium text-white mb-2">99.9%</div>
-        <div class="text-gray-400 text-sm">Uptime SLA</div>
+        <div class="text-3xl font-bold text-white mb-2">100%</div>
+        <div class="text-white/70 text-sm">Certified instructors</div>
       </div>
-      
+
       <div class="text-center">
-        <div class="text-3xl font-medium text-white mb-2">0</div>
-        <div class="text-gray-400 text-sm">Data Breaches</div>
+        <div class="text-3xl font-bold text-white mb-2">0</div>
+        <div class="text-white/70 text-sm">Incidents in lessons</div>
       </div>
-      
+
       <div class="text-center">
-        <div class="text-3xl font-medium text-white mb-2">&lt;24h</div>
-        <div class="text-gray-400 text-sm">Response Time</div>
+        <div class="text-3xl font-bold text-white mb-2">Daily</div>
+        <div class="text-white/70 text-sm">Water quality checks</div>
       </div>
 
     </div>
 
-    <!-- Security Commitment -->
+    <!-- Safety Commitment -->
     <div class="text-center">
-      <h3 class="text-2xl font-medium text-white mb-4">
-        Our Security Commitment
+      <h3 class="text-2xl font-semibold text-white mb-4">
+        Our Safety Commitment
       </h3>
-      <p class="text-gray-400 mb-8 max-w-3xl mx-auto">
-        Your creative work is precious. We've built Zeyn with security-first principles because we understand 
-        that trust is earned through action, not just words. Our entire team is committed to protecting your 
-        intellectual property with the highest standards of security.
+      <p class="text-white/70 mb-8 max-w-3xl mx-auto">
+        Your child’s safety is our highest priority. Every lesson, every instructor, and every location is held to the highest standards so your child can learn with confidence.
       </p>
-      
-      <a href="/security" class="inline-flex items-center px-6 py-3 bg-white text-black hover:bg-gray-100 transition-colors font-medium rounded">
-        View security details
+
+      <a href="#hero" class="inline-flex items-center px-6 py-3 bg-secondary text-primary hover:bg-secondary/90 transition-colors font-semibold rounded">
+        Learn more
         <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
         </svg>
