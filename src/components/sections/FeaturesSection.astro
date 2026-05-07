@@ -1,172 +1,137 @@
 ---
-import { Image } from 'astro:assets';
 import Container from '../ui/Container.astro';
+import { t, tArray, tObject } from '../../i18n/ui';
+import type { Locale } from '../../i18n/types';
 
-// Import feature screenshots
-import zenModeDark from '../../assets/screenshots/dark-mode/dark-10-zen-mode.png';
-import chaptersDark from '../../assets/screenshots/dark-mode/dark-05-chapters-overview.png';
-import statsDark from '../../assets/screenshots/dark-mode/dark-07-stats-all-time.png';
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = 'en' } = Astro.props;
+
+// Translations
+const title = await t(locale, 'features.title');
+const items = await tObject(locale, 'features.items');
 ---
 
-<section id="features" class="py-16 bg-black">
+<section id="features" class="py-16 bg-primary">
   <Container>
-    
+
     <!-- Section Header -->
     <div class="text-center mb-12">
-      <h2 class="text-4xl sm:text-5xl lg:text-6xl font-medium text-white mb-6">
-        Made for writers
+      <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
+        {title}
       </h2>
-      
-      <p class="text-xl text-gray-400 max-w-2xl mx-auto">
-        Three features that help you focus on what matters: your story.
+      <p class="text-xl text-white/70 max-w-2xl mx-auto">
+        <!-- Optional subtitle if needed -->
       </p>
     </div>
 
     <!-- Features List -->
     <div class="space-y-24">
-      
-      <!-- Feature 1: Zen Mode -->
+
+      <!-- Feature 1 -->
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         <div>
-          <h3 class="text-3xl font-medium text-white mb-4">
-            Distraction-free writing
+          <h3 class="text-3xl font-semibold text-white mb-4">
+            {items[0].title}
           </h3>
-          
-          <p class="text-lg text-gray-400 mb-8">
-            Enter zen mode and disappear into your story. No toolbars, menus, or notifications. Just you and your words.
+
+          <p class="text-lg text-white/70 mb-8">
+            {items[0].description}
           </p>
-          
-          <div class="space-y-3 text-gray-300">
+
+          <div class="space-y-3 text-white/80">
             <div class="flex items-center">
-              <div class="w-1 h-1 bg-white rounded-full mr-3"></div>
-              <span>Full-screen writing mode</span>
+              <div class="w-1 h-1 bg-secondary rounded-full mr-3"></div>
+              <span>Warm water introduction</span>
             </div>
             <div class="flex items-center">
-              <div class="w-1 h-1 bg-white rounded-full mr-3"></div>
-              <span>Zero UI distractions</span>
+              <div class="w-1 h-1 bg-secondary rounded-full mr-3"></div>
+              <span>Parent‑child bonding</span>
             </div>
             <div class="flex items-center">
-              <div class="w-1 h-1 bg-white rounded-full mr-3"></div>
-              <span>Focus on your story</span>
+              <div class="w-1 h-1 bg-secondary rounded-full mr-3"></div>
+              <span>Play‑based learning</span>
             </div>
           </div>
         </div>
-        
+
         <div>
-          <div class="relative overflow-hidden rounded-lg border border-gray-800">
-            <Image
-              src={zenModeDark}
-              alt="Zeyn zen mode interface"
-              class="w-full h-auto"
-              widths={[400, 600, 800]}
-              sizes="(max-width: 1024px) 400px, 600px"
-              loading="lazy"
-              decoding="async"
-            />
+          <div class="relative overflow-hidden rounded-lg border border-white/10 bg-primary/40 h-64 flex items-center justify-center">
+            <span class="text-white/40 text-sm">Swimming visual placeholder</span>
           </div>
         </div>
       </div>
 
-      <!-- Feature 2: Chapter Organization -->
+      <!-- Feature 2 -->
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         <div class="order-2 lg:order-1">
-          <div class="relative overflow-hidden rounded-lg border border-gray-800">
-            <Image
-              src={chaptersDark}
-              alt="Zeyn chapter organization"
-              class="w-full h-auto"
-              widths={[400, 600, 800]}
-              sizes="(max-width: 1024px) 400px, 600px"
-              loading="lazy"
-              decoding="async"
-            />
+          <div class="relative overflow-hidden rounded-lg border border-white/10 bg-primary/40 h-64 flex items-center justify-center">
+            <span class="text-white/40 text-sm">Swimming visual placeholder</span>
           </div>
         </div>
-        
+
         <div class="order-1 lg:order-2">
-          <h3 class="text-3xl font-medium text-white mb-4">
-            Novel organization
+          <h3 class="text-3xl font-semibold text-white mb-4">
+            {items[1].title}
           </h3>
-          
-          <p class="text-lg text-gray-400 mb-8">
-            Structure your story like a film. Drag chapters, see your progress, and navigate instantly to any scene.
+
+          <p class="text-lg text-white/70 mb-8">
+            {items[1].description}
           </p>
-          
-          <div class="space-y-3 text-gray-300">
+
+          <div class="space-y-3 text-white/80">
             <div class="flex items-center">
-              <div class="w-1 h-1 bg-white rounded-full mr-3"></div>
-              <span>Visual chapter overview</span>
+              <div class="w-1 h-1 bg-secondary rounded-full mr-3"></div>
+              <span>Step‑by‑step learning</span>
             </div>
             <div class="flex items-center">
-              <div class="w-1 h-1 bg-white rounded-full mr-3"></div>
-              <span>Drag and drop reordering</span>
+              <div class="w-1 h-1 bg-secondary rounded-full mr-3"></div>
+              <span>Certified instructors</span>
             </div>
             <div class="flex items-center">
-              <div class="w-1 h-1 bg-white rounded-full mr-3"></div>
-              <span>Quick navigation</span>
+              <div class="w-1 h-1 bg-secondary rounded-full mr-3"></div>
+              <span>Safe & warm pools</span>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Feature 3: Progress Tracking -->
+      <!-- Feature 3 -->
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         <div>
-          <h3 class="text-3xl font-medium text-white mb-4">
-            Progress tracking
+          <h3 class="text-3xl font-semibold text-white mb-4">
+            {items[2].title}
           </h3>
-          
-          <p class="text-lg text-gray-400 mb-8">
-            See your daily word counts, track your writing streaks, and watch your novel grow day by day.
+
+          <p class="text-lg text-white/70 mb-8">
+            {items[2].description}
           </p>
-          
-          <div class="space-y-3 text-gray-300">
+
+          <div class="space-y-3 text-white/80">
             <div class="flex items-center">
-              <div class="w-1 h-1 bg-white rounded-full mr-3"></div>
-              <span>Daily word goals</span>
+              <div class="w-1 h-1 bg-secondary rounded-full mr-3"></div>
+              <span>1‑on‑1 guidance</span>
             </div>
             <div class="flex items-center">
-              <div class="w-1 h-1 bg-white rounded-full mr-3"></div>
-              <span>Writing streaks</span>
+              <div class="w-1 h-1 bg-secondary rounded-full mr-3"></div>
+              <span>Faster progress</span>
             </div>
             <div class="flex items-center">
-              <div class="w-1 h-1 bg-white rounded-full mr-3"></div>
-              <span>Completion tracking</span>
+              <div class="w-1 h-1 bg-secondary rounded-full mr-3"></div>
+              <span>Personalized lesson plan</span>
             </div>
           </div>
         </div>
-        
+
         <div>
-          <div class="relative overflow-hidden rounded-lg border border-gray-800">
-            <Image
-              src={statsDark}
-              alt="Zeyn progress tracking dashboard"
-              class="w-full h-auto"
-              widths={[400, 600, 800]}
-              sizes="(max-width: 1024px) 400px, 600px"
-              loading="lazy"
-              decoding="async"
-            />
+          <div class="relative overflow-hidden rounded-lg border border-white/10 bg-primary/40 h-64 flex items-center justify-center">
+            <span class="text-white/40 text-sm">Swimming visual placeholder</span>
           </div>
         </div>
       </div>
 
-    </div>
-
-    <!-- Call to Action -->
-    <div class="text-center mt-16">
-      <h3 class="text-3xl font-medium text-white mb-4">
-        Start writing your novel today
-      </h3>
-      <p class="text-lg text-gray-400 mb-8">
-        Join writers who chose focus over features.
-      </p>
-      <a href="#hero" class="inline-flex items-center px-6 py-3 bg-white text-black hover:bg-gray-100 transition-colors font-medium rounded">
-        Get early access
-        <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-        </svg>
-      </a>
     </div>
 
   </Container>
