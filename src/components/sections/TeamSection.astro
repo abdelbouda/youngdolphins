@@ -1,94 +1,102 @@
 ---
 import Container from '../ui/Container.astro';
+import { t } from '../../i18n/ui';
+import type { Locale } from '../../i18n/types';
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = 'en' } = Astro.props;
+
+const title = await t(locale, 'team.title');
+const subtitle = await t(locale, 'team.subtitle');
 ---
 
-<section id="team" class="py-16 bg-black">
+<section id="team" class="py-16 bg-primary">
   <Container>
-    
+
     <!-- Section Header -->
     <div class="text-center mb-12">
-      <h2 class="text-4xl sm:text-5xl lg:text-6xl font-medium text-white mb-6">
-        Meet the team
+      <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
+        {title}
       </h2>
-      
-      <p class="text-xl text-gray-400 max-w-2xl mx-auto">
-        Writers and creators passionate about helping you tell your story.
+
+      <p class="text-xl text-white/70 max-w-2xl mx-auto">
+        {subtitle}
       </p>
     </div>
 
-    <!-- Team Grid - Minimal design -->
+    <!-- Team Grid -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 max-w-4xl mx-auto">
-      
-      <!-- Team Member 1 -->
+
+      <!-- Instructor 1 -->
       <div class="text-center">
-        <div class="w-20 h-20 bg-gray-800 rounded-full flex items-center justify-center text-white text-xl font-medium mx-auto mb-4">
-          AS
+        <div class="w-20 h-20 bg-secondary/20 rounded-full flex items-center justify-center text-secondary text-xl font-bold mx-auto mb-4">
+          LK
         </div>
-        
-        <h3 class="text-lg font-medium text-white mb-1">Alex Sterling</h3>
-        <p class="text-gray-400 text-sm mb-3">Founder & CEO</p>
-        <p class="text-gray-400 text-sm leading-relaxed">
-          Former novelist turned software creator. Published author of 3 fantasy novels. 
-          Built Zeyn after struggling with Word for years.
+
+        <h3 class="text-lg font-semibold text-white mb-1">Lara Koster</h3>
+        <p class="text-white/70 text-sm mb-3">Hoofd Instructeur</p>
+        <p class="text-white/70 text-sm leading-relaxed">
+          12+ jaar ervaring met zwemonderwijs. Gespecialiseerd in kinderen met watervrees en A/B/C‑diploma trajecten.
         </p>
       </div>
 
-      <!-- Team Member 2 -->
+      <!-- Instructor 2 -->
       <div class="text-center">
-        <div class="w-20 h-20 bg-gray-800 rounded-full flex items-center justify-center text-white text-xl font-medium mx-auto mb-4">
-          MC
+        <div class="w-20 h-20 bg-secondary/20 rounded-full flex items-center justify-center text-secondary text-xl font-bold mx-auto mb-4">
+          JM
         </div>
-        
-        <h3 class="text-lg font-medium text-white mb-1">Maya Chen</h3>
-        <p class="text-gray-400 text-sm mb-3">Lead Designer</p>
-        <p class="text-gray-400 text-sm leading-relaxed">
-          Design systems expert with 8+ years at Linear and Figma. 
-          Believes that great design disappears, letting creativity flow.
+
+        <h3 class="text-lg font-semibold text-white mb-1">Jeroen Meijer</h3>
+        <p class="text-white/70 text-sm mb-3">Baby & Peuter Specialist</p>
+        <p class="text-white/70 text-sm leading-relaxed">
+          Expert in ouder‑kind lessen. Zorgt voor een veilige, speelse introductie tot water voor de allerkleinsten.
         </p>
       </div>
 
-      <!-- Team Member 3 -->
+      <!-- Instructor 3 -->
       <div class="text-center">
-        <div class="w-20 h-20 bg-gray-800 rounded-full flex items-center justify-center text-white text-xl font-medium mx-auto mb-4">
-          DR
+        <div class="w-20 h-20 bg-secondary/20 rounded-full flex items-center justify-center text-secondary text-xl font-bold mx-auto mb-4">
+          SR
         </div>
-        
-        <h3 class="text-lg font-medium text-white mb-1">David Rodriguez</h3>
-        <p class="text-gray-400 text-sm mb-3">Senior Developer</p>
-        <p class="text-gray-400 text-sm leading-relaxed">
-          Full-stack engineer with expertise in performance optimization. 
-          Obsessed with making Zeyn lightning-fast for writers worldwide.
+
+        <h3 class="text-lg font-semibold text-white mb-1">Sofia Ramos</h3>
+        <p class="text-white/70 text-sm mb-3">Privéles Coach</p>
+        <p class="text-white/70 text-sm leading-relaxed">
+          Bekend om haar geduld en persoonlijke aanpak. Helpt kinderen versneld hun diploma’s behalen.
         </p>
       </div>
 
     </div>
 
-    <!-- Company Values - Minimal -->
+    <!-- Values -->
     <div class="max-w-3xl mx-auto mb-16">
-      <h3 class="text-2xl font-medium text-white text-center mb-8">
+      <h3 class="text-2xl font-semibold text-white text-center mb-8">
         Our values
       </h3>
-      
+
       <div class="space-y-6">
-        
-        <div class="text-center border-b border-gray-800 pb-6">
-          <h4 class="text-lg font-medium text-white mb-2">Focus First</h4>
-          <p class="text-gray-400 text-sm">
-            We believe great writing happens when distractions disappear. Every feature is designed to help you focus.
+
+        <div class="text-center border-b border-white/10 pb-6">
+          <h4 class="text-lg font-semibold text-white mb-2">Safety First</h4>
+          <p class="text-white/70 text-sm">
+            Veiligheid staat altijd voorop. Onze instructeurs zijn volledig gecertificeerd en getraind in kindvriendelijke methodes.
           </p>
         </div>
 
-        <div class="text-center border-b border-gray-800 pb-6">
-          <h4 class="text-lg font-medium text-white mb-2">Speed & Performance</h4>
-          <p class="text-gray-400 text-sm">
-            Your creativity shouldn't wait. We optimize every millisecond so your ideas flow as fast as you think.
+        <div class="text-center border-b border-white/10 pb-6">
+          <h4 class="text-lg font-semibold text-white mb-2">Fun & Confidence</h4>
+          <p class="text-white/70 text-sm">
+            Kinderen leren het snelst wanneer ze plezier hebben. We bouwen vertrouwen op in elke stap.
           </p>
         </div>
 
         <div class="text-center pb-6">
-          <h4 class="text-lg font-medium text-white mb-2">Writers First</h4>
-          <p class="text-gray-400 text-sm">
-            We're writers building for writers. Every decision is made with your creative process in mind.
+          <h4 class="text-lg font-semibold text-white mb-2">Personal Attention</h4>
+          <p class="text-white/70 text-sm">
+            Kleine groepen en persoonlijke begeleiding zorgen voor maximale vooruitgang.
           </p>
         </div>
 
@@ -97,15 +105,14 @@ import Container from '../ui/Container.astro';
 
     <!-- Join the Team -->
     <div class="text-center">
-      <h3 class="text-2xl font-medium text-white mb-4">
+      <h3 class="text-2xl font-semibold text-white mb-4">
         Want to join us?
       </h3>
-      <p class="text-gray-400 mb-6 max-w-2xl mx-auto">
-        We're always looking for talented people who share our passion for helping writers succeed. 
-        If you love building tools that empower creativity, we'd love to hear from you.
+      <p class="text-white/70 mb-6 max-w-2xl mx-auto">
+        We’re always looking for passionate instructors who love helping children grow in the water.
       </p>
-      
-      <a href="/careers" class="inline-flex items-center px-6 py-3 bg-white text-black hover:bg-gray-100 transition-colors font-medium rounded">
+
+      <a href="/careers" class="inline-flex items-center px-6 py-3 bg-secondary text-primary hover:bg-secondary/90 transition-colors font-semibold rounded">
         View open positions
         <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
