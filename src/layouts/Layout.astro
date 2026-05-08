@@ -60,9 +60,6 @@ const imageURL = new URL(image, siteUrl);
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
-
-    <!-- Global Styles -->
-    <link rel="stylesheet" href="/src/styles/global.css" />
   </head>
 
   <body class="font-inter bg-white text-gray-900 antialiased">
@@ -70,7 +67,6 @@ const imageURL = new URL(image, siteUrl);
       <slot />
     </main>
 
-    <!-- Footer -->
     <footer class="mt-20 py-10 text-center text-sm text-gray-500">
       © {new Date().getFullYear()} Young Dolphins – Zwemschool Amsterdam
     </footer>
@@ -95,5 +91,9 @@ const imageURL = new URL(image, siteUrl);
 
   a:hover {
     text-decoration: underline;
+  }
+
+  a:visited {
+    color: #004aad;
   }
 </style>
