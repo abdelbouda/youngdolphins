@@ -171,6 +171,30 @@
     "more_cta": "Neem contact op"
   },
 
+  "values": {
+    "title": "Onze waarden",
+    "items": [
+      {
+        "title": "Veiligheid eerst",
+        "description": "Veiligheid staat altijd voorop. Onze instructeurs zijn volledig gecertificeerd en getraind in kindvriendelijke methodes."
+      },
+      {
+        "title": "Plezier & Vertrouwen",
+        "description": "Kinderen leren het snelst wanneer ze plezier hebben. We bouwen vertrouwen op in elke stap."
+      },
+      {
+        "title": "Persoonlijke aandacht",
+        "description": "Kleine groepen en persoonlijke begeleiding zorgen voor maximale vooruitgang."
+      }
+    ]
+  },
+
+  "join": {
+    "title": "Wil je bij ons werken?",
+    "subtitle": "We zijn altijd op zoek naar enthousiaste instructeurs die kinderen willen helpen groeien in het water.",
+    "cta": "Bekijk openstaande vacatures"
+  },
+
   "final": {
     "title": "Klaar om te starten?",
     "subtitle": "Schrijf je kind vandaag nog in voor zwemles",
