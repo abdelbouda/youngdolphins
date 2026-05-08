@@ -27,10 +27,9 @@ const navItems = [
       />
     </a>
 
-    <!-- MOBILE: alleen WhatsApp, Mail, LanguageSwitcher, Hamburger -->
-    <div class="flex items-center gap-2 md:hidden">
-
-      <!-- WhatsApp (icon + label) -->
+    <!-- MOBILE: only WhatsApp, Mail, LanguageSwitcher, Hamburger -->
+    <div class="flex items-center gap-2 md:hidden" id="mobile-actions">
+      <!-- WhatsApp (icon only for compactness) -->
       <a 
         href="https://wa.me/31628421354" 
         class="inline-flex items-center gap-2 px-3 py-2 bg-[#001F3F] text-white rounded-md text-xs font-semibold hover:bg-[#003366] transition"
@@ -42,7 +41,7 @@ const navItems = [
         <span class="sr-only">WhatsApp</span>
       </a>
 
-      <!-- Email (icon + label) -->
+      <!-- Email (icon only) -->
       <a 
         href="mailto:info@youngdolphins.nl" 
         class="inline-flex items-center gap-2 px-3 py-2 bg-[#001F3F] text-white rounded-md text-xs font-semibold hover:bg-[#003366] transition"
@@ -70,9 +69,8 @@ const navItems = [
       </button>
     </div>
 
-    <!-- DESKTOP NAVIGATION (ongewijzigd layout) -->
-    <div class="hidden md:flex items-center gap-3 text-sm font-medium">
-
+    <!-- DESKTOP NAVIGATION (unchanged layout) -->
+    <div class="hidden md:flex items-center gap-3 text-sm font-medium" id="desktop-nav">
       {navItems.map(item => (
         <a 
           href={item.href} 
@@ -128,68 +126,66 @@ const navItems = [
   </aside>
 
   <script type="module">
-    const toggle = document.getElementById('mobile-menu-toggle');
-    const menu = document.getElementById('mobile-menu');
-    const overlay = document.getElementById('mobile-overlay');
-    const closeBtn = document.getElementById('mobile-menu-close');
+    // Ensure DOM is ready before querying elements
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggle = document.getElementById('mobile-menu-toggle');
+      const menu = document.getElementById('mobile-menu');
+      const overlay = document.getElementById('mobile-overlay');
+      const closeBtn = document.getElementById('mobile-menu-close');
 
-    let isOpen = false;
+      let isOpen = false;
 
-    function openMenu() {
-      if (!menu || !overlay) return;
-      isOpen = true;
-      menu.classList.remove('translate-x-full');
-      menu.setAttribute('aria-hidden', 'false');
-      overlay.classList.remove('opacity-0', 'pointer-events-none');
-      overlay.classList.add('opacity-100');
-      toggle.setAttribute('aria-expanded', 'true');
-      document.body.style.overflow = 'hidden';
-    }
+      function openMenu() {
+        if (!menu || !overlay) return;
+        isOpen = true;
+        menu.classList.remove('translate-x-full');
+        menu.setAttribute('aria-hidden', 'false');
+        overlay.classList.remove('opacity-0', 'pointer-events-none');
+        overlay.classList.add('opacity-100');
+        if (toggle) toggle.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
 
-    function closeMenu() {
-      if (!menu || !overlay) return;
-      isOpen = false;
-      menu.classList.add('translate-x-full');
-      menu.setAttribute('aria-hidden', 'true');
-      overlay.classList.add('opacity-0', 'pointer-events-none');
-      overlay.classList.remove('opacity-100');
-      toggle.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-    }
+      function closeMenu() {
+        if (!menu || !overlay) return;
+        isOpen = false;
+        menu.classList.add('translate-x-full');
+        menu.setAttribute('aria-hidden', 'true');
+        overlay.classList.add('opacity-0', 'pointer-events-none');
+        overlay.classList.remove('opacity-100');
+        if (toggle) toggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
 
-    if (toggle) {
-      toggle.addEventListener('click', (e) => {
-        e.stopPropagation();
-        isOpen ? closeMenu() : openMenu();
+      if (toggle) {
+        toggle.addEventListener('click', (e) => {
+          e.stopPropagation();
+          isOpen ? closeMenu() : openMenu();
+        });
+      }
+
+      if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+      if (overlay) overlay.addEventListener('click', closeMenu);
+
+      // Close on Escape
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && isOpen) closeMenu();
       });
-    }
 
-    if (closeBtn) {
-      closeBtn.addEventListener('click', closeMenu);
-    }
-
-    if (overlay) {
-      overlay.addEventListener('click', closeMenu);
-    }
-
-    // Close on Escape
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && isOpen) closeMenu();
+      // Keep desktop header behavior unchanged (shrink on scroll)
+      const header = document.getElementById('site-header');
+      const logo = document.getElementById('header-logo');
+      if (header && logo) {
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 20) {
+            header.classList.add('py-1', 'bg-white/95');
+            logo.classList.add('scale-90');
+          } else {
+            header.classList.remove('py-1', 'bg-white/95');
+            logo.classList.remove('scale-90');
+          }
+        });
+      }
     });
-
-    // Keep desktop header behavior unchanged (shrink on scroll)
-    const header = document.getElementById('site-header');
-    const logo = document.getElementById('header-logo');
-    if (header && logo) {
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 20) {
-          header.classList.add('py-1', 'bg-white/95');
-          logo.classList.add('scale-90');
-        } else {
-          header.classList.remove('py-1', 'bg-white/95');
-          logo.classList.remove('scale-90');
-        }
-      });
-    }
   </script>
 </header>
