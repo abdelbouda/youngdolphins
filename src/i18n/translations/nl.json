@@ -137,7 +137,38 @@
 
   "faq": {
     "title": "Veelgestelde vragen",
-    "subtitle": "Alles wat ouders willen weten"
+    "subtitle": "Alles wat ouders willen weten",
+
+    "items": [
+      {
+        "question": "Hoe lang duurt het om een zwemdiploma te halen?",
+        "answer": "Dit hangt af van leeftijd, zelfvertrouwen en lesfrequentie. De meeste kinderen halen diploma A in 6–12 maanden met wekelijkse lessen. Met Progress+ of privélessen gaat het vaak sneller."
+      },
+      {
+        "question": "Wat moet mijn kind meenemen naar de eerste les?",
+        "answer": "Een badpak of zwembroek, handdoek en slippers zijn voldoende. Voor baby- en peuterlessen is een zwemluier verplicht. Wij zorgen voor alle drijfmaterialen en veiligheidsmiddelen."
+      },
+      {
+        "question": "Mogen ouders de lessen bekijken?",
+        "answer": "Ja! Alle zwembaden hebben kijkruimtes waar ouders comfortabel kunnen meekijken. Bij baby- en peuterlessen gaan ouders mee het water in."
+      },
+      {
+        "question": "Wat als mijn kind bang is voor water?",
+        "answer": "Onze instructeurs zijn getraind in het begeleiden van kinderen met watervrees. We bouwen rustig op, creëren vertrouwen en gebruiken speelse oefeningen om kinderen veilig te laten voelen."
+      },
+      {
+        "question": "Bieden jullie privélessen aan?",
+        "answer": "Ja, we bieden 1‑op‑1 privélessen en duolessen aan. Ideaal voor snellere vooruitgang of kinderen die extra aandacht nodig hebben."
+      },
+      {
+        "question": "Op welke locaties geven jullie les?",
+        "answer": "We geven les in meerdere warme, kindvriendelijke zwembaden in Amsterdam. Je kunt de locatie kiezen die het beste bij jullie planning past."
+      }
+    ],
+
+    "more_title": "Nog vragen?",
+    "more_subtitle": "Ons team helpt je graag met alles rondom zwemlessen.",
+    "more_cta": "Neem contact op"
   },
 
   "final": {
