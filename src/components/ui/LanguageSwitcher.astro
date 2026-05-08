@@ -1,57 +1,42 @@
 ---
-const locale = Astro.currentLocale;
+const locale = Astro.currentLocale ?? 'nl';
 
 const languages = [
   {
     code: "nl",
     label: "Nederlands",
-    svg: `
-      <svg viewBox="0 0 60 30" class="flag-icon">
-        <rect width="60" height="30" fill="#AE1C28"/>
-        <rect width="60" height="20" y="10" fill="#FFF"/>
-        <rect width="60" height="10" y="20" fill="#21468B"/>
-      </svg>
-    `
+    svg: `<svg viewBox="0 0 60 30" class="flag-icon" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="30" fill="#AE1C28"/><rect width="60" height="20" y="10" fill="#FFF"/><rect width="60" height="10" y="20" fill="#21468B"/></svg>`
   },
   {
     code: "en",
     label: "English",
-    svg: `
-      <svg viewBox="0 0 60 30" class="flag-icon">
-        <clipPath id="uk">
-          <path d="M0 0v30h60V0z"/>
-        </clipPath>
-        <path fill="#012169" d="M0 0v30h60V0z"/>
-        <path stroke="#FFF" stroke-width="6" d="M0 0l60 30m0-30L0 30" clip-path="url(#uk)"/>
-        <path stroke="#C8102E" stroke-width="4" d="M0 0l60 30m0-30L0 30" clip-path="url(#uk)"/>
-        <path stroke="#FFF" stroke-width="10" d="M30 0v30M0 15h60"/>
-        <path stroke="#C8102E" stroke-width="6" d="M30 0v30M0 15h60"/>
-      </svg>
-    `
+    svg: `<svg viewBox="0 0 60 30" class="flag-icon" xmlns="http://www.w3.org/2000/svg"><clipPath id="uk"><path d="M0 0v30h60V0z"/></clipPath><path fill="#012169" d="M0 0v30h60V0z"/><path stroke="#FFF" stroke-width="6" d="M0 0l60 30m0-30L0 30" clip-path="url(#uk)"/><path stroke="#C8102E" stroke-width="4" d="M0 0l60 30m0-30L0 30" clip-path="url(#uk)"/><path stroke="#FFF" stroke-width="10" d="M30 0v30M0 15h60"/><path stroke="#C8102E" stroke-width="6" d="M30 0v30M0 15h60"/></svg>`
   }
 ];
 
-const current = languages.find(l => l.code === locale);
-const others = languages.filter(l => l.code !== locale);
+const current = languages.find(l => l.code === locale) ?? languages[0];
+const others = languages.filter(l => l.code !== current.code);
 ---
 
-<div class="lang-dropdown" id="lang-dropdown">
-  <button 
-    class="lang-toggle" 
-    aria-label="Change language"
-    id="lang-toggle"
-    set:html={current.svg}
-  ></button>
+<div class="lang-switcher" data-lang-switcher>
+  <button
+    type="button"
+    class="lang-toggle inline-flex items-center gap-2 px-3 py-2 bg-[#001F3F] text-white rounded-md text-sm font-semibold"
+    aria-haspopup="true"
+    aria-expanded="false"
+  >
+    <span class="flag" aria-hidden="true" set:html={current.svg}></span>
+    <span class="sr-only">Taal</span>
+  </button>
 
-  <ul class="lang-menu hidden" id="lang-menu">
+  <ul class="lang-menu hidden" role="menu" aria-label="Taalkeuze">
     {others.map(lang => (
-      <li>
-        <a 
-          href={`/${lang.code}`} 
-          class="lang-option"
-          aria-label={`Switch to ${lang.label}`}
+      <li role="none">
+        <a role="menuitem"
+           href={`/${lang.code}`}
+           class="lang-option flex items-center gap-3 px-4 py-2 text-sm text-[#001F3F] hover:bg-[#E6F4FF] rounded-md"
         >
-          <span set:html={lang.svg}></span>
+          <span class="flag" aria-hidden="true" set:html={lang.svg}></span>
           <span class="label">{lang.label}</span>
         </a>
       </li>
@@ -60,79 +45,56 @@ const others = languages.filter(l => l.code !== locale);
 </div>
 
 <style is:global>
-.lang-dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.lang-toggle {
-  background-color: #001F3F;
-  border: none;
-  padding: 0.4rem 0.6rem;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.lang-toggle:hover {
-  background-color: #003366;
-  transform: scale(1.05);
-}
-
-.flag-icon {
-  width: 24px;
-  height: 16px;
-  border-radius: 2px;
-  display: block;
-}
-
-.lang-menu {
-  position: absolute;
-  right: 0;
-  margin-top: 0.5rem;
-  background: white;
-  border-radius: 0.5rem;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-  padding: 0.4rem 0;
-  list-style: none;
-  z-index: 50;
-}
-
-.lang-option {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.4rem 1rem;
-  text-decoration: none;
-  color: #001F3F;
-  transition: background-color 0.2s ease;
-}
-
-.lang-option:hover {
-  background-color: #E6F4FF;
-}
-
-.label {
-  font-size: 0.9rem;
-}
+.lang-switcher { position: relative; display: inline-block; }
+.lang-toggle { display:flex; align-items:center; justify-content:center; gap:0.5rem; border:0; cursor:pointer; }
+.flag-icon { width: 20px; height: 14px; border-radius: 2px; display:block; }
+.lang-menu { position: absolute; right: 0; margin-top: 0.5rem; background: white; border-radius: 0.5rem; box-shadow: 0 6px 18px rgba(0,0,0,0.12); padding: 0.25rem 0; list-style: none; z-index: 60; min-width: 160px; }
+.lang-option { display:flex; align-items:center; gap:0.6rem; padding: 0.4rem 0.75rem; text-decoration:none; color: #001F3F; }
+.lang-option .flag-icon { width: 22px; height: 14px; }
+.hidden { display: none !important; }
+.sr-only { position: absolute !important; width: 1px !important; height: 1px !important; padding: 0 !important; margin: -1px !important; overflow: hidden !important; clip: rect(0,0,0,0) !important; white-space: nowrap !important; border: 0 !important; }
 </style>
 
-<script>
-  const toggle = document.getElementById("lang-toggle");
-  const menu = document.getElementById("lang-menu");
-  const dropdown = document.getElementById("lang-dropdown");
+<script type="module">
+  // Initialize all language switchers on the page
+  (function initLangSwitchers() {
+    const roots = document.querySelectorAll('[data-lang-switcher]');
+    roots.forEach(root => {
+      const toggle = root.querySelector('.lang-toggle');
+      const menu = root.querySelector('.lang-menu');
 
-  toggle.addEventListener("click", (e) => {
-    e.stopPropagation();
-    menu.classList.toggle("hidden");
-  });
+      if (!toggle || !menu) return;
 
-  document.addEventListener("click", (e) => {
-    if (!dropdown.contains(e.target)) {
-      menu.classList.add("hidden");
-    }
-  });
+      // Toggle menu
+      toggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isHidden = menu.classList.contains('hidden');
+        if (isHidden) {
+          open();
+        } else {
+          close();
+        }
+      });
+
+      // Close on outside click
+      document.addEventListener('click', (e) => {
+        if (!root.contains(e.target)) close();
+      });
+
+      // Close on Escape
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') close();
+      });
+
+      // Accessibility helpers
+      function open() {
+        menu.classList.remove('hidden');
+        toggle.setAttribute('aria-expanded', 'true');
+      }
+      function close() {
+        menu.classList.add('hidden');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  })();
 </script>
