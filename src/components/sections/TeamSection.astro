@@ -37,9 +37,11 @@ const subtitle = await t(locale, 'team.subtitle');
         </div>
 
         <h3 class="text-lg font-semibold text-white mb-1">Lara Koster</h3>
-        <p class="text-white/70 text-sm mb-3">Hoofd Instructeur</p>
+        <p class="text-white/70 text-sm mb-3">{locale === 'nl' ? 'Hoofd Instructeur' : 'Head Instructor'}</p>
         <p class="text-white/70 text-sm leading-relaxed">
-          12+ jaar ervaring met zwemonderwijs. Gespecialiseerd in kinderen met watervrees en A/B/C‑diploma trajecten.
+          {locale === 'nl'
+            ? '12+ jaar ervaring met zwemonderwijs. Gespecialiseerd in kinderen met watervrees en A/B/C‑diploma trajecten.'
+            : '12+ years of experience in swim education. Specialized in children with water anxiety and A/B/C diploma programs.'}
         </p>
       </div>
 
@@ -50,9 +52,11 @@ const subtitle = await t(locale, 'team.subtitle');
         </div>
 
         <h3 class="text-lg font-semibold text-white mb-1">Jeroen Meijer</h3>
-        <p class="text-white/70 text-sm mb-3">Baby & Peuter Specialist</p>
+        <p class="text-white/70 text-sm mb-3">{locale === 'nl' ? 'Baby & Peuter Specialist' : 'Baby & Toddler Specialist'}</p>
         <p class="text-white/70 text-sm leading-relaxed">
-          Expert in ouder‑kind lessen. Zorgt voor een veilige, speelse introductie tot water voor de allerkleinsten.
+          {locale === 'nl'
+            ? 'Expert in ouder‑kind lessen. Zorgt voor een veilige, speelse introductie tot water voor de allerkleinsten.'
+            : 'Expert in parent‑child lessons. Ensures a safe, playful introduction to water for the youngest swimmers.'}
         </p>
       </div>
 
@@ -63,57 +67,66 @@ const subtitle = await t(locale, 'team.subtitle');
         </div>
 
         <h3 class="text-lg font-semibold text-white mb-1">Sofia Ramos</h3>
-        <p class="text-white/70 text-sm mb-3">Privéles Coach</p>
+        <p class="text-white/70 text-sm mb-3">{locale === 'nl' ? 'Privéles Coach' : 'Private Lesson Coach'}</p>
         <p class="text-white/70 text-sm leading-relaxed">
-          Bekend om haar geduld en persoonlijke aanpak. Helpt kinderen versneld hun diploma’s behalen.
+          {locale === 'nl'
+            ? 'Bekend om haar geduld en persoonlijke aanpak. Helpt kinderen versneld hun diploma’s behalen.'
+            : 'Known for her patience and personal approach. Helps children earn their diplomas faster.'}
         </p>
       </div>
 
     </div>
 
-    <!-- Values -->
+    <!-- Values (i18n) -->
     <div class="max-w-3xl mx-auto mb-16">
       <h3 class="text-2xl font-semibold text-white text-center mb-8">
-        Our values
+        {t(locale, 'values.title')}
       </h3>
 
       <div class="space-y-6">
 
         <div class="text-center border-b border-white/10 pb-6">
-          <h4 class="text-lg font-semibold text-white mb-2">Safety First</h4>
+          <h4 class="text-lg font-semibold text-white mb-2">
+            {t(locale, 'values.items[0].title')}
+          </h4>
           <p class="text-white/70 text-sm">
-            Veiligheid staat altijd voorop. Onze instructeurs zijn volledig gecertificeerd en getraind in kindvriendelijke methodes.
+            {t(locale, 'values.items[0].description')}
           </p>
         </div>
 
         <div class="text-center border-b border-white/10 pb-6">
-          <h4 class="text-lg font-semibold text-white mb-2">Fun & Confidence</h4>
+          <h4 class="text-lg font-semibold text-white mb-2">
+            {t(locale, 'values.items[1].title')}
+          </h4>
           <p class="text-white/70 text-sm">
-            Kinderen leren het snelst wanneer ze plezier hebben. We bouwen vertrouwen op in elke stap.
+            {t(locale, 'values.items[1].description')}
           </p>
         </div>
 
         <div class="text-center pb-6">
-          <h4 class="text-lg font-semibold text-white mb-2">Personal Attention</h4>
+          <h4 class="text-lg font-semibold text-white mb-2">
+            {t(locale, 'values.items[2].title')}
+          </h4>
           <p class="text-white/70 text-sm">
-            Kleine groepen en persoonlijke begeleiding zorgen voor maximale vooruitgang.
+            {t(locale, 'values.items[2].description')}
           </p>
         </div>
 
       </div>
     </div>
 
-    <!-- Join the Team -->
+    <!-- Join the Team (i18n) -->
     <div class="text-center">
       <h3 class="text-2xl font-semibold text-white mb-4">
-        Want to join us?
+        {t(locale, 'join.title')}
       </h3>
+
       <p class="text-white/70 mb-6 max-w-2xl mx-auto">
-        We’re always looking for passionate instructors who love helping children grow in the water.
+        {t(locale, 'join.subtitle')}
       </p>
 
       <a href="/careers" class="inline-flex items-center px-6 py-3 bg-secondary text-primary hover:bg-secondary/90 transition-colors font-semibold rounded">
-        View open positions
+        {t(locale, 'join.cta')}
         <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
         </svg>
