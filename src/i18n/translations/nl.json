@@ -126,7 +126,36 @@
 
   "security": {
     "title": "Veiligheid staat voorop",
-    "subtitle": "Onze lessen volgen alle officiële zwemveiligheidsnormen"
+    "subtitle": "Onze lessen volgen alle officiële zwemveiligheidsnormen",
+    "items": {
+      "instructors": {
+        "title": "Gecertificeerde instructeurs",
+        "text": "Alle instructeurs zijn ENVOZ/NRZ‑gecertificeerd en getraind in kindvriendelijke lesmethoden, veiligheidsprotocollen en eerste hulp."
+      },
+      "pools": {
+        "title": "Warme & veilige zwembaden",
+        "text": "Wij geven alleen les in zwembaden die voldoen aan strikte veiligheids‑ en hygiënenormen, met constante temperatuurcontrole."
+      },
+      "supervision": {
+        "title": "Toezicht door badmeesters",
+        "text": "Elke les staat onder toezicht van gecertificeerde badmeesters om maximale veiligheid voor alle kinderen te garanderen."
+      },
+      "facilities": {
+        "title": "Schone & hygiënische faciliteiten",
+        "text": "Onze zwembaden worden dagelijks gereinigd en de waterkwaliteit wordt meerdere keren per dag getest volgens Nederlandse regelgeving."
+      },
+      "emergency": {
+        "title": "Noodvoorbereiding",
+        "text": "Ons team is getraind in noodhulp, reanimatie (CPR) en kindreddingstechnieken om een veilige omgeving te waarborgen."
+      },
+      "transparency": {
+        "title": "Oudertransparantie",
+        "text": "Ouders kunnen altijd lessen observeren en ontvangen updates over voortgang, veiligheid en comfort."
+      }
+    },
+    "footer": {
+      "title": "Gecertificeerd & betrouwbaar"
+    }
   },
 
   "pricing": {
