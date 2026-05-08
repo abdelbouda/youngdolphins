@@ -18,7 +18,6 @@ html {
   scroll-behavior: smooth;
   font-family: 'Inter', sans-serif;
   color-scheme: light;
-  /* Prevent horizontal scroll on mobile */
   overflow-x: hidden;
 }
 
@@ -28,7 +27,6 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* Prevent horizontal scroll on mobile */
   overflow-x: hidden;
 }
 
@@ -82,14 +80,13 @@ img {
 }
 
 /* -----------------------------------------------------------
-   BUTTONS (base reset, Tailwind handles the rest)
+   BUTTONS
 ----------------------------------------------------------- */
 
 button {
   font-family: inherit;
   cursor: pointer;
   border: none;
-  /* Minimum touch target size for mobile (WCAG 2.5.5) */
   min-height: 44px;
   min-width: 44px;
 }
@@ -104,7 +101,7 @@ input, textarea, select {
   border: 1px solid #d1d5db;
   padding: 0.6rem 0.8rem;
   width: 100%;
-  font-size: 16px; /* Prevent iOS zoom on focus */
+  font-size: 16px;
 }
 
 input:focus, textarea:focus, select:focus {
@@ -157,32 +154,42 @@ footer {
 }
 
 /* -----------------------------------------------------------
-   HEADER: alle links/knoppen wit
+   HEADER
 ----------------------------------------------------------- */
 
-header a,
-header button {
-  color: #ffffff;
+header a {
+  color: #001F3F;
   text-decoration: none !important;
   -webkit-tap-highlight-color: transparent;
 }
 
 header a:visited {
-  color: #ffffff;
+  color: #001F3F;
 }
 
-header a:hover,
-header button:hover {
+header a:hover {
   text-decoration: none !important;
 }
 
-/* Hamburger knop is donker (op witte achtergrond) */
+/* Knoppen met donkere achtergrond → witte tekst */
+header a.bg-\[#001F3F\],
+header a.bg-\[#25D366\],
+header button.bg-\[#001F3F\] {
+  color: #ffffff !important;
+}
+
+header a.bg-\[#001F3F\]:hover,
+header a.bg-\[#25D366\]:hover {
+  color: #ffffff !important;
+}
+
+/* Hamburger */
 #mobile-menu-toggle,
 #mobile-menu-toggle svg {
   color: #001F3F !important;
 }
 
-/* Mobile menu sidebar links zijn dark-on-white */
+/* Mobile menu sidebar */
 #mobile-menu a {
   color: #ffffff !important;
 }
@@ -212,7 +219,7 @@ header button:hover {
 }
 
 /* -----------------------------------------------------------
-   CTA BUTTONS (global, used across sections)
+   CTA BUTTONS
 ----------------------------------------------------------- */
 
 .cta-primary {
