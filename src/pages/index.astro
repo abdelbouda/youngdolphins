@@ -1,7 +1,7 @@
 ---
 const locale = Astro.props.locale ?? 'nl';
 import { tSync } from '../i18n/utils';
----
+
 import Header from '../components/ui/Header.astro';
 import HeroSection from '../components/sections/HeroSection.astro';
 import ProblemSection from '../components/sections/ProblemSection.astro';
@@ -14,23 +14,40 @@ import SecuritySection from '../components/sections/SecuritySection.astro';
 import PricingSection from '../components/sections/PricingSection.astro';
 import FAQSection from '../components/sections/FAQSection.astro';
 import FinalSections from '../components/sections/FinalSections.astro';
-
-// Voor nu blijft locale op 'en' staan omdat jouw template dat verwacht.
-// Later kunnen we NL toevoegen via i18n.
-const locale = 'en';
 ---
 
-<Layout 
-    title="Young Dolphins – Zwemschool Amsterdam"
-    description="Zwemlessen voor kinderen in Amsterdam. Veilig leren zwemmen met plezier, vertrouwen en persoonlijke aandacht. A-, B- en C-diploma’s."
-    locale={locale}
->
-    <!-- HEADER -->
-    <Header locale={locale} />
+<!-- HEADER -->
+<Header locale={locale} />
 
-    <!-- HERO (wordt door ons herschreven in de component zelf) -->
-    <HeroSection 
-        locale={locale}
-        title="Young Dolphins – Zwemschool Amsterdam"
-        subtitle="Veilig leren zwemmen. Met plezier, vertrouwen en persoonlijke aandacht."
-        button
+<!-- HERO -->
+<HeroSection locale={locale} />
+
+<!-- PROBLEM -->
+<ProblemSection locale={locale} />
+
+<!-- FEATURES -->
+<FeaturesSection locale={locale} />
+
+<!-- TESTIMONIALS -->
+<TestimonialsSection locale={locale} />
+
+<!-- STATS -->
+<StatsSection locale={locale} />
+
+<!-- TEAM -->
+<TeamSection locale={locale} />
+
+<!-- INTEGRATIONS -->
+<IntegrationsSection locale={locale} />
+
+<!-- SECURITY -->
+<SecuritySection locale={locale} />
+
+<!-- PRICING -->
+<PricingSection locale={locale} />
+
+<!-- FAQ -->
+<FAQSection locale={locale} />
+
+<!-- FINAL CTA -->
+<FinalSections locale={locale} />
