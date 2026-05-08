@@ -89,6 +89,19 @@ const imageURL = new URL(image, siteUrl);
       }
     }
     </script>
+
+    <!-- 🔥 FIX: Language Switcher altijd wit, ook bij eerste render -->
+    <style is:global>
+      header .language-switcher,
+      header .language-switcher *,
+      header [class*="LanguageSwitcher"],
+      header [class*="language-switcher"],
+      header [class*="locale"],
+      header [class*="lang"] {
+        color: #ffffff !important;
+        fill: #ffffff !important;
+      }
+    </style>
   </head>
 
   <body class="font-inter bg-white text-gray-900 antialiased">
