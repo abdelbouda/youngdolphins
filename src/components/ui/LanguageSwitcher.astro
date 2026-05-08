@@ -35,10 +35,15 @@ const current = languages.find(l => l.code === locale);
 const others = languages.filter(l => l.code !== locale);
 ---
 
-<div class="lang-dropdown">
-  <button class="lang-toggle" aria-label="Change language" set:html={current.svg}></button>
+<div class="lang-dropdown" id="lang-dropdown">
+  <button 
+    class="lang-toggle" 
+    aria-label="Change language"
+    id="lang-toggle"
+    set:html={current.svg}
+  ></button>
 
-  <ul class="lang-menu">
+  <ul class="lang-menu hidden" id="lang-menu">
     {others.map(lang => (
       <li>
         <a 
@@ -85,7 +90,6 @@ const others = languages.filter(l => l.code !== locale);
 }
 
 .lang-menu {
-  display: none;
   position: absolute;
   right: 0;
   margin-top: 0.5rem;
@@ -95,10 +99,6 @@ const others = languages.filter(l => l.code !== locale);
   padding: 0.4rem 0;
   list-style: none;
   z-index: 50;
-}
-
-.lang-dropdown:hover .lang-menu {
-  display: block;
 }
 
 .lang-option {
@@ -119,3 +119,20 @@ const others = languages.filter(l => l.code !== locale);
   font-size: 0.9rem;
 }
 </style>
+
+<script>
+  const toggle = document.getElementById("lang-toggle");
+  const menu = document.getElementById("lang-menu");
+  const dropdown = document.getElementById("lang-dropdown");
+
+  toggle.addEventListener("click", (e) => {
+    e.stopPropagation();
+    menu.classList.toggle("hidden");
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!dropdown.contains(e.target)) {
+      menu.classList.add("hidden");
+    }
+  });
+</script>
