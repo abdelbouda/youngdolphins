@@ -69,10 +69,61 @@
     "subtitle": "Certified, experienced and passionate about teaching children"
   },
 
-  "integrations": {
-    "title": "Our locations",
-    "subtitle": "Modern, warm swimming pools in Amsterdam"
-  },
+"integrations": {
+  "title": "Our locations",
+  "subtitle": "Modern, warm swimming pools across Amsterdam",
+
+  "groups": [
+    {
+      "name": "Amsterdam West",
+      "items": [
+        "De Mirandabad",
+        "Sportfondsenbad",
+        "Sloterparkbad",
+        "Noorderparkbad",
+        "Het Marnix",
+        "Flevoparkbad"
+      ]
+    },
+    {
+      "name": "Amsterdam East",
+      "items": [
+        "Zeeburgbad",
+        "Oosterparkbad",
+        "Wibautbad",
+        "Watergraafsmeerbad"
+      ]
+    },
+    {
+      "name": "Special Programs",
+      "items": [
+        "Baby & Toddler lessons",
+        "Private lessons",
+        "Accelerated A/B/C program"
+      ]
+    }
+  ],
+
+  "facilities": [
+    {
+      "title": "Warm Water Pools",
+      "description": "All our pools are heated and child‑friendly, ensuring a comfortable learning environment."
+    },
+    {
+      "title": "Certified Instructors",
+      "description": "Our team is fully certified and trained to teach children of all ages and skill levels."
+    },
+    {
+      "title": "Safe & Modern Facilities",
+      "description": "We work only with pools that meet the highest safety and hygiene standards."
+    }
+  ],
+
+  "cta_title": "Ready to start swimming?",
+  "cta_subtitle": "Choose the location that fits your schedule and enroll today.",
+  "cta_button": "Enroll now"
+}
+
 
   "security": {
     "title": "Safety first",
