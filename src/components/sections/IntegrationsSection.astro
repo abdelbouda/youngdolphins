@@ -12,38 +12,38 @@ const { locale = 'nl' } = Astro.props;
 // i18n
 const title = await t(locale, 'integrations.title');
 const subtitle = await t(locale, 'integrations.subtitle');
-const groups = await tObject(locale, 'integrations.groups'); // array of { name, items }
-const facilities = await tObject(locale, 'integrations.facilities'); // array of { title, description }
+const groups = await tObject(locale, 'integrations.groups');
+const facilities = await tObject(locale, 'integrations.facilities');
 const ctaTitle = await t(locale, 'integrations.cta_title');
 const ctaSubtitle = await t(locale, 'integrations.cta_subtitle');
 const ctaButton = await t(locale, 'integrations.cta_button');
 ---
 
-<section id="locations" class="py-24 bg-[#F7FBFF]">
+<section id="locations" class="py-20 sm:py-24 bg-[#F7FBFF]">
   <Container>
 
     <!-- Header -->
-    <div class="text-center mb-16">
-      <h2 class="text-3xl sm:text-4xl font-bold text-[#001F3F] mb-4">
+    <div class="text-center mb-12 sm:mb-16 px-4">
+      <h2 class="text-3xl sm:text-4xl font-bold text-[#001F3F] mb-4 leading-tight">
         {title}
       </h2>
-      <p class="text-gray-600 max-w-2xl mx-auto">
+      <p class="text-gray-600 max-w-2xl mx-auto text-sm sm:text-base">
         {subtitle}
       </p>
     </div>
 
     <!-- Location Groups -->
-    <div class="space-y-20">
+    <div class="space-y-16 sm:space-y-20 px-4">
 
       {groups.map((group) => (
         <div>
-          <h3 class="text-2xl font-semibold text-[#001F3F] text-center mb-8">
+          <h3 class="text-xl sm:text-2xl font-semibold text-[#001F3F] text-center mb-6 sm:mb-8">
             {group.name}
           </h3>
 
-          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 text-center max-w-4xl mx-auto">
+          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6 text-center max-w-4xl mx-auto">
             {group.items.map((item) => (
-              <div class="text-gray-700 text-sm bg-white border border-[#E1EEF7] rounded-lg py-3 shadow-sm hover:shadow-md transition">
+              <div class="text-gray-700 text-xs sm:text-sm bg-white border border-[#E1EEF7] rounded-lg py-3 shadow-sm hover:shadow-md transition">
                 {item}
               </div>
             ))}
@@ -54,14 +54,14 @@ const ctaButton = await t(locale, 'integrations.cta_button');
     </div>
 
     <!-- Facilities -->
-    <div class="mt-24 max-w-3xl mx-auto space-y-10">
+    <div class="mt-20 sm:mt-24 max-w-3xl mx-auto space-y-6 sm:space-y-10 px-4">
 
       {facilities.map((f) => (
-        <div class="text-center bg-white border border-[#E1EEF7] rounded-xl p-6 shadow-sm">
-          <h4 class="text-lg font-semibold text-[#001F3F] mb-2">
+        <div class="text-center bg-white border border-[#E1EEF7] rounded-xl p-5 sm:p-6 shadow-sm">
+          <h4 class="text-lg sm:text-xl font-semibold text-[#001F3F] mb-2">
             {f.title}
           </h4>
-          <p class="text-gray-600 text-sm leading-relaxed">
+          <p class="text-gray-600 text-sm sm:text-base leading-relaxed">
             {f.description}
           </p>
         </div>
@@ -70,20 +70,20 @@ const ctaButton = await t(locale, 'integrations.cta_button');
     </div>
 
     <!-- CTA -->
-    <div class="text-center mt-20">
-      <h3 class="text-3xl font-semibold text-[#001F3F] mb-4">
+    <div class="text-center mt-20 px-4">
+      <h3 class="text-2xl sm:text-3xl font-semibold text-[#001F3F] mb-4">
         {ctaTitle}
       </h3>
-      <p class="text-lg text-gray-700 mb-8">
+      <p class="text-gray-700 text-sm sm:text-lg mb-8 max-w-xl mx-auto">
         {ctaSubtitle}
       </p>
 
       <a 
         href="/contact"
-        class="inline-flex items-center px-8 py-4 bg-[#001F3F] text-white rounded-lg font-semibold hover:bg-[#00306A] transition-colors"
+        class="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 bg-[#001F3F] text-white rounded-lg font-semibold hover:bg-[#00306A] transition-colors text-sm sm:text-base"
       >
         {ctaButton}
-        <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg class="ml-2 w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
                 d="M13 7l5 5m0 0l-5 5m5-5H6"/>
         </svg>
