@@ -3,7 +3,7 @@ import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
-import vercel from '@astrojs/vercel/server'; // ⭐ Nodig voor middleware + headers
+import vercel from '@astrojs/vercel'; // ✅ juiste import voor Astro 5.x
 
 export default defineConfig({
   site: 'https://youngdolphins.vercel.app',
@@ -27,7 +27,7 @@ export default defineConfig({
     },
   },
 
-  // ⭐ Belangrijk: middleware werkt alleen met server‑output
+  // ⭐ Middleware werkt alleen met server‑output
   output: 'server',
 
   // ⭐ Vercel serverless adapter
@@ -44,10 +44,10 @@ export default defineConfig({
     defaultStrategy: 'viewport',
   },
 
-  // 🧩 HTML compressie
+  // 🧩 HTML‑compressie
   compressHTML: true,
 
-  // 🔧 Vite optimalisatie
+  // 🔧 Vite‑optimalisatie
   vite: {
     build: {
       cssMinify: true,
