@@ -12,32 +12,37 @@ const { locale = 'nl' } = Astro.props;
 // i18n
 const title = await t(locale, 'faq.title');
 const subtitle = await t(locale, 'faq.subtitle');
-const items = await tObject(locale, 'faq.items'); // array of { question, answer }
+const items = await tObject(locale, 'faq.items');
+const moreTitle = await t(locale, 'faq.more_title');
+const moreSubtitle = await t(locale, 'faq.more_subtitle');
+const moreCTA = await t(locale, 'faq.more_cta');
 ---
 
-<section id="faq" class="py-24 bg-white">
+<section id="faq" class="py-20 sm:py-24 bg-white">
   <Container>
 
     <!-- Header -->
-    <div class="text-center mb-16">
-      <h2 class="text-3xl sm:text-4xl font-bold text-[#001F3F] mb-4">
+    <div class="text-center mb-12 sm:mb-16 px-4">
+      <h2 class="text-3xl sm:text-4xl font-bold text-[#001F3F] mb-4 leading-tight">
         {title}
       </h2>
-      <p class="text-gray-600 max-w-2xl mx-auto">
+      <p class="text-gray-600 max-w-2xl mx-auto text-sm sm:text-base">
         {subtitle}
       </p>
     </div>
 
     <!-- FAQ List -->
-    <div class="max-w-3xl mx-auto space-y-6">
+    <div class="max-w-3xl mx-auto space-y-4 sm:space-y-6 px-4">
 
       {items.map((item, index) => (
-        <div class="border border-[#E1EEF7] rounded-xl p-6 bg-[#F7FBFF] shadow-sm">
+        <div class="border border-[#E1EEF7] rounded-xl p-5 sm:p-6 bg-[#F7FBFF] shadow-sm">
+
+          <!-- Toggle Button -->
           <button 
             class="w-full flex items-center justify-between text-left group"
             onclick={`toggleFAQ('faq-${index}')`}
           >
-            <span class="text-lg font-semibold text-[#001F3F] group-hover:text-[#00AEEF] transition-colors">
+            <span class="text-base sm:text-lg font-semibold text-[#001F3F] group-hover:text-[#00AEEF] transition-colors">
               {item.question}
             </span>
 
@@ -49,31 +54,33 @@ const items = await tObject(locale, 'faq.items'); // array of { question, answer
             </svg>
           </button>
 
+          <!-- Answer -->
           <div id={`faq-${index}`} class="hidden mt-4">
-            <p class="text-gray-700 leading-relaxed">
+            <p class="text-gray-700 leading-relaxed text-sm sm:text-base">
               {item.answer}
             </p>
           </div>
+
         </div>
       ))}
 
     </div>
 
     <!-- Still have questions -->
-    <div class="text-center mt-16">
-      <h3 class="text-2xl font-semibold text-[#001F3F] mb-4">
-        {await t(locale, 'faq.more_title')}
+    <div class="text-center mt-16 px-4">
+      <h3 class="text-xl sm:text-2xl font-semibold text-[#001F3F] mb-4">
+        {moreTitle}
       </h3>
 
-      <p class="text-lg text-gray-600 mb-6">
-        {await t(locale, 'faq.more_subtitle')}
+      <p class="text-gray-600 mb-6 text-sm sm:text-base max-w-xl mx-auto">
+        {moreSubtitle}
       </p>
 
       <a 
         href="/contact" 
-        class="inline-flex items-center px-6 py-3 bg-[#001F3F] text-white hover:bg-[#00306A] transition-colors font-semibold rounded-lg"
+        class="inline-flex items-center px-6 py-3 bg-[#001F3F] text-white hover:bg-[#00306A] transition-colors font-semibold rounded-lg text-sm sm:text-base"
       >
-        {await t(locale, 'faq.more_cta')}
+        {moreCTA}
         <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
                 d="M13 7l5 5m0 0l-5 5m5-5H6"/>
