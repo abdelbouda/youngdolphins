@@ -27,13 +27,13 @@ const navItems = [
       />
     </a>
 
-    <!-- MOBILE: alleen CTA's + taal + hamburger -->
-    <div class="flex items-center gap-3 md:hidden">
+    <!-- MOBIEL: CTA's + taal + hamburger -->
+    <div class="flex items-center gap-2 md:hidden">
 
       <!-- WhatsApp -->
       <a 
         href="https://wa.me/31628421354" 
-        class="inline-flex items-center gap-1 px-3 py-2 bg-[#001F3F] text-white rounded-md text-sm font-semibold hover:bg-[#003366] transition"
+        class="inline-flex items-center gap-1 px-3 py-2 bg-[#001F3F] text-white rounded-md text-xs font-semibold hover:bg-[#003366] transition"
       >
         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-4 h-4">
           <path d="M12 0C5.373 0 0 5.373 0 12c0 2.12.55 4.11 1.51 5.86L0 24l6.29-1.64A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.94 9.94 0 01-5.09-1.39l-.36-.21-3.73.97.99-3.63-.24-.37A9.94 9.94 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10zm5.07-7.93c-.27-.14-1.59-.78-1.84-.87-.25-.09-.43-.14-.61.14-.18.27-.7.87-.86 1.05-.16.18-.32.2-.59.07-.27-.14-1.14-.42-2.17-1.34-.8-.71-1.34-1.58-1.5-1.85-.16-.27-.02-.42.12-.56.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.84-2.02-.22-.53-.45-.46-.61-.47h-.52c-.18 0-.48.07-.73.34-.25.27-.96.94-.96 2.29s.98 2.65 1.12 2.83c.14.18 1.93 2.95 4.68 4.14.65.28 1.16.45 1.56.58.65.21 1.24.18 1.71.11.52-.08 1.59-.65 1.82-1.28.23-.63.23-1.17.16-1.28-.07-.11-.25-.18-.52-.32z"/>
@@ -44,7 +44,7 @@ const navItems = [
       <!-- Email -->
       <a 
         href="mailto:info@youngdolphins.nl" 
-        class="inline-flex items-center gap-1 px-3 py-2 bg-[#001F3F] text-white rounded-md text-sm font-semibold hover:bg-[#003366] transition"
+        class="inline-flex items-center gap-1 px-3 py-2 bg-[#001F3F] text-white rounded-md text-xs font-semibold hover:bg-[#003366] transition"
       >
         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-4 h-4">
           <path d="M12 13.065L.015 6h23.97L12 13.065zM0 8.235V18h24V8.235l-12 7.065L0 8.235z"/>
@@ -67,7 +67,7 @@ const navItems = [
       </button>
     </div>
 
-    <!-- DESKTOP NAVIGATION (zoals je had) -->
+    <!-- DESKTOP NAVIGATION (origineel) -->
     <div class="hidden md:flex items-center gap-3 text-sm font-medium">
 
       {navItems.map(item => (
@@ -102,18 +102,12 @@ const navItems = [
     </div>
   </nav>
 
-  <!-- OVERLAY voor mobiel -->
+  <!-- MOBILE MENU (alleen navigatie) -->
   <div 
-    id="mobile-overlay"
-    class="fixed inset-0 bg-black/40 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 md:hidden z-40"
-  ></div>
-
-  <!-- SLIDE-IN MOBILE MENU met alleen navigatie -->
-  <div
-    id="mobile-menu"
-    class="fixed top-0 right-0 h-full w-64 bg-white shadow-xl border-l border-gray-200 transform translate-x-full transition-transform duration-300 ease-in-out md:hidden z-50"
+    id="mobile-menu" 
+    class="hidden md:hidden bg-white border-t border-gray-200"
   >
-    <div class="flex flex-col px-6 py-8 gap-4 text-sm font-medium">
+    <div class="flex flex-col px-6 py-4 gap-4 text-sm font-medium">
       {navItems.map(item => (
         <a 
           href={item.href} 
@@ -130,39 +124,8 @@ const navItems = [
     const logo = document.getElementById('header-logo');
     const toggle = document.getElementById('mobile-menu-toggle');
     const menu = document.getElementById('mobile-menu');
-    const overlay = document.getElementById('mobile-overlay');
 
-    let isOpen = false;
-
-    function openMenu() {
-      isOpen = true;
-      if (menu && overlay) {
-        menu.classList.remove('translate-x-full');
-        menu.classList.add('translate-x-0');
-        overlay.classList.remove('opacity-0', 'pointer-events-none');
-        overlay.classList.add('opacity-100');
-      }
-    }
-
-    function closeMenu() {
-      isOpen = false;
-      if (menu && overlay) {
-        menu.classList.remove('translate-x-0');
-        menu.classList.add('translate-x-full');
-        overlay.classList.add('opacity-0', 'pointer-events-none');
-        overlay.classList.remove('opacity-100');
-      }
-    }
-
-    if (toggle && menu && overlay) {
-      toggle.addEventListener('click', () => {
-        isOpen ? closeMenu() : openMenu();
-      });
-
-      overlay.addEventListener('click', closeMenu);
-    }
-
-    // Sticky shrink effect (zoals je had)
+    // Scroll effect (zoals je had)
     if (header && logo) {
       window.addEventListener('scroll', () => {
         if (window.scrollY > 20) {
@@ -172,6 +135,13 @@ const navItems = [
           header.classList.remove('py-1', 'bg-white/95');
           logo.classList.remove('scale-90');
         }
+      });
+    }
+
+    // Simpel toggle-menu op mobiel
+    if (toggle && menu) {
+      toggle.addEventListener('click', () => {
+        menu.classList.toggle('hidden');
       });
     }
   </script>
