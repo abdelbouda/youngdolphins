@@ -119,14 +119,43 @@
       }
     ],
 
-    "cta_title": "Ready to start swimming?",
+    "cta_title": "Ready to start?",
     "cta_subtitle": "Choose the location that fits your schedule and enroll today.",
     "cta_button": "Enroll now"
   },
 
   "security": {
     "title": "Safety first",
-    "subtitle": "Our lessons follow all official swimming safety standards"
+    "subtitle": "Our lessons follow all official swimming safety standards",
+    "items": {
+      "instructors": {
+        "title": "Certified instructors",
+        "text": "All instructors are ENVOZ/NRZ‑certified and trained in child‑friendly teaching methods, safety protocols, and first aid."
+      },
+      "pools": {
+        "title": "Warm & safe pools",
+        "text": "We teach only in pools that meet strict safety and hygiene standards, with constant temperature monitoring."
+      },
+      "supervision": {
+        "title": "Lifeguard supervision",
+        "text": "Every lesson is supervised by certified lifeguards to ensure maximum safety for all children."
+      },
+      "facilities": {
+        "title": "Clean & hygienic facilities",
+        "text": "Our pools are cleaned daily, and water quality is tested multiple times per day according to Dutch regulations."
+      },
+      "emergency": {
+        "title": "Emergency readiness",
+        "text": "Our team is trained in emergency response, CPR, and child rescue techniques to ensure a safe environment."
+      },
+      "transparency": {
+        "title": "Parent transparency",
+        "text": "Parents can always observe lessons and receive updates on progress, safety, and comfort."
+      }
+    },
+    "footer": {
+      "title": "Certified & trustworthy"
+    }
   },
 
   "pricing": {
