@@ -1,113 +1,140 @@
 ---
-const locale = Astro.props.locale ?? 'en';
+const locale = Astro.props.locale ?? 'nl';
 import { tSync } from '../i18n/utils';
----
 
 import Header from '../components/ui/Header.astro';
 import LegalFooter from '../components/sections/LegalFooter.astro';
 ---
 
-<Layout 
-	title="Privacy Policy - Zeyn"
-	description="Privacy Policy for Zeyn writing app. Learn how we collect, use, and protect your personal information."
->
-	<Header />
-	
-	<section class="py-20 lg:py-24 bg-black">
-		<div class="container-responsive">
-			<div class="max-w-3xl mx-auto">
-				<div class="prose prose-lg dark:prose-invert max-w-none">
-					<h1 class="text-3xl sm:text-4xl lg:text-5xl font-medium text-white mb-8">Privacy Policy</h1>
-					
-					<p class="text-gray-400 mb-12">
-						Last updated: August 22, 2025
-					</p>
-					
-					<div class="space-y-12">
-						<section>
-							<h2 class="text-xl sm:text-2xl font-bold text-white mb-4">1. Information We Collect</h2>
-							<p class="text-gray-400 leading-relaxed mb-4">
-								We collect information you provide directly to us, such as when you create an account, subscribe to our newsletter, or communicate with us. This may include your name, email address, and payment information.
-							</p>
-							<p class="text-gray-400 leading-relaxed">
-								We also collect information automatically when you use our Service, including your IP address, browser type, operating system, pages viewed, and the dates/times of your visits.
-							</p>
-						</section>
-						
-						<section>
-							<h2 class="text-xl sm:text-2xl font-bold text-white mb-4">2. How We Use Your Information</h2>
-							<p class="text-gray-400 leading-relaxed mb-4">
-								We use the information we collect to:
-							</p>
-							<ul class="list-disc pl-8 text-gray-400 space-y-2">
-								<li>Provide, maintain, and improve our Service</li>
-								<li>Process your payments and provide lifetime access</li>
-								<li>Send you technical notices and support messages</li>
-								<li>Respond to your comments and questions</li>
-								<li>Monitor and analyze trends and usage</li>
-							</ul>
-						</section>
-						
-						<section>
-							<h2 class="text-xl sm:text-2xl font-bold text-white mb-4">3. Your Manuscripts</h2>
-							<p class="text-gray-400 leading-relaxed">
-								Your creative work belongs to you. We do not read, analyze, or use your manuscripts for any purpose other than providing the Service. Your content is private and secure.
-							</p>
-						</section>
-						
-						<section>
-							<h2 class="text-xl sm:text-2xl font-bold text-white mb-4">4. Data Security</h2>
-							<p class="text-gray-400 leading-relaxed">
-								We implement appropriate technical and organizational measures to protect the security of your personal information. However, no method of transmission over the Internet or method of electronic storage is 100% secure.
-							</p>
-						</section>
-						
-						<section>
-							<h2 class="text-xl sm:text-2xl font-bold text-white mb-4">5. Data Retention</h2>
-							<p class="text-gray-400 leading-relaxed">
-								We retain your personal information only for as long as necessary to provide you with our Service and for legitimate business purposes.
-							</p>
-						</section>
-						
-						<section>
-							<h2 class="text-xl sm:text-2xl font-bold text-white mb-4">6. Cookies</h2>
-							<p class="text-gray-400 leading-relaxed">
-								We use cookies and similar tracking technologies to track activity on our Service and store certain information. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent.
-							</p>
-						</section>
-						
-						<section>
-							<h2 class="text-xl sm:text-2xl font-bold text-white mb-4">7. Third-Party Services</h2>
-							<p class="text-gray-400 leading-relaxed">
-								We may employ third-party companies and individuals to facilitate our Service, provide the Service on our behalf, or assist us in analyzing how our Service is used. These third parties have access to your personal information only to perform these tasks.
-							</p>
-						</section>
-						
-						<section>
-							<h2 class="text-xl sm:text-2xl font-bold text-white mb-4">8. Children's Privacy</h2>
-							<p class="text-gray-400 leading-relaxed">
-								Our Service does not address anyone under the age of 13. We do not knowingly collect personally identifiable information from children under 13.
-							</p>
-						</section>
-						
-						<section>
-							<h2 class="text-xl sm:text-2xl font-bold text-white mb-4">9. Changes to This Privacy Policy</h2>
-							<p class="text-gray-400 leading-relaxed">
-								We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date.
-							</p>
-						</section>
-						
-						<section>
-							<h2 class="text-xl sm:text-2xl font-bold text-white mb-4">10. Contact Us</h2>
-							<p class="text-gray-400 leading-relaxed">
-								If you have any questions about this Privacy Policy, please contact us at <a href="mailto:hello@zeyn.app" class="text-primary-blue hover:text-primary-blue-hover">hello@zeyn.app</a>.
-							</p>
-						</section>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	
-	<LegalFooter />
-</Layout>
+<!-- HEADER -->
+<Header locale={locale} />
+
+<section class="py-20 lg:py-24 bg-white dark:bg-black">
+  <div class="container-responsive">
+    <div class="max-w-3xl mx-auto">
+      <div class="prose prose-lg dark:prose-invert max-w-none">
+
+        <!-- TITLE -->
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#001F3F] dark:text-white mb-8">
+          {tSync(locale, 'privacy.title') ?? 'Privacyverklaring'}
+        </h1>
+
+        <p class="text-gray-600 dark:text-gray-400 mb-12">
+          {tSync(locale, 'privacy.lastUpdated') ?? 'Laatst bijgewerkt: januari 2026'}
+        </p>
+
+        <div class="space-y-12">
+
+          <!-- SECTION 1 -->
+          <section>
+            <h2 class="text-xl sm:text-2xl font-bold text-[#001F3F] dark:text-white mb-4">
+              {tSync(locale, 'privacy.section1Title') ?? '1. Welke gegevens verzamelen wij?'}
+            </h2>
+
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+              Wij verzamelen alleen gegevens die nodig zijn voor het aanbieden van zwemlessen en het
+              communiceren met ouders/verzorgers. Dit kan onder andere omvatten:
+            </p>
+
+            <ul class="list-disc pl-8 text-gray-700 dark:text-gray-300 space-y-2">
+              <li>Naam van het kind en ouder/verzorger</li>
+              <li>Contactgegevens (e‑mail, telefoonnummer)</li>
+              <li>Leeftijd en zwemniveau van het kind</li>
+              <li>Administratieve gegevens voor inschrijving en betalingen</li>
+            </ul>
+          </section>
+
+          <!-- SECTION 2 -->
+          <section>
+            <h2 class="text-xl sm:text-2xl font-bold text-[#001F3F] dark:text-white mb-4">
+              {tSync(locale, 'privacy.section2Title') ?? '2. Hoe gebruiken wij deze gegevens?'}
+            </h2>
+
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+              De gegevens worden uitsluitend gebruikt voor:
+            </p>
+
+            <ul class="list-disc pl-8 text-gray-700 dark:text-gray-300 space-y-2">
+              <li>Het plannen en organiseren van zwemlessen</li>
+              <li>Communicatie over lestijden, voortgang en wijzigingen</li>
+              <li>Administratieve verwerking van inschrijvingen en betalingen</li>
+              <li>Veiligheidsdoeleinden tijdens de lessen</li>
+            </ul>
+          </section>
+
+          <!-- SECTION 3 -->
+          <section>
+            <h2 class="text-xl sm:text-2xl font-bold text-[#001F3F] dark:text-white mb-4">
+              {tSync(locale, 'privacy.section3Title') ?? '3. Hoe lang bewaren wij gegevens?'}
+            </h2>
+
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+              Wij bewaren persoonsgegevens alleen zolang dit noodzakelijk is voor de zwemlessen en
+              administratieve verplichtingen. Na beëindiging van de lessen worden gegevens veilig
+              verwijderd.
+            </p>
+          </section>
+
+          <!-- SECTION 4 -->
+          <section>
+            <h2 class="text-xl sm:text-2xl font-bold text-[#001F3F] dark:text-white mb-4">
+              {tSync(locale, 'privacy.section4Title') ?? '4. Delen wij gegevens met derden?'}
+            </h2>
+
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+              Wij delen persoonsgegevens nooit met derden, tenzij dit wettelijk verplicht is of
+              noodzakelijk voor administratieve verwerking (bijv. betalingsproviders).
+            </p>
+          </section>
+
+          <!-- SECTION 5 -->
+          <section>
+            <h2 class="text-xl sm:text-2xl font-bold text-[#001F3F] dark:text-white mb-4">
+              {tSync(locale, 'privacy.section5Title') ?? '5. Beveiliging van gegevens'}
+            </h2>
+
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+              Wij nemen passende technische en organisatorische maatregelen om persoonsgegevens te
+              beschermen tegen verlies, misbruik of ongeautoriseerde toegang.
+            </p>
+          </section>
+
+          <!-- SECTION 6 -->
+          <section>
+            <h2 class="text-xl sm:text-2xl font-bold text-[#001F3F] dark:text-white mb-4">
+              {tSync(locale, 'privacy.section6Title') ?? '6. Rechten van ouders/verzorgers'}
+            </h2>
+
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+              U heeft het recht om:
+            </p>
+
+            <ul class="list-disc pl-8 text-gray-700 dark:text-gray-300 space-y-2">
+              <li>Uw gegevens in te zien</li>
+              <li>Gegevens te laten corrigeren of verwijderen</li>
+              <li>Bezwaar te maken tegen verwerking</li>
+              <li>Uw toestemming in te trekken</li>
+            </ul>
+          </section>
+
+          <!-- SECTION 7 -->
+          <section>
+            <h2 class="text-xl sm:text-2xl font-bold text-[#001F3F] dark:text-white mb-4">
+              {tSync(locale, 'privacy.section7Title') ?? '7. Contact'}
+            </h2>
+
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+              Voor vragen over deze privacyverklaring kunt u contact opnemen via:<br />
+              <a href="mailto:info@youngdolphins.nl" class="text-blue-600 dark:text-blue-400">
+                info@youngdolphins.nl
+              </a>
+            </p>
+          </section>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<LegalFooter locale={locale} />
