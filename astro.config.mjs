@@ -4,16 +4,18 @@ import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 
-// ✅ Volledige Astro-config voor Young Dolphins
+// ⭐ Stabiele, SEO‑vriendelijke Astro-config met sitemap
 export default defineConfig({
-  site: 'https://youngdolphins.vercel.app', // correcte site-URL voor SEO en canonical links
+  site: 'https://youngdolphins.vercel.app',
 
   integrations: [
     react(),
     tailwind({
-      applyBaseStyles: true, // laat Tailwind basisstijlen toepassen
+      applyBaseStyles: true, // Nodig zodat Tailwind je layout toepast
     }),
-    sitemap(),
+    sitemap({
+      filter: (page) => !page.includes('/private'), // optioneel: filter
+    }),
   ],
 
   // 🌍 Internationalization (i18n)
@@ -21,34 +23,28 @@ export default defineConfig({
     defaultLocale: 'nl',
     locales: ['nl', 'en'],
     routing: {
-      prefixDefaultLocale: false, // /nl blijft standaard zonder prefix
+      prefixDefaultLocale: false,
     },
   },
 
-  // ⚡ Performance-optimalisaties
+  // ⚡ Performance
   build: {
-    inlineStylesheets: 'auto', // inline critical CSS
+    inlineStylesheets: 'auto',
   },
 
-  // 🚀 Prefetch voor snellere navigatie
+  // 🚀 Prefetch
   prefetch: {
     prefetchAll: true,
     defaultStrategy: 'viewport',
   },
 
-  // 🖼️ Image-optimalisatie
-  image: {
-    domains: [],
-    remotePatterns: [],
-  },
+  // 🧱 Static output voor Vercel
+  output: 'static',
 
-  // 🧱 Output-instellingen
-  output: 'static', // statische site voor Vercel
-
-  // 🧩 Compressie voor kleinere build
+  // 🧩 HTML compressie
   compressHTML: true,
 
-  // ✅ Extra instellingen voor nette builds
+  // 🔧 Vite optimalisatie
   vite: {
     build: {
       cssMinify: true,
