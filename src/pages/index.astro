@@ -1,0 +1,6 @@
+---
+const acceptLanguage = Astro.request.headers.get('accept-language') || '';
+const isEnglish = acceptLanguage.toLowerCase().startsWith('en');
+const locale = isEnglish ? 'en' : 'nl';
+return Astro.redirect(`/${locale}`, 302);
+---
