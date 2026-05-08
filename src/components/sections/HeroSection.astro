@@ -21,7 +21,10 @@ const statRating = await t(locale, 'hero.stats.rating');
 const continueReading = await t(locale, 'hero.continue_reading');
 ---
 
-<section id="hero" class="relative min-h-[85vh] md:min-h-screen bg-gradient-to-b from-[#E6F4FF] to-white overflow-hidden">
+<section 
+  id="hero" 
+  class="relative min-h-[85vh] md:min-h-screen bg-gradient-to-b from-[#E6F4FF] to-white overflow-hidden pt-32"
+>
 
   <!-- Decorative bubbles -->
   <div class="absolute inset-0 opacity-30 pointer-events-none">
@@ -30,10 +33,10 @@ const continueReading = await t(locale, 'hero.continue_reading');
   </div>
 
   <Container class="relative z-10">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center pt-28 pb-20">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center pb-20">
 
       <!-- LEFT COLUMN -->
-      <div class="text-center lg:text-left space-y-6">
+      <div class="text-center lg:text-left space-y-6 hero-fade">
 
         <!-- Title -->
         <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight text-[#001F3F]">
@@ -45,21 +48,25 @@ const continueReading = await t(locale, 'hero.continue_reading');
           {subtitle}
         </p>
 
-        <!-- CTA Buttons -->
+        <!-- CTA Buttons (MATCH HEADER STYLE) -->
         <div class="flex flex-col sm:flex-row gap-4 pt-4">
+
+          <!-- Primary CTA -->
           <a 
             href="/#pricing"
-            class="px-6 py-3 bg-[#001F3F] text-white rounded-lg font-semibold shadow hover:bg-[#00306A] transition-colors text-center"
+            class="cta-primary hero-cta"
           >
             {ctaPrimary}
           </a>
 
+          <!-- Secondary CTA (nu ook donkerblauw zoals header) -->
           <a 
             href="/#faq"
-            class="px-6 py-3 bg-white border border-[#001F3F] text-[#001F3F] rounded-lg font-semibold hover:bg-[#F0F7FF] transition-colors text-center"
+            class="cta-primary hero-cta"
           >
             {ctaSecondary}
           </a>
+
         </div>
 
         <!-- Stats -->
@@ -81,7 +88,7 @@ const continueReading = await t(locale, 'hero.continue_reading');
       </div>
 
       <!-- RIGHT COLUMN -->
-      <div class="flex justify-center items-center">
+      <div class="flex justify-center items-center hero-fade">
         <img 
           src={heroImg.src} 
           alt="Kinderen leren zwemmen bij Young Dolphins"
@@ -94,7 +101,7 @@ const continueReading = await t(locale, 'hero.continue_reading');
   </Container>
 
   <!-- Scroll Indicator -->
-  <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-10">
+  <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 hero-fade">
     <a href="#features" class="group flex flex-col items-center gap-2">
       <span class="text-sm text-gray-600 font-medium">{continueReading}</span>
       <svg class="w-5 h-5 text-gray-500 group-hover:text-[#00AEEF] transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -104,3 +111,42 @@ const continueReading = await t(locale, 'hero.continue_reading');
   </div>
 
 </section>
+
+<style is:global>
+  /* Fade-in animatie */
+  .hero-fade {
+    opacity: 0;
+    transform: translateY(12px);
+    animation: fadeUp 0.7s ease forwards;
+  }
+
+  @keyframes fadeUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* CTA match header */
+  .cta-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #001F3F;
+    color: #ffffff !important;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  }
+
+  .cta-primary:hover {
+    background-color: #003366;
+    transform: scale(1.03);
+  }
+
+  .cta-primary:active {
+    transform: scale(0.98);
+  }
+</style>
