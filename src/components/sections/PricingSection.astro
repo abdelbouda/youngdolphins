@@ -7,7 +7,7 @@ interface Props {
   locale?: Locale;
 }
 
-const { locale = 'en' } = Astro.props;
+const { locale = 'nl' } = Astro.props;
 
 // Translations
 const title = await t(locale, 'pricing.title');
@@ -15,60 +15,67 @@ const subtitle = await t(locale, 'pricing.subtitle');
 const cta = await t(locale, 'pricing.cta');
 ---
 
-<section id="pricing" class="py-16 bg-primary">
+<section id="pricing" class="py-24 bg-[#F7FBFF]">
   <Container>
 
     <!-- Section Header -->
-    <div class="text-center mb-12">
-      <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl sm:text-4xl font-bold text-[#001F3F] mb-4">
         {title}
       </h2>
 
-      <p class="text-xl text-white/70 max-w-2xl mx-auto">
+      <p class="text-gray-600 max-w-2xl mx-auto">
         {subtitle}
       </p>
     </div>
 
     <!-- Pricing Cards -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-16">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto mb-20">
 
       <!-- Package 1 -->
-      <div class="text-center bg-primary/60 border border-white/10 rounded-xl p-8">
-        <h3 class="text-xl font-semibold text-white mb-2">Starter</h3>
-        <div class="flex items-baseline justify-center mb-4">
-          <span class="text-4xl font-bold text-white">€15</span>
-          <span class="text-lg text-white/60 ml-1">/ les</span>
-        </div>
-        <p class="text-white/70 text-sm mb-6">Perfect for kennismaking en eerste zwemlessen.</p>
+      <div class="text-center bg-white border border-[#E1EEF7] rounded-2xl p-8 shadow-sm hover:shadow-md transition-all">
+        <h3 class="text-xl font-semibold text-[#001F3F] mb-2">Starter</h3>
 
-        <ul class="space-y-2 mb-8 text-sm text-white/70">
+        <div class="flex items-baseline justify-center mb-4">
+          <span class="text-4xl font-bold text-[#001F3F]">€15</span>
+          <span class="text-lg text-gray-500 ml-1">/ les</span>
+        </div>
+
+        <p class="text-gray-600 text-sm mb-6">Perfect voor kennismaking en eerste zwemlessen.</p>
+
+        <ul class="space-y-2 mb-8 text-sm text-gray-700">
           <li>1 les per week</li>
           <li>Kleine groepen</li>
           <li>Warm zwembad</li>
           <li>Gecertificeerde instructeurs</li>
         </ul>
 
-        <a href="#hero" class="inline-flex items-center px-6 py-3 border border-white/20 text-white hover:bg-primary/40 transition-colors font-medium rounded text-sm">
+        <a 
+          href="#hero" 
+          class="inline-block px-6 py-3 border border-[#001F3F] text-[#001F3F] hover:bg-[#E6F4FF] transition-colors font-medium rounded-lg text-sm"
+        >
           {cta}
         </a>
       </div>
 
       <!-- Package 2 (Most Popular) -->
-      <div class="text-center bg-primary/80 border border-secondary/40 rounded-xl p-8 relative shadow-xl">
-        <div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
-          <span class="px-3 py-1 text-xs text-primary bg-secondary rounded-full font-semibold">
-            Most Popular
+      <div class="text-center bg-white border-2 border-[#00AEEF] rounded-2xl p-8 shadow-lg scale-[1.03] relative">
+        <div class="absolute -top-3 left-1/2 -translate-x-1/2">
+          <span class="px-3 py-1 text-xs bg-[#00AEEF] text-white rounded-full font-semibold">
+            Meest gekozen
           </span>
         </div>
 
-        <h3 class="text-xl font-semibold text-white mb-2">Progress+</h3>
-        <div class="flex items-baseline justify-center mb-4">
-          <span class="text-4xl font-bold text-white">€55</span>
-          <span class="text-lg text-white/60 ml-1">/ maand</span>
-        </div>
-        <p class="text-white/70 text-sm mb-6">Sneller leren met extra begeleiding.</p>
+        <h3 class="text-xl font-semibold text-[#001F3F] mb-2">Progress+</h3>
 
-        <ul class="space-y-2 mb-8 text-sm text-white/70">
+        <div class="flex items-baseline justify-center mb-4">
+          <span class="text-4xl font-bold text-[#001F3F]">€55</span>
+          <span class="text-lg text-gray-500 ml-1">/ maand</span>
+        </div>
+
+        <p class="text-gray-600 text-sm mb-6">Sneller leren met extra begeleiding.</p>
+
+        <ul class="space-y-2 mb-8 text-sm text-gray-700">
           <li>2 lessen per week</li>
           <li>Voortgangsrapportage</li>
           <li>Extra persoonlijke aandacht</li>
@@ -76,21 +83,26 @@ const cta = await t(locale, 'pricing.cta');
           <li>Diploma A/B/C begeleiding</li>
         </ul>
 
-        <a href="#hero" class="inline-flex items-center px-6 py-3 bg-secondary text-primary hover:bg-secondary/90 transition-colors font-semibold rounded text-sm">
+        <a 
+          href="#hero" 
+          class="inline-block px-6 py-3 bg-[#001F3F] text-white hover:bg-[#00306A] transition-colors font-semibold rounded-lg text-sm"
+        >
           {cta}
         </a>
       </div>
 
       <!-- Package 3 -->
-      <div class="text-center bg-primary/60 border border-white/10 rounded-xl p-8">
-        <h3 class="text-xl font-semibold text-white mb-2">Privé</h3>
-        <div class="flex items-baseline justify-center mb-4">
-          <span class="text-4xl font-bold text-white">€35</span>
-          <span class="text-lg text-white/60 ml-1">/ les</span>
-        </div>
-        <p class="text-white/70 text-sm mb-6">1‑op‑1 begeleiding voor maximale progressie.</p>
+      <div class="text-center bg-white border border-[#E1EEF7] rounded-2xl p-8 shadow-sm hover:shadow-md transition-all">
+        <h3 class="text-xl font-semibold text-[#001F3F] mb-2">Privé</h3>
 
-        <ul class="space-y-2 mb-8 text-sm text-white/70">
+        <div class="flex items-baseline justify-center mb-4">
+          <span class="text-4xl font-bold text-[#001F3F]">€35</span>
+          <span class="text-lg text-gray-500 ml-1">/ les</span>
+        </div>
+
+        <p class="text-gray-600 text-sm mb-6">1‑op‑1 begeleiding voor maximale progressie.</p>
+
+        <ul class="space-y-2 mb-8 text-sm text-gray-700">
           <li>Privéles</li>
           <li>Snellere vooruitgang</li>
           <li>Persoonlijk lesplan</li>
@@ -98,7 +110,10 @@ const cta = await t(locale, 'pricing.cta');
           <li>Diploma A/B/C versneld traject</li>
         </ul>
 
-        <a href="#hero" class="inline-flex items-center px-6 py-3 border border-white/20 text-white hover:bg-primary/40 transition-colors font-medium rounded text-sm">
+        <a 
+          href="#hero" 
+          class="inline-block px-6 py-3 border border-[#001F3F] text-[#001F3F] hover:bg-[#E6F4FF] transition-colors font-medium rounded-lg text-sm"
+        >
           {cta}
         </a>
       </div>
@@ -108,43 +123,43 @@ const cta = await t(locale, 'pricing.cta');
     <!-- Comparison Table -->
     <div class="max-w-3xl mx-auto">
       <div class="text-center mb-8">
-        <h3 class="text-2xl font-semibold text-white mb-6">
-          Compare plans
+        <h3 class="text-2xl font-semibold text-[#001F3F] mb-6">
+          Vergelijk pakketten
         </h3>
       </div>
 
-      <div class="space-y-4 text-sm text-white/80">
+      <div class="space-y-4 text-sm text-gray-700">
 
-        <div class="grid grid-cols-4 gap-4 py-3 border-b border-white/10">
-          <div class="font-semibold">Features</div>
+        <div class="grid grid-cols-4 gap-4 py-3 border-b border-gray-200 font-semibold">
+          <div>Functie</div>
           <div class="text-center">Starter</div>
           <div class="text-center">Progress+</div>
           <div class="text-center">Privé</div>
         </div>
 
-        <div class="grid grid-cols-4 gap-4 py-3 border-b border-white/10">
-          <div>Lessons per week</div>
+        <div class="grid grid-cols-4 gap-4 py-3 border-b border-gray-200">
+          <div>Lessen per week</div>
           <div class="text-center">1</div>
           <div class="text-center">2</div>
-          <div class="text-center">1 (private)</div>
+          <div class="text-center">1 (privé)</div>
         </div>
 
-        <div class="grid grid-cols-4 gap-4 py-3 border-b border-white/10">
-          <div>Progress tracking</div>
+        <div class="grid grid-cols-4 gap-4 py-3 border-b border-gray-200">
+          <div>Voortgangsrapportage</div>
           <div class="text-center">-</div>
           <div class="text-center">✓</div>
           <div class="text-center">✓</div>
         </div>
 
-        <div class="grid grid-cols-4 gap-4 py-3 border-b border-white/10">
-          <div>Personal guidance</div>
+        <div class="grid grid-cols-4 gap-4 py-3 border-b border-gray-200">
+          <div>Persoonlijke begeleiding</div>
           <div class="text-center">-</div>
           <div class="text-center">✓</div>
           <div class="text-center">✓✓</div>
         </div>
 
         <div class="grid grid-cols-4 gap-4 py-3">
-          <div>Access to all pools</div>
+          <div>Toegang tot alle zwembaden</div>
           <div class="text-center">-</div>
           <div class="text-center">✓</div>
           <div class="text-center">✓</div>
