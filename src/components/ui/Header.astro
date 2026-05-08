@@ -65,8 +65,8 @@ const navItems = [
         </a>
       ))}
 
-      <!-- Language Switcher styled as CTA -->
-      <div class="inline-flex items-center bg-[#001F3F] text-white font-semibold px-4 py-2 rounded-md hover:bg-[#003366] hover:scale-[1.03] active:scale-[0.98] transition-all duration-200 shadow-sm">
+      <!-- SVG Dropdown Language Switcher -->
+      <div class="relative">
         <LanguageSwitcher />
       </div>
     </div>
@@ -95,7 +95,9 @@ const navItems = [
           {item.label ? item.label : tSync(locale, item.key)}
         </a>
       ))}
-      <div class="inline-flex items-center bg-[#001F3F] text-white font-semibold px-4 py-2 rounded-md hover:bg-[#003366] hover:scale-[1.03] active:scale-[0.98] transition-all duration-200 shadow-sm">
+
+      <!-- Mobile Language Switcher -->
+      <div class="relative">
         <LanguageSwitcher />
       </div>
     </div>
