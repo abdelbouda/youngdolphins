@@ -27,7 +27,39 @@ const navItems = [
       />
     </a>
 
-    <!-- Desktop Navigation -->
+    <!-- MOBILE: CTA + Language + Hamburger -->
+    <div class="flex items-center gap-3 md:hidden">
+
+      <!-- WhatsApp -->
+      <a 
+        href="https://wa.me/31628421354" 
+        class="px-3 py-2 bg-[#001F3F] text-white rounded-md text-sm font-semibold hover:bg-[#003366] transition"
+      >
+        WhatsApp
+      </a>
+
+      <!-- Email -->
+      <a 
+        href="mailto:info@youngdolphins.nl" 
+        class="px-3 py-2 bg-[#001F3F] text-white rounded-md text-sm font-semibold hover:bg-[#003366] transition"
+      >
+        Email
+      </a>
+
+      <!-- Language Switcher -->
+      <LanguageSwitcher />
+
+      <!-- Hamburger -->
+      <button 
+        id="mobile-menu-toggle"
+        class="text-[#001F3F] text-3xl leading-none"
+        aria-label="Open mobile menu"
+      >
+        ☰
+      </button>
+    </div>
+
+    <!-- DESKTOP NAVIGATION -->
     <div class="hidden md:flex items-center gap-3 text-sm font-medium">
 
       {navItems.map(item => (
@@ -39,12 +71,8 @@ const navItems = [
         </a>
       ))}
 
-      <!-- Language Switcher -->
-      <div class="relative">
-        <LanguageSwitcher />
-      </div>
+      <LanguageSwitcher />
 
-      <!-- WhatsApp -->
       <a 
         href="https://wa.me/31628421354" 
         class="px-4 py-2 bg-[#001F3F] text-white rounded-md hover:bg-[#003366] transition-all shadow-sm"
@@ -52,7 +80,6 @@ const navItems = [
         Direct aanmelden
       </a>
 
-      <!-- Email -->
       <a 
         href="mailto:info@youngdolphins.nl" 
         class="px-4 py-2 bg-[#001F3F] text-white rounded-md hover:bg-[#003366] transition-all shadow-sm"
@@ -60,23 +87,20 @@ const navItems = [
         Email ons
       </a>
     </div>
-
-    <!-- Mobile Menu Button -->
-    <button 
-      id="mobile-menu-toggle"
-      class="md:hidden text-[#001F3F] text-3xl leading-none"
-      aria-label="Open mobile menu"
-    >
-      ☰
-    </button>
   </nav>
 
-  <!-- Mobile Menu -->
+  <!-- OVERLAY -->
   <div 
-    id="mobile-menu" 
-    class="hidden md:hidden bg-white border-t border-gray-200"
+    id="mobile-overlay"
+    class="fixed inset-0 bg-black/40 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 md:hidden z-40"
+  ></div>
+
+  <!-- SLIDE-IN MOBILE MENU -->
+  <div
+    id="mobile-menu"
+    class="fixed top-0 right-0 h-full w-64 bg-white shadow-xl border-l border-gray-200 transform translate-x-full transition-transform duration-300 ease-in-out md:hidden z-50"
   >
-    <div class="flex flex-col px-6 py-4 gap-4 text-sm font-medium">
+    <div class="flex flex-col px-6 py-8 gap-4 text-sm font-medium">
 
       {navItems.map(item => (
         <a 
@@ -87,23 +111,6 @@ const navItems = [
         </a>
       ))}
 
-      <div class="relative">
-        <LanguageSwitcher />
-      </div>
-
-      <a 
-        href="https://wa.me/31628421354" 
-        class="px-4 py-2 bg-[#001F3F] text-white rounded-md hover:bg-[#003366] transition-all shadow-sm"
-      >
-        Direct aanmelden
-      </a>
-
-      <a 
-        href="mailto:info@youngdolphins.nl" 
-        class="px-4 py-2 bg-[#001F3F] text-white rounded-md hover:bg-[#003366] transition-all shadow-sm"
-      >
-        Email ons
-      </a>
     </div>
   </div>
 
@@ -112,19 +119,41 @@ const navItems = [
     const logo = document.getElementById('header-logo');
     const toggle = document.getElementById('mobile-menu-toggle');
     const menu = document.getElementById('mobile-menu');
+    const overlay = document.getElementById('mobile-overlay');
 
+    let isOpen = false;
+
+    function openMenu() {
+      isOpen = true;
+      menu.classList.remove('translate-x-full');
+      menu.classList.add('translate-x-0');
+      overlay.classList.remove('opacity-0', 'pointer-events-none');
+      overlay.classList.add('opacity-100');
+    }
+
+    function closeMenu() {
+      isOpen = false;
+      menu.classList.remove('translate-x-0');
+      menu.classList.add('translate-x-full');
+      overlay.classList.add('opacity-0', 'pointer-events-none');
+      overlay.classList.remove('opacity-100');
+    }
+
+    toggle.addEventListener('click', () => {
+      isOpen ? closeMenu() : openMenu();
+    });
+
+    overlay.addEventListener('click', closeMenu);
+
+    // Sticky shrink effect
     window.addEventListener('scroll', () => {
       if (window.scrollY > 20) {
-        header.classList.add('py-1');
-        header.classList.add('bg-white/95');
+        header.classList.add('py-1', 'bg-white/95');
         logo.classList.add('scale-90');
       } else {
-        header.classList.remove('py-1');
-        header.classList.remove('bg-white/95');
+        header.classList.remove('py-1', 'bg-white/95');
         logo.classList.remove('scale-90');
       }
     });
-
-    toggle.addEventListener('click', () => menu.classList.toggle('hidden'));
   </script>
 </header>
