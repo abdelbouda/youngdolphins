@@ -1,4 +1,11 @@
 ---
+export async function getStaticPaths() {
+  return [
+    { params: { locale: 'nl' } },
+    { params: { locale: 'en' } },
+  ];
+}
+
 const { locale } = Astro.params;
 import Layout from '../../layouts/Layout.astro';
 import Privacy from '../privacy.astro';
