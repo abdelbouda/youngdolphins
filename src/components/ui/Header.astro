@@ -3,7 +3,7 @@ import { preloadTranslations, tSync } from '../../i18n/utils';
 import LanguageSwitcher from './LanguageSwitcher.astro';
 import logo from '../../assets/logo.webp';
 
-const locale = Astro.currentLocale;
+const locale = Astro.currentLocale ?? 'nl';
 await preloadTranslations(locale);
 
 const navItems = [
@@ -27,9 +27,10 @@ const navItems = [
       />
     </a>
 
-    <!-- MOBILE: only WhatsApp, Mail, LanguageSwitcher, Hamburger -->
-    <div class="flex items-center gap-2 md:hidden" id="mobile-actions">
-      <!-- WhatsApp (icon only for compactness) -->
+    <!-- MOBILE ACTIONS: visible on small screens only -->
+    <div id="mobile-actions" class="flex items-center gap-2 md:hidden">
+
+      <!-- WhatsApp (icon only visually, sr-only label for screen readers) -->
       <a 
         href="https://wa.me/31628421354" 
         class="inline-flex items-center gap-2 px-3 py-2 bg-[#001F3F] text-white rounded-md text-xs font-semibold hover:bg-[#003366] transition"
@@ -41,7 +42,7 @@ const navItems = [
         <span class="sr-only">WhatsApp</span>
       </a>
 
-      <!-- Email (icon only) -->
+      <!-- Email -->
       <a 
         href="mailto:info@youngdolphins.nl" 
         class="inline-flex items-center gap-2 px-3 py-2 bg-[#001F3F] text-white rounded-md text-xs font-semibold hover:bg-[#003366] transition"
@@ -53,7 +54,7 @@ const navItems = [
         <span class="sr-only">Email</span>
       </a>
 
-      <!-- Language Switcher (hydrate client-side) -->
+      <!-- Language Switcher: hydrate client-side; server fallback below -->
       <div class="relative">
         <LanguageSwitcher client:load />
       </div>
@@ -69,8 +70,9 @@ const navItems = [
       </button>
     </div>
 
-    <!-- DESKTOP NAVIGATION (unchanged layout) -->
-    <div class="hidden md:flex items-center gap-3 text-sm font-medium" id="desktop-nav">
+    <!-- DESKTOP NAVIGATION: visible on md+ screens -->
+    <div id="desktop-nav" class="hidden md:flex items-center gap-3 text-sm font-medium">
+
       {navItems.map(item => (
         <a 
           href={item.href} 
@@ -126,7 +128,7 @@ const navItems = [
   </aside>
 
   <script type="module">
-    // Ensure DOM is ready before querying elements
+    // Wait for DOM ready to avoid race conditions
     document.addEventListener('DOMContentLoaded', () => {
       const toggle = document.getElementById('mobile-menu-toggle');
       const menu = document.getElementById('mobile-menu');
