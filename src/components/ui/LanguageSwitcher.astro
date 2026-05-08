@@ -1,11 +1,13 @@
 ---
 const locale = Astro.currentLocale;
 const alternativeLocale = locale === 'en' ? 'nl' : 'en';
+const flag = alternativeLocale === 'en' ? '🇬🇧' : '🇳🇱';
 ---
 
 <a 
   href={`/${alternativeLocale}`} 
-  class="language-switcher"
+  class="language-flag"
+  aria-label={`Switch to ${alternativeLocale.toUpperCase()}`}
 >
-  {alternativeLocale.toUpperCase()}
+  {flag}
 </a>
