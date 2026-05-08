@@ -161,7 +161,57 @@
   "pricing": {
     "title": "Tarieven",
     "subtitle": "Duidelijke prijzen zonder verrassingen",
-    "cta": "Inschrijven"
+    "cta": "Inschrijven",
+
+    "packages": {
+      "starter": {
+        "name": "Starter",
+        "price_unit": "/ les",
+        "description": "Perfect voor kennismaking en eerste zwemlessen.",
+        "features": [
+          "1 les per week",
+          "Kleine groepen",
+          "Warm zwembad",
+          "Gecertificeerde instructeurs"
+        ]
+      },
+      "progress": {
+        "name": "Progress+",
+        "badge": "Meest gekozen",
+        "price_unit": "/ maand",
+        "description": "Sneller leren met extra begeleiding.",
+        "features": [
+          "2 lessen per week",
+          "Voortgangsrapportage",
+          "Extra persoonlijke aandacht",
+          "Toegang tot alle locaties",
+          "Diploma A/B/C begeleiding"
+        ]
+      },
+      "private": {
+        "name": "Privé",
+        "price_unit": "/ les",
+        "description": "1‑op‑1 begeleiding voor maximale progressie.",
+        "features": [
+          "Privéles",
+          "Snellere vooruitgang",
+          "Persoonlijk lesplan",
+          "Flexibele tijden",
+          "Diploma A/B/C versneld traject"
+        ]
+      }
+    },
+
+    "compare": {
+      "title": "Vergelijk pakketten",
+      "feature": "Functie",
+      "rows": {
+        "lessons": "Lessen per week",
+        "report": "Voortgangsrapportage",
+        "personal": "Persoonlijke begeleiding",
+        "access": "Toegang tot alle zwembaden"
+      }
+    }
   },
 
   "faq": {
