@@ -1,6 +1,6 @@
 ---
 import Container from '../ui/Container.astro';
-import { t } from '../../i18n/ui';
+import { tObject, t } from '../../i18n/ui';
 import type { Locale } from '../../i18n/types';
 
 interface Props {
@@ -11,6 +11,11 @@ const { locale = 'en' } = Astro.props;
 
 const title = await t(locale, 'team.title');
 const subtitle = await t(locale, 'team.subtitle');
+const values = await tObject(locale, 'values.items');
+const valuesTitle = await t(locale, 'values.title');
+const joinTitle = await t(locale, 'join.title');
+const joinSubtitle = await t(locale, 'join.subtitle');
+const joinCTA = await t(locale, 'join.cta');
 ---
 
 <section id="team" class="py-16 bg-primary">
@@ -77,56 +82,35 @@ const subtitle = await t(locale, 'team.subtitle');
 
     </div>
 
-    <!-- Values (i18n) -->
+    <!-- Values (dynamic i18n) -->
     <div class="max-w-3xl mx-auto mb-16">
       <h3 class="text-2xl font-semibold text-white text-center mb-8">
-        {t(locale, 'values.title')}
+        {valuesTitle}
       </h3>
 
       <div class="space-y-6">
-
-        <div class="text-center border-b border-white/10 pb-6">
-          <h4 class="text-lg font-semibold text-white mb-2">
-            {t(locale, 'values.items[0].title')}
-          </h4>
-          <p class="text-white/70 text-sm">
-            {t(locale, 'values.items[0].description')}
-          </p>
-        </div>
-
-        <div class="text-center border-b border-white/10 pb-6">
-          <h4 class="text-lg font-semibold text-white mb-2">
-            {t(locale, 'values.items[1].title')}
-          </h4>
-          <p class="text-white/70 text-sm">
-            {t(locale, 'values.items[1].description')}
-          </p>
-        </div>
-
-        <div class="text-center pb-6">
-          <h4 class="text-lg font-semibold text-white mb-2">
-            {t(locale, 'values.items[2].title')}
-          </h4>
-          <p class="text-white/70 text-sm">
-            {t(locale, 'values.items[2].description')}
-          </p>
-        </div>
-
+        {Array.isArray(values) &&
+          values.map((item) => (
+            <div class="text-center border-b border-white/10 pb-6">
+              <h4 class="text-lg font-semibold text-white mb-2">{item.title}</h4>
+              <p class="text-white/70 text-sm">{item.description}</p>
+            </div>
+          ))}
       </div>
     </div>
 
-    <!-- Join the Team (i18n) -->
+    <!-- Join the Team -->
     <div class="text-center">
       <h3 class="text-2xl font-semibold text-white mb-4">
-        {t(locale, 'join.title')}
+        {joinTitle}
       </h3>
 
       <p class="text-white/70 mb-6 max-w-2xl mx-auto">
-        {t(locale, 'join.subtitle')}
+        {joinSubtitle}
       </p>
 
       <a href="/careers" class="inline-flex items-center px-6 py-3 bg-secondary text-primary hover:bg-secondary/90 transition-colors font-semibold rounded">
-        {t(locale, 'join.cta')}
+        {joinCTA}
         <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
         </svg>
