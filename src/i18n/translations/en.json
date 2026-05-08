@@ -161,7 +161,57 @@
   "pricing": {
     "title": "Pricing",
     "subtitle": "Clear prices with no surprises",
-    "cta": "Enroll now"
+    "cta": "Enroll now",
+
+    "packages": {
+      "starter": {
+        "name": "Starter",
+        "price_unit": "/ lesson",
+        "description": "Perfect for beginners and first swimming lessons.",
+        "features": [
+          "1 lesson per week",
+          "Small groups",
+          "Warm pool",
+          "Certified instructors"
+        ]
+      },
+      "progress": {
+        "name": "Progress+",
+        "badge": "Most popular",
+        "price_unit": "/ month",
+        "description": "Learn faster with extra guidance.",
+        "features": [
+          "2 lessons per week",
+          "Progress reports",
+          "Extra personal attention",
+          "Access to all locations",
+          "A/B/C diploma guidance"
+        ]
+      },
+      "private": {
+        "name": "Private",
+        "price_unit": "/ lesson",
+        "description": "1‑on‑1 coaching for maximum progress.",
+        "features": [
+          "Private lesson",
+          "Faster progress",
+          "Personal lesson plan",
+          "Flexible times",
+          "Accelerated A/B/C program"
+        ]
+      }
+    },
+
+    "compare": {
+      "title": "Compare packages",
+      "feature": "Feature",
+      "rows": {
+        "lessons": "Lessons per week",
+        "report": "Progress reporting",
+        "personal": "Personal guidance",
+        "access": "Access to all pools"
+      }
+    }
   },
 
   "faq": {
