@@ -1,9 +1,10 @@
 ---
-import { redirect } from 'astro:middleware';
-
 const acceptLanguage = Astro.request.headers.get('accept-language') || '';
 const isEnglish = acceptLanguage.toLowerCase().startsWith('en');
 const targetLocale = isEnglish ? 'en' : 'nl';
 
-return redirect(`/${targetLocale}`);
+return new Response(null, {
+  status: 302,
+  headers: { Location: `/${targetLocale}` }
+});
 ---
