@@ -1,164 +1,82 @@
 ---
 import Container from '../ui/Container.astro';
-import { t } from '../../i18n/ui';
+import { t, tObject } from '../../i18n/ui';
 import type { Locale } from '../../i18n/types';
 
 interface Props {
   locale?: Locale;
 }
 
-const { locale = 'en' } = Astro.props;
+const { locale = 'nl' } = Astro.props;
 
+// i18n
 const title = await t(locale, 'faq.title');
 const subtitle = await t(locale, 'faq.subtitle');
+const items = await tObject(locale, 'faq.items'); // array of { question, answer }
 ---
 
-<section id="faq" class="py-16 bg-primary">
+<section id="faq" class="py-24 bg-white">
   <Container>
 
-    <!-- Section Header -->
-    <div class="text-center mb-12">
-      <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
+    <!-- Header -->
+    <div class="text-center mb-16">
+      <h2 class="text-3xl sm:text-4xl font-bold text-[#001F3F] mb-4">
         {title}
       </h2>
-
-      <p class="text-xl text-white/70 max-w-2xl mx-auto">
+      <p class="text-gray-600 max-w-2xl mx-auto">
         {subtitle}
       </p>
     </div>
 
     <!-- FAQ List -->
-    <div class="max-w-3xl mx-auto">
-      <div class="space-y-6">
+    <div class="max-w-3xl mx-auto space-y-6">
 
-        <!-- FAQ 1 -->
-        <div class="border-b border-white/10 pb-6">
-          <button class="w-full text-left flex items-center justify-between group"
-                  onclick="toggleFAQ('faq1')">
-            <span class="text-lg font-semibold text-white group-hover:text-secondary transition-colors">
-              How long does it take to get a swimming diploma?
+      {items.map((item, index) => (
+        <div class="border border-[#E1EEF7] rounded-xl p-6 bg-[#F7FBFF] shadow-sm">
+          <button 
+            class="w-full flex items-center justify-between text-left group"
+            onclick={`toggleFAQ('faq-${index}')`}
+          >
+            <span class="text-lg font-semibold text-[#001F3F] group-hover:text-[#00AEEF] transition-colors">
+              {item.question}
             </span>
-            <svg id="faq1-icon" class="w-5 h-5 text-white/60 transform transition-transform ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+
+            <svg id={`faq-${index}-icon`} 
+                 class="w-5 h-5 text-gray-500 transform transition-transform ml-4"
+                 fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                    d="M19 9l-7 7-7-7"/>
             </svg>
           </button>
-          <div id="faq1" class="hidden mt-4">
-            <p class="text-white/70 leading-relaxed">
-              This depends on age, confidence, and lesson frequency. Most children earn diploma A in 6–12 months with weekly lessons. 
-              With Progress+ or private lessons, progress is often faster.
+
+          <div id={`faq-${index}`} class="hidden mt-4">
+            <p class="text-gray-700 leading-relaxed">
+              {item.answer}
             </p>
           </div>
         </div>
+      ))}
 
-        <!-- FAQ 2 -->
-        <div class="border-b border-white/10 pb-6">
-          <button class="w-full text-left flex items-center justify-between group"
-                  onclick="toggleFAQ('faq2')">
-            <span class="text-lg font-semibold text-white group-hover:text-secondary transition-colors">
-              What should my child bring to the first lesson?
-            </span>
-            <svg id="faq2-icon" class="w-5 h-5 text-white/60 transform transition-transform ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-            </svg>
-          </button>
-          <div id="faq2" class="hidden mt-4">
-            <p class="text-white/70 leading-relaxed">
-              A swimsuit, towel, and slippers are enough. For baby & toddler lessons, a swim diaper is required. 
-              We provide all floating materials and safety equipment.
-            </p>
-          </div>
-        </div>
-
-        <!-- FAQ 3 -->
-        <div class="border-b border-white/10 pb-6">
-          <button class="w-full text-left flex items-center justify-between group"
-                  onclick="toggleFAQ('faq3')">
-            <span class="text-lg font-semibold text-white group-hover:text-secondary transition-colors">
-              Can parents watch the lessons?
-            </span>
-            <svg id="faq3-icon" class="w-5 h-5 text-white/60 transform transition-transform ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-            </svg>
-          </button>
-          <div id="faq3" class="hidden mt-4">
-            <p class="text-white/70 leading-relaxed">
-              Yes! All pools have viewing areas where parents can watch comfortably. 
-              For baby & toddler lessons, parents join in the water.
-            </p>
-          </div>
-        </div>
-
-        <!-- FAQ 4 -->
-        <div class="border-b border-white/10 pb-6">
-          <button class="w-full text-left flex items-center justify-between group"
-                  onclick="toggleFAQ('faq4')">
-            <span class="text-lg font-semibold text-white group-hover:text-secondary transition-colors">
-              What if my child is afraid of water?
-            </span>
-            <svg id="faq4-icon" class="w-5 h-5 text-white/60 transform transition-transform ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-            </svg>
-          </button>
-          <div id="faq4" class="hidden mt-4">
-            <p class="text-white/70 leading-relaxed">
-              Our instructors are trained in helping anxious swimmers. We start slowly, build trust, 
-              and use playful exercises to help children feel safe and confident.
-            </p>
-          </div>
-        </div>
-
-        <!-- FAQ 5 -->
-        <div class="border-b border-white/10 pb-6">
-          <button class="w-full text-left flex items-center justify-between group"
-                  onclick="toggleFAQ('faq5')">
-            <span class="text-lg font-semibold text-white group-hover:text-secondary transition-colors">
-              Do you offer private lessons?
-            </span>
-            <svg id="faq5-icon" class="w-5 h-5 text-white/60 transform transition-transform ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-            </svg>
-          </button>
-          <div id="faq5" class="hidden mt-4">
-            <p class="text-white/70 leading-relaxed">
-              Yes, we offer 1‑on‑1 private lessons and duo lessons. These are ideal for faster progress or children who need extra attention.
-            </p>
-          </div>
-        </div>
-
-        <!-- FAQ 6 -->
-        <div class="pb-6">
-          <button class="w-full text-left flex items-center justify-between group"
-                  onclick="toggleFAQ('faq6')">
-            <span class="text-lg font-semibold text-white group-hover:text-secondary transition-colors">
-              What locations do you teach at?
-            </span>
-            <svg id="faq6-icon" class="w-5 h-5 text-white/60 transform transition-transform ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-            </svg>
-          </button>
-          <div id="faq6" class="hidden mt-4">
-            <p class="text-white/70 leading-relaxed">
-              We teach in multiple warm, child‑friendly pools across Amsterdam. 
-              You can choose the location that works best for your schedule.
-            </p>
-          </div>
-        </div>
-
-      </div>
     </div>
 
     <!-- Still have questions -->
-    <div class="text-center mt-12">
-      <h3 class="text-2xl font-semibold text-white mb-4">
-        Still have questions?
+    <div class="text-center mt-16">
+      <h3 class="text-2xl font-semibold text-[#001F3F] mb-4">
+        {await t(locale, 'faq.more_title')}
       </h3>
-      <p class="text-lg text-white/70 mb-6">
-        Our team is here to help you with anything related to swimming lessons.
+
+      <p class="text-lg text-gray-600 mb-6">
+        {await t(locale, 'faq.more_subtitle')}
       </p>
-      <a href="/contact" class="inline-flex items-center px-6 py-3 bg-secondary text-primary hover:bg-secondary/90 transition-colors font-semibold rounded">
-        Contact support
+
+      <a 
+        href="/contact" 
+        class="inline-flex items-center px-6 py-3 bg-[#001F3F] text-white hover:bg-[#00306A] transition-colors font-semibold rounded-lg"
+      >
+        {await t(locale, 'faq.more_cta')}
         <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                d="M13 7l5 5m0 0l-5 5m5-5H6"/>
         </svg>
       </a>
     </div>
@@ -174,12 +92,12 @@ const subtitle = await t(locale, 'faq.subtitle');
   }
 
   window.toggleFAQ = function(id) {
-    const faqContent = document.getElementById(id);
-    const faqIcon = document.getElementById(id + '-icon');
+    const content = document.getElementById(id);
+    const icon = document.getElementById(id + '-icon');
 
-    if (faqContent && faqIcon) {
-      faqContent.classList.toggle('hidden');
-      faqIcon.classList.toggle('rotate-180');
+    if (content && icon) {
+      content.classList.toggle('hidden');
+      icon.classList.toggle('rotate-180');
     }
   }
 </script>
