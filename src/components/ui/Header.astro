@@ -15,7 +15,7 @@ const navItems = [
 ---
 
 <header id="site-header" class="fixed top-0 left-0 w-full z-50 bg-white/90 backdrop-blur border-b border-gray-200 transition-all duration-300">
-  <nav class="max-w-7xl mx-auto px-4 sm:px-6 py-2 flex flex-wrap items-center justify-between gap-y-2">
+  <nav class="max-w-7xl mx-auto px-2 sm:px-4 py-1.5 flex flex-wrap items-center justify-between gap-y-2">
 
     <!-- Logo -->
     <a href="/" id="header-logo" class="flex items-center flex-shrink-0 transition-all duration-300">
@@ -28,7 +28,7 @@ const navItems = [
     </a>
 
     <!-- Contact Buttons -->
-    <div class="flex flex-col sm:flex-row sm:items-center sm:gap-4">
+    <div class="flex flex-col sm:flex-row sm:items-center sm:gap-3">
 
       <!-- WhatsApp Button -->
       <a 
@@ -55,7 +55,7 @@ const navItems = [
     </div>
 
     <!-- Navigation + Language Switcher -->
-    <div class="hidden md:flex items-center gap-3 text-sm font-medium">
+    <div class="hidden md:flex items-center gap-2 text-sm font-medium">
       {navItems.map(item => (
         <a 
           href={item.href} 
