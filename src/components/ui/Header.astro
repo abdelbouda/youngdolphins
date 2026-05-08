@@ -4,9 +4,15 @@ import LanguageSwitcher from './LanguageSwitcher.astro';
 import logo from '../../assets/logo.webp';
 
 const locale = Astro.currentLocale;
-
-// Preload translations before rendering
 await preloadTranslations(locale);
+
+// Navigatie-items centraal gedefinieerd (minder duplicatie)
+const navItems = [
+  { href: '/', key: 'nav.home' },
+  { href: '/#features', key: 'nav.lessons' },
+  { href: '/#pricing', key: 'nav.pricing' },
+  { href: '/#faq', key: 'nav.faq' },
+];
 ---
 
 <header class="fixed top-0 left-0 w-full z-50 bg-white/80 backdrop-blur border-b border-gray-200">
@@ -24,18 +30,14 @@ await preloadTranslations(locale);
 
     <!-- Desktop Navigation -->
     <div class="hidden md:flex items-center gap-8 text-sm font-medium">
-      <a href="/" class="text-gray-700 hover:text-[#001F3F] transition-colors">
-        {tSync(locale, 'nav.home')}
-      </a>
-      <a href="/#features" class="text-gray-700 hover:text-[#001F3F] transition-colors">
-        {tSync(locale, 'nav.lessons')}
-      </a>
-      <a href="/#pricing" class="text-gray-700 hover:text-[#001F3F] transition-colors">
-        {tSync(locale, 'nav.pricing')}
-      </a>
-      <a href="/#faq" class="text-gray-700 hover:text-[#001F3F] transition-colors">
-        {tSync(locale, 'nav.faq')}
-      </a>
+      {navItems.map(item => (
+        <a 
+          href={item.href} 
+          class="text-gray-700 hover:text-[#001F3F] transition-colors"
+        >
+          {tSync(locale, item.key)}
+        </a>
+      ))}
 
       <LanguageSwitcher />
     </div>
@@ -43,27 +45,27 @@ await preloadTranslations(locale);
     <!-- Mobile Menu Button -->
     <button 
       id="mobile-menu-toggle"
-      class="md:hidden text-gray-700 hover:text-[#001F3F] transition-colors"
+      class="md:hidden text-gray-700 hover:text-[#001F3F] transition-colors text-2xl leading-none"
+      aria-label="Open mobile menu"
     >
       ☰
     </button>
   </nav>
 
   <!-- Mobile Menu -->
-  <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+  <div 
+    id="mobile-menu" 
+    class="hidden md:hidden bg-white border-t border-gray-200 transition-all duration-300"
+  >
     <div class="flex flex-col px-6 py-4 gap-4 text-sm font-medium">
-      <a href="/" class="text-gray-700 hover:text-[#001F3F] transition-colors">
-        {tSync(locale, 'nav.home')}
-      </a>
-      <a href="/#features" class="text-gray-700 hover:text-[#001F3F] transition-colors">
-        {tSync(locale, 'nav.lessons')}
-      </a>
-      <a href="/#pricing" class="text-gray-700 hover:text-[#001F3F] transition-colors">
-        {tSync(locale, 'nav.pricing')}
-      </a>
-      <a href="/#faq" class="text-gray-700 hover:text-[#001F3F] transition-colors">
-        {tSync(locale, 'nav.faq')}
-      </a>
+      {navItems.map(item => (
+        <a 
+          href={item.href} 
+          class="text-gray-700 hover:text-[#001F3F] transition-colors"
+        >
+          {tSync(locale, item.key)}
+        </a>
+      ))}
 
       <LanguageSwitcher />
     </div>
