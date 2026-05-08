@@ -3,7 +3,7 @@ import type { MiddlewareHandler } from 'astro';
 export const onRequest: MiddlewareHandler = async ({ request, redirect, url }) => {
   const path = url.pathname;
 
-  // Als de gebruiker al op een locale route zit → niets doen
+  // Laat locale routes door
   if (
     path === '/nl' ||
     path.startsWith('/nl/') ||
@@ -13,14 +13,10 @@ export const onRequest: MiddlewareHandler = async ({ request, redirect, url }) =
     return;
   }
 
-  // Browsertaal detecteren
-  const acceptLanguage = request.headers.get('accept-language') || '';
-  const isEnglish = acceptLanguage.toLowerCase().startsWith('en');
-
-  const targetLocale = isEnglish ? 'en' : 'nl';
-
-  // Query parameters behouden
-  const query = url.search;
-
-  return redirect(`/${targetLocale}${query}`, 302);
+  // Root redirect
+  if (path === '/' || path === '') {
+    const acceptLanguage = request.headers.get('accept-language') || '';
+    const isEnglish = acceptLanguage.toLowerCase().startsWith('en');
+    return redirect(isEnglish ? '/en' : '/nl', 302);
+  }
 };
