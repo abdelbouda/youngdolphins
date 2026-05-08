@@ -3,18 +3,18 @@ import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
+import vercel from '@astrojs/vercel/server'; // ⭐ Nodig voor middleware + headers
 
-// ⭐ Stabiele, SEO‑vriendelijke Astro-config met sitemap
 export default defineConfig({
   site: 'https://youngdolphins.vercel.app',
 
   integrations: [
     react(),
     tailwind({
-      applyBaseStyles: true, // Nodig zodat Tailwind je layout toepast
+      applyBaseStyles: true,
     }),
     sitemap({
-      filter: (page) => !page.includes('/private'), // optioneel: filter
+      filter: (page) => !page.includes('/private'),
     }),
   ],
 
@@ -27,6 +27,12 @@ export default defineConfig({
     },
   },
 
+  // ⭐ Belangrijk: middleware werkt alleen met server‑output
+  output: 'server',
+
+  // ⭐ Vercel serverless adapter
+  adapter: vercel(),
+
   // ⚡ Performance
   build: {
     inlineStylesheets: 'auto',
@@ -37,9 +43,6 @@ export default defineConfig({
     prefetchAll: true,
     defaultStrategy: 'viewport',
   },
-
-  // 🧱 Static output voor Vercel
-  output: 'static',
 
   // 🧩 HTML compressie
   compressHTML: true,
