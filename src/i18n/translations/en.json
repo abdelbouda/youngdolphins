@@ -9,35 +9,16 @@
   },
 
   "hero": {
-    "badge": "New enrollments open",
-    "countdown": "Next start date in:",
-    "headline1": "Swimming lessons for children in Amsterdam",
-    "typewriter": [
-      "Learn to swim safely",
-      "A, B and C certificates",
-      "Small groups",
-      "Fun comes first"
-    ],
-    "subheadline": "have already joined Young Dolphins. Give your child a safe and confident start in the water.",
-    "joined_writers": "Over 1200 children",
+    "title": "Learn to swim with confidence and fun",
+    "subtitle": "At Young Dolphins, we help children earn their A, B, and C diplomas safely and happily.",
+    "cta_primary": "View our rates",
+    "cta_secondary": "Frequently asked questions",
     "stats": {
-      "words_written": "Certificates earned",
-      "finish_rate": "Success rate",
-      "writer_rating": "Parent rating"
+      "diplomas": "A, B, and C diplomas achieved",
+      "success": "Successful swimmers",
+      "rating": "Average rating"
     },
-    "email_placeholder": "Email address for enrollment",
-    "cta_button": "Enroll now",
-    "lifetime_deal": "Start swimming lessons today",
-    "exclusive_offer": "Limited spots available",
-    "writers_count": "Parents trust us",
-    "writers_writing": "children are learning now",
-    "genres": {
-      "fantasy": "Baby & Toddler",
-      "romance": "Kids 4–12",
-      "mystery": "Private lessons",
-      "literary": "A/B/C Certificates"
-    },
-    "continue_reading": "View our programs"
+    "continue_reading": "View our offer"
   },
 
   "problem": {
