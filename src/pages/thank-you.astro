@@ -1,219 +1,104 @@
 ---
-const locale = Astro.props.locale ?? 'en';
+const locale = Astro.props.locale ?? 'nl';
 import { tSync } from '../i18n/utils';
----
 
 import Header from '../components/ui/Header.astro';
 import Container from '../components/ui/Container.astro';
 import LegalFooter from '../components/sections/LegalFooter.astro';
 ---
 
-<Layout 
-	title="Welcome to the novel-finishers club ✍️ - Zeyn"
-	description="You're in! Check your email for early access details and launch updates. Help us build the perfect novelist's app."
-	noindex={true}
->
-	<Header />
-	
-	<section class="py-20 lg:py-32 bg-black min-h-screen">
-		<Container>
-			<!-- Hero Section -->
-			<div class="text-center mb-20">
-				
-				<!-- Success Icon -->
-				<div class="w-24 h-24 bg-gray-800 border border-gray-700 rounded-full flex items-center justify-center mx-auto mb-8">
-					<svg class="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 20 20">
-						<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-					</svg>
-				</div>
+<!-- HEADER -->
+<Header locale={locale} />
 
-				<!-- Main Headline -->
-				<h1 class="text-3xl sm:text-4xl lg:text-5xl font-medium text-white mb-6">
-					Welcome to the <span class="text-gray-300">novel-finishers club</span>
-				</h1>
-				
-				<!-- Confirmation Message -->
-				<p class="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
-					You're in! Check your email for early access details and launch updates.
-				</p>
+<section class="py-20 lg:py-32 bg-blue-50 dark:bg-blue-900/20 min-h-screen">
+  <Container>
 
-				<!-- Badge -->
-				<div class="inline-flex items-center px-4 py-2 bg-gray-900 border border-gray-800 text-gray-400 rounded-full">
-					Lifetime access secured
-				</div>
+    <!-- Success Icon -->
+    <div class="text-center mb-16">
+      <div class="w-24 h-24 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-full flex items-center justify-center mx-auto mb-8">
+        <svg class="w-12 h-12 text-blue-600 dark:text-blue-300" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+        </svg>
+      </div>
 
-			</div>
+      <!-- Main Headline -->
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#001F3F] dark:text-white mb-6">
+        {tSync(locale, 'thankyou.title') ?? 'Bedankt voor je aanmelding!'}
+      </h1>
 
-			<!-- What Happens Next Section -->
-			<div class="max-w-3xl mx-auto mb-20">
-				<div class="bg-gray-900 border border-gray-800 rounded-lg p-8">
-					<h2 class="text-2xl font-medium text-white mb-8 text-center">
-						What happens next?
-					</h2>
-					
-					<div class="space-y-8">
-						<div class="flex items-start">
-							<div class="w-8 h-8 bg-gray-800 border border-gray-700 text-gray-400 rounded-full flex items-center justify-center mr-6 flex-shrink-0 font-bold text-sm">
-								1
-							</div>
-							<div>
-								<h3 class="font-semibold text-white mb-2">
-									Check your email (it might take a few minutes)
-								</h3>
-								<p class="text-gray-400 leading-relaxed">
-									We'll send you launch updates and early access information.
-								</p>
-							</div>
-						</div>
+      <!-- Confirmation Message -->
+      <p class="text-xl text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
+        {tSync(locale, 'thankyou.message') ?? 
+        'We hebben je inschrijving ontvangen. Je ontvangt binnenkort een bevestiging per e‑mail met alle details over de zwemlessen.'}
+      </p>
+    </div>
 
-						<div class="flex items-start">
-							<div class="w-8 h-8 bg-gray-800 border border-gray-700 text-gray-400 rounded-full flex items-center justify-center mr-6 flex-shrink-0 font-bold text-sm">
-								2
-							</div>
-							<div>
-								<h3 class="font-semibold text-white mb-2">
-									Get early access in 14 days
-								</h3>
-								<p class="text-gray-400 leading-relaxed">
-									You'll be among the first to experience distraction-free writing.
-								</p>
-							</div>
-						</div>
+    <!-- What Happens Next -->
+    <div class="max-w-3xl mx-auto mb-20">
+      <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-8">
+        <h2 class="text-2xl font-semibold text-[#001F3F] dark:text-white mb-8 text-center">
+          {tSync(locale, 'thankyou.nextTitle') ?? 'Wat gebeurt er nu?'}
+        </h2>
 
-						<div class="flex items-start">
-							<div class="w-8 h-8 bg-gray-800 border border-gray-700 text-gray-400 rounded-full flex items-center justify-center mr-6 flex-shrink-0 font-bold text-sm">
-								3
-							</div>
-							<div>
-								<h3 class="font-semibold text-white mb-2">
-									Start writing your novel the right way
-								</h3>
-								<p class="text-gray-400 leading-relaxed">
-									Never pay monthly fees again. Write with lifetime access to Zeyn.
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+        <div class="space-y-8">
 
-			<!-- Research Form Section -->
-			<div class="max-w-3xl mx-auto mb-20">
-				<div class="bg-gray-900 border border-gray-800 rounded-lg p-8">
-					<div class="text-center mb-8">
-						<h2 class="text-2xl font-medium text-white mb-4">
-							Quick favor—help us build the perfect novelist's app
-						</h2>
-						<p class="text-gray-400 leading-relaxed">
-							Your input shapes Zeyn. Many requested features make it into the final product.
-						</p>
-					</div>
+          <div class="flex items-start">
+            <div class="w-8 h-8 bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 rounded-full flex items-center justify-center mr-6 font-bold">
+              1
+            </div>
+            <div>
+              <h3 class="font-semibold text-[#001F3F] dark:text-white mb-2">
+                {tSync(locale, 'thankyou.step1Title') ?? 'Check je e‑mail'}
+              </h3>
+              <p class="text-gray-700 dark:text-gray-300">
+                {tSync(locale, 'thankyou.step1Text') ?? 'Je ontvangt binnen enkele minuten een bevestiging met alle informatie.'}
+              </p>
+            </div>
+          </div>
 
-					<form class="space-y-6">
-						<!-- Novel Question -->
-						<div>
-							<label for="novel-about" class="block text-sm font-medium text-white mb-3">
-								What's your novel about? (One sentence is fine!)
-							</label>
-							<textarea 
-								id="novel-about"
-								rows="3"
-								class="w-full px-4 py-3 border border-gray-700 rounded-lg 
-									focus:outline-none focus:border-gray-500
-									bg-gray-800 text-white placeholder-gray-400"
-								placeholder="A mystery set in 1920s Paris, following a detective who..."
-							></textarea>
-						</div>
+          <div class="flex items-start">
+            <div class="w-8 h-8 bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 rounded-full flex items-center justify-center mr-6 font-bold">
+              2
+            </div>
+            <div>
+              <h3 class="font-semibold text-[#001F3F] dark:text-white mb-2">
+                {tSync(locale, 'thankyou.step2Title') ?? 'Wij plannen de eerste les'}
+              </h3>
+              <p class="text-gray-700 dark:text-gray-300">
+                {tSync(locale, 'thankyou.step2Text') ?? 'We nemen contact met je op om de startdatum en groep te bevestigen.'}
+              </p>
+            </div>
+          </div>
 
-						<!-- Switch Reason -->
-						<div>
-							<label for="switch-reason" class="block text-sm font-medium text-white mb-3">
-								What made you switch from Word/Google Docs/Scrivener?
-							</label>
-							<textarea 
-								id="switch-reason"
-								rows="3"
-								class="w-full px-4 py-3 border border-gray-700 rounded-lg 
-									focus:outline-none focus:border-gray-500
-									bg-gray-800 text-white placeholder-gray-400"
-								placeholder="Too many distractions, lost files, formatting nightmares..."
-							></textarea>
-						</div>
+          <div class="flex items-start">
+            <div class="w-8 h-8 bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 rounded-full flex items-center justify-center mr-6 font-bold">
+              3
+            </div>
+            <div>
+              <h3 class="font-semibold text-[#001F3F] dark:text-white mb-2">
+                {tSync(locale, 'thankyou.step3Title') ?? 'Klaar om te starten'}
+              </h3>
+              <p class="text-gray-700 dark:text-gray-300">
+                {tSync(locale, 'thankyou.step3Text') ?? 'We zorgen voor een veilige, leuke en leerzame zwemervaring voor je kind.'}
+              </p>
+            </div>
+          </div>
 
-						<!-- Feature Request -->
-						<div>
-							<label for="feature-request" class="block text-sm font-medium text-white mb-3">
-								What feature would help you write 500 more words tomorrow?
-							</label>
-							<textarea 
-								id="feature-request"
-								rows="3"
-								class="w-full px-4 py-3 border border-gray-700 rounded-lg 
-									focus:outline-none focus:border-gray-500
-									bg-gray-800 text-white placeholder-gray-400"
-								placeholder="Better goal tracking, writing music, character sheets..."
-							></textarea>
-						</div>
+        </div>
+      </div>
+    </div>
 
-						<!-- Submit Button -->
-						<button 
-							type="submit"
-							class="w-full bg-white text-black hover:bg-gray-100 
-								px-6 py-3 text-base font-medium transition-colors duration-200 rounded-lg"
-						>
-							Help shape Zeyn
-						</button>
+    <!-- Back Link -->
+    <div class="text-center">
+      <a 
+        href={`/${locale}`}
+        class="text-blue-700 dark:text-blue-300 hover:underline font-medium"
+      >
+        ← {tSync(locale, 'thankyou.back') ?? 'Terug naar de homepage'}
+      </a>
+    </div>
 
-						<p class="text-xs text-center text-gray-500">
-							Optional, but incredibly helpful for building features you'll actually use.
-						</p>
-					</form>
-				</div>
-			</div>
+  </Container>
+</section>
 
-			<!-- Back Link Section -->
-			<div class="text-center">
-				<p class="text-gray-400 mb-4">
-					Know other writers struggling with Word? Share the love:
-				</p>
-				<a 
-					href="/" 
-					class="text-gray-300 hover:text-white font-medium transition-colors duration-200"
-				>
-					← Back to landing page
-				</a>
-			</div>
-		</Container>
-	</section>
-	
-	<LegalFooter />
-</Layout>
-
-<script>
-	// Simple form handling
-	const form = document.querySelector('form');
-	if (form) {
-		form.addEventListener('submit', function(e) {
-			e.preventDefault();
-			
-			// Get form data
-			const data = {
-				novelAbout: (document.getElementById('novel-about') as HTMLTextAreaElement)?.value,
-				switchReason: (document.getElementById('switch-reason') as HTMLTextAreaElement)?.value,
-				featureRequest: (document.getElementById('feature-request') as HTMLTextAreaElement)?.value
-			};
-			
-			// TODO: Send to analytics/backend
-			console.log('Research data:', data);
-			
-			// Show success message
-			const button = form.querySelector('button[type="submit"]') as HTMLButtonElement;
-			if (button) {
-				button.textContent = 'Thanks! 🙏';
-				button.disabled = true;
-				button.classList.add('bg-gray-700', 'text-gray-400');
-				button.classList.remove('bg-white', 'text-black', 'hover:bg-gray-100');
-			}
-		});
-	}
-</script>
+<LegalFooter locale={locale} />
