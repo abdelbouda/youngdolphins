@@ -60,6 +60,35 @@ const imageURL = new URL(image, siteUrl);
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Structured Data: LocalBusiness -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsActivityLocation",
+      "name": "Young Dolphins",
+      "image": "{imageURL}",
+      "description": "Professionele zwemlessen voor kinderen in Amsterdam. Veilig, plezierig en met persoonlijke aandacht.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Amsterdam",
+        "addressCountry": "NL"
+      },
+      "telephone": "+31628421354",
+      "email": "info@youngdolphins.nl",
+      "sameAs": [
+        "https://wa.me/31628421354"
+      ],
+      "openingHours": "Mo-Fr 09:00-18:00",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+31628421354",
+        "contactType": "customer service",
+        "areaServed": "Amsterdam",
+        "availableLanguage": ["Dutch", "English"]
+      }
+    }
+    </script>
   </head>
 
   <body class="font-inter bg-white text-gray-900 antialiased">
