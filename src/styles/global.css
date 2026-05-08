@@ -245,6 +245,40 @@ header .language-switcher a {
   color: #ffffff !important;
   text-decoration: none !important;
 }
+/* -----------------------------------------------------------
+   LANGUAGE SWITCHER INITIAL COLOR FIX
+----------------------------------------------------------- */
+
+/* Forceer witte tekst direct bij eerste render */
+header .language-switcher,
+header .language-switcher *,
+header div.inline-flex.language-switcher,
+header div.inline-flex.language-switcher * {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+}
+
+/* Override Tailwind default text color bij initial load */
+header [class*="LanguageSwitcher"],
+header [class*="language-switcher"],
+header [class*="locale"],
+header [class*="lang"] {
+  color: #ffffff !important;
+}
+
+/* Zorg dat links binnen de switcher nooit blauw worden */
+header .language-switcher a,
+header [class*="LanguageSwitcher"] a {
+  color: #ffffff !important;
+  text-decoration: none !important;
+}
+
+/* Hover consistent houden */
+header .language-switcher:hover,
+header [class*="LanguageSwitcher"]:hover {
+  background-color: #003366 !important;
+  color: #ffffff !important;
+}
 
   transition: all 0.3s ease;
 }
