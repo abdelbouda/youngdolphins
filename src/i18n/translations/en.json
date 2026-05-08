@@ -137,7 +137,38 @@
 
   "faq": {
     "title": "Frequently asked questions",
-    "subtitle": "Everything parents want to know"
+    "subtitle": "Everything parents want to know",
+
+    "items": [
+      {
+        "question": "How long does it take to get a swimming diploma?",
+        "answer": "This depends on age, confidence, and lesson frequency. Most children earn diploma A in 6–12 months with weekly lessons. With Progress+ or private lessons, progress is often faster."
+      },
+      {
+        "question": "What should my child bring to the first lesson?",
+        "answer": "A swimsuit, towel, and slippers are enough. For baby & toddler lessons, a swim diaper is required. We provide all floating materials and safety equipment."
+      },
+      {
+        "question": "Can parents watch the lessons?",
+        "answer": "Yes! All pools have viewing areas where parents can watch comfortably. For baby & toddler lessons, parents join in the water."
+      },
+      {
+        "question": "What if my child is afraid of water?",
+        "answer": "Our instructors are trained in helping anxious swimmers. We start slowly, build trust, and use playful exercises to help children feel safe and confident."
+      },
+      {
+        "question": "Do you offer private lessons?",
+        "answer": "Yes, we offer 1‑on‑1 private lessons and duo lessons. These are ideal for faster progress or children who need extra attention."
+      },
+      {
+        "question": "What locations do you teach at?",
+        "answer": "We teach in multiple warm, child‑friendly pools across Amsterdam. You can choose the location that works best for your schedule."
+      }
+    ],
+
+    "more_title": "Still have questions?",
+    "more_subtitle": "Our team is here to help you with anything related to swimming lessons.",
+    "more_cta": "Contact support"
   },
 
   "final": {
