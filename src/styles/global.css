@@ -2,6 +2,10 @@
    GLOBAL RESET & BASE
 ----------------------------------------------------------- */
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 * {
   margin: 0;
   padding: 0;
@@ -27,12 +31,18 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
-  color: #001F3F; /* Young Dolphins marine blauw */
+  color: #001F3F; /* Marineblauw */
+  line-height: 1.3;
 }
 
 p {
   color: #374151;
   margin-bottom: 1rem;
+}
+
+strong {
+  font-weight: 600;
+  color: #001F3F;
 }
 
 /* -----------------------------------------------------------
@@ -50,6 +60,10 @@ a:hover {
   text-decoration: underline;
 }
 
+a:visited {
+  color: #0077cc;
+}
+
 /* -----------------------------------------------------------
    IMAGES
 ----------------------------------------------------------- */
@@ -61,12 +75,23 @@ img {
 }
 
 /* -----------------------------------------------------------
-   BUTTONS (fallback styling)
+   BUTTONS
 ----------------------------------------------------------- */
 
 button {
   font-family: inherit;
   cursor: pointer;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  font-weight: 600;
+  background-color: #0077cc;
+  color: #ffffff;
+  transition: background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: #005fa3;
 }
 
 button:disabled {
@@ -83,6 +108,7 @@ input, textarea, select {
   border-radius: 0.5rem;
   border: 1px solid #d1d5db;
   padding: 0.6rem 0.8rem;
+  width: 100%;
 }
 
 input:focus, textarea:focus, select:focus {
@@ -121,6 +147,18 @@ input:focus, textarea:focus, select:focus {
 }
 
 /* -----------------------------------------------------------
+   FOOTER
+----------------------------------------------------------- */
+
+footer {
+  background-color: #f9fafb;
+  color: #6b7280;
+  padding: 2rem 1rem;
+  text-align: center;
+  font-size: 0.875rem;
+}
+
+/* -----------------------------------------------------------
    ACCESSIBILITY
 ----------------------------------------------------------- */
 
@@ -134,4 +172,20 @@ input:focus, textarea:focus, select:focus {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+/* -----------------------------------------------------------
+   RESPONSIVE HELPERS
+----------------------------------------------------------- */
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+  h2 {
+    font-size: 2rem;
+  }
+  p {
+    font-size: 1.125rem;
+  }
 }
