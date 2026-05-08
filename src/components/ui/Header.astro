@@ -27,92 +27,69 @@ const navItems = [
       />
     </a>
 
-    <!-- MOBILE ACTIONS: visible on small screens only -->
-    <div id="mobile-actions" class="flex items-center gap-2 md:hidden">
+    <!-- MOBILE ACTIONS -->
+    <div class="flex items-center gap-2 md:hidden">
 
-      <!-- WhatsApp (icon only visually, sr-only label for screen readers) -->
-      <a 
-        href="https://wa.me/31628421354" 
-        class="inline-flex items-center gap-2 px-3 py-2 bg-[#001F3F] text-white rounded-md text-xs font-semibold hover:bg-[#003366] transition"
-        aria-label="WhatsApp"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-4 h-4" aria-hidden="true">
-          <path d="M12 0C5.373 0 0 5.373 0 12c0 2.12.55 4.11 1.51 5.86L0 24l6.29-1.64A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.94 9.94 0 01-5.09-1.39l-.36-.21-3.73.97.99-3.63-.24-.37A9.94 9.94 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10zm5.07-7.93c-.27-.14-1.59-.78-1.84-.87-.25-.09-.43-.14-.61.14-.18.27-.7.87-.86 1.05-.16.18-.32.2-.59.07-.27-.14-1.14-.42-2.17-1.34-.8-.71-1.34-1.58-1.5-1.85-.16-.27-.02-.42.12-.56.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.84-2.02-.22-.53-.45-.46-.61-.47h-.52c-.18 0-.48.07-.73.34-.25.27-.96.94-.96 2.29s.98 2.65 1.12 2.83c.14.18 1.93 2.95 4.68 4.14.65.28 1.16.45 1.56.58.65.21 1.24.18 1.71.11.52-.08 1.59-.65 1.82-1.28.23-.63.23-1.17.16-1.28-.07-.11-.25-.18-.52-.32z"/>
+      <!-- WhatsApp -->
+      <a href="https://wa.me/31628421354" class="p-2 bg-[#001F3F] text-white rounded-md">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-5 h-5">
+          <path d="M12 0C5.373 0 0 5.373 0 12c0 2.12.55 4.11 1.51 5.86L0 24l6.29-1.64A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/>
         </svg>
-        <span class="sr-only">WhatsApp</span>
       </a>
 
       <!-- Email -->
-      <a 
-        href="mailto:info@youngdolphins.nl" 
-        class="inline-flex items-center gap-2 px-3 py-2 bg-[#001F3F] text-white rounded-md text-xs font-semibold hover:bg-[#003366] transition"
-        aria-label="Email"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-4 h-4" aria-hidden="true">
-          <path d="M12 13.065L.015 6h23.97L12 13.065zM0 8.235V18h24V8.235l-12 7.065L0 8.235z"/>
+      <a href="mailto:info@youngdolphins.nl" class="p-2 bg-[#001F3F] text-white rounded-md">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-5 h-5">
+          <path d="M12 13.065L.015 6h23.97L12 13.065z"/>
         </svg>
-        <span class="sr-only">Email</span>
       </a>
 
-      <!-- Language Switcher: hydrate client-side; server fallback below -->
+      <!-- Language Switcher (ONE INSTANCE ONLY) -->
       <div class="relative">
         <LanguageSwitcher client:load />
       </div>
 
       <!-- Hamburger -->
-      <button 
-        id="mobile-menu-toggle"
-        class="text-[#001F3F] text-2xl leading-none p-2"
-        aria-label="Open mobile menu"
-        aria-expanded="false"
-      >
-        <span aria-hidden="true">☰</span>
+      <button id="mobile-menu-toggle" class="text-[#001F3F] text-3xl p-1">
+        ☰
       </button>
     </div>
 
-    <!-- DESKTOP NAVIGATION: visible on md+ screens -->
-    <div id="desktop-nav" class="hidden md:flex items-center gap-3 text-sm font-medium">
+    <!-- DESKTOP NAV -->
+    <div class="hidden md:flex items-center gap-3 text-sm font-medium">
 
       {navItems.map(item => (
         <a 
           href={item.href} 
-          class="px-4 py-2 bg-[#001F3F] text-white rounded-md hover:bg-[#003366] hover:scale-[1.03] transition-all shadow-sm"
+          class="px-4 py-2 bg-[#001F3F] text-white rounded-md hover:bg-[#003366] transition-all shadow-sm"
         >
           {item.label ? item.label : tSync(locale, item.key)}
         </a>
       ))}
 
-      <!-- Language Switcher (hydrate on desktop too) -->
+      <!-- SAME LanguageSwitcher instance -->
       <div class="relative">
         <LanguageSwitcher client:load />
       </div>
 
-      <!-- WhatsApp -->
-      <a 
-        href="https://wa.me/31628421354" 
-        class="px-4 py-2 bg-[#001F3F] text-white rounded-md hover:bg-[#003366] transition-all shadow-sm"
-      >
+      <a href="https://wa.me/31628421354" class="px-4 py-2 bg-[#001F3F] text-white rounded-md">
         Direct aanmelden
       </a>
 
-      <!-- Email -->
-      <a 
-        href="mailto:info@youngdolphins.nl" 
-        class="px-4 py-2 bg-[#001F3F] text-white rounded-md hover:bg-[#003366] transition-all shadow-sm"
-      >
+      <a href="mailto:info@youngdolphins.nl" class="px-4 py-2 bg-[#001F3F] text-white rounded-md">
         Email ons
       </a>
     </div>
   </nav>
 
-  <!-- OVERLAY (mobile) -->
+  <!-- OVERLAY -->
   <div id="mobile-overlay" class="fixed inset-0 bg-black/40 opacity-0 pointer-events-none transition-opacity duration-300 md:hidden z-40"></div>
 
-  <!-- SLIDE-IN MOBILE MENU (only navigation links) -->
-  <aside id="mobile-menu" class="fixed top-0 right-0 h-full w-64 bg-white shadow-xl border-l border-gray-200 transform translate-x-full transition-transform duration-300 ease-in-out md:hidden z-50" aria-hidden="true">
+  <!-- MOBILE MENU -->
+  <aside id="mobile-menu" class="fixed top-0 right-0 h-full w-64 bg-white shadow-xl border-l border-gray-200 transform translate-x-full transition-transform duration-300 ease-in-out md:hidden z-50">
     <div class="flex items-center justify-between px-4 py-3 border-b">
       <div class="text-lg font-semibold text-[#001F3F]">Menu</div>
-      <button id="mobile-menu-close" class="p-2 text-[#001F3F]" aria-label="Close menu">✕</button>
+      <button id="mobile-menu-close" class="p-2 text-[#001F3F]">✕</button>
     </div>
 
     <div class="flex flex-col px-4 py-6 gap-3 text-sm font-medium">
@@ -128,66 +105,29 @@ const navItems = [
   </aside>
 
   <script type="module">
-    // Wait for DOM ready to avoid race conditions
     document.addEventListener('DOMContentLoaded', () => {
       const toggle = document.getElementById('mobile-menu-toggle');
       const menu = document.getElementById('mobile-menu');
       const overlay = document.getElementById('mobile-overlay');
       const closeBtn = document.getElementById('mobile-menu-close');
 
-      let isOpen = false;
-
       function openMenu() {
-        if (!menu || !overlay) return;
-        isOpen = true;
         menu.classList.remove('translate-x-full');
-        menu.setAttribute('aria-hidden', 'false');
         overlay.classList.remove('opacity-0', 'pointer-events-none');
         overlay.classList.add('opacity-100');
-        if (toggle) toggle.setAttribute('aria-expanded', 'true');
         document.body.style.overflow = 'hidden';
       }
 
       function closeMenu() {
-        if (!menu || !overlay) return;
-        isOpen = false;
         menu.classList.add('translate-x-full');
-        menu.setAttribute('aria-hidden', 'true');
         overlay.classList.add('opacity-0', 'pointer-events-none');
         overlay.classList.remove('opacity-100');
-        if (toggle) toggle.setAttribute('aria-expanded', 'false');
         document.body.style.overflow = '';
       }
 
-      if (toggle) {
-        toggle.addEventListener('click', (e) => {
-          e.stopPropagation();
-          isOpen ? closeMenu() : openMenu();
-        });
-      }
-
-      if (closeBtn) closeBtn.addEventListener('click', closeMenu);
-      if (overlay) overlay.addEventListener('click', closeMenu);
-
-      // Close on Escape
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && isOpen) closeMenu();
-      });
-
-      // Keep desktop header behavior unchanged (shrink on scroll)
-      const header = document.getElementById('site-header');
-      const logo = document.getElementById('header-logo');
-      if (header && logo) {
-        window.addEventListener('scroll', () => {
-          if (window.scrollY > 20) {
-            header.classList.add('py-1', 'bg-white/95');
-            logo.classList.add('scale-90');
-          } else {
-            header.classList.remove('py-1', 'bg-white/95');
-            logo.classList.remove('scale-90');
-          }
-        });
-      }
+      toggle.addEventListener('click', openMenu);
+      closeBtn.addEventListener('click', closeMenu);
+      overlay.addEventListener('click', closeMenu);
     });
   </script>
 </header>
