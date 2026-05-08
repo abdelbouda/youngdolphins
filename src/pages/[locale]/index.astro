@@ -1,6 +1,9 @@
 ---
 const { locale } = Astro.params;
+import BaseLayout from '../../layouts/BaseLayout.astro';
 import Home from '../index.astro';
 ---
 
-<Home locale={locale} />
+<BaseLayout locale={locale}>
+  <Home locale={locale} />
+</BaseLayout>
