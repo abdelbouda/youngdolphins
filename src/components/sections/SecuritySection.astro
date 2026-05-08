@@ -9,8 +9,31 @@ interface Props {
 
 const { locale = 'en' } = Astro.props;
 
+// Section header
 const title = await t(locale, 'security.title');
 const subtitle = await t(locale, 'security.subtitle');
+
+// Items
+const instructorsTitle = await t(locale, 'security.items.instructors.title');
+const instructorsText = await t(locale, 'security.items.instructors.text');
+
+const poolsTitle = await t(locale, 'security.items.pools.title');
+const poolsText = await t(locale, 'security.items.pools.text');
+
+const supervisionTitle = await t(locale, 'security.items.supervision.title');
+const supervisionText = await t(locale, 'security.items.supervision.text');
+
+const facilitiesTitle = await t(locale, 'security.items.facilities.title');
+const facilitiesText = await t(locale, 'security.items.facilities.text');
+
+const emergencyTitle = await t(locale, 'security.items.emergency.title');
+const emergencyText = await t(locale, 'security.items.emergency.text');
+
+const transparencyTitle = await t(locale, 'security.items.transparency.title');
+const transparencyText = await t(locale, 'security.items.transparency.text');
+
+// Footer block
+const footerTitle = await t(locale, 'security.footer.title');
 ---
 
 <section id="security" class="py-16 bg-primary">
@@ -33,65 +56,65 @@ const subtitle = await t(locale, 'security.subtitle');
 
         <div class="text-center">
           <h3 class="text-lg font-semibold text-white mb-3">
-            Certified Instructors
+            {instructorsTitle}
           </h3>
           <p class="text-white/70 text-sm leading-relaxed">
-            All instructors are ENVOZ/NRZ certified and trained in child‑friendly teaching methods, safety protocols, and first aid.
+            {instructorsText}
           </p>
         </div>
 
         <div class="text-center">
           <h3 class="text-lg font-semibold text-white mb-3">
-            Warm & Safe Pools
+            {poolsTitle}
           </h3>
           <p class="text-white/70 text-sm leading-relaxed">
-            We only teach in pools that meet strict safety and hygiene standards, with constant temperature monitoring.
+            {poolsText}
           </p>
         </div>
 
         <div class="text-center">
           <h3 class="text-lg font-semibold text-white mb-3">
-            Lifeguard Supervision
+            {supervisionTitle}
           </h3>
           <p class="text-white/70 text-sm leading-relaxed">
-            Every lesson is supervised by certified lifeguards to ensure maximum safety for all children.
+            {supervisionText}
           </p>
         </div>
 
         <div class="text-center">
           <h3 class="text-lg font-semibold text-white mb-3">
-            Clean & Hygienic Facilities
+            {facilitiesTitle}
           </h3>
           <p class="text-white/70 text-sm leading-relaxed">
-            Pools are cleaned daily and water quality is tested multiple times per day according to Dutch regulations.
+            {facilitiesText}
           </p>
         </div>
 
         <div class="text-center">
           <h3 class="text-lg font-semibold text-white mb-3">
-            Emergency Preparedness
+            {emergencyTitle}
           </h3>
           <p class="text-white/70 text-sm leading-relaxed">
-            Our team is trained in emergency response, CPR, and child rescue techniques to ensure a safe environment.
+            {emergencyText}
           </p>
         </div>
 
         <div class="text-center">
           <h3 class="text-lg font-semibold text-white mb-3">
-            Parent Transparency
+            {transparencyTitle}
           </h3>
           <p class="text-white/70 text-sm leading-relaxed">
-            Parents can always observe lessons and receive updates on progress, safety, and comfort levels.
+            {transparencyText}
           </p>
         </div>
 
       </div>
     </div>
 
-    <!-- Safety Standards -->
+    <!-- Footer / Certification -->
     <div class="text-center mb-16">
       <h3 class="text-2xl font-semibold text-white mb-8">
-        Certified & Compliant
+        {footerTitle}
       </h3>
 
       <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-2xl mx-auto text-sm text-white/70">
@@ -100,43 +123,6 @@ const subtitle = await t(locale, 'security.subtitle');
         <div>Child‑Friendly Teaching</div>
         <div>Daily Water Quality Checks</div>
       </div>
-    </div>
-
-    <!-- Safety Stats -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 max-w-2xl mx-auto">
-
-      <div class="text-center">
-        <div class="text-3xl font-bold text-white mb-2">100%</div>
-        <div class="text-white/70 text-sm">Certified instructors</div>
-      </div>
-
-      <div class="text-center">
-        <div class="text-3xl font-bold text-white mb-2">0</div>
-        <div class="text-white/70 text-sm">Incidents in lessons</div>
-      </div>
-
-      <div class="text-center">
-        <div class="text-3xl font-bold text-white mb-2">Daily</div>
-        <div class="text-white/70 text-sm">Water quality checks</div>
-      </div>
-
-    </div>
-
-    <!-- Safety Commitment -->
-    <div class="text-center">
-      <h3 class="text-2xl font-semibold text-white mb-4">
-        Our Safety Commitment
-      </h3>
-      <p class="text-white/70 mb-8 max-w-3xl mx-auto">
-        Your child’s safety is our highest priority. Every lesson, every instructor, and every location is held to the highest standards so your child can learn with confidence.
-      </p>
-
-      <a href="#hero" class="inline-flex items-center px-6 py-3 bg-secondary text-primary hover:bg-secondary/90 transition-colors font-semibold rounded">
-        Learn more
-        <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-        </svg>
-      </a>
     </div>
 
   </Container>
