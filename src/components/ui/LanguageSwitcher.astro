@@ -1,13 +1,121 @@
 ---
 const locale = Astro.currentLocale;
-const alternativeLocale = locale === 'en' ? 'nl' : 'en';
-const flag = alternativeLocale === 'en' ? '🇬🇧' : '🇳🇱';
+
+const languages = [
+  {
+    code: "nl",
+    label: "Nederlands",
+    svg: `
+      <svg viewBox="0 0 60 30" class="flag-icon">
+        <rect width="60" height="30" fill="#AE1C28"/>
+        <rect width="60" height="20" y="10" fill="#FFF"/>
+        <rect width="60" height="10" y="20" fill="#21468B"/>
+      </svg>
+    `
+  },
+  {
+    code: "en",
+    label: "English",
+    svg: `
+      <svg viewBox="0 0 60 30" class="flag-icon">
+        <clipPath id="uk">
+          <path d="M0 0v30h60V0z"/>
+        </clipPath>
+        <path fill="#012169" d="M0 0v30h60V0z"/>
+        <path stroke="#FFF" stroke-width="6" d="M0 0l60 30m0-30L0 30" clip-path="url(#uk)"/>
+        <path stroke="#C8102E" stroke-width="4" d="M0 0l60 30m0-30L0 30" clip-path="url(#uk)"/>
+        <path stroke="#FFF" stroke-width="10" d="M30 0v30M0 15h60"/>
+        <path stroke="#C8102E" stroke-width="6" d="M30 0v30M0 15h60"/>
+      </svg>
+    `
+  }
+];
+
+const current = languages.find(l => l.code === locale);
+const others = languages.filter(l => l.code !== locale);
 ---
 
-<a 
-  href={`/${alternativeLocale}`} 
-  class="language-flag"
-  aria-label={`Switch to ${alternativeLocale.toUpperCase()}`}
->
-  {flag}
-</a>
+<div class="lang-dropdown">
+  <button class="lang-toggle" aria-label="Change language" set:html={current.svg}></button>
+
+  <ul class="lang-menu">
+    {others.map(lang => (
+      <li>
+        <a 
+          href={`/${lang.code}`} 
+          class="lang-option"
+          aria-label={`Switch to ${lang.label}`}
+        >
+          <span set:html={lang.svg}></span>
+          <span class="label">{lang.label}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</div>
+
+<style is:global>
+.lang-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.lang-toggle {
+  background-color: #001F3F;
+  border: none;
+  padding: 0.4rem 0.6rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lang-toggle:hover {
+  background-color: #003366;
+  transform: scale(1.05);
+}
+
+.flag-icon {
+  width: 24px;
+  height: 16px;
+  border-radius: 2px;
+  display: block;
+}
+
+.lang-menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  margin-top: 0.5rem;
+  background: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  padding: 0.4rem 0;
+  list-style: none;
+  z-index: 50;
+}
+
+.lang-dropdown:hover .lang-menu {
+  display: block;
+}
+
+.lang-option {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.4rem 1rem;
+  text-decoration: none;
+  color: #001F3F;
+  transition: background-color 0.2s ease;
+}
+
+.lang-option:hover {
+  background-color: #E6F4FF;
+}
+
+.label {
+  font-size: 0.9rem;
+}
+</style>
