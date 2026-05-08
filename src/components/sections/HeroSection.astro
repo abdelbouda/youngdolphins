@@ -1,162 +1,103 @@
 ---
-import { Image } from 'astro:assets';
 import Container from '../ui/Container.astro';
-import EmailSignupForm from '../ui/EmailSignupForm.tsx';
-import TypewriterText from '../ui/TypewriterText.tsx';
-import CountdownTimer from '../ui/CountdownTimer.tsx';
 import { t, tArray } from '../../i18n/ui';
 import type { Locale } from '../../i18n/types';
+import heroImg from '../../assets/hero-kids.webp';
 
 interface Props {
   locale?: Locale;
 }
 
-const { locale = 'en' } = Astro.props;
+const { locale = 'nl' } = Astro.props;
 
-// Young Dolphins translations
-const badgeText = await t(locale, 'hero.badge');
-const countdownText = await t(locale, 'hero.countdown');
-const headline1 = await t(locale, 'hero.headline1');
-const typewriterWords = await tArray(locale, 'hero.typewriter');
-const subheadline = await t(locale, 'hero.subheadline');
-const joinedKids = await t(locale, 'hero.joined_writers');
-const statDiplomas = await t(locale, 'hero.stats.words_written');
-const statSuccess = await t(locale, 'hero.stats.finish_rate');
-const statRating = await t(locale, 'hero.stats.writer_rating');
-const emailPlaceholder = await t(locale, 'hero.email_placeholder');
-const ctaButton = await t(locale, 'hero.cta_button');
-const lifetimeDeal = await t(locale, 'hero.lifetime_deal');
-const exclusiveOffer = await t(locale, 'hero.exclusive_offer');
-const parentsCount = await t(locale, 'hero.writers_count');
-const kidsLearning = await t(locale, 'hero.writers_writing');
-const tagBaby = await t(locale, 'hero.genres.fantasy');
-const tagKids = await t(locale, 'hero.genres.romance');
-const tagPrivate = await t(locale, 'hero.genres.mystery');
-const tagDiplomas = await t(locale, 'hero.genres.literary');
+// i18n
+const title = await t(locale, 'hero.title');
+const subtitle = await t(locale, 'hero.subtitle');
+const ctaPrimary = await t(locale, 'hero.cta_primary');
+const ctaSecondary = await t(locale, 'hero.cta_secondary');
+const statDiplomas = await t(locale, 'hero.stats.diplomas');
+const statSuccess = await t(locale, 'hero.stats.success');
+const statRating = await t(locale, 'hero.stats.rating');
 const continueReading = await t(locale, 'hero.continue_reading');
 ---
 
-<section id="hero" class="relative min-h-[90vh] md:min-h-screen bg-primary overflow-hidden">
+<section id="hero" class="relative min-h-[85vh] md:min-h-screen bg-gradient-to-b from-[#E6F4FF] to-white overflow-hidden">
 
-  <!-- Soft aqua gradient background -->
-  <div class="absolute inset-0 opacity-20">
-    <div class="absolute top-0 left-0 w-72 h-72 bg-secondary rounded-full blur-3xl"></div>
-    <div class="absolute bottom-0 right-0 w-72 h-72 bg-primary/60 rounded-full blur-3xl"></div>
+  <!-- Decorative bubbles -->
+  <div class="absolute inset-0 opacity-30 pointer-events-none">
+    <div class="absolute top-10 left-10 w-40 h-40 bg-[#00AEEF]/20 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-10 right-10 w-56 h-56 bg-[#001F3F]/20 rounded-full blur-3xl"></div>
   </div>
 
-  <Container class="relative">
-    <div class="flex items-start pt-10 sm:pt-28 pb-8 sm:pb-16">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center w-full">
+  <Container class="relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center pt-28 pb-20">
 
-        <!-- LEFT COLUMN -->
-        <div class="text-center lg:text-left">
+      <!-- LEFT COLUMN -->
+      <div class="text-center lg:text-left space-y-6">
 
-          <!-- Badge + Countdown -->
-          <div class="mb-6">
-            <div class="inline-flex items-center gap-2 px-3 py-1 bg-primary/80 border border-white/10 rounded-full">
-              <div class="w-2 h-2 bg-secondary rounded-full animate-pulse"></div>
-              <span class="text-sm font-medium text-white">{badgeText}</span>
-            </div>
+        <!-- Title -->
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight text-[#001F3F]">
+          {title}
+        </h1>
 
-            <div class="flex items-center gap-3 text-xs text-white/70 justify-center lg:justify-start mt-2">
-              <span>{countdownText}</span>
-              <CountdownTimer 
-                client:load
-                targetDate={new Date(Date.now() + 3 * 24 * 60 * 60 * 1000)}
-                size="sm"
-                className="text-secondary"
-              />
-            </div>
-          </div>
+        <!-- Subtitle -->
+        <p class="text-lg sm:text-xl text-gray-700 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+          {subtitle}
+        </p>
 
-          <!-- Headline -->
-          <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-[1.1] mb-4">
-            <span class="block">{headline1}</span>
-            <span class="block text-secondary">
-              <TypewriterText 
-                client:load
-                words={typewriterWords}
-                speed={120}
-                deleteSpeed={80}
-                delayBetween={1800}
-              />
-            </span>
-          </h1>
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 pt-4">
+          <a 
+            href="/#pricing"
+            class="px-6 py-3 bg-[#001F3F] text-white rounded-lg font-semibold shadow hover:bg-[#00306A] transition-colors text-center"
+          >
+            {ctaPrimary}
+          </a>
 
-          <!-- Subheadline -->
-          <p class="text-lg sm:text-xl text-white/80 mb-6 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-            <span class="font-semibold text-white">{joinedKids}</span> {subheadline}
-          </p>
-
-          <!-- Stats -->
-          <div class="grid grid-cols-3 gap-4 mb-6 max-w-md mx-auto lg:mx-0">
-            <div class="text-center lg:text-left">
-              <div class="text-2xl font-bold text-white">1200+</div>
-              <div class="text-xs text-white/60">{statDiplomas}</div>
-            </div>
-            <div class="text-center lg:text-left">
-              <div class="text-2xl font-bold text-white">98%</div>
-              <div class="text-xs text-white/60">{statSuccess}</div>
-            </div>
-            <div class="text-center lg:text-left">
-              <div class="text-2xl font-bold text-white">4.9★</div>
-              <div class="text-xs text-white/60">{statRating}</div>
-            </div>
-          </div>
-
-          <!-- CTA -->
-          <div class="relative mb-6">
-            <div class="relative w-full max-w-lg mx-auto lg:mx-0">
-              <EmailSignupForm 
-                client:load
-                placeholder={emailPlaceholder}
-                buttonText={ctaButton}
-                variant="inline"
-              />
-            </div>
-            <div class="mt-3 text-center lg:text-left">
-              <p class="text-sm font-semibold text-white">{lifetimeDeal}</p>
-              <p class="text-xs text-white/60">{exclusiveOffer}</p>
-            </div>
-          </div>
-
-          <!-- Trust indicators -->
-          <div class="flex flex-col items-center lg:items-start gap-4">
-            <div class="flex items-center gap-4">
-              <div class="text-sm">
-                <span class="text-white font-medium">{parentsCount}</span>
-                <span class="text-white/60"> {kidsLearning}</span>
-              </div>
-            </div>
-
-            <div class="flex flex-wrap gap-2 text-xs">
-              <span class="px-2 py-1 bg-primary/70 border border-white/10 rounded-full text-white/80">{tagBaby}</span>
-              <span class="px-2 py-1 bg-primary/70 border border-white/10 rounded-full text-white/80">{tagKids}</span>
-              <span class="px-2 py-1 bg-primary/70 border border-white/10 rounded-full text-white/80">{tagPrivate}</span>
-              <span class="px-2 py-1 bg-primary/70 border border-white/10 rounded-full text-white/80">{tagDiplomas}</span>
-            </div>
-          </div>
-
+          <a 
+            href="/#faq"
+            class="px-6 py-3 bg-white border border-[#001F3F] text-[#001F3F] rounded-lg font-semibold hover:bg-[#F0F7FF] transition-colors text-center"
+          >
+            {ctaSecondary}
+          </a>
         </div>
 
-        <!-- RIGHT COLUMN (Logo or swimming visual placeholder) -->
-        <div class="hidden md:flex justify-center items-center">
-          <img 
-            src="/logo.png" 
-            alt="Young Dolphins Logo" 
-            class="w-72 h-auto opacity-90 drop-shadow-xl"
-          />
+        <!-- Stats -->
+        <div class="grid grid-cols-3 gap-6 pt-6 max-w-md mx-auto lg:mx-0">
+          <div class="text-center lg:text-left">
+            <div class="text-3xl font-bold text-[#001F3F]">1200+</div>
+            <div class="text-xs text-gray-600">{statDiplomas}</div>
+          </div>
+          <div class="text-center lg:text-left">
+            <div class="text-3xl font-bold text-[#001F3F]">98%</div>
+            <div class="text-xs text-gray-600">{statSuccess}</div>
+          </div>
+          <div class="text-center lg:text-left">
+            <div class="text-3xl font-bold text-[#001F3F]">4.9★</div>
+            <div class="text-xs text-gray-600">{statRating}</div>
+          </div>
         </div>
 
       </div>
+
+      <!-- RIGHT COLUMN -->
+      <div class="flex justify-center items-center">
+        <img 
+          src={heroImg.src} 
+          alt="Kinderen leren zwemmen bij Young Dolphins"
+          class="w-full max-w-md h-auto rounded-xl shadow-xl"
+          loading="eager"
+        />
+      </div>
+
     </div>
   </Container>
 
   <!-- Scroll Indicator -->
-  <div class="absolute bottom-10 left-1/2 -translate-x-1/2">
+  <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-10">
     <a href="#features" class="group flex flex-col items-center gap-2">
-      <span class="text-sm text-white/70 font-medium">{continueReading}</span>
-      <svg class="w-5 h-5 text-white/60 group-hover:text-secondary transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <span class="text-sm text-gray-600 font-medium">{continueReading}</span>
+      <svg class="w-5 h-5 text-gray-500 group-hover:text-[#00AEEF] transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
       </svg>
     </a>
