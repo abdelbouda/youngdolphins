@@ -9,33 +9,14 @@
   },
 
   "hero": {
-    "badge": "Nieuwe inschrijvingen geopend",
-    "countdown": "Volgende startdatum over:",
-    "headline1": "Zwemlessen voor kinderen in Amsterdam",
-    "typewriter": [
-      "Veilig leren zwemmen",
-      "Diploma A, B en C",
-      "Kleine groepen",
-      "Plezier staat centraal"
-    ],
-    "subheadline": "kregen al zwemles bij Young Dolphins. Sluit je aan en geef je kind een veilige start in het water.",
-    "joined_writers": "Meer dan 1200 kinderen",
+    "title": "Leren zwemmen met plezier en vertrouwen",
+    "subtitle": "Bij Young Dolphins helpen we kinderen veilig en met plezier hun A-, B- en C-diploma te behalen.",
+    "cta_primary": "Bekijk onze tarieven",
+    "cta_secondary": "Veelgestelde vragen",
     "stats": {
-      "words_written": "Diploma’s behaald",
-      "finish_rate": "Slagingspercentage",
-      "writer_rating": "Ouderwaardering"
-    },
-    "email_placeholder": "E-mailadres voor inschrijving",
-    "cta_button": "Inschrijven",
-    "lifetime_deal": "Direct starten met zwemles",
-    "exclusive_offer": "Beperkte plekken beschikbaar",
-    "writers_count": "Ouders vertrouwen ons",
-    "writers_writing": "kinderen leren nu zwemmen",
-    "genres": {
-      "fantasy": "Baby & Peuter",
-      "romance": "Kinderen 4–12 jaar",
-      "mystery": "Privélessen",
-      "literary": "Diploma A/B/C"
+      "diplomas": "A-, B- en C-diploma’s behaald",
+      "success": "Succesvolle zwemmers",
+      "rating": "Gemiddelde beoordeling"
     },
     "continue_reading": "Bekijk ons aanbod"
   },
