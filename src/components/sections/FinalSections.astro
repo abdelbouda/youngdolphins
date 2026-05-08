@@ -1,6 +1,5 @@
 ---
 import Container from '../ui/Container.astro';
-import EmailSignupForm from '../ui/EmailSignupForm.tsx';
 import { t } from '../../i18n/ui';
 import type { Locale } from '../../i18n/types';
 
@@ -8,85 +7,36 @@ interface Props {
   locale?: Locale;
 }
 
-const { locale = 'en' } = Astro.props;
+const { locale = 'nl' } = Astro.props;
 
 const finalTitle = await t(locale, 'final.title');
 const finalSubtitle = await t(locale, 'final.subtitle');
 const finalCTA = await t(locale, 'final.cta');
 ---
 
-<!-- Enrollment Section -->
-<section class="py-16 bg-primary">
+<section id="final" class="py-24 bg-[#F7FBFF]">
   <Container>
-    <div class="text-center">
-      <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
+    <div class="text-center max-w-2xl mx-auto">
+
+      <h2 class="text-3xl sm:text-4xl font-bold text-[#001F3F] mb-4">
         {finalTitle}
       </h2>
 
-      <p class="text-xl text-white/70 mb-12 max-w-2xl mx-auto">
+      <p class="text-lg text-gray-700 mb-10">
         {finalSubtitle}
       </p>
 
-      <div class="max-w-md mx-auto">
-        <EmailSignupForm 
-          client:load
-          placeholder={locale === 'nl' ? "Vul je e-mailadres in" : "Enter your email"}
-          buttonText={finalCTA}
-          variant="default"
-        />
-      </div>
+      <a 
+        href="/contact"
+        class="inline-flex items-center px-8 py-4 bg-[#001F3F] text-white rounded-lg font-semibold hover:bg-[#00306A] transition-colors"
+      >
+        {finalCTA}
+        <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+        </svg>
+      </a>
+
     </div>
   </Container>
 </section>
-
-<!-- Footer -->
-<footer class="py-12 bg-primary border-t border-white/10">
-  <Container>
-    <div class="text-center">
-
-      <!-- Logo -->
-      <div class="mb-8">
-        <span class="text-xl font-bold text-white tracking-wide">Young Dolphins</span>
-      </div>
-
-      <!-- Links -->
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8 mb-8">
-        <a href="#features" class="text-white/70 hover:text-white transition-colors">
-          {locale === 'nl' ? "Zwemlessen" : "Lessons"}
-        </a>
-        <a href="#pricing" class="text-white/70 hover:text-white transition-colors">
-          {locale === 'nl' ? "Tarieven" : "Pricing"}
-        </a>
-        <a href="#team" class="text-white/70 hover:text-white transition-colors">
-          {locale === 'nl' ? "Instructeurs" : "Instructors"}
-        </a>
-        <a href="#security" class="text-white/70 hover:text-white transition-colors">
-          {locale === 'nl' ? "Veiligheid" : "Safety"}
-        </a>
-        <a href="/contact" class="text-white/70 hover:text-white transition-colors">
-          {locale === 'nl' ? "Contact" : "Contact"}
-        </a>
-      </div>
-
-      <!-- Copyright -->
-      <p class="text-white/50 text-sm">
-        © {new Date().getFullYear()} Young Dolphins. All rights reserved.
-      </p>
-    </div>
-  </Container>
-</footer>
-
-<style>
-  details summary::-webkit-details-marker {
-    display: none;
-  }
-
-  details[open] div {
-    animation: fadeIn 0.2s ease-out;
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-</style>
