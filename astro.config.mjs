@@ -23,8 +23,9 @@ export default defineConfig({
   },
 
   output: 'server',
-  adapter: vercel(),
-
+ adapter: vercel({
+  nodeVersion: "20"
+}),
   build: { inlineStylesheets: 'auto' },
 
   prefetch: {
@@ -36,5 +37,6 @@ export default defineConfig({
 
   vite: {
     build: { cssMinify: true },
+    
   },
 });
