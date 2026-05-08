@@ -33,3 +33,171 @@ const progress = {
 const priv = {
   name: await t(locale, 'pricing.packages.private.name'),
   priceUnit: await t(locale, 'pricing.packages.private.price_unit'),
+  description: await t(locale, 'pricing.packages.private.description'),
+  features: await t(locale, 'pricing.packages.private.features')
+};
+
+// Comparison table
+const compareTitle = await t(locale, 'pricing.compare.title');
+const compareFeature = await t(locale, 'pricing.compare.feature');
+const compareRows = {
+  lessons: await t(locale, 'pricing.compare.rows.lessons'),
+  report: await t(locale, 'pricing.compare.rows.report'),
+  personal: await t(locale, 'pricing.compare.rows.personal'),
+  access: await t(locale, 'pricing.compare.rows.access')
+};
+---
+
+<section id="pricing" class="py-20 sm:py-24 bg-[#F7FBFF]">
+  <Container>
+
+    <!-- Section Header -->
+    <div class="text-center mb-12 sm:mb-16 px-4">
+      <h2 class="text-3xl sm:text-4xl font-bold text-[#001F3F] mb-4">
+        {title}
+      </h2>
+
+      <p class="text-gray-600 max-w-2xl mx-auto text-sm sm:text-base">
+        {subtitle}
+      </p>
+    </div>
+
+    <!-- Pricing Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10 max-w-6xl mx-auto mb-20 px-4">
+
+      <!-- Starter -->
+      <div class="text-center bg-white border border-[#E1EEF7] rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-all">
+        <h3 class="text-xl font-semibold text-[#001F3F] mb-2">{starter.name}</h3>
+
+        <div class="flex items-baseline justify-center mb-4">
+          <span class="text-4xl font-bold text-[#001F3F]">€15</span>
+          <span class="text-lg text-gray-500 ml-1">{starter.priceUnit}</span>
+        </div>
+
+        <p class="text-gray-600 text-sm mb-6">{starter.description}</p>
+
+        <ul class="space-y-2 mb-8 text-sm text-gray-700">
+          {starter.features.map(f => <li>{f}</li>)}
+        </ul>
+
+        <a href="#hero" class="cta-primary">{cta}</a>
+      </div>
+
+      <!-- Progress+ -->
+      <div class="text-center bg-white border-2 border-[#00AEEF] rounded-2xl p-6 sm:p-8 shadow-lg scale-[1.02] relative">
+        <div class="absolute -top-3 left-1/2 -translate-x-1/2">
+          <span class="px-3 py-1 text-xs bg-[#00AEEF] text-white rounded-full font-semibold">
+            {progress.badge}
+          </span>
+        </div>
+
+        <h3 class="text-xl font-semibold text-[#001F3F] mb-2">{progress.name}</h3>
+
+        <div class="flex items-baseline justify-center mb-4">
+          <span class="text-4xl font-bold text-[#001F3F]">€55</span>
+          <span class="text-lg text-gray-500 ml-1">{progress.priceUnit}</span>
+        </div>
+
+        <p class="text-gray-600 text-sm mb-6">{progress.description}</p>
+
+        <ul class="space-y-2 mb-8 text-sm text-gray-700">
+          {progress.features.map(f => <li>{f}</li>)}
+        </ul>
+
+        <a href="#hero" class="cta-primary">{cta}</a>
+      </div>
+
+      <!-- Private -->
+      <div class="text-center bg-white border border-[#E1EEF7] rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-all">
+        <h3 class="text-xl font-semibold text-[#001F3F] mb-2">{priv.name}</h3>
+
+        <div class="flex items-baseline justify-center mb-4">
+          <span class="text-4xl font-bold text-[#001F3F]">€35</span>
+          <span class="text-lg text-gray-500 ml-1">{priv.priceUnit}</span>
+        </div>
+
+        <p class="text-gray-600 text-sm mb-6">{priv.description}</p>
+
+        <ul class="space-y-2 mb-8 text-sm text-gray-700">
+          {priv.features.map(f => <li>{f}</li>)}
+        </ul>
+
+        <a href="#hero" class="cta-primary">{cta}</a>
+      </div>
+
+    </div>
+
+    <!-- Comparison Table -->
+    <div class="max-w-3xl mx-auto px-4">
+      <div class="text-center mb-8">
+        <h3 class="text-2xl font-semibold text-[#001F3F] mb-6">
+          {compareTitle}
+        </h3>
+      </div>
+
+      <div class="space-y-4 text-sm text-gray-700">
+
+        <div class="grid grid-cols-4 gap-4 py-3 border-b border-gray-200 font-semibold">
+          <div>{compareFeature}</div>
+          <div class="text-center">{starter.name}</div>
+          <div class="text-center">{progress.name}</div>
+          <div class="text-center">{priv.name}</div>
+        </div>
+
+        <div class="grid grid-cols-4 gap-4 py-3 border-b border-gray-200">
+          <div>{compareRows.lessons}</div>
+          <div class="text-center">1</div>
+          <div class="text-center">2</div>
+          <div class="text-center">1</div>
+        </div>
+
+        <div class="grid grid-cols-4 gap-4 py-3 border-b border-gray-200">
+          <div>{compareRows.report}</div>
+          <div class="text-center">-</div>
+          <div class="text-center">✓</div>
+          <div class="text-center">✓</div>
+        </div>
+
+        <div class="grid grid-cols-4 gap-4 py-3 border-b border-gray-200">
+          <div>{compareRows.personal}</div>
+          <div class="text-center">-</div>
+          <div class="text-center">✓</div>
+          <div class="text-center">✓✓</div>
+        </div>
+
+        <div class="grid grid-cols-4 gap-4 py-3">
+          <div>{compareRows.access}</div>
+          <div class="text-center">-</div>
+          <div class="text-center">✓</div>
+          <div class="text-center">✓</div>
+        </div>
+
+      </div>
+    </div>
+
+  </Container>
+</section>
+
+<style is:global>
+  .cta-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #001F3F;
+    color: #ffffff !important;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  }
+
+  .cta-primary:hover {
+    background-color: #003366;
+    transform: scale(1.03);
+  }
+
+  .cta-primary:active {
+    transform: scale(0.98);
+  }
+</style>
