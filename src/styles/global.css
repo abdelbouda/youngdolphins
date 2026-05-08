@@ -189,3 +189,43 @@ footer {
     font-size: 1.125rem;
   }
 }
+
+/* -----------------------------------------------------------
+   HEADER FIXES
+----------------------------------------------------------- */
+
+/* Zorg dat alle header-knoppen altijd witte tekst hebben */
+header a,
+header button,
+header div.inline-flex,
+header .language-switcher,
+header .language-switcher * {
+  color: #ffffff !important;
+}
+
+/* Hero padding zodat header niet overlapt */
+.hero-section {
+  padding-top: 6rem; /* pas aan indien nodig */
+}
+
+/* Extra visuele consistentie bij hover */
+header a:hover,
+header button:hover,
+header .language-switcher:hover {
+  background-color: #003366 !important;
+  color: #ffffff !important;
+  text-decoration: none;
+}
+
+/* Sticky header styling */
+#site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+  background-color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid #e5e7eb;
+  transition: all 0.3s ease;
+}
