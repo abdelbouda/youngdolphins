@@ -2,48 +2,56 @@
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
+import sitemap from '@astrojs/sitemap';
 
-// https://astro.build/config
+// ✅ Volledige Astro-config voor Young Dolphins
 export default defineConfig({
-  site: 'https://zeyn.app', // Required for proper URL generation
+  site: 'https://youngdolphins.vercel.app', // correcte site-URL voor SEO en canonical links
+
   integrations: [
     react(),
     tailwind({
-      applyBaseStyles: false, // We'll handle base styles manually for performance
+      applyBaseStyles: true, // laat Tailwind basisstijlen toepassen
     }),
+    sitemap(),
   ],
-  
-  // Internationalization configuration
+
+  // 🌍 Internationalization (i18n)
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en', 'pl'],
+    defaultLocale: 'nl',
+    locales: ['nl', 'en'],
     routing: {
-      prefixDefaultLocale: false // Clean URLs for English (default)
-    }
+      prefixDefaultLocale: false, // /nl blijft standaard zonder prefix
+    },
   },
-  
-  // Performance optimizations
+
+  // ⚡ Performance-optimalisaties
   build: {
-    inlineStylesheets: 'auto', // Inline critical CSS
+    inlineStylesheets: 'auto', // inline critical CSS
   },
-  
-  // Prefetch configuration for better navigation
+
+  // 🚀 Prefetch voor snellere navigatie
   prefetch: {
     prefetchAll: true,
-    defaultStrategy: 'viewport'
+    defaultStrategy: 'viewport',
   },
-  
-  // Image optimization
+
+  // 🖼️ Image-optimalisatie
   image: {
     domains: [],
     remotePatterns: [],
   },
-  
-  // No experimental features needed for this project
-  
-  // Output settings for SSR
-  output: 'static', // Generate static files for maximum performance
-  
-  // Compressor for optimal build size
+
+  // 🧱 Output-instellingen
+  output: 'static', // statische site voor Vercel
+
+  // 🧩 Compressie voor kleinere build
   compressHTML: true,
+
+  // ✅ Extra instellingen voor nette builds
+  vite: {
+    build: {
+      cssMinify: true,
+    },
+  },
 });
