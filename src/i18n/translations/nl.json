@@ -71,7 +71,57 @@
 
   "integrations": {
     "title": "Onze locaties",
-    "subtitle": "Moderne, warme zwembaden in Amsterdam"
+    "subtitle": "Moderne, warme zwembaden in Amsterdam",
+
+    "groups": [
+      {
+        "name": "Amsterdam West",
+        "items": [
+          "De Mirandabad",
+          "Sportfondsenbad",
+          "Sloterparkbad",
+          "Noorderparkbad",
+          "Het Marnix",
+          "Flevoparkbad"
+        ]
+      },
+      {
+        "name": "Amsterdam Oost",
+        "items": [
+          "Zeeburgbad",
+          "Oosterparkbad",
+          "Wibautbad",
+          "Watergraafsmeerbad"
+        ]
+      },
+      {
+        "name": "Speciale programma’s",
+        "items": [
+          "Baby & Peuter lessen",
+          "Privélessen",
+          "Versneld A/B/C traject"
+        ]
+      }
+    ],
+
+    "facilities": [
+      {
+        "title": "Warme zwembaden",
+        "description": "Alle zwembaden zijn verwarmd en kindvriendelijk, zodat kinderen comfortabel kunnen leren."
+      },
+      {
+        "title": "Gecertificeerde instructeurs",
+        "description": "Ons team is volledig gediplomeerd en ervaren in het lesgeven aan kinderen van alle leeftijden."
+      },
+      {
+        "title": "Veilige & moderne faciliteiten",
+        "description": "Wij werken alleen met zwembaden die voldoen aan de hoogste veiligheids- en hygiënestandaarden."
+      }
+    ],
+
+    "cta_title": "Klaar om te starten?",
+    "cta_subtitle": "Kies de locatie die bij jullie past en schrijf je kind vandaag nog in.",
+    "cta_button": "Inschrijven"
   },
 
   "security": {
