@@ -171,6 +171,30 @@
     "more_cta": "Contact support"
   },
 
+  "values": {
+    "title": "Our values",
+    "items": [
+      {
+        "title": "Safety First",
+        "description": "Safety always comes first. Our instructors are fully certified and trained in child‑friendly methods."
+      },
+      {
+        "title": "Fun & Confidence",
+        "description": "Children learn fastest when they enjoy themselves. We build confidence at every step."
+      },
+      {
+        "title": "Personal Attention",
+        "description": "Small groups and personal guidance ensure maximum progress."
+      }
+    ]
+  },
+
+  "join": {
+    "title": "Want to join us?",
+    "subtitle": "We’re always looking for passionate instructors who love helping children grow in the water.",
+    "cta": "View open positions"
+  },
+
   "final": {
     "title": "Ready to begin?",
     "subtitle": "Enroll your child today for swimming lessons",
