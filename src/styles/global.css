@@ -1,212 +1,137 @@
-/* Critical CSS for performance - will be inlined */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
+/* -----------------------------------------------------------
+   GLOBAL RESET & BASE
+----------------------------------------------------------- */
 
-/* Base reset and critical styles */
-*,
-*::before,
-*::after {
+* {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
 html {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+  font-family: 'Inter', sans-serif;
+  color-scheme: light;
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  line-height: 1.5;
-  overflow-x: hidden;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-/* Default light mode styles */
-html:not(.dark) body {
+  background-color: #ffffff;
   color: #111827;
-  background-color: #FFFFFF;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Dark mode styles - default */
-html.dark body,
-html:not(.light) body {
-  color: #FFFFFF;
-  background-color: #000000;
+/* -----------------------------------------------------------
+   TYPOGRAPHY
+----------------------------------------------------------- */
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  color: #001F3F; /* Young Dolphins marine blauw */
 }
 
-/* Handle system preference but prioritize explicit class */
-@media (prefers-color-scheme: dark) {
-  html:not(.light) body {
-    color: #FFFFFF;
-    background-color: #0A0A0A;
-  }
+p {
+  color: #374151;
+  margin-bottom: 1rem;
 }
 
-@media (prefers-color-scheme: light) {
-  html.light body {
-    color: #111827;
-    background-color: #FFFFFF;
-  }
+/* -----------------------------------------------------------
+   LINKS
+----------------------------------------------------------- */
+
+a {
+  color: #0077cc; /* Aqua-blauw */
+  text-decoration: none;
+  transition: color 0.2s ease;
 }
 
-/* Critical performance styles */
-img, 
-video {
+a:hover {
+  color: #005fa3;
+  text-decoration: underline;
+}
+
+/* -----------------------------------------------------------
+   IMAGES
+----------------------------------------------------------- */
+
+img {
   max-width: 100%;
   height: auto;
   display: block;
 }
 
-/* Improved focus accessibility */
-:focus-visible {
-  outline: 2px solid #4F81F4;
-  outline-offset: 2px;
+/* -----------------------------------------------------------
+   BUTTONS (fallback styling)
+----------------------------------------------------------- */
+
+button {
+  font-family: inherit;
+  cursor: pointer;
 }
 
-/* Reduced motion support */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
-/* Tailwind directives - loaded after critical CSS */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* -----------------------------------------------------------
+   FORMS
+----------------------------------------------------------- */
 
-/* Custom utility classes for performance */
+input, textarea, select {
+  font-family: inherit;
+  border-radius: 0.5rem;
+  border: 1px solid #d1d5db;
+  padding: 0.6rem 0.8rem;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: #0077cc;
+  box-shadow: 0 0 0 2px rgba(0, 119, 204, 0.2);
+}
+
+/* -----------------------------------------------------------
+   CONTAINERS
+----------------------------------------------------------- */
+
 .container-responsive {
   width: 100%;
   max-width: 1280px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
 }
 
-@media (min-width: 640px) {
-  .container-responsive {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
+/* -----------------------------------------------------------
+   UTILITIES
+----------------------------------------------------------- */
+
+.text-center {
+  text-align: center;
 }
 
-@media (min-width: 1024px) {
-  .container-responsive {
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
+.rounded {
+  border-radius: 0.5rem;
 }
 
-/* Button base styles for consistency */
-.btn-base {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 8px;
-  font-weight: 500;
-  font-size: 1rem;
-  line-height: 1.5;
-  text-decoration: none;
-  border: none;
-  cursor: pointer;
-  transition: all 150ms ease-out;
+.shadow-soft {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+/* -----------------------------------------------------------
+   ACCESSIBILITY
+----------------------------------------------------------- */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
   white-space: nowrap;
-}
-
-.btn-primary {
-  background-color: #4F81F4;
-  color: white;
-  padding: 0.75rem 2rem;
-}
-
-.btn-primary:hover {
-  background-color: #3B6FE8;
-  transform: translateY(-1px);
-}
-
-.btn-primary:active {
-  transform: translateY(0);
-}
-
-/* Card component styles */
-.card {
-  background: #FFFFFF;
-  border: 1px solid #E5E7EB;
-  border-radius: 12px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-}
-
-.dark .card {
-  background: #161616;
-  border-color: #262626;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-}
-
-/* Screenshot container for consistent styling */
-.screenshot-container {
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
-  background: #FFFFFF;
-}
-
-.dark .screenshot-container {
-  background: #161616;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-}
-
-/* Text selection styling */
-::selection {
-  background-color: #E3EBFE;
-  color: #111827;
-}
-
-.dark ::selection {
-  background-color: #4F81F4;
-  color: #FFFFFF;
-}
-
-/* Smooth scroll for better UX */
-html {
-  scroll-behavior: smooth;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-}
-
-/* Loading states to prevent layout shift */
-.loading-skeleton {
-  background: linear-gradient(90deg, #f0f0f0 25%, transparent 37%, #f0f0f0 63%);
-  background-size: 400% 100%;
-  animation: loading 1.4s ease infinite;
-}
-
-.dark .loading-skeleton {
-  background: linear-gradient(90deg, #262626 25%, transparent 37%, #262626 63%);
-  background-size: 400% 100%;
-}
-
-@keyframes loading {
-  0% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* Minimal animations for subtle polish */
-@keyframes fade-in {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  border: 0;
 }
