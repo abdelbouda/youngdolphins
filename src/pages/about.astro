@@ -1,308 +1,138 @@
 ---
-const locale = Astro.props.locale ?? 'en';
+const locale = Astro.props.locale ?? 'nl';
 import { tSync } from '../i18n/utils';
----
 
 import Header from '../components/ui/Header.astro';
 import Container from '../components/ui/Container.astro';
 import TeamSection from '../components/sections/TeamSection.astro';
 import FinalSections from '../components/sections/FinalSections.astro';
-
-// Get the locale - defaults to English for root pages
-const locale = 'en';
 ---
 
-<Layout 
-	title="About Zeyn - Our Story | Writing App for Novelists"
-	description="Learn about Zeyn's mission to help novelists focus on their craft. Meet the team of writers and creators building the future of writing software."
-	locale={locale}
->
-	<Header locale={locale} />
-	
-	<!-- Hero Section -->
-	<section class="py-16 bg-gray-50 dark:bg-gray-900">
-		<Container>
-			<div class="max-w-4xl mx-auto text-center">
-				<h1 class="text-4xl sm:text-5xl lg:text-6xl font-medium text-gray-900 dark:text-white mb-6">
-					Built by writers, for writers
-				</h1>
-				<p class="text-xl text-gray-600 dark:text-gray-400 leading-relaxed max-w-3xl mx-auto">
-					Zeyn was born from frustration with existing writing tools. We believe every novelist deserves 
-					software that understands their creative process and gets out of the way.
-				</p>
-			</div>
-		</Container>
-	</section>
+<!-- HEADER -->
+<Header locale={locale} />
 
-	<!-- Our Story Section -->
-	<section class="py-16 bg-white dark:bg-black">
-		<Container>
-			<div class="max-w-4xl mx-auto">
-				<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-16">
-					<div>
-						<h2 class="text-3xl font-semibold text-gray-900 dark:text-white mb-6">
-							The problem we solve
-						</h2>
-						<div class="space-y-4 text-gray-600 dark:text-gray-400 leading-relaxed">
-							<p>
-								In 2019, our founder Alex was struggling to finish his third novel. Despite having the story mapped out, 
-								he found himself constantly distracted by Word's formatting menus, Google Docs' slow performance, and 
-								Scrivener's overwhelming feature set.
-							</p>
-							<p>
-								After talking to dozens of other novelists, Alex discovered this wasn't a unique problem. Writers 
-								everywhere were fighting their tools instead of focusing on their stories. Most writing software 
-								was built for business documents, academic papers, or screenplays—not novels.
-							</p>
-							<p>
-								That's when the idea for Zeyn was born: a writing app designed specifically for novelists, 
-								with just the features you need and none of the distractions you don't.
-							</p>
-						</div>
-					</div>
-					
-					<div class="bg-gray-50 dark:bg-gray-900 rounded-lg p-8">
-						<h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-							Timeline
-						</h3>
-						<div class="space-y-4">
-							<div class="flex items-start space-x-3">
-								<div class="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
-								<div>
-									<div class="font-medium text-gray-900 dark:text-white">2019</div>
-									<div class="text-sm text-gray-600 dark:text-gray-400">Initial concept and research</div>
-								</div>
-							</div>
-							<div class="flex items-start space-x-3">
-								<div class="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
-								<div>
-									<div class="font-medium text-gray-900 dark:text-white">2020</div>
-									<div class="text-sm text-gray-600 dark:text-gray-400">First prototype and user testing</div>
-								</div>
-							</div>
-							<div class="flex items-start space-x-3">
-								<div class="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
-								<div>
-									<div class="font-medium text-gray-900 dark:text-white">2021</div>
-									<div class="text-sm text-gray-600 dark:text-gray-400">Private beta with 100 writers</div>
-								</div>
-							</div>
-							<div class="flex items-start space-x-3">
-								<div class="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
-								<div>
-									<div class="font-medium text-gray-900 dark:text-white">2022</div>
-									<div class="text-sm text-gray-600 dark:text-gray-400">Public launch</div>
-								</div>
-							</div>
-							<div class="flex items-start space-x-3">
-								<div class="w-2 h-2 bg-green-500 rounded-full mt-2"></div>
-								<div>
-									<div class="font-medium text-gray-900 dark:text-white">2024</div>
-									<div class="text-sm text-gray-600 dark:text-gray-400">25,000+ active writers</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</Container>
-	</section>
+<!-- HERO -->
+<section class="py-16 bg-blue-50 dark:bg-blue-900/20">
+  <Container>
+    <div class="max-w-4xl mx-auto text-center">
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#001F3F] dark:text-white mb-6">
+        {tSync(locale, 'about.title') ?? 'Over Young Dolphins'}
+      </h1>
+      <p class="text-xl text-gray-700 dark:text-gray-300 leading-relaxed max-w-3xl mx-auto">
+        {tSync(locale, 'about.subtitle') ?? 
+        'Young Dolphins is een zwemschool in Amsterdam waar kinderen veilig, met plezier en in hun eigen tempo leren zwemmen.'}
+      </p>
+    </div>
+  </Container>
+</section>
 
-	<!-- Mission & Values Section -->
-	<section class="py-16 bg-gray-50 dark:bg-gray-900">
-		<Container>
-			<div class="max-w-4xl mx-auto">
-				<div class="text-center mb-12">
-					<h2 class="text-3xl font-semibold text-gray-900 dark:text-white mb-6">
-						Our mission
-					</h2>
-					<p class="text-xl text-gray-600 dark:text-gray-400 leading-relaxed">
-						To help every novelist finish their book by providing distraction-free writing tools 
-						that understand the creative process.
-					</p>
-				</div>
+<!-- OUR STORY -->
+<section class="py-16 bg-white dark:bg-black">
+  <Container>
+    <div class="max-w-4xl mx-auto space-y-6 text-gray-700 dark:text-gray-300 leading-relaxed">
+      <h2 class="text-3xl font-semibold text-[#001F3F] dark:text-white mb-4">
+        {tSync(locale, 'about.ourStoryTitle') ?? 'Onze missie'}
+      </h2>
 
-				<!-- Values Grid -->
-				<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-					
-					<!-- Value 1 -->
-					<div class="bg-white dark:bg-gray-800 p-8 rounded-lg border border-gray-200 dark:border-gray-700">
-						<div class="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center mb-6">
-							<svg class="w-8 h-8 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
-							</svg>
-						</div>
-						<h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-							Focus First
-						</h3>
-						<p class="text-gray-600 dark:text-gray-400">
-							Every feature is designed to help you focus on your story. If it doesn't serve 
-							the creative process, it doesn't belong in Zeyn.
-						</p>
-					</div>
+      <p>
+        Young Dolphins is ontstaan vanuit één duidelijke overtuiging: elk kind verdient zwemles in een 
+        veilige, positieve en persoonlijke omgeving. Geen grote groepen, geen stress, geen druk — maar 
+        aandacht, vertrouwen en plezier.
+      </p>
 
-					<!-- Value 2 -->
-					<div class="bg-white dark:bg-gray-800 p-8 rounded-lg border border-gray-200 dark:border-gray-700">
-						<div class="w-16 h-16 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center mb-6">
-							<svg class="w-8 h-8 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-							</svg>
-						</div>
-						<h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-							Writers First
-						</h3>
-						<p class="text-gray-600 dark:text-gray-400">
-							We're writers building for writers. Every decision is made with the creative 
-							process in mind, not business metrics.
-						</p>
-					</div>
+      <p>
+        Onze instructeurs hebben jarenlange ervaring in het begeleiden van kinderen van alle leeftijden. 
+        We werken met kleine groepen zodat ieder kind écht gezien wordt en op zijn eigen tempo kan groeien.
+      </p>
 
-					<!-- Value 3 -->
-					<div class="bg-white dark:bg-gray-800 p-8 rounded-lg border border-gray-200 dark:border-gray-700">
-						<div class="w-16 h-16 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center mb-6">
-							<svg class="w-8 h-8 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-							</svg>
-						</div>
-						<h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-							Speed & Simplicity
-						</h3>
-						<p class="text-gray-600 dark:text-gray-400">
-							Fast enough to keep up with your thoughts, simple enough to disappear when 
-							you're in the flow.
-						</p>
-					</div>
+      <p>
+        Waterveiligheid staat bij ons centraal. Daarom leren we kinderen niet alleen de technieken voor 
+        hun A-, B- en C‑diploma, maar ook hoe ze zich veilig en zelfverzekerd voelen in het water.
+      </p>
+    </div>
+  </Container>
+</section>
 
-				</div>
-			</div>
-		</Container>
-	</section>
+<!-- VALUES -->
+<section class="py-16 bg-blue-50 dark:bg-blue-900/20">
+  <Container>
+    <div class="max-w-4xl mx-auto text-center mb-12">
+      <h2 class="text-3xl font-semibold text-[#001F3F] dark:text-white mb-6">
+        {tSync(locale, 'about.valuesTitle') ?? 'Waar wij voor staan'}
+      </h2>
+    </div>
 
-	<!-- Team Section -->
-	<TeamSection locale={locale} />
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      
+      <!-- Value 1 -->
+      <div class="bg-white dark:bg-gray-800 p-8 rounded-lg border border-gray-200 dark:border-gray-700">
+        <h3 class="text-xl font-semibold text-[#001F3F] dark:text-white mb-4">
+          Persoonlijke aandacht
+        </h3>
+        <p class="text-gray-600 dark:text-gray-300">
+          Kleine groepen zorgen voor rust, veiligheid en sneller leren.
+        </p>
+      </div>
 
-	<!-- Statistics Section -->
-	<section class="py-16 bg-white dark:bg-black">
-		<Container>
-			<div class="max-w-4xl mx-auto text-center">
-				<h2 class="text-3xl font-semibold text-gray-900 dark:text-white mb-12">
-					Our impact in numbers
-				</h2>
-				
-				<div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-					<div>
-						<div class="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">25,000+</div>
-						<div class="text-gray-600 dark:text-gray-400">Active Writers</div>
-					</div>
-					<div>
-						<div class="text-3xl font-bold text-green-600 dark:text-green-400 mb-2">1,250+</div>
-						<div class="text-gray-600 dark:text-gray-400">Novels Completed</div>
-					</div>
-					<div>
-						<div class="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-2">15.2M</div>
-						<div class="text-gray-600 dark:text-gray-400">Words Written</div>
-					</div>
-					<div>
-						<div class="text-3xl font-bold text-yellow-600 dark:text-yellow-400 mb-2">89</div>
-						<div class="text-gray-600 dark:text-gray-400">Countries</div>
-					</div>
-				</div>
-			</div>
-		</Container>
-	</section>
+      <!-- Value 2 -->
+      <div class="bg-white dark:bg-gray-800 p-8 rounded-lg border border-gray-200 dark:border-gray-700">
+        <h3 class="text-xl font-semibold text-[#001F3F] dark:text-white mb-4">
+          Plezier staat centraal
+        </h3>
+        <p class="text-gray-600 dark:text-gray-300">
+          Kinderen leren het beste wanneer ze zich op hun gemak voelen en plezier hebben.
+        </p>
+      </div>
 
-	<!-- What's Next Section -->
-	<section class="py-16 bg-gray-50 dark:bg-gray-900">
-		<Container>
-			<div class="max-w-4xl mx-auto">
-				<div class="text-center mb-12">
-					<h2 class="text-3xl font-semibold text-gray-900 dark:text-white mb-6">
-						What's next
-					</h2>
-				</div>
+      <!-- Value 3 -->
+      <div class="bg-white dark:bg-gray-800 p-8 rounded-lg border border-gray-200 dark:border-gray-700">
+        <h3 class="text-xl font-semibold text-[#001F3F] dark:text-white mb-4">
+          Waterveiligheid eerst
+        </h3>
+        <p class="text-gray-600 dark:text-gray-300">
+          Onze lessen zijn gericht op echte veiligheid, niet alleen op diploma’s.
+        </p>
+      </div>
 
-				<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-					<div class="bg-white dark:bg-gray-800 p-8 rounded-lg border border-gray-200 dark:border-gray-700">
-						<h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-							Mobile Apps
-						</h3>
-						<p class="text-gray-600 dark:text-gray-400 mb-4">
-							Native iOS and Android apps that sync seamlessly with your desktop work. 
-							Write anywhere, anytime.
-						</p>
-						<div class="text-sm text-blue-600 dark:text-blue-400 font-medium">
-							Coming Q2 2024
-						</div>
-					</div>
+    </div>
+  </Container>
+</section>
 
-					<div class="bg-white dark:bg-gray-800 p-8 rounded-lg border border-gray-200 dark:border-gray-700">
-						<h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-							AI Writing Assistant
-						</h3>
-						<p class="text-gray-600 dark:text-gray-400 mb-4">
-							Optional AI features that help with plot development, character consistency, 
-							and world-building—without interfering with your voice.
-						</p>
-						<div class="text-sm text-blue-600 dark:text-blue-400 font-medium">
-							Beta Q3 2024
-						</div>
-					</div>
+<!-- TEAM -->
+<TeamSection locale={locale} />
 
-					<div class="bg-white dark:bg-gray-800 p-8 rounded-lg border border-gray-200 dark:border-gray-700">
-						<h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-							Publishing Integration
-						</h3>
-						<p class="text-gray-600 dark:text-gray-400 mb-4">
-							Direct integration with Amazon KDP, IngramSpark, and other publishing 
-							platforms. From final draft to published book in minutes.
-						</p>
-						<div class="text-sm text-blue-600 dark:text-blue-400 font-medium">
-							Coming Q4 2024
-						</div>
-					</div>
+<!-- WHY CHOOSE US -->
+<section class="py-16 bg-white dark:bg-black">
+  <Container>
+    <div class="max-w-4xl mx-auto text-center mb-12">
+      <h2 class="text-3xl font-semibold text-[#001F3F] dark:text-white mb-6">
+        Waarom ouders voor Young Dolphins kiezen
+      </h2>
+    </div>
 
-					<div class="bg-white dark:bg-gray-800 p-8 rounded-lg border border-gray-200 dark:border-gray-700">
-						<h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-							Writing Communities
-						</h3>
-						<p class="text-gray-600 dark:text-gray-400 mb-4">
-							Connect with other writers, join writing challenges, and get feedback 
-							from beta readers—all within Zeyn.
-						</p>
-						<div class="text-sm text-blue-600 dark:text-blue-400 font-medium">
-							Planning 2025
-						</div>
-					</div>
-				</div>
-			</div>
-		</Container>
-	</section>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="p-6 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+        <h3 class="text-xl font-semibold text-[#001F3F] dark:text-white mb-3">Kleine groepen</h3>
+        <p class="text-gray-700 dark:text-gray-300">Meer aandacht, minder druk, sneller leren.</p>
+      </div>
 
-	<!-- Join Us Section -->
-	<section class="py-16 bg-blue-600 dark:bg-blue-800">
-		<Container>
-			<div class="max-w-3xl mx-auto text-center text-white">
-				<h2 class="text-3xl font-semibold mb-6">
-					Join our story
-				</h2>
-				<p class="text-xl mb-8 text-blue-100">
-					We're always looking for passionate writers, designers, and developers who want to 
-					help build the future of writing software.
-				</p>
-				<div class="flex flex-col sm:flex-row gap-4 justify-center">
-					<a href="/careers" class="inline-flex items-center px-8 py-3 bg-white text-blue-600 hover:bg-blue-50 transition-colors font-medium rounded-lg">
-						View careers
-						<svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-						</svg>
-					</a>
-					<a href="/contact" class="inline-flex items-center px-8 py-3 border border-white text-white hover:bg-white hover:text-blue-600 transition-colors font-medium rounded-lg">
-						Get in touch
-					</a>
-				</div>
-			</div>
-		</Container>
-	</section>
+      <div class="p-6 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+        <h3 class="text-xl font-semibold text-[#001F3F] dark:text-white mb-3">Gediplomeerde instructeurs</h3>
+        <p class="text-gray-700 dark:text-gray-300">Professioneel, ervaren en kindgericht.</p>
+      </div>
 
-	<FinalSections locale={locale} />
-</Layout>
+      <div class="p-6 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+        <h3 class="text-xl font-semibold text-[#001F3F] dark:text-white mb-3">Veilige zwembaden</h3>
+        <p class="text-gray-700 dark:text-gray-300">Rustige, warme locaties waar kinderen zich prettig voelen.</p>
+      </div>
+
+      <div class="p-6 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+        <h3 class="text-xl font-semibold text-[#001F3F] dark:text-white mb-3">Transparante voortgang</h3>
+        <p class="text-gray-700 dark:text-gray-300">Ouders blijven altijd op de hoogte van de ontwikkeling.</p>
+      </div>
+    </div>
+  </Container>
+</section>
+
+<!-- FINAL CTA -->
+<FinalSections locale={locale} />
