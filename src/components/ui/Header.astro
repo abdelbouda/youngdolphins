@@ -59,7 +59,7 @@ const navItems = [
       </button>
     </div>
 
-    <!-- DESKTOP NAVIGATION -->
+    <!-- DESKTOP NAVIGATION (ongewijzigd) -->
     <div class="hidden md:flex items-center gap-3 text-sm font-medium">
 
       {navItems.map(item => (
@@ -71,8 +71,12 @@ const navItems = [
         </a>
       ))}
 
-      <LanguageSwitcher />
+      <!-- Language Switcher -->
+      <div class="relative">
+        <LanguageSwitcher />
+      </div>
 
+      <!-- WhatsApp -->
       <a 
         href="https://wa.me/31628421354" 
         class="px-4 py-2 bg-[#001F3F] text-white rounded-md hover:bg-[#003366] transition-all shadow-sm"
@@ -80,6 +84,7 @@ const navItems = [
         Direct aanmelden
       </a>
 
+      <!-- Email -->
       <a 
         href="mailto:info@youngdolphins.nl" 
         class="px-4 py-2 bg-[#001F3F] text-white rounded-md hover:bg-[#003366] transition-all shadow-sm"
@@ -101,7 +106,6 @@ const navItems = [
     class="fixed top-0 right-0 h-full w-64 bg-white shadow-xl border-l border-gray-200 transform translate-x-full transition-transform duration-300 ease-in-out md:hidden z-50"
   >
     <div class="flex flex-col px-6 py-8 gap-4 text-sm font-medium">
-
       {navItems.map(item => (
         <a 
           href={item.href} 
@@ -110,7 +114,6 @@ const navItems = [
           {item.label ? item.label : tSync(locale, item.key)}
         </a>
       ))}
-
     </div>
   </div>
 
@@ -125,35 +128,43 @@ const navItems = [
 
     function openMenu() {
       isOpen = true;
-      menu.classList.remove('translate-x-full');
-      menu.classList.add('translate-x-0');
-      overlay.classList.remove('opacity-0', 'pointer-events-none');
-      overlay.classList.add('opacity-100');
+      if (menu && overlay) {
+        menu.classList.remove('translate-x-full');
+        menu.classList.add('translate-x-0');
+        overlay.classList.remove('opacity-0', 'pointer-events-none');
+        overlay.classList.add('opacity-100');
+      }
     }
 
     function closeMenu() {
       isOpen = false;
-      menu.classList.remove('translate-x-0');
-      menu.classList.add('translate-x-full');
-      overlay.classList.add('opacity-0', 'pointer-events-none');
-      overlay.classList.remove('opacity-100');
+      if (menu && overlay) {
+        menu.classList.remove('translate-x-0');
+        menu.classList.add('translate-x-full');
+        overlay.classList.add('opacity-0', 'pointer-events-none');
+        overlay.classList.remove('opacity-100');
+      }
     }
 
-    toggle.addEventListener('click', () => {
-      isOpen ? closeMenu() : openMenu();
-    });
+    if (toggle && menu && overlay) {
+      toggle.addEventListener('click', () => {
+        isOpen ? closeMenu() : openMenu();
+      });
 
-    overlay.addEventListener('click', closeMenu);
+      overlay.addEventListener('click', closeMenu);
+    }
 
     // Sticky shrink effect
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 20) {
-        header.classList.add('py-1', 'bg-white/95');
-        logo.classList.add('scale-90');
-      } else {
-        header.classList.remove('py-1', 'bg-white/95');
-        logo.classList.remove('scale-90');
-      }
-    });
+    if (header && logo) {
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 20) {
+          header.classList.add('py-1', 'bg-white/95');
+          logo.classList.add('scale-90');
+        } else {
+          header.classList.remove('py-1', 'bg-white/95');
+          logo.classList.remove('scale-90');
+        }
+      });
+    }
   </script>
 </header>
