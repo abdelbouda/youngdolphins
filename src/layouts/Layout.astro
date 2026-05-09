@@ -129,12 +129,22 @@ const pageDescription = locale === 'en' ? descriptionEn : description;
       <slot />
     </main>
 
-    <footer class="mt-20 py-10 text-center text-sm text-gray-500 border-t border-gray-100">
-      <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <span>© {new Date().getFullYear()} Young Dolphins – Zwemschool Amsterdam</span>
-        <div class="flex gap-4">
-          <a href={`/${locale}/privacy`} class="hover:text-gray-700 transition-colors">Privacy</a>
-          <a href={`/${locale}/terms`} class="hover:text-gray-700 transition-colors">{locale === 'en' ? 'Terms' : 'Voorwaarden'}</a>
+    <footer class="mt-20 pt-12 pb-8 text-sm text-gray-500 border-t border-gray-100 bg-white">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="flex flex-col items-center gap-4 mb-8">
+          <img src="/yd-logo.png" alt="Young Dolphins logo" style="height: 90px; width: auto; object-fit: contain;" />
+          <p class="text-base font-semibold text-[#001F3F]">Young Dolphins – Zwemschool Amsterdam</p>
+          <div class="flex flex-wrap justify-center gap-4 text-sm text-gray-500">
+            <a href="https://wa.me/31628421354" class="hover:text-[#001F3F] transition-colors">📞 06-28421354</a>
+            <a href="mailto:info@youngdolphins.nl" class="hover:text-[#001F3F] transition-colors">✉️ info@youngdolphins.nl</a>
+          </div>
+        </div>
+        <div class="border-t border-gray-100 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+          <span>© {new Date().getFullYear()} Young Dolphins – Zwemschool Amsterdam</span>
+          <div class="flex gap-4">
+            <a href={`/${locale}/privacy`} class="hover:text-gray-700 transition-colors">Privacy</a>
+            <a href={`/${locale}/terms`} class="hover:text-gray-700 transition-colors">{locale === 'en' ? 'Terms' : 'Voorwaarden'}</a>
+          </div>
         </div>
       </div>
     </footer>
