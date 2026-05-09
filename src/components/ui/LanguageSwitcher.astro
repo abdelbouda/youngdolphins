@@ -1,6 +1,5 @@
 ---
 const locale = Astro.currentLocale ?? 'nl';
-
 const languages = [
   {
     code: "nl",
@@ -13,7 +12,6 @@ const languages = [
     svg: `<svg viewBox="0 0 60 30" class="flag-icon" xmlns="http://www.w3.org/2000/svg"><clipPath id="uk"><path d="M0 0v30h60V0z"/></clipPath><path fill="#012169" d="M0 0v30h60V0z"/><path stroke="#FFF" stroke-width="6" d="M0 0l60 30m0-30L0 30" clip-path="url(#uk)"/><path stroke="#C8102E" stroke-width="4" d="M0 0l60 30m0-30L0 30" clip-path="url(#uk)"/><path stroke="#FFF" stroke-width="10" d="M30 0v30M0 15h60"/><path stroke="#C8102E" stroke-width="6" d="M30 0v30M0 15h60"/></svg>`
   }
 ];
-
 const current = languages.find(l => l.code === locale) ?? languages[0];
 const others = languages.filter(l => l.code !== current.code);
 ---
@@ -21,23 +19,30 @@ const others = languages.filter(l => l.code !== current.code);
 <div class="lang-switcher" data-lang-switcher>
   <button
     type="button"
-    class="lang-toggle inline-flex items-center gap-2 px-3 py-2 bg-[#001F3F] text-white rounded-md text-sm font-semibold"
+    class="lang-toggle"
     aria-haspopup="true"
     aria-expanded="false"
+    style="display:flex;align-items:center;justify-content:center;gap:0.4rem;background-color:#001F3F;color:#ffffff;border:0;cursor:pointer;padding:0.5rem 0.75rem;border-radius:0.375rem;min-height:44px;"
   >
     <span class="flag" aria-hidden="true" set:html={current.svg}></span>
-    <span class="sr-only">Taal</span>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:0.75rem;height:0.75rem;opacity:0.8;">
+      <path d="M6 9l6 6 6-6"/>
+    </svg>
+    <span class="sr-only">Taal wisselen</span>
   </button>
 
-  <ul class="lang-menu hidden" role="menu" aria-label="Taalkeuze">
+  <ul class="lang-menu" role="menu" aria-label="Taalkeuze" style="display:none;position:absolute;right:0;margin-top:0.5rem;background:white;border-radius:0.5rem;box-shadow:0 6px 18px rgba(0,0,0,0.12);padding:0.25rem;list-style:none;z-index:60;min-width:150px;">
     {others.map(lang => (
       <li role="none">
-        <a role="menuitem"
-           href={`/${lang.code}`}
-           class="lang-option flex items-center gap-3 px-4 py-2 text-sm text-[#001F3F] hover:bg-[#E6F4FF] rounded-md"
+        
+          role="menuitem"
+          href={`/${lang.code}`}
+          style="display:flex;align-items:center;gap:0.6rem;padding:0.5rem 0.75rem;text-decoration:none;color:#001F3F;border-radius:0.375rem;font-size:0.875rem;font-weight:500;"
+          onmouseover="this.style.backgroundColor='#E6F4FF'"
+          onmouseout="this.style.backgroundColor='transparent'"
         >
           <span class="flag" aria-hidden="true" set:html={lang.svg}></span>
-          <span class="label">{lang.label}</span>
+          <span>{lang.label}</span>
         </a>
       </li>
     ))}
@@ -45,56 +50,68 @@ const others = languages.filter(l => l.code !== current.code);
 </div>
 
 <style is:global>
-.lang-switcher { position: relative; display: inline-block; }
-.lang-toggle { display:flex; align-items:center; justify-content:center; gap:0.5rem; border:0; cursor:pointer; }
-.flag-icon { width: 20px; height: 14px; border-radius: 2px; display:block; }
-.lang-menu { position: absolute; right: 0; margin-top: 0.5rem; background: white; border-radius: 0.5rem; box-shadow: 0 6px 18px rgba(0,0,0,0.12); padding: 0.25rem 0; list-style: none; z-index: 60; min-width: 160px; }
-.lang-option { display:flex; align-items:center; gap:0.6rem; padding: 0.4rem 0.75rem; text-decoration:none; color: #001F3F; }
-.lang-option .flag-icon { width: 22px; height: 14px; }
-.hidden { display: none !important; }
-.sr-only { position: absolute !important; width: 1px !important; height: 1px !important; padding: 0 !important; margin: -1px !important; overflow: hidden !important; clip: rect(0,0,0,0) !important; white-space: nowrap !important; border: 0 !important; }
+  .flag-icon {
+    width: 22px;
+    height: 15px;
+    border-radius: 2px;
+    display: block;
+    flex-shrink: 0;
+  }
+  .sr-only {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0,0,0,0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+  }
 </style>
 
 <script type="module">
-  // Initialize all language switchers on the page
-  (function initLangSwitchers() {
+  function initLangSwitchers() {
     const roots = document.querySelectorAll('[data-lang-switcher]');
     roots.forEach(root => {
+      // Voorkom dubbele event listeners
+      if (root.dataset.initialized) return;
+      root.dataset.initialized = 'true';
+
       const toggle = root.querySelector('.lang-toggle');
       const menu = root.querySelector('.lang-menu');
-
       if (!toggle || !menu) return;
 
-      // Toggle menu
+      function open() {
+        menu.style.display = 'block';
+        toggle.setAttribute('aria-expanded', 'true');
+      }
+
+      function close() {
+        menu.style.display = 'none';
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+
       toggle.addEventListener('click', (e) => {
         e.stopPropagation();
-        const isHidden = menu.classList.contains('hidden');
-        if (isHidden) {
-          open();
-        } else {
-          close();
-        }
+        menu.style.display === 'none' ? open() : close();
       });
 
-      // Close on outside click
       document.addEventListener('click', (e) => {
         if (!root.contains(e.target)) close();
       });
 
-      // Close on Escape
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') close();
       });
-
-      // Accessibility helpers
-      function open() {
-        menu.classList.remove('hidden');
-        toggle.setAttribute('aria-expanded', 'true');
-      }
-      function close() {
-        menu.classList.add('hidden');
-        toggle.setAttribute('aria-expanded', 'false');
-      }
     });
-  })();
+  }
+
+  // Meerdere triggers voor zekerheid
+  if (document.readyState !== 'loading') {
+    initLangSwitchers();
+  } else {
+    document.addEventListener('DOMContentLoaded', initLangSwitchers);
+  }
+  document.addEventListener('astro:page-load', initLangSwitchers);
 </script>
