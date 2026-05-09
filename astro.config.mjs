@@ -24,7 +24,8 @@ export default defineConfig({
 
   output: 'server',
  adapter: vercel({
-  nodeVersion: "20"
+  nodeVersion: "20",
+  webAnalytics: { enabled: true }
 }),
   build: { inlineStylesheets: 'auto' },
 
