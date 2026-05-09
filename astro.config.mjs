@@ -6,7 +6,7 @@ import sitemap from '@astrojs/sitemap';
 import vercel from '@astrojs/vercel/serverless';
 
 export default defineConfig({
-  site: 'https://youngdolphins.vercel.app',
+  site: 'https://youngdolphins.nl',
 
   integrations: [
     react(),
