@@ -1,7 +1,6 @@
 ---
 import { preloadTranslations, tSync } from '../../i18n/utils';
 import LanguageSwitcher from './LanguageSwitcher.astro';
-import logo from '../../assets/logo.webp';
 
 const locale = Astro.currentLocale ?? 'nl';
 await preloadTranslations(locale);
