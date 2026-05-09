@@ -1,22 +1,16 @@
 ---
 const locale = Astro.currentLocale ?? 'nl';
-const languages = [
-  {
-    code: "nl",
-    label: "Nederlands",
-    svg: `<svg viewBox="0 0 60 30" class="flag-icon" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="30" fill="#AE1C28"/><rect width="60" height="20" y="10" fill="#FFF"/><rect width="60" height="10" y="20" fill="#21468B"/></svg>`
-  },
-  {
-    code: "en",
-    label: "English",
-    svg: `<svg viewBox="0 0 60 30" class="flag-icon" xmlns="http://www.w3.org/2000/svg"><clipPath id="uk"><path d="M0 0v30h60V0z"/></clipPath><path fill="#012169" d="M0 0v30h60V0z"/><path stroke="#FFF" stroke-width="6" d="M0 0l60 30m0-30L0 30" clip-path="url(#uk)"/><path stroke="#C8102E" stroke-width="4" d="M0 0l60 30m0-30L0 30" clip-path="url(#uk)"/><path stroke="#FFF" stroke-width="10" d="M30 0v30M0 15h60"/><path stroke="#C8102E" stroke-width="6" d="M30 0v30M0 15h60"/></svg>`
-  }
-];
-const current = languages.find(l => l.code === locale) ?? languages[0];
-const others = languages.filter(l => l.code !== current.code);
+const targetLocale = locale === 'nl' ? 'en' : 'nl';
+const targetLabel = locale === 'nl' ? 'English' : 'Nederlands';
+
+const nlFlag = `<svg viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg" style="width:22px;height:15px;border-radius:2px;display:block;flex-shrink:0;"><rect width="60" height="30" fill="#AE1C28"/><rect width="60" height="20" y="10" fill="#FFF"/><rect width="60" height="10" y="20" fill="#21468B"/></svg>`;
+const enFlag = `<svg viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg" style="width:22px;height:15px;border-radius:2px;display:block;flex-shrink:0;"><clipPath id="uk2"><path d="M0 0v30h60V0z"/></clipPath><path fill="#012169" d="M0 0v30h60V0z"/><path stroke="#FFF" stroke-width="6" d="M0 0l60 30m0-30L0 30" clip-path="url(#uk2)"/><path stroke="#C8102E" stroke-width="4" d="M0 0l60 30m0-30L0 30" clip-path="url(#uk2)"/><path stroke="#FFF" stroke-width="10" d="M30 0v30M0 15h60"/><path stroke="#C8102E" stroke-width="6" d="M30 0v30M0 15h60"/></svg>`;
+
+const currentFlag = locale === 'nl' ? nlFlag : enFlag;
+const targetFlag = locale === 'nl' ? enFlag : nlFlag;
 ---
 
-<div class="lang-switcher" data-lang-switcher>
+<div class="lang-switcher" data-lang-switcher style="position:relative;">
   <button
     type="button"
     class="lang-toggle"
@@ -24,69 +18,26 @@ const others = languages.filter(l => l.code !== current.code);
     aria-expanded="false"
     style="display:flex;align-items:center;justify-content:center;gap:0.4rem;background-color:#001F3F;color:#ffffff;border:0;cursor:pointer;padding:0.5rem 0.75rem;border-radius:0.375rem;min-height:44px;"
   >
-    <span class="flag" aria-hidden="true" set:html={current.svg}></span>
+    <span aria-hidden="true" set:html={currentFlag}></span>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:0.75rem;height:0.75rem;opacity:0.8;">
       <path d="M6 9l6 6 6-6"/>
     </svg>
-    <span class="sr-only">Taal wisselen</span>
+    <span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">Taal wisselen</span>
   </button>
 
   <ul class="lang-menu" role="menu" aria-label="Taalkeuze" style="display:none;position:absolute;right:0;margin-top:0.5rem;background:white;border-radius:0.5rem;box-shadow:0 6px 18px rgba(0,0,0,0.12);padding:0.25rem;list-style:none;z-index:60;min-width:150px;">
-    {others.map(lang => (
-      <li role="none">
-        
-         role="menuitem"
-  href={`/${lang.code}`}
-  class="lang-option-link"
->
-  <span class="flag" aria-hidden="true" set:html={lang.svg}></span>
-  <span>{lang.label}</span>
-</a>
-      </li>
-    ))}
+    <li role="none">
+      <a role="menuitem" href={`/${targetLocale}`} style="display:flex;align-items:center;gap:0.6rem;padding:0.5rem 0.75rem;text-decoration:none;color:#001F3F;border-radius:0.375rem;font-size:0.875rem;font-weight:500;">
+        <span aria-hidden="true" set:html={targetFlag}></span>
+        <span>{targetLabel}</span>
+      </a>
+    </li>
   </ul>
 </div>
 
-<style is:global>
-  .flag-icon {
-    width: 22px;
-    height: 15px;
-    border-radius: 2px;
-    display: block;
-    flex-shrink: 0;
-  }
-  .sr-only {
-    position: absolute !important;
-    width: 1px !important;
-    height: 1px !important;
-    padding: 0 !important;
-    margin: -1px !important;
-    overflow: hidden !important;
-    clip: rect(0,0,0,0) !important;
-    white-space: nowrap !important;
-    border: 0 !important;
-  }
-.lang-option-link {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.5rem 0.75rem;
-  text-decoration: none;
-  color: #001F3F;
-  border-radius: 0.375rem;
-  font-size: 0.875rem;
-  font-weight: 500;
-}
-.lang-option-link:hover {
-  background-color: #E6F4FF;
-}
-</style>
-
 <script type="module">
   function initLangSwitchers() {
-    const roots = document.querySelectorAll('[data-lang-switcher]');
-    roots.forEach(root => {
-      // Voorkom dubbele event listeners
+    document.querySelectorAll('[data-lang-switcher]').forEach(root => {
       if (root.dataset.initialized) return;
       root.dataset.initialized = 'true';
 
@@ -94,32 +45,29 @@ const others = languages.filter(l => l.code !== current.code);
       const menu = root.querySelector('.lang-menu');
       if (!toggle || !menu) return;
 
-      function open() {
-        menu.style.display = 'block';
-        toggle.setAttribute('aria-expanded', 'true');
-      }
-
-      function close() {
-        menu.style.display = 'none';
-        toggle.setAttribute('aria-expanded', 'false');
-      }
-
       toggle.addEventListener('click', (e) => {
         e.stopPropagation();
-        menu.style.display === 'none' ? open() : close();
+        const isOpen = menu.style.display !== 'none';
+        menu.style.display = isOpen ? 'none' : 'block';
+        toggle.setAttribute('aria-expanded', String(!isOpen));
       });
 
       document.addEventListener('click', (e) => {
-        if (!root.contains(e.target)) close();
+        if (!root.contains(e.target)) {
+          menu.style.display = 'none';
+          toggle.setAttribute('aria-expanded', 'false');
+        }
       });
 
       document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') close();
+        if (e.key === 'Escape') {
+          menu.style.display = 'none';
+          toggle.setAttribute('aria-expanded', 'false');
+        }
       });
     });
   }
 
-  // Meerdere triggers voor zekerheid
   if (document.readyState !== 'loading') {
     initLangSwitchers();
   } else {
