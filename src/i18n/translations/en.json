@@ -7,7 +7,6 @@
     "contact": "FAQ",
     "cta": "Enroll now"
   },
-
   "hero": {
     "title": "Learn to swim with confidence and fun",
     "subtitle": "At Young Dolphins, we help children earn their A, B, and C diplomas safely and happily.",
@@ -20,7 +19,6 @@
     },
     "continue_reading": "View our offer"
   },
-
   "problem": {
     "title": "Why choose Young Dolphins?",
     "points": [
@@ -31,7 +29,6 @@
       "Fun and confidence come first"
     ]
   },
-
   "features": {
     "title": "Swimming lessons for every age",
     "items": [
@@ -45,12 +42,10 @@
       }
     ]
   },
-
   "testimonials": {
     "title": "What parents say",
     "subtitle": "Real experiences from families"
   },
-
   "stats": {
     "title": "Our results",
     "items": {
@@ -59,7 +54,6 @@
       "rating": "Parent rating"
     }
   },
-
   "team": {
     "title": "Our instructors",
     "subtitle": "Certified, experienced and passionate about teaching children",
@@ -76,11 +70,9 @@
       }
     }
   },
-
   "integrations": {
     "title": "Our locations",
     "subtitle": "Modern, warm swimming pools",
-
     "groups": [
       {
         "name": "Amsterdam",
@@ -111,7 +103,6 @@
         ]
       }
     ],
-
     "facilities": [
       {
         "title": "Warm Water Pools",
@@ -126,12 +117,10 @@
         "description": "We work only with pools that meet the highest safety and hygiene standards."
       }
     ],
-
     "cta_title": "Ready to start?",
     "cta_subtitle": "Choose the location that fits your schedule and enroll today.",
     "cta_button": "Enroll now"
   },
-
   "security": {
     "title": "Safety first",
     "subtitle": "Our lessons follow all official swimming safety standards",
@@ -165,12 +154,10 @@
       "title": "Certified & trustworthy"
     }
   },
-
   "pricing": {
     "title": "Pricing",
     "subtitle": "Clear prices with no surprises",
     "cta": "Enroll now",
-
     "packages": {
       "starter": {
         "name": "Starter",
@@ -199,30 +186,26 @@
       "private": {
         "name": "Private",
         "price_unit": "/ lesson",
-        "description": "1‑on‑1 coaching for maximum progress."
-      },
-    "supervision": {
-      "title": "Lifeguard supervision",
-      "text": "Every lesson is supervised by certified lifeguards to ensure maximum safety for all children."
-    },
-    "facilities": {
-      "title": "Clean & hygienic facilities",
-      "text": "Our pools are cleaned daily, and water quality is tested multiple times per day according to Dutch regulations."
-    },
-    "emergency": {
-      "title": "Emergency readiness",
-      "text": "Our team is trained in emergency response, CPR, and child rescue techniques to ensure a safe environment."
-    },
-    "transparency": {
-      "title": "Parent transparency",
-      "text": "Parents can always observe lessons and receive updates on progress, safety, and comfort."
+        "description": "1‑on‑1 coaching for maximum progress.",
+        "features": [
+          "Private lesson",
+          "Faster progress",
+          "Personal lesson plan",
+          "Flexible times"
+        ]
+      }
     }
   },
-  "footer": {
-    "title": "Certified & trustworthy",
-    "terms": "Terms & Conditions",
-    "privacy": "Privacy Policy",
-    "copyright": "All rights reserved."
+  "privacy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated: January 2026",
+    "section1Title": "1. What data do we collect?",
+    "section2Title": "2. How do we use this data?",
+    "section3Title": "3. How long do we keep data?",
+    "section4Title": "4. Do we share data with third parties?",
+    "section5Title": "5. Data security",
+    "section6Title": "6. Rights of parents/guardians",
+    "section7Title": "7. Contact"
   },
   "faq": {
     "title": "Frequently asked questions",
@@ -248,16 +231,20 @@
     "more_subtitle": "Our team is here to help you with anything related to swimming lessons.",
     "more_cta": "Contact support"
   },
-
   "join": {
     "title": "Want to join us?",
     "subtitle": "We’re always looking for passionate instructors who love helping children grow in the water.",
     "cta": "View open positions"
   },
-
   "final": {
     "title": "Ready to begin?",
     "subtitle": "Join Young Dolphins today and give your child the gift of water confidence.",
     "cta": "Get started now"
+  },
+  "footer": {
+    "title": "Certified & trustworthy",
+    "terms": "Terms & Conditions",
+    "privacy": "Privacy Policy",
+    "copyright": "All rights reserved."
   }
 }
