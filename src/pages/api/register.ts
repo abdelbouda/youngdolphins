@@ -19,7 +19,7 @@ export const POST: APIRoute = async ({ request }) => {
     const kindAchternaam  = data.get('kind_achternaam')?.toString().trim() ?? '';
     const geboortedatum   = data.get('geboortedatum')?.toString().trim() ?? '';
     const zwemniveau      = data.get('zwemniveau')?.toString().trim() ?? '';
-    const gekozenPakket   = data.get('diploma')?.toString().trim() ?? ''; // Dit komt van je Pricing CTA
+    const gekozenPakket   = data.get('pakket')?.toString().trim() ?? ''; // Gekozen pakket
     
     const voorkeursdagen  = data.getAll('voorkeursdagen').map(d => d.toString()).join(', ');
     const opmerkingen     = data.get('opmerkingen')?.toString().trim() ?? '';
@@ -47,7 +47,7 @@ export const POST: APIRoute = async ({ request }) => {
         </div>
         <div style="padding:24px;">
           <p><strong>Locatie:</strong> Monnickendam</p>
-          <p><strong>Pakket:</strong> ${gekozenPakket}</p>
+          <p><strong>Gekozen Pakket:</strong> ${gekozenPakket}</p>
           <hr style="border:0;border-top:1px solid #eee;margin:20px 0;">
           <p><strong>Ouder:</strong> ${ouderVoornaam} ${ouderAchternaam} (${ouderTelefoon})</p>
           <p><strong>Kind:</strong> ${kindVoornaam} ${kindAchternaam} (${geboortedatum})</p>
