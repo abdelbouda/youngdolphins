@@ -1,0 +1,288 @@
+---
+export async function getStaticPaths() {
+  return [
+    { params: { locale: 'nl' } },
+    { params: { locale: 'en' } },
+  ];
+}
+
+const { locale } = Astro.params as { locale: 'nl' | 'en' };
+import Layout from '../../layouts/Layout.astro';
+
+const isNL = locale !== 'en';
+
+const copy = {
+  title:        isNL ? 'Aanmelden voor zwemlessen' : 'Register for swimming lessons',
+  subtitle:     isNL ? 'Vul het formulier in en we nemen contact met je op om de startdatum te bevestigen.' : 'Fill in the form and we\'ll contact you to confirm the start date.',
+  sectionParent: isNL ? 'Gegevens ouder / verzorger' : 'Parent / guardian details',
+  sectionChild:  isNL ? 'Gegevens kind' : 'Child details',
+  sectionPref:   isNL ? 'Voorkeur zwemlessen' : 'Lesson preferences',
+  labelFirstName:  isNL ? 'Voornaam' : 'First name',
+  labelLastName:   isNL ? 'Achternaam' : 'Last name',
+  labelEmail:      isNL ? 'E-mailadres' : 'Email address',
+  labelPhone:      isNL ? 'Telefoonnummer' : 'Phone number',
+  labelChildFirst: isNL ? 'Voornaam kind' : 'Child first name',
+  labelChildLast:  isNL ? 'Achternaam kind' : 'Child last name',
+  labelBirthdate:  isNL ? 'Geboortedatum kind' : 'Child date of birth',
+  labelLevel:      isNL ? 'Huidig zwemniveau' : 'Current swimming level',
+  levels: isNL
+    ? ['Kan nog niet zwemmen', 'Heeft al wat waterveiligheid', 'Kan al een beetje zwemmen']
+    : ['Cannot swim yet', 'Some water confidence', 'Can already swim a little'],
+  labelDiploma:   isNL ? 'Gewenst diploma' : 'Target certificate',
+  diplomas: isNL
+    ? ['A-diploma (basisveiligheid)', 'B-diploma (gevorderden)', 'C-diploma (wedstrijdzwemmen)', 'Nog niet zeker']
+    : ['A certificate (basic safety)', 'B certificate (intermediate)', 'C certificate (advanced)', 'Not sure yet'],
+  labelDays:   isNL ? 'Voorkeursdagen (meerdere mogelijk)' : 'Preferred days (multiple allowed)',
+  days: isNL
+    ? ['Maandag', 'Dinsdag', 'Woensdag', 'Donderdag', 'Vrijdag', 'Zaterdag']
+    : ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+  labelRemarks:  isNL ? 'Opmerkingen (optioneel)' : 'Remarks (optional)',
+  labelPrivacy:  isNL ? 'Ik ga akkoord met de' : 'I agree with the',
+  privacyLink:   isNL ? 'privacyverklaring' : 'privacy policy',
+  labelRequired: isNL ? '* Verplicht veld' : '* Required field',
+  submit:   isNL ? 'Verstuur aanmelding' : 'Submit registration',
+  sending:  isNL ? 'Bezig met versturen…' : 'Sending…',
+  errorMsg: isNL ? 'Er ging iets mis. Probeer het opnieuw of neem contact op via WhatsApp.' : 'Something went wrong. Please try again or contact us via WhatsApp.',
+  successMsg: isNL ? 'Je aanmelding is verstuurd! Je ontvangt een bevestiging per e-mail.' : 'Your registration has been sent! You will receive a confirmation by email.',
+};
+
+const pageTitle = isNL
+  ? 'Aanmelden – Young Dolphins Zwemschool Amsterdam'
+  : 'Register – Young Dolphins Swimming School Amsterdam';
+const pageDesc = isNL
+  ? 'Meld je kind aan voor zwemlessen bij Young Dolphins Amsterdam. Snel en eenvoudig je A-, B- of C-diploma halen.'
+  : 'Register your child for swimming lessons at Young Dolphins Amsterdam.';
+---
+
+<Layout title={pageTitle} description={pageDesc} locale={locale}>
+  <section class="min-h-screen bg-gradient-to-b from-[#E6F4FF] to-white pt-28 pb-20">
+    <div class="max-w-2xl mx-auto px-4">
+
+      <!-- Header -->
+      <div class="text-center mb-10">
+        <span class="inline-block bg-[#001F3F] text-white text-xs font-semibold px-3 py-1 rounded-full mb-4 uppercase tracking-wide">
+          {isNL ? 'Inschrijven' : 'Register'}
+        </span>
+        <h1 class="text-3xl sm:text-4xl font-bold text-[#001F3F] mb-3">{copy.title}</h1>
+        <p class="text-gray-600 max-w-xl mx-auto">{copy.subtitle}</p>
+      </div>
+
+      <!-- Form card -->
+      <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 sm:p-10">
+        <form id="register-form" novalidate>
+
+          <!-- === Ouder === -->
+          <fieldset class="mb-8">
+            <legend class="text-lg font-bold text-[#001F3F] mb-5 flex items-center gap-2">
+              <span class="w-7 h-7 rounded-full bg-[#001F3F] text-white text-sm flex items-center justify-center flex-shrink-0">1</span>
+              {copy.sectionParent}
+            </legend>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1" for="ouder_voornaam">
+                  {copy.labelFirstName} <span class="text-red-500">*</span>
+                </label>
+                <input id="ouder_voornaam" name="ouder_voornaam" type="text" required autocomplete="given-name"
+                  class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#001F3F] focus:border-transparent transition" />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1" for="ouder_achternaam">
+                  {copy.labelLastName} <span class="text-red-500">*</span>
+                </label>
+                <input id="ouder_achternaam" name="ouder_achternaam" type="text" required autocomplete="family-name"
+                  class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#001F3F] focus:border-transparent transition" />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1" for="ouder_email">
+                  {copy.labelEmail} <span class="text-red-500">*</span>
+                </label>
+                <input id="ouder_email" name="ouder_email" type="email" required autocomplete="email"
+                  class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#001F3F] focus:border-transparent transition" />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1" for="ouder_telefoon">
+                  {copy.labelPhone} <span class="text-red-500">*</span>
+                </label>
+                <input id="ouder_telefoon" name="ouder_telefoon" type="tel" required autocomplete="tel"
+                  class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#001F3F] focus:border-transparent transition" />
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- === Kind === -->
+          <fieldset class="mb-8">
+            <legend class="text-lg font-bold text-[#001F3F] mb-5 flex items-center gap-2">
+              <span class="w-7 h-7 rounded-full bg-[#001F3F] text-white text-sm flex items-center justify-center flex-shrink-0">2</span>
+              {copy.sectionChild}
+            </legend>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1" for="kind_voornaam">
+                  {copy.labelChildFirst} <span class="text-red-500">*</span>
+                </label>
+                <input id="kind_voornaam" name="kind_voornaam" type="text" required
+                  class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#001F3F] focus:border-transparent transition" />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1" for="kind_achternaam">
+                  {copy.labelChildLast} <span class="text-red-500">*</span>
+                </label>
+                <input id="kind_achternaam" name="kind_achternaam" type="text" required
+                  class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#001F3F] focus:border-transparent transition" />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1" for="geboortedatum">
+                  {copy.labelBirthdate} <span class="text-red-500">*</span>
+                </label>
+                <input id="geboortedatum" name="geboortedatum" type="date" required
+                  class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#001F3F] focus:border-transparent transition" />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1" for="zwemniveau">
+                  {copy.labelLevel} <span class="text-red-500">*</span>
+                </label>
+                <select id="zwemniveau" name="zwemniveau" required
+                  class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#001F3F] focus:border-transparent transition bg-white">
+                  <option value="">— {isNL ? 'Kies niveau' : 'Choose level'} —</option>
+                  {copy.levels.map(l => <option value={l}>{l}</option>)}
+                </select>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- === Voorkeur === -->
+          <fieldset class="mb-8">
+            <legend class="text-lg font-bold text-[#001F3F] mb-5 flex items-center gap-2">
+              <span class="w-7 h-7 rounded-full bg-[#001F3F] text-white text-sm flex items-center justify-center flex-shrink-0">3</span>
+              {copy.sectionPref}
+            </legend>
+
+            <div class="mb-5">
+              <label class="block text-sm font-medium text-gray-700 mb-2" for="diploma">
+                {copy.labelDiploma} <span class="text-red-500">*</span>
+              </label>
+              <select id="diploma" name="diploma" required
+                class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#001F3F] focus:border-transparent transition bg-white">
+                <option value="">— {isNL ? 'Kies diploma' : 'Choose certificate'} —</option>
+                {copy.diplomas.map(d => <option value={d}>{d}</option>)}
+              </select>
+            </div>
+
+            <div>
+              <p class="block text-sm font-medium text-gray-700 mb-2">{copy.labelDays}</p>
+              <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                {copy.days.map((day, i) => (
+                  <label class="flex items-center gap-2 cursor-pointer">
+                    <input type="checkbox" name="voorkeursdagen" value={day}
+                      class="w-4 h-4 rounded border-gray-300 text-[#001F3F] focus:ring-[#001F3F]" />
+                    <span class="text-sm text-gray-700">{day}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- === Opmerkingen === -->
+          <div class="mb-8">
+            <label class="block text-sm font-medium text-gray-700 mb-1" for="opmerkingen">
+              {copy.labelRemarks}
+            </label>
+            <textarea id="opmerkingen" name="opmerkingen" rows="3"
+              class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#001F3F] focus:border-transparent transition resize-none"
+              placeholder={isNL ? 'Bijv. bijzonderheden, allergieën, voorkeur instructeur…' : 'E.g. special needs, allergies, instructor preference…'}
+            ></textarea>
+          </div>
+
+          <!-- === Privacy === -->
+          <div class="mb-8">
+            <label class="flex items-start gap-3 cursor-pointer">
+              <input type="checkbox" name="privacy" id="privacy" required
+                class="w-4 h-4 mt-0.5 rounded border-gray-300 text-[#001F3F] focus:ring-[#001F3F] flex-shrink-0" />
+              <span class="text-sm text-gray-600">
+                {copy.labelPrivacy}{' '}
+                <a href={`/${locale}/privacy`} target="_blank" class="text-[#001F3F] underline hover:text-[#00AEEF]">
+                  {copy.privacyLink}
+                </a>
+                . <span class="text-red-500">*</span>
+              </span>
+            </label>
+          </div>
+
+          <!-- === Status bericht === -->
+          <div id="form-status" class="hidden mb-6 rounded-lg p-4 text-sm font-medium"></div>
+
+          <!-- === Submit === -->
+          <button type="submit" id="submit-btn"
+            class="w-full bg-[#001F3F] hover:bg-[#003366] text-white font-semibold py-3.5 px-6 rounded-xl transition text-base flex items-center justify-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+            </svg>
+            <span id="submit-label">{copy.submit}</span>
+          </button>
+
+          <p class="text-xs text-gray-400 text-center mt-4">{copy.labelRequired}</p>
+        </form>
+      </div>
+
+      <!-- Contact info below form -->
+      <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 text-sm text-gray-600">
+        <a href="https://wa.me/31628421354" class="flex items-center gap-2 hover:text-[#25D366] transition">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="currentColor" class="w-5 h-5 text-[#25D366]" aria-hidden="true">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M24 4C13 4 4 13 4 24c0 3.6 1 7 2.7 9.9L4 44l10.4-2.7C17.2 43 20.5 44 24 44c11 0 20-9 20-20S35 4 24 4zm0 36c-3.1 0-6.1-.8-8.7-2.4l-.6-.4-6.2 1.6 1.6-6-.4-.6C8.8 30.1 8 27.1 8 24 8 15.2 15.2 8 24 8s16 7.2 16 16-7.2 16-16 16zm8.8-11.8c-.5-.2-2.8-1.4-3.2-1.5-.4-.2-.7-.2-1 .2-.3.4-1.1 1.5-1.4 1.8-.3.3-.5.4-1 .1-.5-.2-2-.7-3.8-2.3-1.4-1.2-2.3-2.8-2.6-3.2-.3-.5 0-.7.2-1 .2-.2.5-.5.7-.8.2-.3.3-.5.4-.8.1-.3 0-.6-.1-.8-.1-.2-1-2.5-1.4-3.4-.4-.9-.7-.8-1-.8h-.9c-.3 0-.8.1-1.2.6-.4.5-1.6 1.6-1.6 3.8 0 2.2 1.6 4.4 1.9 4.7.3.3 3.2 4.8 7.7 6.7 1.1.5 1.9.7 2.6.9 1.1.3 2.1.3 2.9.2.9-.1 2.8-1.1 3.2-2.2.4-1.1.4-2 .3-2.2-.2-.3-.5-.4-1-.6z"/>
+          </svg>
+          06-28421354
+        </a>
+        <a href="mailto:info@youngdolphins.nl" class="flex items-center gap-2 hover:text-[#001F3F] transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <rect x="2" y="4" width="20" height="16" rx="2" stroke-width="2"/>
+            <path stroke-width="2" d="M2 7l10 7 10-7"/>
+          </svg>
+          info@youngdolphins.nl
+        </a>
+      </div>
+
+    </div>
+  </section>
+</Layout>
+
+<script define:vars={{ errorMsg: copy.errorMsg, successMsg: copy.successMsg, sendingLabel: copy.sending }}>
+  const form = document.getElementById('register-form');
+  const statusEl = document.getElementById('form-status');
+  const submitBtn = document.getElementById('submit-btn');
+  const submitLabel = document.getElementById('submit-label');
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitLabel.textContent = sendingLabel;
+    statusEl.className = 'hidden mb-6 rounded-lg p-4 text-sm font-medium';
+
+    try {
+      const formData = new FormData(form);
+      const res = await fetch('/api/register', { method: 'POST', body: formData });
+      const json = await res.json();
+
+      if (res.ok && json.success) {
+        statusEl.textContent = successMsg;
+        statusEl.className = 'mb-6 rounded-lg p-4 text-sm font-medium bg-green-50 text-green-800 border border-green-200';
+        form.reset();
+      } else {
+        statusEl.textContent = json.error ?? errorMsg;
+        statusEl.className = 'mb-6 rounded-lg p-4 text-sm font-medium bg-red-50 text-red-800 border border-red-200';
+      }
+    } catch {
+      statusEl.textContent = errorMsg;
+      statusEl.className = 'mb-6 rounded-lg p-4 text-sm font-medium bg-red-50 text-red-800 border border-red-200';
+    } finally {
+      submitBtn.disabled = false;
+      submitLabel.textContent = submitLabel.dataset.original ?? submitLabel.textContent;
+      statusEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  });
+</script>
