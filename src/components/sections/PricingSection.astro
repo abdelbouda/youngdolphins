@@ -1,7 +1,6 @@
 ---
 import Container from '../ui/Container.astro';
 import { t, tObject } from '../../i18n/ui';
-import { getRelativeLocaleUrl } from 'astro:i18n';
 import type { Locale } from '../../i18n/types';
 
 interface Props {
@@ -10,11 +9,10 @@ interface Props {
 
 const { locale = 'nl' } = Astro.props;
 
-/** * URL LOGICA:
- * NL: /nl/aanmelden
- * EN: /en/aanmelden
+/** * FORCEER DE URL STRUCTUUR:
+ * We bouwen de URL handmatig op om zeker te weten dat /nl/ of /en/ er altijd staat.
  */
-const registerSlug = 'aanmelden';
+const baseUrl = locale === 'nl' ? '/nl/aanmelden' : '/en/aanmelden';
 
 const title = await t(locale, 'pricing.title');
 const subtitle = await t(locale, 'pricing.subtitle');
@@ -66,7 +64,7 @@ const headerDarkBlue = "#001F3F";
             </li>
           ))}
         </ul>
-        <a href={getRelativeLocaleUrl(locale, `${registerSlug}?pakket=Starter`)} class="cta-button">{cta}</a>
+        <a href={`${baseUrl}?pakket=Starter`} class="cta-button">{cta}</a>
       </div>
 
       <div class="pricing-card featured">
@@ -87,7 +85,7 @@ const headerDarkBlue = "#001F3F";
             </li>
           ))}
         </ul>
-        <a href={getRelativeLocaleUrl(locale, `${registerSlug}?pakket=Progress-Plus`)} class="cta-button">{cta}</a>
+        <a href={`${baseUrl}?pakket=Progress-Plus`} class="cta-button">{cta}</a>
       </div>
 
       <div class="pricing-card">
@@ -105,7 +103,7 @@ const headerDarkBlue = "#001F3F";
             </li>
           ))}
         </ul>
-        <a href={getRelativeLocaleUrl(locale, `${registerSlug}?pakket=Prive-les`)} class="cta-button">{cta}</a>
+        <a href={`${baseUrl}?pakket=Prive-les`} class="cta-button">{cta}</a>
       </div>
 
     </div>
