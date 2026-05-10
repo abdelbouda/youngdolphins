@@ -1,20 +1,26 @@
 ---
 import { preloadTranslations, tSync } from '../../i18n/utils';
 import LanguageSwitcher from './LanguageSwitcher.astro';
+import { getRelativeLocaleUrl } from 'astro:i18n';
 
 const locale = Astro.currentLocale ?? 'nl';
 await preloadTranslations(locale);
 
+/**
+ * MENU LOGICA:
+ * We gebruiken getRelativeLocaleUrl om te zorgen dat de ankerlinks (#)
+ * op de juiste taalpagina blijven (bijv. /en#pricing).
+ */
 const navItems = [
-  { href: '/', key: 'nav.home' },
-  { href: '/#features', key: 'nav.lessons' },
-  { href: '/#pricing', key: 'nav.pricing' },
-  { href: '/#faq', label: 'FAQ' }
+  { href: getRelativeLocaleUrl(locale, '/'), key: 'nav.home' },
+  { href: getRelativeLocaleUrl(locale, '#lessons'), key: 'nav.lessons' },
+  { href: getRelativeLocaleUrl(locale, '#pricing'), key: 'nav.pricing' },
+  { href: getRelativeLocaleUrl(locale, '#faq'), label: 'FAQ' }
 ];
 
-const registerHref = `/${locale}/aanmelden`;
+// De aanmeld-slug is voor beide talen nu /aanmelden binnen de taalfolder
+const registerHref = getRelativeLocaleUrl(locale, 'aanmelden');
 
-// Vertalingen voor de nieuwe labels
 const labels = {
   directRegister: locale === 'en' ? 'Register Now' : 'Direct Aanmelden',
   directContact: locale === 'en' ? 'Direct Contact' : 'Direct Contact',
@@ -25,7 +31,7 @@ const labels = {
 <header id="site-header" style="background-color: rgba(255,255,255,0.97); border-bottom: 1px solid #e5e7eb;" class="fixed top-0 left-0 w-full z-50 backdrop-blur transition-all duration-300">
   <nav class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
 
-    <a href="/" id="header-logo" class="flex items-center flex-shrink-0" style="color: inherit;">
+    <a href={getRelativeLocaleUrl(locale, '/')} id="header-logo" class="flex items-center flex-shrink-0" style="color: inherit;">
       <img src="/yd-logo.webp" alt="Young Dolphins logo" width="180" height="180" fetchpriority="high" style="height: 64px; width: auto; object-fit: contain;" />
     </a>
 
@@ -40,9 +46,7 @@ const labels = {
       </div>
       <button id="mobile-menu-toggle" style="color:#001F3F;display:flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;border-radius:9999px;background:transparent;" aria-label="Menu openen">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:1.5rem;height:1.5rem;">
-          <line x1="3" y1="6" x2="21" y2="6"/>
-          <line x1="3" y1="12" x2="21" y2="12"/>
-          <line x1="3" y1="18" x2="21" y2="18"/>
+          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
         </svg>
       </button>
     </div>
@@ -53,7 +57,8 @@ const labels = {
           {item.label ? item.label : tSync(locale, item.key)}
         </a>
       ))}
-      <div class="relative">
+      
+      <div class="relative mx-1">
         <LanguageSwitcher />
       </div>
 
@@ -148,7 +153,7 @@ const labels = {
   .desktop-nav {
     display: none;
   }
-  @media (min-width: 1024px) { /* Verhoogd naar 1024px omdat de balk nu breder is door de extra knoppen */
+  @media (min-width: 1120px) { 
     .desktop-nav {
       display: flex;
     }
