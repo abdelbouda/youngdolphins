@@ -1,12 +1,15 @@
 ---
-const locale = Astro.props.locale ?? 'nl';
+// Zorg dat de locale correct wordt doorgegeven vanuit de route
+const locale = Astro.props.locale ?? Astro.currentLocale ?? 'nl';
 import { tSync } from '../i18n/utils';
 
 import Header from '../components/ui/Header.astro';
 import LegalFooter from '../components/sections/LegalFooter.astro';
+
+// We kunnen hier ook de vertalingen voor de lijst-items ophalen als je die in i18n hebt staan,
+// maar voor nu focus ik op de titels zoals gevraagd.
 ---
 
-<!-- HEADER -->
 <Header locale={locale} />
 
 <section class="py-20 lg:py-24 bg-white dark:bg-black">
@@ -14,21 +17,19 @@ import LegalFooter from '../components/sections/LegalFooter.astro';
     <div class="max-w-3xl mx-auto">
       <div class="prose prose-lg dark:prose-invert max-w-none">
 
-        <!-- TITLE -->
         <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#001F3F] dark:text-white mb-8">
-          {tSync(locale, 'privacy.title') ?? 'Privacyverklaring'}
+          {tSync(locale, 'privacy.title') || 'Privacyverklaring'}
         </h1>
 
         <p class="text-gray-600 dark:text-gray-400 mb-12">
-          {tSync(locale, 'privacy.lastUpdated') ?? 'Laatst bijgewerkt: januari 2026'}
+          {tSync(locale, 'privacy.lastUpdated') || 'Laatst bijgewerkt: januari 2026'}
         </p>
 
         <div class="space-y-12">
 
-          <!-- SECTION 1 -->
           <section>
             <h2 class="text-xl sm:text-2xl font-bold text-[#001F3F] dark:text-white mb-4">
-              {tSync(locale, 'privacy.section1Title') ?? '1. Welke gegevens verzamelen wij?'}
+              {tSync(locale, 'privacy.section1Title') || '1. Welke gegevens verzamelen wij?'}
             </h2>
 
             <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
@@ -44,10 +45,9 @@ import LegalFooter from '../components/sections/LegalFooter.astro';
             </ul>
           </section>
 
-          <!-- SECTION 2 -->
           <section>
             <h2 class="text-xl sm:text-2xl font-bold text-[#001F3F] dark:text-white mb-4">
-              {tSync(locale, 'privacy.section2Title') ?? '2. Hoe gebruiken wij deze gegevens?'}
+              {tSync(locale, 'privacy.section2Title') || '2. Hoe gebruiken wij deze gegevens?'}
             </h2>
 
             <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
@@ -62,10 +62,9 @@ import LegalFooter from '../components/sections/LegalFooter.astro';
             </ul>
           </section>
 
-          <!-- SECTION 3 -->
           <section>
             <h2 class="text-xl sm:text-2xl font-bold text-[#001F3F] dark:text-white mb-4">
-              {tSync(locale, 'privacy.section3Title') ?? '3. Hoe lang bewaren wij gegevens?'}
+              {tSync(locale, 'privacy.section3Title') || '3. Hoe lang bewaren wij gegevens?'}
             </h2>
 
             <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
@@ -75,10 +74,9 @@ import LegalFooter from '../components/sections/LegalFooter.astro';
             </p>
           </section>
 
-          <!-- SECTION 4 -->
           <section>
             <h2 class="text-xl sm:text-2xl font-bold text-[#001F3F] dark:text-white mb-4">
-              {tSync(locale, 'privacy.section4Title') ?? '4. Delen wij gegevens met derden?'}
+              {tSync(locale, 'privacy.section4Title') || '4. Delen wij gegevens met derden?'}
             </h2>
 
             <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
@@ -87,10 +85,9 @@ import LegalFooter from '../components/sections/LegalFooter.astro';
             </p>
           </section>
 
-          <!-- SECTION 5 -->
           <section>
             <h2 class="text-xl sm:text-2xl font-bold text-[#001F3F] dark:text-white mb-4">
-              {tSync(locale, 'privacy.section5Title') ?? '5. Beveiliging van gegevens'}
+              {tSync(locale, 'privacy.section5Title') || '5. Beveiliging van gegevens'}
             </h2>
 
             <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
@@ -99,10 +96,9 @@ import LegalFooter from '../components/sections/LegalFooter.astro';
             </p>
           </section>
 
-          <!-- SECTION 6 -->
           <section>
             <h2 class="text-xl sm:text-2xl font-bold text-[#001F3F] dark:text-white mb-4">
-              {tSync(locale, 'privacy.section6Title') ?? '6. Rechten van ouders/verzorgers'}
+              {tSync(locale, 'privacy.section6Title') || '6. Rechten van ouders/verzorgers'}
             </h2>
 
             <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
@@ -117,10 +113,9 @@ import LegalFooter from '../components/sections/LegalFooter.astro';
             </ul>
           </section>
 
-          <!-- SECTION 7 -->
           <section>
             <h2 class="text-xl sm:text-2xl font-bold text-[#001F3F] dark:text-white mb-4">
-              {tSync(locale, 'privacy.section7Title') ?? '7. Contact'}
+              {tSync(locale, 'privacy.section7Title') || '7. Contact'}
             </h2>
 
             <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
