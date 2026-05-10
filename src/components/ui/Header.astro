@@ -12,10 +12,10 @@ await preloadTranslations(locale);
  * op de juiste taalpagina blijven (bijv. /en#pricing).
  */
 const navItems = [
-  { href: getRelativeLocaleUrl(locale, '/'), key: 'nav.home' },
-  { href: getRelativeLocaleUrl(locale, '#lessons'), key: 'nav.lessons' },
-  { href: getRelativeLocaleUrl(locale, '#pricing'), key: 'nav.pricing' },
-  { href: getRelativeLocaleUrl(locale, '#faq'), key: 'nav.about' }
+  { href: `/${locale}/`, key: 'nav.home' },
+  { href: `/${locale}/#lessons`, key: 'nav.lessons' },
+  { href: `/${locale}/#pricing`, key: 'nav.pricing' },
+  { href: `/${locale}/#faq`, key: 'nav.about' }
 ];
 
 // De aanmeld-slug is voor beide talen nu /aanmelden binnen de taalfolder
@@ -31,7 +31,7 @@ const labels = {
 <header id="site-header" style="background-color: rgba(255,255,255,0.97); border-bottom: 1px solid #e5e7eb;" class="fixed top-0 left-0 w-full z-50 backdrop-blur transition-all duration-300">
   <nav class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
 
-    <a href={getRelativeLocaleUrl(locale, '/')} id="header-logo" class="flex items-center flex-shrink-0" style="color: inherit;">
+    <a href={`/${locale}/`} id="header-logo" class="flex items-center flex-shrink-0" style="color: inherit;">
       <img src="/yd-logo.webp" alt="Young Dolphins logo" width="180" height="180" fetchpriority="high" style="height: 64px; width: auto; object-fit: contain;" />
     </a>
 
