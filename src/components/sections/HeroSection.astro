@@ -2,7 +2,6 @@
 import Container from '../ui/Container.astro';
 import { t } from '../../i18n/ui';
 import type { Locale } from '../../i18n/types';
-import heroImg from '../../assets/hero-kids.webp';
 
 interface Props {
   locale?: Locale;
@@ -84,13 +83,14 @@ const continueReading = await t(locale, 'hero.continue_reading');
       <!-- RIGHT COLUMN: afbeelding -->
       <div class="flex justify-center items-center hero-fade px-4 sm:px-8 lg:px-4">
         <img
-          src={heroImg.src}
+          src="/hero-kids.webp"
           alt={locale === 'en' ? 'Children learning to swim at Young Dolphins Amsterdam' : 'Kinderen leren zwemmen bij Young Dolphins Amsterdam'}
           class="w-full max-w-[280px] sm:max-w-sm md:max-w-md lg:max-w-full h-auto rounded-2xl shadow-xl object-cover"
           loading="eager"
           fetchpriority="high"
-          width="600"
-          height="450"
+          width="800"
+          height="600"
+          decoding="async"
         />
       </div>
 
