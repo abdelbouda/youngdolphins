@@ -6,6 +6,33 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Performance optimizations */
+img {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 0;
+}
+
+/* Critical rendering path */
+.will-change-transform {
+  will-change: transform;
+}
+
+/* Optimize font loading */
+.font-inter {
+  font-display: swap;
+}
+
+/* Optimize animations */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 *,
 *::before,
 *::after {
