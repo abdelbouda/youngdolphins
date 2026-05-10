@@ -1,6 +1,5 @@
 ---
 import Container from '../ui/Container.astro';
-import logo from '../../assets/logo.webp';
 ---
 
 <footer class="py-14 bg-[#001F3F] border-t border-blue-900 text-white">
@@ -10,9 +9,12 @@ import logo from '../../assets/logo.webp';
       <!-- Logo -->
       <div class="mb-8 flex justify-center">
         <img 
-          src={logo.src} 
-          alt="Young Dolphins logo" 
+          src="/yd-logo.webp"
+          alt="Young Dolphins logo"
+          width="180"
+          height="180"
           class="h-20 sm:h-24 w-auto opacity-95"
+          loading="lazy"
         />
       </div>
 
