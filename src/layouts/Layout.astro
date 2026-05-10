@@ -132,6 +132,59 @@ const pageDescription = locale === 'en' ? descriptionEn : description;
         "@type": "AggregateRating",
         "ratingValue": "4.9",
         "reviewCount": "120"
+      },
+      "offers": {
+        "@type": "Offer",
+        "itemOffered": [
+          {
+            "@type": "Service",
+            "name": locale === 'en' ? "Starter Swimming Lessons" : "Starter Zwemlessen",
+            "description": locale === 'en' ? "1 lesson per week for beginners" : "1 les per week voor beginners",
+            "price": "€25",
+            "priceCurrency": "EUR"
+          },
+          {
+            "@type": "Service", 
+            "name": locale === 'en' ? "Progress+ Swimming Lessons" : "Progress+ Zwemlessen",
+            "description": locale === 'en' ? "2 lessons per week for faster progress" : "2 lessen per week voor snellere vooruitgang",
+            "price": "€170",
+            "priceCurrency": "EUR"
+          },
+          {
+            "@type": "Service",
+            "name": locale === 'en' ? "Private Swimming Lessons" : "Privé Zwemlessen", 
+            "description": locale === 'en' ? "1-on-1 coaching for maximum progress" : "1-op-1 coaching voor maximale vooruitgang",
+            "price": "€50",
+            "priceCurrency": "EUR"
+          }
+        ]
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": locale === 'en' ? "Swimming Lesson Packages" : "Zwemles Pakketten",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": locale === 'en' ? "Starter Package" : "Starter Pakket"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service", 
+              "name": locale === 'en' ? "Progress+ Package" : "Progress+ Pakket"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": locale === 'en' ? "Private Package" : "Privé Pakket"
+            }
+          }
+        ]
       }
     })} />
   </head>

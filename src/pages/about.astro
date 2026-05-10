@@ -6,13 +6,21 @@ import Header from '../components/ui/Header.astro';
 import Container from '../components/ui/Container.astro';
 import TeamSection from '../components/sections/TeamSection.astro';
 import FinalSections from '../components/sections/FinalSections.astro';
+
+const pageTitle = locale === 'en' 
+  ? 'About Young Dolphins - Swimming School Amsterdam'
+  : 'Over Young Dolphins - Zwemschool Amsterdam';
+const pageDesc = locale === 'en'
+  ? 'Learn about Young Dolphins swimming school in Amsterdam. Our story, mission, and professional swimming instructors.'
+  : 'Lees over Young Dolphins zwemschool in Amsterdam. Ons verhaal, missie en professionele zweminstructeurs.';
 ---
 
-<!-- HEADER -->
-<Header locale={locale} />
+<Layout title={pageTitle} description={pageDesc} locale={locale}>
+  <!-- HEADER -->
+  <Header locale={locale} />
 
-<!-- HERO -->
-<section class="py-16 bg-blue-50 dark:bg-blue-900/20">
+  <!-- HERO -->
+  <section class="py-16 bg-blue-50 dark:bg-blue-900/20">
   <Container>
     <div class="max-w-4xl mx-auto text-center">
       <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#001F3F] dark:text-white mb-6">
@@ -136,3 +144,4 @@ import FinalSections from '../components/sections/FinalSections.astro';
 
 <!-- FINAL CTA -->
 <FinalSections locale={locale} />
+</Layout>

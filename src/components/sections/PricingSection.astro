@@ -35,8 +35,14 @@ const headerLightBlue = "#00AEEF";
 const headerDarkBlue = "#001F3F";
 ---
 
-<section id="pricing" class="py-16 sm:py-24 bg-[#F7FBFF] overflow-hidden">
-  <Container>
+<section id="pricing" class="py-16 sm:py-24 bg-gradient-to-br from-[#F7FBFF] via-[#E1F5FF] to-[#D1E9FF] overflow-hidden relative">
+  <!-- Water wave background effect -->
+  <div class="absolute inset-0 opacity-10">
+    <div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-[#00AEEF]/20 to-transparent"></div>
+    <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#001F3F]/10 to-transparent"></div>
+  </div>
+  
+  <Container class="relative z-10">
 
     <div class="text-center mb-10 sm:mb-14 px-4">
       <h2 class="text-3xl md:text-4xl font-bold text-[#001F3F] mb-3 uppercase tracking-tight">
@@ -123,14 +129,16 @@ const headerDarkBlue = "#001F3F";
 <style define:vars={{ headerLightBlue, headerDarkBlue }}>
   .pricing-card {
     flex: 1;
-    background: white;
-    border: 1px solid #E1EEF7;
+    background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(241,253,255,0.95) 100%);
+    border: 1px solid rgba(0,174,239,0.2);
     border-radius: 1.25rem;
     padding: 2.5rem 2rem;
     display: flex;
     flex-direction: column;
     position: relative;
     transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0,31,63,0.1);
   }
 
   .pricing-card.featured {
@@ -193,8 +201,14 @@ const headerDarkBlue = "#001F3F";
   }
 
   .cta-button:hover {
-    background-color: var(--headerDarkBlue);
+    background: linear-gradient(135deg, var(--headerDarkBlue) 0%, #003366 100%);
     transform: translateY(-3px);
-    box-shadow: 0 10px 15px rgba(0,0,0,0.15);
+    box-shadow: 0 15px 25px rgba(0,174,239,0.3);
+  }
+
+  .pricing-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0,31,63,0.15);
+    border-color: var(--headerLightBlue);
   }
 </style>
