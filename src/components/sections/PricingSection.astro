@@ -18,7 +18,7 @@ const starter = {
   price: '€15',
   priceUnit: await t(locale, 'pricing.packages.starter.price_unit'),
   description: await t(locale, 'pricing.packages.starter.description'),
-  features: await tObject(locale, 'pricing.packages.starter.features')
+  features: await tObject(locale, 'pricing.packages.starter.features') as string[]
 };
 
 const progress = {
@@ -27,7 +27,7 @@ const progress = {
   price: '€55',
   priceUnit: await t(locale, 'pricing.packages.progress.price_unit'),
   description: await t(locale, 'pricing.packages.progress.description'),
-  features: await tObject(locale, 'pricing.packages.progress.features')
+  features: await tObject(locale, 'pricing.packages.progress.features') as string[]
 };
 
 const priv = {
@@ -35,7 +35,7 @@ const priv = {
   price: '€35',
   priceUnit: await t(locale, 'pricing.packages.private.price_unit'),
   description: await t(locale, 'pricing.packages.private.description'),
-  features: await tObject(locale, 'pricing.packages.private.features')
+  features: await tObject(locale, 'pricing.packages.private.features') as string[]
 };
 
 const compareTitle = await t(locale, 'pricing.compare.title');
@@ -60,10 +60,8 @@ const compareRows = {
       </p>
     </div>
 
-    <!-- Pricing Cards: 1 kolom mobiel, 3 kolommen desktop -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-8 max-w-5xl mx-auto mb-16 px-4">
 
-      <!-- Starter -->
       <div class="bg-white border border-[#E1EEF7] rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-all flex flex-col">
         <h3 class="text-xl font-semibold text-[#001F3F] mb-2 text-center">{starter.name}</h3>
         <div class="flex items-baseline justify-center mb-3">
@@ -81,13 +79,14 @@ const compareRows = {
             </li>
           ))}
         </ul>
-        <a href="/#hero" class="cta-primary w-full text-center mt-auto">{cta}</a>
+        <a href="#hero" class="w-full text-center py-3 px-6 bg-[#001F3F] text-white font-bold rounded-lg hover:bg-[#00AEEF] transition-colors duration-300">
+          {cta}
+        </a>
       </div>
 
-      <!-- Progress+ (featured) -->
-      <div class="bg-white border-2 border-[#00AEEF] rounded-2xl p-6 sm:p-8 shadow-lg relative flex flex-col md:scale-[1.02]">
+      <div class="bg-white border-2 border-[#00AEEF] rounded-2xl p-6 sm:p-8 shadow-lg relative flex flex-col md:scale-[1.05] z-10">
         <div class="absolute -top-3 left-1/2 -translate-x-1/2">
-          <span class="px-3 py-1 text-xs bg-[#00AEEF] text-white rounded-full font-semibold whitespace-nowrap">
+          <span class="px-3 py-1 text-xs bg-[#00AEEF] text-white rounded-full font-semibold whitespace-nowrap uppercase tracking-wider">
             {progress.badge}
           </span>
         </div>
@@ -107,10 +106,11 @@ const compareRows = {
             </li>
           ))}
         </ul>
-        <a href="/#hero" class="cta-primary w-full text-center mt-auto">{cta}</a>
+        <a href="#hero" class="w-full text-center py-3 px-6 bg-[#001F3F] text-white font-bold rounded-lg hover:bg-[#00AEEF] transition-colors duration-300 shadow-md">
+          {cta}
+        </a>
       </div>
 
-      <!-- Privé -->
       <div class="bg-white border border-[#E1EEF7] rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-all flex flex-col">
         <h3 class="text-xl font-semibold text-[#001F3F] mb-2 text-center">{priv.name}</h3>
         <div class="flex items-baseline justify-center mb-3">
@@ -128,19 +128,19 @@ const compareRows = {
             </li>
           ))}
         </ul>
-        <a href="/#hero" class="cta-primary w-full text-center mt-auto">{cta}</a>
+        <a href="#hero" class="w-full text-center py-3 px-6 bg-[#001F3F] text-white font-bold rounded-lg hover:bg-[#00AEEF] transition-colors duration-300">
+          {cta}
+        </a>
       </div>
 
     </div>
 
-    <!-- Vergelijkingstabel: horizontaal scrollbaar op mobile -->
     <div class="max-w-3xl mx-auto px-4">
       <h3 class="text-xl sm:text-2xl font-semibold text-[#001F3F] mb-6 text-center">
         {compareTitle}
       </h3>
 
-      <!-- Scrollable wrapper op mobile -->
-      <div class="overflow-x-auto -mx-4 sm:mx-0 rounded-xl border border-[#E1EEF7]">
+      <div class="overflow-x-auto -mx-4 sm:mx-0 rounded-xl border border-[#E1EEF7] shadow-sm">
         <table class="w-full text-sm text-gray-700 bg-white" style="min-width: 400px;">
           <thead>
             <tr class="border-b border-[#E1EEF7] bg-[#F7FBFF]">
