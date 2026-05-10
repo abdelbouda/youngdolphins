@@ -1,0 +1,104 @@
+---
+const locale = Astro.props.locale ?? 'nl';
+import { tSync } from '../i18n/utils';
+
+import Header from '../components/ui/Header.astro';
+import Container from '../components/ui/Container.astro';
+import LegalFooter from '../components/sections/LegalFooter.astro';
+---
+
+<!-- HEADER -->
+<Header locale={locale} />
+
+<section class="py-20 lg:py-32 bg-blue-50 dark:bg-blue-900/20 min-h-screen">
+  <Container>
+
+    <!-- Success Icon -->
+    <div class="text-center mb-16">
+      <div class="w-24 h-24 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-full flex items-center justify-center mx-auto mb-8">
+        <svg class="w-12 h-12 text-blue-600 dark:text-blue-300" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+        </svg>
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#001F3F] dark:text-white mb-6">
+        {tSync(locale, 'thankyou.title') ?? 'Bedankt voor je aanmelding!'}
+      </h1>
+
+      <!-- Confirmation Message -->
+      <p class="text-xl text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
+        {tSync(locale, 'thankyou.message') ?? 
+        'We hebben je inschrijving ontvangen. Je ontvangt binnenkort een bevestiging per e‑mail met alle details over de zwemlessen.'}
+      </p>
+    </div>
+
+    <!-- What Happens Next -->
+    <div class="max-w-3xl mx-auto mb-20">
+      <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-8">
+        <h2 class="text-2xl font-semibold text-[#001F3F] dark:text-white mb-8 text-center">
+          {tSync(locale, 'thankyou.nextTitle') ?? 'Wat gebeurt er nu?'}
+        </h2>
+
+        <div class="space-y-8">
+
+          <div class="flex items-start">
+            <div class="w-8 h-8 bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 rounded-full flex items-center justify-center mr-6 font-bold">
+              1
+            </div>
+            <div>
+              <h3 class="font-semibold text-[#001F3F] dark:text-white mb-2">
+                {tSync(locale, 'thankyou.step1Title') ?? 'Check je e‑mail'}
+              </h3>
+              <p class="text-gray-700 dark:text-gray-300">
+                {tSync(locale, 'thankyou.step1Text') ?? 'Je ontvangt binnen enkele minuten een bevestiging met alle informatie.'}
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start">
+            <div class="w-8 h-8 bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 rounded-full flex items-center justify-center mr-6 font-bold">
+              2
+            </div>
+            <div>
+              <h3 class="font-semibold text-[#001F3F] dark:text-white mb-2">
+                {tSync(locale, 'thankyou.step2Title') ?? 'Wij plannen de eerste les'}
+              </h3>
+              <p class="text-gray-700 dark:text-gray-300">
+                {tSync(locale, 'thankyou.step2Text') ?? 'We nemen contact met je op om de startdatum en groep te bevestigen.'}
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start">
+            <div class="w-8 h-8 bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 rounded-full flex items-center justify-center mr-6 font-bold">
+              3
+            </div>
+            <div>
+              <h3 class="font-semibold text-[#001F3F] dark:text-white mb-2">
+                {tSync(locale, 'thankyou.step3Title') ?? 'Klaar om te starten'}
+              </h3>
+              <p class="text-gray-700 dark:text-gray-300">
+                {tSync(locale, 'thankyou.step3Text') ?? 'We zorgen voor een veilige, leuke en leerzame zwemervaring voor je kind.'}
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Back Link -->
+    <div class="text-center">
+      <a 
+        href={`/${locale}`}
+        class="text-blue-700 dark:text-blue-300 hover:underline font-medium"
+      >
+        ← {tSync(locale, 'thankyou.back') ?? 'Terug naar de homepage'}
+      </a>
+    </div>
+
+  </Container>
+</section>
+
+<LegalFooter locale={locale} />

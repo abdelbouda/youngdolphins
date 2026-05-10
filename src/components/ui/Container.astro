@@ -1,0 +1,33 @@
+---
+interface Props {
+  maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | 'full';
+  class?: string;
+  as?: keyof HTMLElementTagNameMap;
+  padding?: boolean;
+}
+
+const { 
+  maxWidth = 'xl', 
+  class: className = '',
+  as: Tag = 'div',
+  padding = true,
+  ...props 
+} = Astro.props as Props;
+
+const maxWidthClasses: Record<NonNullable<Props['maxWidth']>, string> = {
+  sm: 'max-w-container-sm',
+  md: 'max-w-container-md', 
+  lg: 'max-w-container-lg',
+  xl: 'max-w-container-xl',
+  '2xl': 'max-w-container-2xl',
+  full: 'max-w-full'
+};
+
+const paddingClasses = padding ? 'px-4 sm:px-6 lg:px-8' : '';
+
+const classes = `w-full mx-auto ${maxWidthClasses[maxWidth]} ${paddingClasses} ${className}`.trim();
+---
+
+<Tag class={classes} {...props}>
+  <slot />
+</Tag>

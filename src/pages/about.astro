@@ -1,0 +1,138 @@
+---
+const locale = Astro.props.locale ?? 'nl';
+import { tSync } from '../i18n/utils';
+
+import Header from '../components/ui/Header.astro';
+import Container from '../components/ui/Container.astro';
+import TeamSection from '../components/sections/TeamSection.astro';
+import FinalSections from '../components/sections/FinalSections.astro';
+---
+
+<!-- HEADER -->
+<Header locale={locale} />
+
+<!-- HERO -->
+<section class="py-16 bg-blue-50 dark:bg-blue-900/20">
+  <Container>
+    <div class="max-w-4xl mx-auto text-center">
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#001F3F] dark:text-white mb-6">
+        {tSync(locale, 'about.title') ?? 'Over Young Dolphins'}
+      </h1>
+      <p class="text-xl text-gray-700 dark:text-gray-300 leading-relaxed max-w-3xl mx-auto">
+        {tSync(locale, 'about.subtitle') ?? 
+        'Young Dolphins is een zwemschool in Amsterdam waar kinderen veilig, met plezier en in hun eigen tempo leren zwemmen.'}
+      </p>
+    </div>
+  </Container>
+</section>
+
+<!-- OUR STORY -->
+<section class="py-16 bg-white dark:bg-black">
+  <Container>
+    <div class="max-w-4xl mx-auto space-y-6 text-gray-700 dark:text-gray-300 leading-relaxed">
+      <h2 class="text-3xl font-semibold text-[#001F3F] dark:text-white mb-4">
+        {tSync(locale, 'about.ourStoryTitle') ?? 'Onze missie'}
+      </h2>
+
+      <p>
+        Young Dolphins is ontstaan vanuit één duidelijke overtuiging: elk kind verdient zwemles in een 
+        veilige, positieve en persoonlijke omgeving. Geen grote groepen, geen stress, geen druk — maar 
+        aandacht, vertrouwen en plezier.
+      </p>
+
+      <p>
+        Onze instructeurs hebben jarenlange ervaring in het begeleiden van kinderen van alle leeftijden. 
+        We werken met kleine groepen zodat ieder kind écht gezien wordt en op zijn eigen tempo kan groeien.
+      </p>
+
+      <p>
+        Waterveiligheid staat bij ons centraal. Daarom leren we kinderen niet alleen de technieken voor 
+        hun A-, B- en C‑diploma, maar ook hoe ze zich veilig en zelfverzekerd voelen in het water.
+      </p>
+    </div>
+  </Container>
+</section>
+
+<!-- VALUES -->
+<section class="py-16 bg-blue-50 dark:bg-blue-900/20">
+  <Container>
+    <div class="max-w-4xl mx-auto text-center mb-12">
+      <h2 class="text-3xl font-semibold text-[#001F3F] dark:text-white mb-6">
+        {tSync(locale, 'about.valuesTitle') ?? 'Waar wij voor staan'}
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      
+      <!-- Value 1 -->
+      <div class="bg-white dark:bg-gray-800 p-8 rounded-lg border border-gray-200 dark:border-gray-700">
+        <h3 class="text-xl font-semibold text-[#001F3F] dark:text-white mb-4">
+          Persoonlijke aandacht
+        </h3>
+        <p class="text-gray-600 dark:text-gray-300">
+          Kleine groepen zorgen voor rust, veiligheid en sneller leren.
+        </p>
+      </div>
+
+      <!-- Value 2 -->
+      <div class="bg-white dark:bg-gray-800 p-8 rounded-lg border border-gray-200 dark:border-gray-700">
+        <h3 class="text-xl font-semibold text-[#001F3F] dark:text-white mb-4">
+          Plezier staat centraal
+        </h3>
+        <p class="text-gray-600 dark:text-gray-300">
+          Kinderen leren het beste wanneer ze zich op hun gemak voelen en plezier hebben.
+        </p>
+      </div>
+
+      <!-- Value 3 -->
+      <div class="bg-white dark:bg-gray-800 p-8 rounded-lg border border-gray-200 dark:border-gray-700">
+        <h3 class="text-xl font-semibold text-[#001F3F] dark:text-white mb-4">
+          Waterveiligheid eerst
+        </h3>
+        <p class="text-gray-600 dark:text-gray-300">
+          Onze lessen zijn gericht op echte veiligheid, niet alleen op diploma’s.
+        </p>
+      </div>
+
+    </div>
+  </Container>
+</section>
+
+<!-- TEAM -->
+<TeamSection locale={locale} />
+
+<!-- WHY CHOOSE US -->
+<section class="py-16 bg-white dark:bg-black">
+  <Container>
+    <div class="max-w-4xl mx-auto text-center mb-12">
+      <h2 class="text-3xl font-semibold text-[#001F3F] dark:text-white mb-6">
+        Waarom ouders voor Young Dolphins kiezen
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="p-6 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+        <h3 class="text-xl font-semibold text-[#001F3F] dark:text-white mb-3">Kleine groepen</h3>
+        <p class="text-gray-700 dark:text-gray-300">Meer aandacht, minder druk, sneller leren.</p>
+      </div>
+
+      <div class="p-6 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+        <h3 class="text-xl font-semibold text-[#001F3F] dark:text-white mb-3">Gediplomeerde instructeurs</h3>
+        <p class="text-gray-700 dark:text-gray-300">Professioneel, ervaren en kindgericht.</p>
+      </div>
+
+      <div class="p-6 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+        <h3 class="text-xl font-semibold text-[#001F3F] dark:text-white mb-3">Veilige zwembaden</h3>
+        <p class="text-gray-700 dark:text-gray-300">Rustige, warme locaties waar kinderen zich prettig voelen.</p>
+      </div>
+
+      <div class="p-6 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+        <h3 class="text-xl font-semibold text-[#001F3F] dark:text-white mb-3">Transparante voortgang</h3>
+        <p class="text-gray-700 dark:text-gray-300">Ouders blijven altijd op de hoogte van de ontwikkeling.</p>
+      </div>
+    </div>
+  </Container>
+</section>
+
+<!-- FINAL CTA -->
+<FinalSections locale={locale} />

@@ -1,0 +1,129 @@
+---
+import Container from '../ui/Container.astro';
+import { t } from '../../i18n/ui';
+import type { Locale } from '../../i18n/types';
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = 'en' } = Astro.props;
+
+// Section header
+const title = await t(locale, 'security.title');
+const subtitle = await t(locale, 'security.subtitle');
+
+// Items
+const instructorsTitle = await t(locale, 'security.items.instructors.title');
+const instructorsText = await t(locale, 'security.items.instructors.text');
+
+const poolsTitle = await t(locale, 'security.items.pools.title');
+const poolsText = await t(locale, 'security.items.pools.text');
+
+const supervisionTitle = await t(locale, 'security.items.supervision.title');
+const supervisionText = await t(locale, 'security.items.supervision.text');
+
+const facilitiesTitle = await t(locale, 'security.items.facilities.title');
+const facilitiesText = await t(locale, 'security.items.facilities.text');
+
+const emergencyTitle = await t(locale, 'security.items.emergency.title');
+const emergencyText = await t(locale, 'security.items.emergency.text');
+
+const transparencyTitle = await t(locale, 'security.items.transparency.title');
+const transparencyText = await t(locale, 'security.items.transparency.text');
+
+// Footer block
+const footerTitle = await t(locale, 'security.footer.title');
+---
+
+<section id="security" class="py-16 bg-primary">
+  <Container>
+
+    <!-- Section Header -->
+    <div class="text-center mb-12">
+      <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
+        {title}
+      </h2>
+
+      <p class="text-xl text-white/70 max-w-2xl mx-auto">
+        {subtitle}
+      </p>
+    </div>
+
+    <!-- Safety Features -->
+    <div class="max-w-4xl mx-auto mb-16">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+        <div class="text-center">
+          <h3 class="text-lg font-semibold text-white mb-3">
+            {instructorsTitle}
+          </h3>
+          <p class="text-white/70 text-sm leading-relaxed">
+            {instructorsText}
+          </p>
+        </div>
+
+        <div class="text-center">
+          <h3 class="text-lg font-semibold text-white mb-3">
+            {poolsTitle}
+          </h3>
+          <p class="text-white/70 text-sm leading-relaxed">
+            {poolsText}
+          </p>
+        </div>
+
+        <div class="text-center">
+          <h3 class="text-lg font-semibold text-white mb-3">
+            {supervisionTitle}
+          </h3>
+          <p class="text-white/70 text-sm leading-relaxed">
+            {supervisionText}
+          </p>
+        </div>
+
+        <div class="text-center">
+          <h3 class="text-lg font-semibold text-white mb-3">
+            {facilitiesTitle}
+          </h3>
+          <p class="text-white/70 text-sm leading-relaxed">
+            {facilitiesText}
+          </p>
+        </div>
+
+        <div class="text-center">
+          <h3 class="text-lg font-semibold text-white mb-3">
+            {emergencyTitle}
+          </h3>
+          <p class="text-white/70 text-sm leading-relaxed">
+            {emergencyText}
+          </p>
+        </div>
+
+        <div class="text-center">
+          <h3 class="text-lg font-semibold text-white mb-3">
+            {transparencyTitle}
+          </h3>
+          <p class="text-white/70 text-sm leading-relaxed">
+            {transparencyText}
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Footer / Certification -->
+    <div class="text-center mb-16">
+      <h3 class="text-2xl font-semibold text-white mb-8">
+        {footerTitle}
+      </h3>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-2xl mx-auto text-sm text-white/70">
+        <div>NRZ Safety Standards</div>
+        <div>ENVOZ Certified Instructors</div>
+        <div>Child‑Friendly Teaching</div>
+        <div>Daily Water Quality Checks</div>
+      </div>
+    </div>
+
+  </Container>
+</section>

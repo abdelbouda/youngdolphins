@@ -1,0 +1,155 @@
+---
+const locale = Astro.props.locale ?? Astro.currentLocale ?? 'nl';
+import { tSync } from '../i18n/utils';
+
+import Header from '../components/ui/Header.astro';
+import LegalFooter from '../components/sections/LegalFooter.astro';
+
+// Lokale vertalingen voor de lijsten en paragrafen die niet in de algemene JSON staan
+const content = {
+  nl: {
+    intro: "Wij verzamelen alleen gegevens die nodig zijn voor het aanbieden van zwemlessen en het communiceren met ouders/verzorgers. Dit kan onder andere omvatten:",
+    list1: [
+      "Naam van het kind en ouder/verzorger",
+      "Contactgegevens (e‑mail, telefoonnummer)",
+      "Leeftijd en zwemniveau van het kind",
+      "Administratieve gegevens voor inschrijving en betalingen"
+    ],
+    usage: "De gegevens worden uitsluitend gebruikt voor:",
+    list2: [
+      "Het plannen en organiseren van zwemlessen",
+      "Communicatie over lestijden, voortgang en wijzigingen",
+      "Administratieve verwerking van inschrijvingen en betalingen",
+      "Veiligheidsdoeleinden tijdens de lessen"
+    ],
+    retention: "Wij bewaren persoonsgegevens alleen zolang dit noodzakelijk is voor de zwemlessen en administratieve verplichtingen. Na beëindiging van de lessen worden gegevens veilig verwijderd.",
+    sharing: "Wij delen persoonsgegevens nooit met derden, tenzij dit wettelijk verplicht is of noodzakelijk voor administratieve verwerking (bijv. betalingsproviders).",
+    security: "Wij nemen passende technische en organisatorische maatregelen om persoonsgegevens te beschermen tegen verlies, misbruik of ongeautoriseerde toegang.",
+    rights: "U heeft het recht om:",
+    list3: [
+      "Uw gegevens in te zien",
+      "Gegevens te laten corrigeren of verwijderen",
+      "Bezwaar te maken tegen verwerking",
+      "Uw toestemming in te trekken"
+    ],
+    contact: "Voor vragen over deze privacyverklaring kunt u contact opnemen via:"
+  },
+  en: {
+    intro: "We only collect data necessary for providing swimming lessons and communicating with parents/guardians. This may include:",
+    list1: [
+      "Name of the child and parent/guardian",
+      "Contact details (email, phone number)",
+      "Age and swimming level of the child",
+      "Administrative data for registration and payments"
+    ],
+    usage: "The data is used exclusively for:",
+    list2: [
+      "Planning and organizing swimming lessons",
+      "Communication about lesson times, progress, and changes",
+      "Administrative processing of registrations and payments",
+      "Safety purposes during lessons"
+    ],
+    retention: "We retain personal data only as long as necessary for swimming lessons and administrative obligations. After termination of the lessons, data is securely deleted.",
+    sharing: "We never share personal data with third parties unless legally required or necessary for administrative processing (e.g., payment providers).",
+    security: "We take appropriate technical and organizational measures to protect personal data against loss, misuse, or unauthorized access.",
+    rights: "You have the right to:",
+    list3: [
+      "Access your data",
+      "Have data corrected or deleted",
+      "Object to processing",
+      "Withdraw your consent"
+    ],
+    contact: "For questions about this privacy statement, please contact us via:"
+  }
+};
+
+const t = content[locale as keyof typeof content] || content.nl;
+---
+
+<Header locale={locale} />
+
+<section class="py-20 lg:py-24 bg-white dark:bg-black">
+  <div class="container-responsive">
+    <div class="max-w-3xl mx-auto">
+      <div class="prose prose-lg dark:prose-invert max-w-none">
+
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#001F3F] dark:text-white mb-8">
+          {tSync(locale, 'privacy.title') || (locale === 'en' ? 'Privacy Policy' : 'Privacyverklaring')}
+        </h1>
+
+        <p class="text-gray-600 dark:text-gray-400 mb-12">
+          {tSync(locale, 'privacy.lastUpdated') || (locale === 'en' ? 'Last updated: January 2026' : 'Laatst bijgewerkt: januari 2026')}
+        </p>
+
+        <div class="space-y-12">
+
+          <section>
+            <h2 class="text-xl sm:text-2xl font-bold text-[#001F3F] dark:text-white mb-4">
+              {tSync(locale, 'privacy.section1Title') || (locale === 'en' ? '1. What data do we collect?' : '1. Welke gegevens verzamelen wij?')}
+            </h2>
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">{t.intro}</p>
+            <ul class="list-disc pl-8 text-gray-700 dark:text-gray-300 space-y-2">
+              {t.list1.map(item => <li>{item}</li>)}
+            </ul>
+          </section>
+
+          <section>
+            <h2 class="text-xl sm:text-2xl font-bold text-[#001F3F] dark:text-white mb-4">
+              {tSync(locale, 'privacy.section2Title') || (locale === 'en' ? '2. How do we use this data?' : '2. Hoe gebruiken wij deze gegevens?')}
+            </h2>
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">{t.usage}</p>
+            <ul class="list-disc pl-8 text-gray-700 dark:text-gray-300 space-y-2">
+              {t.list2.map(item => <li>{item}</li>)}
+            </ul>
+          </section>
+
+          <section>
+            <h2 class="text-xl sm:text-2xl font-bold text-[#001F3F] dark:text-white mb-4">
+              {tSync(locale, 'privacy.section3Title') || (locale === 'en' ? '3. How long do we keep data?' : '3. Hoe lang bewaren wij gegevens?')}
+            </h2>
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed">{t.retention}</p>
+          </section>
+
+          <section>
+            <h2 class="text-xl sm:text-2xl font-bold text-[#001F3F] dark:text-white mb-4">
+              {tSync(locale, 'privacy.section4Title') || (locale === 'en' ? '4. Do we share data with third parties?' : '4. Delen wij gegevens met derden?')}
+            </h2>
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed">{t.sharing}</p>
+          </section>
+
+          <section>
+            <h2 class="text-xl sm:text-2xl font-bold text-[#001F3F] dark:text-white mb-4">
+              {tSync(locale, 'privacy.section5Title') || (locale === 'en' ? '5. Data security' : '5. Beveiliging van gegevens')}
+            </h2>
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed">{t.security}</p>
+          </section>
+
+          <section>
+            <h2 class="text-xl sm:text-2xl font-bold text-[#001F3F] dark:text-white mb-4">
+              {tSync(locale, 'privacy.section6Title') || (locale === 'en' ? '6. Rights of parents/guardians' : '6. Rechten van ouders/verzorgers')}
+            </h2>
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">{t.rights}</p>
+            <ul class="list-disc pl-8 text-gray-700 dark:text-gray-300 space-y-2">
+              {t.list3.map(item => <li>{item}</li>)}
+            </ul>
+          </section>
+
+          <section>
+            <h2 class="text-xl sm:text-2xl font-bold text-[#001F3F] dark:text-white mb-4">
+              {tSync(locale, 'privacy.section7Title') || (locale === 'en' ? '7. Contact' : '7. Contact')}
+            </h2>
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+              {t.contact}<br />
+              <a href="mailto:info@youngdolphins.nl" class="text-blue-600 dark:text-blue-400">
+                info@youngdolphins.nl
+              </a>
+            </p>
+          </section>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<LegalFooter locale={locale} />

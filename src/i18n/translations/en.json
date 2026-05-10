@@ -1,0 +1,290 @@
+{
+  "nav": {
+    "home": "Home",
+    "lessons": "Lessons",
+    "pricing": "Pricing",
+    "about": "About us",
+    "contact": "Contact",
+    "cta": "Enroll now"
+  },
+
+  "hero": {
+    "title": "Learn to swim with confidence and fun",
+    "subtitle": "At Young Dolphins, we help children earn their A, B, and C diplomas safely and happily.",
+    "cta_primary": "View our rates",
+    "cta_secondary": "Frequently asked questions",
+    "stats": {
+      "diplomas": "A, B, and C diplomas achieved",
+      "success": "Successful swimmers",
+      "rating": "Average rating"
+    },
+    "continue_reading": "View our offer"
+  },
+
+  "problem": {
+    "title": "Why choose Young Dolphins?",
+    "points": [
+      "Small groups for maximum attention",
+      "Certified and experienced instructors",
+      "Warm and safe swimming pools",
+      "No long waiting lists",
+      "Fun and confidence come first"
+    ]
+  },
+
+  "features": {
+    "title": "Swimming lessons for every age",
+    "items": [
+      {
+        "title": "Kids (4–12 years)",
+        "description": "Step‑by‑step learning according to ENVOZ / NRZ standards."
+      },
+      {
+        "title": "Private & Duo Lessons",
+        "description": "Extra personal guidance for faster progress."
+      }
+    ]
+  },
+
+  "testimonials": {
+    "title": "What parents say",
+    "subtitle": "Real experiences from families"
+  },
+
+  "stats": {
+    "title": "Our results",
+    "items": {
+      "diplomas": "Certificates earned",
+      "success": "Success rate",
+      "rating": "Parent rating"
+    }
+  },
+
+  "team": {
+    "title": "Our instructors",
+    "subtitle": "Certified, experienced and passionate about teaching children",
+    "instructors": {
+      "noureddine": {
+        "name": "Noureddine Bouda",
+        "role": "Head Instructor",
+        "bio": "12+ years of experience in swimming education. Specialized in children with water anxiety and A/B/C diploma tracks."
+      },
+      "nasredine": {
+        "name": "Nasredine",
+        "role": "Swimming Instructor",
+        "bio": "8+ years of experience in swimming education. Specialized in children with water anxiety and A/B/C diploma tracks."
+      }
+    }
+  },
+
+  "integrations": {
+    "title": "Our locations",
+    "subtitle": "Modern, warm swimming pools",
+
+    "groups": [
+      {
+        "name": "Amsterdam",
+        "items": [
+          "De Mirandabad",
+          "Sportfondsenbad",
+          "Sloterparkbad",
+          "Noorderparkbad",
+          "Het Marnix",
+          "Flevoparkbad",
+          "Zeeburgbad",
+          "Oosterparkbad",
+          "Wibautbad",
+          "Watergraafsmeerbad"
+        ]
+      },
+      {
+        "name": "Monnickendam",
+        "items": [
+          "Sportfondsen Monnickendam"
+        ]
+      },
+      {
+        "name": "Special Programs",
+        "items": [
+          "Private lessons",
+          "Accelerated A/B/C program"
+        ]
+      }
+    ],
+
+    "facilities": [
+      {
+        "title": "Warm Water Pools",
+        "description": "All our pools are heated and child‑friendly, ensuring a comfortable learning environment."
+      },
+      {
+        "title": "Certified Instructors",
+        "description": "Our team is fully certified and trained to teach children of all ages and skill levels."
+      },
+      {
+        "title": "Safe & Modern Facilities",
+        "description": "We work only with pools that meet the highest safety and hygiene standards."
+      }
+    ],
+
+    "cta_title": "Ready to start?",
+    "cta_subtitle": "Choose the location that fits your schedule and enroll today.",
+    "cta_button": "Enroll now"
+  },
+
+  "security": {
+    "title": "Safety first",
+    "subtitle": "Our lessons follow all official swimming safety standards",
+    "items": {
+      "instructors": {
+        "title": "Certified instructors",
+        "text": "All instructors are ENVOZ/NRZ‑certified and trained in child‑friendly teaching methods, safety protocols, and first aid."
+      },
+      "pools": {
+        "title": "Warm & safe pools",
+        "text": "We teach only in pools that meet strict safety and hygiene standards, with constant temperature monitoring."
+      },
+      "supervision": {
+        "title": "Lifeguard supervision",
+        "text": "Every lesson is supervised by certified lifeguards to ensure maximum safety for all children."
+      },
+      "facilities": {
+        "title": "Clean & hygienic facilities",
+        "text": "Our pools are cleaned daily, and water quality is tested multiple times per day according to Dutch regulations."
+      },
+      "emergency": {
+        "title": "Emergency readiness",
+        "text": "Our team is trained in emergency response, CPR, and child rescue techniques to ensure a safe environment."
+      },
+      "transparency": {
+        "title": "Parent transparency",
+        "text": "Parents can always observe lessons and receive updates on progress, safety, and comfort."
+      }
+    },
+    "footer": {
+      "title": "Certified & trustworthy"
+    }
+  },
+
+  "pricing": {
+    "title": "Pricing",
+    "subtitle": "Clear prices with no surprises",
+    "cta": "Enroll now",
+
+    "packages": {
+      "starter": {
+        "name": "Starter",
+        "price_unit": "/ lesson",
+        "description": "Perfect for beginners and first swimming lessons.",
+        "features": [
+          "1 lesson per week",
+          "Small groups",
+          "Warm pool",
+          "Certified instructors"
+        ]
+      },
+      "progress": {
+        "name": "Progress+",
+        "badge": "Most popular",
+        "price_unit": "/ month",
+        "description": "Learn faster with extra guidance.",
+        "features": [
+          "2 lessons per week",
+          "Progress reports",
+          "Extra personal attention",
+          "Access to all locations",
+          "A/B/C diploma guidance"
+        ]
+      },
+      "private": {
+        "name": "Private",
+        "price_unit": "/ lesson",
+        "description": "1‑on‑1 coaching for maximum progress.",
+        "features": [
+          "Private lesson",
+          "Faster progress",
+          "Personal lesson plan",
+          "Flexible times",
+          "Accelerated A/B/C program"
+        ]
+      }
+    },
+
+    "compare": {
+      "title": "Compare packages",
+      "feature": "Feature",
+      "rows": {
+        "lessons": "Lessons per week",
+        "report": "Progress reporting",
+        "personal": "Personal guidance",
+        "access": "Access to all pools"
+      }
+    }
+  },
+
+  "faq": {
+    "title": "Frequently asked questions",
+    "subtitle": "Everything parents want to know",
+
+    "items": [
+      {
+        "question": "How long does it take to get a swimming diploma?",
+        "answer": "This depends on age, confidence, and lesson frequency. Most children earn diploma A in approximately 12–18 months with weekly lessons. With Progress+ or private lessons, progress is often faster."
+      },
+      {
+        "question": "What should my child bring to the first lesson?",
+        "answer": "A swimsuit, towel, and slippers are enough. We provide all floating materials and safety equipment."
+      },
+      {
+        "question": "Can parents watch the lessons?",
+        "answer": "Yes! All pools have viewing areas where parents can watch comfortably."
+      },
+      {
+        "question": "What if my child is afraid of water?",
+        "answer": "Our instructors are trained in helping anxious swimmers. We start slowly, build trust, and use playful exercises to help children feel safe and confident."
+      },
+      {
+        "question": "Do you offer private lessons?",
+        "answer": "Yes, we offer 1‑on‑1 private lessons and duo lessons. These are ideal for faster progress or children who need extra attention."
+      },
+      {
+        "question": "What locations do you teach at?",
+        "answer": "We teach in multiple warm, child‑friendly pools. You can choose the location that works best for your schedule."
+      }
+    ],
+
+    "more_title": "Still have questions?",
+    "more_subtitle": "Our team is here to help you with anything related to swimming lessons.",
+    "more_cta": "Contact support"
+  },
+
+  "values": {
+    "title": "Our values",
+    "items": [
+      {
+        "title": "Safety First",
+        "description": "Safety always comes first. Our instructors are fully certified and trained in child‑friendly methods."
+      },
+      {
+        "title": "Fun & Confidence",
+        "description": "Children learn fastest when they enjoy themselves. We build confidence at every step."
+      },
+      {
+        "title": "Personal Attention",
+        "description": "Small groups and personal guidance ensure maximum progress."
+      }
+    ]
+  },
+
+  "join": {
+    "title": "Want to join us?",
+    "subtitle": "We’re always looking for passionate instructors who love helping children grow in the water.",
+    "cta": "View open positions"
+  },
+
+  "final": {
+    "title": "Ready to begin?",
+    "subtitle": "Enroll your child today for swimming lessons",
+    "cta": "Enroll now"
+  }
+}

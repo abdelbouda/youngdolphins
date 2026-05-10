@@ -1,0 +1,132 @@
+---
+const locale = Astro.props.locale ?? 'nl';
+import { tSync } from '../i18n/utils';
+
+import Header from '../components/ui/Header.astro';
+import LegalFooter from '../components/sections/LegalFooter.astro';
+---
+
+<!-- HEADER -->
+<Header locale={locale} />
+
+<section class="py-20 lg:py-24 bg-white dark:bg-black">
+  <div class="container-responsive">
+    <div class="max-w-3xl mx-auto">
+      <div class="prose prose-lg dark:prose-invert max-w-none">
+
+        <!-- TITLE -->
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#001F3F] dark:text-white mb-8">
+          {tSync(locale, 'terms.title') ?? 'Algemene Voorwaarden'}
+        </h1>
+
+        <p class="text-gray-600 dark:text-gray-400 mb-12">
+          {tSync(locale, 'terms.lastUpdated') ?? 'Laatst bijgewerkt: januari 2026'}
+        </p>
+
+        <div class="space-y-12">
+
+          <!-- SECTION 1 -->
+          <section>
+            <h2 class="text-xl sm:text-2xl font-bold text-[#001F3F] dark:text-white mb-4">
+              {tSync(locale, 'terms.section1Title') ?? '1. Inschrijving en deelname'}
+            </h2>
+
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+              Inschrijving voor zwemlessen bij Young Dolphins vindt plaats via ons online
+              inschrijfformulier. Een inschrijving is pas definitief na bevestiging per e‑mail.
+              Ouders/verzorgers zijn verantwoordelijk voor het verstrekken van correcte informatie.
+            </p>
+          </section>
+
+          <!-- SECTION 2 -->
+          <section>
+            <h2 class="text-xl sm:text-2xl font-bold text-[#001F3F] dark:text-white mb-4">
+              {tSync(locale, 'terms.section2Title') ?? '2. Betalingen'}
+            </h2>
+
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+              Betaling van zwemlessen dient te gebeuren vóór aanvang van de lesperiode. 
+              Young Dolphins behoudt zich het recht voor om deelname te weigeren wanneer 
+              betalingen niet tijdig zijn voldaan.
+            </p>
+
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+              Eventuele kosten voor gemiste lessen worden niet automatisch verrekend, tenzij anders overeengekomen.
+            </p>
+          </section>
+
+          <!-- SECTION 3 -->
+          <section>
+            <h2 class="text-xl sm:text-2xl font-bold text-[#001F3F] dark:text-white mb-4">
+              {tSync(locale, 'terms.section3Title') ?? '3. Annulering en afwezigheid'}
+            </h2>
+
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+              Bij annulering van een lesperiode geldt een opzegtermijn van 14 dagen. 
+              Gemiste lessen door ziekte of afwezigheid kunnen niet worden ingehaald, 
+              tenzij dit vooraf is afgestemd en bevestigd.
+            </p>
+
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+              Indien Young Dolphins een les moet annuleren, wordt een vervangende les aangeboden.
+            </p>
+          </section>
+
+          <!-- SECTION 4 -->
+          <section>
+            <h2 class="text-xl sm:text-2xl font-bold text-[#001F3F] dark:text-white mb-4">
+              {tSync(locale, 'terms.section4Title') ?? '4. Veiligheid en verantwoordelijkheid'}
+            </h2>
+
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+              Onze instructeurs zorgen voor een veilige leeromgeving. Ouders/verzorgers blijven echter
+              verantwoordelijk voor het gedrag en de gezondheid van hun kind. 
+              Young Dolphins is niet aansprakelijk voor verlies van persoonlijke eigendommen.
+            </p>
+          </section>
+
+          <!-- SECTION 5 -->
+          <section>
+            <h2 class="text-xl sm:text-2xl font-bold text-[#001F3F] dark:text-white mb-4">
+              {tSync(locale, 'terms.section5Title') ?? '5. Gezondheid en medische informatie'}
+            </h2>
+
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+              Ouders/verzorgers dienen medische bijzonderheden van hun kind vooraf te melden.
+              Bij twijfel over deelname adviseren wij een arts te raadplegen.
+            </p>
+          </section>
+
+          <!-- SECTION 6 -->
+          <section>
+            <h2 class="text-xl sm:text-2xl font-bold text-[#001F3F] dark:text-white mb-4">
+              {tSync(locale, 'terms.section6Title') ?? '6. Wijzigingen in het rooster'}
+            </h2>
+
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+              Young Dolphins behoudt zich het recht voor om lestijden, locaties of instructeurs te wijzigen.
+              Wij informeren ouders/verzorgers tijdig bij wijzigingen.
+            </p>
+          </section>
+
+          <!-- SECTION 7 -->
+          <section>
+            <h2 class="text-xl sm:text-2xl font-bold text-[#001F3F] dark:text-white mb-4">
+              {tSync(locale, 'terms.section7Title') ?? '7. Contact'}
+            </h2>
+
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+              Voor vragen over deze voorwaarden kunt u contact opnemen via:<br />
+              <a href="mailto:info@youngdolphins.nl" class="text-blue-600 dark:text-blue-400">
+                info@youngdolphins.nl
+              </a>
+            </p>
+          </section>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<LegalFooter locale={locale} />

@@ -1,0 +1,290 @@
+{
+  "nav": {
+    "home": "Home",
+    "lessons": "Zwemlessen",
+    "pricing": "Tarieven",
+    "about": "Over ons",
+    "contact": "Contact",
+    "cta": "Inschrijven"
+  },
+
+  "hero": {
+    "title": "Leren zwemmen met plezier en vertrouwen",
+    "subtitle": "Bij Young Dolphins helpen we kinderen veilig en met plezier hun A-, B- en C-diploma te behalen.",
+    "cta_primary": "Bekijk onze tarieven",
+    "cta_secondary": "Veelgestelde vragen",
+    "stats": {
+      "diplomas": "A-, B- en C-diploma’s behaald",
+      "success": "Succesvolle zwemmers",
+      "rating": "Gemiddelde beoordeling"
+    },
+    "continue_reading": "Bekijk ons aanbod"
+  },
+
+  "problem": {
+    "title": "Waarom kiezen voor Young Dolphins?",
+    "points": [
+      "Kleine groepen voor maximale aandacht",
+      "Gediplomeerde en ervaren instructeurs",
+      "Warme en veilige zwembaden",
+      "Geen lange wachtlijsten",
+      "Plezier en vertrouwen staan centraal"
+    ]
+  },
+
+  "features": {
+    "title": "Zwemlessen voor elke leeftijd",
+    "items": [
+      {
+        "title": "Kinderen (4–12 jaar)",
+        "description": "Stap‑voor‑stap leren zwemmen volgens ENVOZ / NRZ‑normen."
+      },
+      {
+        "title": "Privé & Duo‑lessen",
+        "description": "Extra persoonlijke begeleiding voor sneller resultaat."
+      }
+    ]
+  },
+
+  "testimonials": {
+    "title": "Wat ouders zeggen",
+    "subtitle": "Echte ervaringen van gezinnen"
+  },
+
+  "stats": {
+    "title": "Onze resultaten",
+    "items": {
+      "diplomas": "Diploma’s behaald",
+      "success": "Slagingspercentage",
+      "rating": "Ouderwaardering"
+    }
+  },
+
+  "team": {
+    "title": "Onze instructeurs",
+    "subtitle": "Gediplomeerd, ervaren en met hart voor kinderen",
+    "instructors": {
+      "noureddine": {
+        "name": "Noureddine Bouda",
+        "role": "Hoofdinstructeur",
+        "bio": "12+ jaar ervaring met zwemonderwijs. Gespecialiseerd in kinderen met watervrees en A/B/C-diploma trajecten."
+      },
+      "nasredine": {
+        "name": "Nasredine",
+        "role": "Zwemleraar",
+        "bio": "8+ jaar ervaring met zwemonderwijs. Gespecialiseerd in kinderen met watervrees en A/B/C-diploma trajecten."
+      }
+    }
+  },
+
+  "integrations": {
+    "title": "Onze locaties",
+    "subtitle": "Moderne, warme zwembaden",
+
+    "groups": [
+      {
+        "name": "Amsterdam",
+        "items": [
+          "De Mirandabad",
+          "Sportfondsenbad",
+          "Sloterparkbad",
+          "Noorderparkbad",
+          "Het Marnix",
+          "Flevoparkbad",
+          "Zeeburgbad",
+          "Oosterparkbad",
+          "Wibautbad",
+          "Watergraafsmeerbad"
+        ]
+      },
+      {
+        "name": "Monnickendam",
+        "items": [
+          "Sportfondsen Monnickendam"
+        ]
+      },
+      {
+        "name": "Speciale programma’s",
+        "items": [
+          "Privélessen",
+          "Versneld A/B/C traject"
+        ]
+      }
+    ],
+
+    "facilities": [
+      {
+        "title": "Warme zwembaden",
+        "description": "Alle zwembaden zijn verwarmd en kindvriendelijk, zodat kinderen comfortabel kunnen leren."
+      },
+      {
+        "title": "Gecertificeerde instructeurs",
+        "description": "Ons team is volledig gediplomeerd en ervaren in het lesgeven aan kinderen van alle leeftijden."
+      },
+      {
+        "title": "Veilige & moderne faciliteiten",
+        "description": "Wij werken alleen met zwembaden die voldoen aan de hoogste veiligheids- en hygiënestandaarden."
+      }
+    ],
+
+    "cta_title": "Klaar om te starten?",
+    "cta_subtitle": "Kies de locatie die bij jullie past en schrijf je kind vandaag nog in.",
+    "cta_button": "Inschrijven"
+  },
+
+  "security": {
+    "title": "Veiligheid staat voorop",
+    "subtitle": "Onze lessen volgen alle officiële zwemveiligheidsnormen",
+    "items": {
+      "instructors": {
+        "title": "Gecertificeerde instructeurs",
+        "text": "Alle instructeurs zijn ENVOZ/NRZ‑gecertificeerd en getraind in kindvriendelijke lesmethoden, veiligheidsprotocollen en eerste hulp."
+      },
+      "pools": {
+        "title": "Warme & veilige zwembaden",
+        "text": "Wij geven alleen les in zwembaden die voldoen aan strikte veiligheids‑ en hygiënenormen, met constante temperatuurcontrole."
+      },
+      "supervision": {
+        "title": "Toezicht door badmeesters",
+        "text": "Elke les staat onder toezicht van gecertificeerde badmeesters om maximale veiligheid voor alle kinderen te garanderen."
+      },
+      "facilities": {
+        "title": "Schone & hygiënische faciliteiten",
+        "text": "Onze zwembaden worden dagelijks gereinigd en de waterkwaliteit wordt meerdere keren per dag getest volgens Nederlandse regelgeving."
+      },
+      "emergency": {
+        "title": "Noodvoorbereiding",
+        "text": "Ons team is getraind in noodhulp, reanimatie (CPR) en kindreddingstechnieken om een veilige omgeving te waarborgen."
+      },
+      "transparency": {
+        "title": "Oudertransparantie",
+        "text": "Ouders kunnen altijd lessen observeren en ontvangen updates over voortgang, veiligheid en comfort."
+      }
+    },
+    "footer": {
+      "title": "Gecertificeerd & betrouwbaar"
+    }
+  },
+
+  "pricing": {
+    "title": "Tarieven",
+    "subtitle": "Duidelijke prijzen zonder verrassingen",
+    "cta": "Inschrijven",
+
+    "packages": {
+      "starter": {
+        "name": "Starter",
+        "price_unit": "/ les",
+        "description": "Perfect voor kennismaking en eerste zwemlessen.",
+        "features": [
+          "1 les per week",
+          "Kleine groepen",
+          "Warm zwembad",
+          "Gecertificeerde instructeurs"
+        ]
+      },
+      "progress": {
+        "name": "Progress+",
+        "badge": "Meest gekozen",
+        "price_unit": "/ maand",
+        "description": "Sneller leren met extra begeleiding.",
+        "features": [
+          "2 lessen per week",
+          "Voortgangsrapportage",
+          "Extra persoonlijke aandacht",
+          "Toegang tot alle locaties",
+          "Diploma A/B/C begeleiding"
+        ]
+      },
+      "private": {
+        "name": "Privé",
+        "price_unit": "/ les",
+        "description": "1‑op‑1 begeleiding voor maximale progressie.",
+        "features": [
+          "Privéles",
+          "Snellere vooruitgang",
+          "Persoonlijk lesplan",
+          "Flexibele tijden",
+          "Diploma A/B/C versneld traject"
+        ]
+      }
+    },
+
+    "compare": {
+      "title": "Vergelijk pakketten",
+      "feature": "Functie",
+      "rows": {
+        "lessons": "Lessen per week",
+        "report": "Voortgangsrapportage",
+        "personal": "Persoonlijke begeleiding",
+        "access": "Toegang tot alle zwembaden"
+      }
+    }
+  },
+
+  "faq": {
+    "title": "Veelgestelde vragen",
+    "subtitle": "Alles wat ouders willen weten",
+
+    "items": [
+      {
+        "question": "Hoe lang duurt het om een zwemdiploma te halen?",
+        "answer": "Dit hangt af van leeftijd, zelfvertrouwen en lesfrequentie. De meeste kinderen halen diploma A in ongeveer 12–18 maanden met wekelijkse lessen. Met Progress+ of privélessen gaat het vaak sneller."
+      },
+      {
+        "question": "Wat moet mijn kind meenemen naar de eerste les?",
+        "answer": "Een badpak of zwembroek, handdoek en slippers zijn voldoende. Wij zorgen voor alle drijfmaterialen en veiligheidsmiddelen."
+      },
+      {
+        "question": "Mogen ouders de lessen bekijken?",
+        "answer": "Ja! Alle zwembaden hebben kijkruimtes waar ouders comfortabel kunnen meekijken."
+      },
+      {
+        "question": "Wat als mijn kind bang is voor water?",
+        "answer": "Onze instructeurs zijn getraind in het begeleiden van kinderen met watervrees. We bouwen rustig op, creëren vertrouwen en gebruiken speelse oefeningen om kinderen veilig te laten voelen."
+      },
+      {
+        "question": "Bieden jullie privélessen aan?",
+        "answer": "Ja, we bieden 1‑op‑1 privélessen en duolessen aan. Ideaal voor snellere vooruitgang of kinderen die extra aandacht nodig hebben."
+      },
+      {
+        "question": "Op welke locaties geven jullie les?",
+        "answer": "We geven les in meerdere warme, kindvriendelijke zwembaden. Je kunt de locatie kiezen die het beste bij jullie planning past."
+      }
+    ],
+
+    "more_title": "Nog vragen?",
+    "more_subtitle": "Ons team helpt je graag met alles rondom zwemlessen.",
+    "more_cta": "Neem contact op"
+  },
+
+  "values": {
+    "title": "Onze waarden",
+    "items": [
+      {
+        "title": "Veiligheid eerst",
+        "description": "Veiligheid staat altijd voorop. Onze instructeurs zijn volledig gecertificeerd en getraind in kindvriendelijke methodes."
+      },
+      {
+        "title": "Plezier & Vertrouwen",
+        "description": "Kinderen leren het snelst wanneer ze plezier hebben. We bouwen vertrouwen op in elke stap."
+      },
+      {
+        "title": "Persoonlijke aandacht",
+        "description": "Kleine groepen en persoonlijke begeleiding zorgen voor maximale vooruitgang."
+      }
+    ]
+  },
+
+  "join": {
+    "title": "Wil je bij ons werken?",
+    "subtitle": "We zijn altijd op zoek naar enthousiaste instructeurs die kinderen willen helpen groeien in het water.",
+    "cta": "Bekijk openstaande vacatures"
+  },
+
+  "final": {
+    "title": "Klaar om te starten?",
+    "subtitle": "Schrijf je kind vandaag nog in voor zwemles",
+    "cta": "Inschrijven"
+  }
+}

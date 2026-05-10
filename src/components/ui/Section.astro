@@ -1,0 +1,37 @@
+---
+interface Props {
+  class?: string;
+  background?: 'primary' | 'secondary' | 'transparent';
+  spacing?: 'sm' | 'md' | 'lg' | 'xl';
+  as?: keyof HTMLElementTagNameMap;
+  id?: string;
+}
+
+const { 
+  class: className = '',
+  background = 'transparent',
+  spacing = 'lg',
+  as: Tag = 'section',
+  id,
+  ...props 
+} = Astro.props as Props;
+
+const backgroundClasses: Record<NonNullable<Props['background']>, string> = {
+  primary: 'bg-light-bg-primary dark:bg-dark-bg-primary',
+  secondary: 'bg-light-bg-secondary dark:bg-dark-bg-secondary',
+  transparent: ''
+};
+
+const spacingClasses: Record<NonNullable<Props['spacing']>, string> = {
+  sm: 'py-8 lg:py-12',
+  md: 'py-12 lg:py-16', 
+  lg: 'py-16 lg:py-20',
+  xl: 'py-20 lg:py-24'
+};
+
+const classes = `${backgroundClasses[background]} ${spacingClasses[spacing]} ${className}`.trim();
+---
+
+<Tag class={classes} id={id} {...props}>
+  <slot />
+</Tag>

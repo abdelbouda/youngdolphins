@@ -1,0 +1,69 @@
+---
+import Container from '../ui/Container.astro';
+import { t, tArray } from '../../i18n/ui';
+import type { Locale } from '../../i18n/types';
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = 'nl' } = Astro.props;
+
+const title = await t(locale, 'problem.title');
+const points = await tArray(locale, 'problem.points');
+
+// Passende icoontjes voor een zwemschool
+const icons = [
+  // Kleine groepen
+  `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>`,
+  // Gecertificeerde instructeurs
+  `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>`,
+  // Warme zwembaden
+  `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"/></svg>`,
+];
+---
+
+<section class="py-14 sm:py-20 bg-[#001F3F]" aria-labelledby="problem-title">
+  <Container>
+
+    <div class="text-center mb-10 sm:mb-14 px-4">
+      <h2 id="problem-title" class="text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-tight">
+        {title}
+      </h2>
+    </div>
+
+    <!-- Responsive grid: 1 kolom op mobile, 3 op md+ -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 px-4">
+
+      {points.slice(0, 3).map((point, i) => (
+        <div class="flex flex-col items-center text-center gap-4">
+
+          <div class="w-14 h-14 rounded-full bg-white/10 flex items-center justify-center border border-white/20 text-[#2FB3E3] flex-shrink-0">
+            <Fragment set:html={icons[i]} />
+          </div>
+
+          <p class="text-white font-semibold text-base sm:text-lg leading-snug">
+            {point}
+          </p>
+
+        </div>
+      ))}
+
+    </div>
+
+    <!-- Extra punten op grotere schermen als pills -->
+    {points.length > 3 && (
+      <div class="flex flex-wrap justify-center gap-3 mt-10 px-4">
+        {points.slice(3).map(point => (
+          <span class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 border border-white/20 rounded-full text-white text-sm font-medium">
+            <svg class="w-4 h-4 text-[#2FB3E3]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+            </svg>
+            {point}
+          </span>
+        ))}
+      </div>
+    )}
+
+  </Container>
+</section>

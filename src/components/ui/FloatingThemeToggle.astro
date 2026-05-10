@@ -1,0 +1,59 @@
+---
+import ThemeToggle from './ThemeToggle.tsx';
+---
+
+<!-- Floating theme toggle for better accessibility -->
+<div class="fixed bottom-6 right-6 z-40">
+  <div class="group">
+    <!-- Theme Toggle Button -->
+    <ThemeToggle client:load />
+    
+    <!-- Tooltip -->
+    <div class="
+      absolute bottom-full right-0 mb-2 px-3 py-1 
+      bg-light-text-primary dark:bg-dark-text-primary 
+      text-light-bg-primary dark:text-dark-bg-primary 
+      text-xs font-medium rounded-lg whitespace-nowrap
+      opacity-0 group-hover:opacity-100 
+      transform translate-y-1 group-hover:translate-y-0
+      transition-all duration-200 ease-out
+      pointer-events-none
+    ">
+      Toggle theme
+      <!-- Tooltip arrow -->
+      <div class="absolute top-full right-3 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-light-text-primary dark:border-t-dark-text-primary"></div>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Ensure floating toggle is above other content */
+  .fixed {
+    z-index: 40;
+  }
+  
+  /* Smooth hover transition for tooltip */
+  @media (hover: hover) {
+    .group:hover .absolute {
+      animation: tooltipShow 0.2s ease-out forwards;
+    }
+  }
+  
+  @keyframes tooltipShow {
+    from {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Hide on mobile to avoid interfering with touch */
+  @media (max-width: 640px) {
+    .absolute {
+      display: none;
+    }
+  }
+</style>

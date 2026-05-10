@@ -1,0 +1,200 @@
+---
+import Container from '../ui/Container.astro';
+import { t, tObject } from '../../i18n/ui';
+import type { Locale } from '../../i18n/types';
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = 'nl' } = Astro.props;
+
+/** * FORCEER DE URL STRUCTUUR:
+ * We bouwen de URL handmatig op om zeker te weten dat /nl/ of /en/ er altijd staat.
+ */
+const baseUrl = locale === 'nl' ? '/nl/aanmelden' : '/en/aanmelden';
+
+const title = await t(locale, 'pricing.title');
+const subtitle = await t(locale, 'pricing.subtitle');
+const cta = await t(locale, 'pricing.cta');
+
+// Prijzen
+const prices = {
+  starter: "25",
+  progress: "170",
+  private: "50"
+};
+
+// Pakketten ophalen uit i18n
+const starterFeatures = await tObject(locale, 'pricing.packages.starter.features') as string[];
+const progressFeatures = await tObject(locale, 'pricing.packages.progress.features') as string[];
+const privateFeatures = await tObject(locale, 'pricing.packages.private.features') as string[];
+
+// Kleuren
+const headerLightBlue = "#00AEEF";
+const headerDarkBlue = "#001F3F";
+---
+
+<section id="pricing" class="py-16 sm:py-24 bg-[#F7FBFF] overflow-hidden">
+  <Container>
+
+    <div class="text-center mb-10 sm:mb-14 px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-[#001F3F] mb-3 uppercase tracking-tight">
+        {title}
+      </h2>
+      <p class="text-gray-600 max-w-2xl mx-auto text-sm sm:text-base">
+        {subtitle}
+      </p>
+    </div>
+
+    <div class="flex flex-col md:flex-row items-stretch justify-center gap-6 lg:gap-8 max-w-6xl mx-auto mb-12 px-4">
+
+      <div class="pricing-card">
+        <h3 class="package-name">Starter</h3>
+        <div class="price-container">
+          <span class="currency">€</span>
+          <span class="amount">{prices.starter}</span>
+          <span class="unit">/ {locale === 'nl' ? 'les' : 'lesson'}</span>
+        </div>
+        <ul class="feature-list">
+          {starterFeatures.map(f => (
+            <li>
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>
+              <span>{f}</span>
+            </li>
+          ))}
+        </ul>
+        <a href={`${baseUrl}?pakket=Starter`} class="cta-button">{cta}</a>
+      </div>
+
+      <div class="pricing-card featured">
+        <div class="badge-container">
+          <span class="badge">{locale === 'nl' ? 'Meest Gekozen' : 'Most Popular'}</span>
+        </div>
+        <h3 class="package-name">Progress+</h3>
+        <div class="price-container">
+          <span class="currency">€</span>
+          <span class="amount">{prices.progress}</span>
+          <span class="unit">/ {locale === 'nl' ? 'maand' : 'month'}</span>
+        </div>
+        <ul class="feature-list">
+          {progressFeatures.map(f => (
+            <li>
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>
+              <span>{f}</span>
+            </li>
+          ))}
+        </ul>
+        <a href={`${baseUrl}?pakket=Progress-Plus`} class="cta-button">{cta}</a>
+      </div>
+
+      <div class="pricing-card">
+        <h3 class="package-name">{locale === 'nl' ? 'Privé' : 'Private'}</h3>
+        <div class="price-container">
+          <span class="currency">€</span>
+          <span class="amount">{prices.private}</span>
+          <span class="unit">/ {locale === 'nl' ? 'les' : 'lesson'}</span>
+        </div>
+        <ul class="feature-list">
+          {privateFeatures.map(f => (
+            <li>
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>
+              <span>{f}</span>
+            </li>
+          ))}
+        </ul>
+        <a href={`${baseUrl}?pakket=Prive-les`} class="cta-button">{cta}</a>
+      </div>
+
+    </div>
+
+    <div class="max-w-3xl mx-auto text-center space-y-1 px-4 opacity-70">
+      <p class="text-[11px] text-gray-500 italic font-medium">
+        * {locale === 'nl' ? 'Inschrijfgeld bedraagt €25' : 'Registration fee is €25'}
+      </p>
+      <p class="text-[11px] text-gray-500 italic font-medium">
+        * {locale === 'nl' ? 'Kosten Afzwemmen incl. zwemdiploma €25' : 'Graduation costs incl. diploma €25'}
+      </p>
+    </div>
+
+  </Container>
+</section>
+
+<style define:vars={{ headerLightBlue, headerDarkBlue }}>
+  .pricing-card {
+    flex: 1;
+    background: white;
+    border: 1px solid #E1EEF7;
+    border-radius: 1.25rem;
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  .pricing-card.featured {
+    border: 2px solid var(--headerLightBlue);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+  }
+
+  @media (min-width: 768px) {
+    .pricing-card.featured { transform: scale(1.05); }
+  }
+
+  .badge-container { position: absolute; top: -0.75rem; left: 50%; transform: translateX(-50%); }
+  .badge {
+    background-color: var(--headerLightBlue);
+    color: white;
+    padding: 0.35rem 1rem;
+    border-radius: 9999px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .package-name {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--headerDarkBlue);
+    text-align: center;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+  }
+
+  .price-container {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    margin-bottom: 2rem;
+    color: var(--headerDarkBlue);
+  }
+  .currency { font-weight: 700; font-size: 1.5rem; }
+  .amount { font-size: 3.5rem; font-weight: 900; line-height: 1; }
+  .unit { font-size: 0.875rem; color: #6B7280; margin-left: 0.25rem; }
+
+  .feature-list { margin-bottom: 2.5rem; flex: 1; display: flex; flex-direction: column; gap: 0.875rem; }
+  .feature-list li { display: flex; align-items: flex-start; gap: 0.625rem; font-size: 0.9rem; color: #4B5563; }
+  .feature-list svg { width: 1.2rem; height: 1.2rem; color: var(--headerLightBlue); flex-shrink: 0; margin-top: 0.1rem; }
+
+  .cta-button {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 1.125rem;
+    background-color: var(--headerLightBlue);
+    color: white;
+    font-weight: 800;
+    border-radius: 0.875rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+
+  .cta-button:hover {
+    background-color: var(--headerDarkBlue);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 15px rgba(0,0,0,0.15);
+  }
+</style>
