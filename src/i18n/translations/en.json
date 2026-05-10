@@ -26,7 +26,7 @@
     "points": [
       "Small groups for maximum attention",
       "Certified and experienced instructors",
-      "Warm and safe swimming pools in Amsterdam",
+      "Warm and safe swimming pools",
       "No long waiting lists",
       "Fun and confidence come first"
     ]
@@ -35,10 +35,6 @@
   "features": {
     "title": "Swimming lessons for every age",
     "items": [
-      {
-        "title": "Baby & Toddler (0–4 years)",
-        "description": "Playful introduction to water together with a parent or guardian."
-      },
       {
         "title": "Kids (4–12 years)",
         "description": "Step‑by‑step learning according to ENVOZ / NRZ standards."
@@ -52,7 +48,7 @@
 
   "testimonials": {
     "title": "What parents say",
-    "subtitle": "Real experiences from families in Amsterdam"
+    "subtitle": "Real experiences from families"
   },
 
   "stats": {
@@ -66,28 +62,35 @@
 
   "team": {
     "title": "Our instructors",
-    "subtitle": "Certified, experienced and passionate about teaching children"
+    "subtitle": "Certified, experienced and passionate about teaching children",
+    "instructors": {
+      "noureddine": {
+        "name": "Noureddine Bouda",
+        "role": "Head Instructor",
+        "bio": "12+ years of experience in swimming education. Specialized in children with water anxiety and A/B/C diploma tracks."
+      },
+      "nasredine": {
+        "name": "Nasredine",
+        "role": "Swimming Instructor",
+        "bio": "8+ years of experience in swimming education. Specialized in children with water anxiety and A/B/C diploma tracks."
+      }
+    }
   },
 
   "integrations": {
     "title": "Our locations",
-    "subtitle": "Modern, warm swimming pools across Amsterdam",
+    "subtitle": "Modern, warm swimming pools",
 
     "groups": [
       {
-        "name": "Amsterdam West",
+        "name": "Amsterdam",
         "items": [
           "De Mirandabad",
           "Sportfondsenbad",
           "Sloterparkbad",
           "Noorderparkbad",
           "Het Marnix",
-          "Flevoparkbad"
-        ]
-      },
-      {
-        "name": "Amsterdam East",
-        "items": [
+          "Flevoparkbad",
           "Zeeburgbad",
           "Oosterparkbad",
           "Wibautbad",
@@ -95,9 +98,14 @@
         ]
       },
       {
+        "name": "Monnickendam",
+        "items": [
+          "Sportfondsen Monnickendam"
+        ]
+      },
+      {
         "name": "Special Programs",
         "items": [
-          "Baby & Toddler lessons",
           "Private lessons",
           "Accelerated A/B/C program"
         ]
@@ -221,15 +229,15 @@
     "items": [
       {
         "question": "How long does it take to get a swimming diploma?",
-        "answer": "This depends on age, confidence, and lesson frequency. Most children earn diploma A in 6–12 months with weekly lessons. With Progress+ or private lessons, progress is often faster."
+        "answer": "This depends on age, confidence, and lesson frequency. Most children earn diploma A in approximately 12–18 months with weekly lessons. With Progress+ or private lessons, progress is often faster."
       },
       {
         "question": "What should my child bring to the first lesson?",
-        "answer": "A swimsuit, towel, and slippers are enough. For baby & toddler lessons, a swim diaper is required. We provide all floating materials and safety equipment."
+        "answer": "A swimsuit, towel, and slippers are enough. We provide all floating materials and safety equipment."
       },
       {
         "question": "Can parents watch the lessons?",
-        "answer": "Yes! All pools have viewing areas where parents can watch comfortably. For baby & toddler lessons, parents join in the water."
+        "answer": "Yes! All pools have viewing areas where parents can watch comfortably."
       },
       {
         "question": "What if my child is afraid of water?",
@@ -241,7 +249,7 @@
       },
       {
         "question": "What locations do you teach at?",
-        "answer": "We teach in multiple warm, child‑friendly pools across Amsterdam. You can choose the location that works best for your schedule."
+        "answer": "We teach in multiple warm, child‑friendly pools. You can choose the location that works best for your schedule."
       }
     ],
 
