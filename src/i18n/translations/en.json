@@ -219,18 +219,21 @@
     }
   },
   "footer": {
-    "title": "Certified & trustworthy"
+    "title": "Certified & trustworthy",
+    "terms": "Terms & Conditions",
+    "privacy": "Privacy Policy",
+    "copyright": "All rights reserved."
   },
   "faq": {
     "title": "Frequently asked questions",
     "items": [
       {
         "question": "What should my child bring to the first lesson?",
-        "answer": "A swimsuit, towel, and slippers are enough. We provide all floating materials and safety equipment."
+        "description": "A swimsuit, towel, and slippers are enough. We provide all floating materials and safety equipment."
       },
       {
         "question": "Can parents watch lessons?",
-        "answer": "Yes! All pools have viewing areas where parents can watch comfortably."
+        "answer": "Yes! All pools have viewing areas where parents can watch comfortably.",
         "description": "Safety always comes first. Our instructors are fully certified and trained in child‑friendly methods."
       },
       {
@@ -241,7 +244,10 @@
         "title": "Personal Attention",
         "description": "Small groups and personal guidance ensure maximum progress."
       }
-    ]
+    ],
+    "more_title": "Still have questions?",
+    "more_subtitle": "Our team is here to help you with anything related to swimming lessons.",
+    "more_cta": "Contact support"
   },
 
   "join": {
@@ -252,7 +258,7 @@
 
   "final": {
     "title": "Ready to begin?",
-    "subtitle": "Enroll your child today for swimming lessons",
-    "cta": "Enroll now"
+    "subtitle": "Join Young Dolphins today and give your child the gift of water confidence.",
+    "cta": "Get started now"
   }
 }

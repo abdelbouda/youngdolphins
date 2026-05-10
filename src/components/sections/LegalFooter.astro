@@ -1,5 +1,9 @@
 ---
 import Container from '../ui/Container.astro';
+import { tSync } from '../../i18n/utils';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
+const locale = Astro.currentLocale ?? 'nl';
 ---
 
 <footer class="py-14 bg-[#001F3F] border-t border-blue-900 text-white">
@@ -52,16 +56,16 @@ import Container from '../ui/Container.astro';
         aria-label="Footer navigation"
         class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-10 mb-10 text-sm"
       >
-        <a href="/" class="text-blue-200 hover:text-white transition-colors">Home</a>
-        <a href="/#features" class="text-blue-200 hover:text-white transition-colors">Onze lessen</a>
-        <a href="/#faq" class="text-blue-200 hover:text-white transition-colors">Veelgestelde vragen</a>
-        <a href="/terms" class="text-blue-200 hover:text-white transition-colors">Algemene voorwaarden</a>
-        <a href="/privacy" class="text-blue-200 hover:text-white transition-colors">Privacybeleid</a>
+        <a href={getRelativeLocaleUrl(locale, '/')} class="text-blue-200 hover:text-white transition-colors">{tSync(locale, 'nav.home')}</a>
+        <a href={getRelativeLocaleUrl(locale, '#features')} class="text-blue-200 hover:text-white transition-colors">{tSync(locale, 'nav.lessons')}</a>
+        <a href={getRelativeLocaleUrl(locale, '#faq')} class="text-blue-200 hover:text-white transition-colors">{tSync(locale, 'nav.contact')}</a>
+        <a href={getRelativeLocaleUrl(locale, 'terms')} class="text-blue-200 hover:text-white transition-colors">{tSync(locale, 'footer.terms')}</a>
+        <a href={getRelativeLocaleUrl(locale, 'privacy')} class="text-blue-200 hover:text-white transition-colors">{tSync(locale, 'footer.privacy')}</a>
       </nav>
 
       <!-- Copyright -->
       <p class="text-blue-300 text-xs">
-        © {new Date().getFullYear()} Young Dolphins. Alle rechten voorbehouden.
+        © {new Date().getFullYear()} Young Dolphins. {tSync(locale, 'footer.copyright')}
       </p>
 
     </div>
