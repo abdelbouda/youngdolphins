@@ -1,6 +1,7 @@
 ---
 import Container from '../ui/Container.astro';
 import { t, tObject } from '../../i18n/ui';
+import { getRelativeLocaleUrl } from 'astro:i18n'; // Importeer voor juiste taal-links
 import type { Locale } from '../../i18n/types';
 
 interface Props {
@@ -13,7 +14,7 @@ const title = await t(locale, 'pricing.title');
 const subtitle = await t(locale, 'pricing.subtitle');
 const cta = await t(locale, 'pricing.cta');
 
-// Pakketten ophalen uit i18n
+// Pakketten ophalen
 const starter = {
   id: 'starter',
   name: await t(locale, 'pricing.packages.starter.name'),
@@ -42,125 +43,61 @@ const priv = {
   features: await tObject(locale, 'pricing.packages.private.features') as string[]
 };
 
-const compareTitle = await t(locale, 'pricing.compare.title');
-const compareFeature = await t(locale, 'pricing.compare.feature');
-const compareRows = {
-  lessons: await t(locale, 'pricing.compare.rows.lessons'),
-  report: await t(locale, 'pricing.compare.rows.report'),
-  personal: await t(locale, 'pricing.compare.rows.personal'),
-  access: await t(locale, 'pricing.compare.rows.access')
-};
+// Genereer de juiste URL naar de aanmeldpagina op basis van de taal
+const registerUrl = getRelativeLocaleUrl(locale, 'register'); 
 
-// Kleurconstante die matcht met de Header
-const headerColor = "#001F3F"; 
+// De specifieke lichtblauwe kleur uit de Header (zie screenshot "Direct aanmelden")
+const headerLightBlue = "#00AEEF";
+const headerDarkBlue = "#001F3F";
 ---
 
-<section id="pricing" class="py-16 sm:py-24 bg-[#F7FBFF]" aria-labelledby="pricing-title">
+<section id="pricing" class="py-16 sm:py-24 bg-[#F7FBFF]">
   <Container>
 
-    <div class="text-center mb-10 sm:mb-14 px-4">
-      <h2 id="pricing-title" class="text-2xl sm:text-3xl md:text-4xl font-bold text-[#001F3F] mb-3">
-        {title}
-      </h2>
-      <p class="text-gray-600 max-w-2xl mx-auto text-sm sm:text-base">
-        {subtitle}
-      </p>
+    <div class="text-center mb-10 sm:mb-14">
+      <h2 class="text-2xl sm:text-4xl font-bold text-[#001F3F] mb-3">{title}</h2>
+      <p class="text-gray-600 max-w-2xl mx-auto">{subtitle}</p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-8 max-w-5xl mx-auto mb-16 px-4">
-
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-16">
       {[starter, progress, priv].map((pkg) => (
-        <div class={`bg-white border ${pkg.id === 'progress' ? 'border-[#00AEEF] border-2 md:scale-[1.05] z-10 shadow-lg' : 'border-[#E1EEF7] shadow-sm'} rounded-2xl p-6 sm:p-8 hover:shadow-md transition-all flex flex-col relative`}>
+        <div class={`bg-white border ${pkg.id === 'progress' ? 'border-[#00AEEF] border-2 md:scale-[1.05] z-10 shadow-lg' : 'border-[#E1EEF7] shadow-sm'} rounded-2xl p-8 flex flex-col relative`}>
           
           {pkg.id === 'progress' && (
             <div class="absolute -top-3 left-1/2 -translate-x-1/2">
-              <span class="px-3 py-1 text-xs bg-[#00AEEF] text-white rounded-full font-semibold uppercase tracking-wider whitespace-nowrap">
+              <span class="px-3 py-1 text-xs bg-[#00AEEF] text-white rounded-full font-bold uppercase">
                 {progress.badge}
               </span>
             </div>
           )}
 
-          <h3 class="text-xl font-semibold text-[#001F3F] mb-2 text-center">{pkg.name}</h3>
-          
-          <div class="flex items-baseline justify-center mb-3">
+          <h3 class="text-xl font-bold text-[#001F3F] mb-2 text-center">{pkg.name}</h3>
+          <div class="flex items-baseline justify-center mb-4">
             <span class="text-4xl font-bold text-[#001F3F]">{pkg.price}</span>
-            <span class="text-base text-gray-500 ml-1">{pkg.priceUnit}</span>
+            <span class="text-gray-500 ml-1 text-sm">{pkg.priceUnit}</span>
           </div>
 
-          <p class="text-gray-600 text-sm mb-5 text-center leading-relaxed">
-            {pkg.description}
-          </p>
-
-          <ul class="space-y-2 mb-8 text-sm text-gray-700 flex-1">
+          <ul class="space-y-3 mb-8 flex-1">
             {pkg.features.map(f => (
-              <li class="flex items-start gap-2">
-                <svg class="w-4 h-4 text-[#00AEEF] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
-                </svg>
-                <span>{f}</span>
+              <li class="flex items-start gap-2 text-sm text-gray-700">
+                <svg class="w-4 h-4 text-[#00AEEF] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                {f}
               </li>
             ))}
           </ul>
 
           <a 
-            href="#hero" 
-            data-package={pkg.id}
-            class="w-full text-center py-3 px-6 text-white font-bold rounded-lg transition-all duration-300 shadow-md"
-            style={`background-color: ${headerColor};`}
-            onmouseover="this.style.backgroundColor='#00AEEF'"
-            onmouseout={`this.style.backgroundColor='${headerColor}'`}
+            href={registerUrl} 
+            class="w-full text-center py-3 px-6 text-white font-bold rounded-lg transition-colors shadow-md"
+            style={`background-color: ${headerLightBlue};`}
+            onmouseover={`this.style.backgroundColor='${headerDarkBlue}'`}
+            onmouseout={`this.style.backgroundColor='${headerLightBlue}'`}
           >
             {cta}
           </a>
         </div>
       ))}
-
     </div>
 
-    <div class="max-w-3xl mx-auto px-4">
-      <h3 class="text-xl sm:text-2xl font-semibold text-[#001F3F] mb-6 text-center">
-        {compareTitle}
-      </h3>
-
-      <div class="overflow-x-auto rounded-xl border border-[#E1EEF7] shadow-sm">
-        <table class="w-full text-sm text-gray-700 bg-white" style="min-width: 450px;">
-          <thead>
-            <tr class="border-b border-[#E1EEF7] bg-[#F7FBFF]">
-              <th class="text-left px-4 py-3 font-semibold text-[#001F3F]">{compareFeature}</th>
-              <th class="text-center px-4 py-3 font-semibold text-[#001F3F]">{starter.name}</th>
-              <th class="text-center px-4 py-3 font-semibold text-[#00AEEF]">{progress.name}</th>
-              <th class="text-center px-4 py-3 font-semibold text-[#001F3F]">{priv.name}</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="border-b border-gray-100">
-              <td class="px-4 py-3">{compareRows.lessons}</td>
-              <td class="text-center px-4 py-3">1</td>
-              <td class="text-center px-4 py-3 font-semibold text-[#00AEEF]">2</td>
-              <td class="text-center px-4 py-3">1</td>
-            </tr>
-            <tr class="border-b border-gray-100 bg-gray-50/30">
-              <td class="px-4 py-3">{compareRows.report}</td>
-              <td class="text-center px-4 py-3 text-gray-400">–</td>
-              <td class="text-center px-4 py-3 text-[#00AEEF]">✓</td>
-              <td class="text-center px-4 py-3 text-[#00AEEF]">✓</td>
-            </tr>
-            <tr class="border-b border-gray-100">
-              <td class="px-4 py-3">{compareRows.personal}</td>
-              <td class="text-center px-4 py-3 text-gray-400">–</td>
-              <td class="text-center px-4 py-3 text-[#00AEEF]">✓</td>
-              <td class="text-center px-4 py-3 text-[#00AEEF]">✓✓</td>
-            </tr>
-            <tr>
-              <td class="px-4 py-3">{compareRows.access}</td>
-              <td class="text-center px-4 py-3 text-gray-400">–</td>
-              <td class="text-center px-4 py-3 text-[#00AEEF]">✓</td>
-              <td class="text-center px-4 py-3 text-[#00AEEF]">✓</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-  </Container>
+    </Container>
 </section>
