@@ -10,51 +10,29 @@ interface Props {
 
 const { locale = 'nl' } = Astro.props;
 
-/** * URL LOGICA GEBASEERD OP JOUW SCREENSHOTS:
- * NL pagina: /nl/register (of /register)
- * EN pagina: /en/aanmelden
+/** * URL LOGICA:
+ * NL: /nl/aanmelden
+ * EN: /en/aanmelden
  */
-const registerSlug = locale === 'nl' ? 'register' : 'aanmelden';
-const registerUrl = getRelativeLocaleUrl(locale, registerSlug);
+const registerSlug = 'aanmelden';
 
-// Prijzen conform jouw verzoek
+const title = await t(locale, 'pricing.title');
+const subtitle = await t(locale, 'pricing.subtitle');
+const cta = await t(locale, 'pricing.cta');
+
+// Prijzen
 const prices = {
   starter: "25",
   progress: "170",
   private: "50"
 };
 
-const title = await t(locale, 'pricing.title');
-const subtitle = await t(locale, 'pricing.subtitle');
-const cta = await t(locale, 'pricing.cta');
+// Pakketten ophalen uit i18n
+const starterFeatures = await tObject(locale, 'pricing.packages.starter.features') as string[];
+const progressFeatures = await tObject(locale, 'pricing.packages.progress.features') as string[];
+const privateFeatures = await tObject(locale, 'pricing.packages.private.features') as string[];
 
-// Pakketten data
-const starter = {
-  name: await t(locale, 'pricing.packages.starter.name'),
-  price: prices.starter,
-  priceUnit: await t(locale, 'pricing.packages.starter.price_unit'),
-  description: await t(locale, 'pricing.packages.starter.description'),
-  features: await tObject(locale, 'pricing.packages.starter.features') as string[]
-};
-
-const progress = {
-  name: await t(locale, 'pricing.packages.progress.name'),
-  badge: await t(locale, 'pricing.packages.progress.badge'),
-  price: prices.progress,
-  priceUnit: await t(locale, 'pricing.packages.progress.price_unit'),
-  description: await t(locale, 'pricing.packages.progress.description'),
-  features: await tObject(locale, 'pricing.packages.progress.features') as string[]
-};
-
-const priv = {
-  name: await t(locale, 'pricing.packages.private.name'),
-  price: prices.private,
-  priceUnit: await t(locale, 'pricing.packages.private.price_unit'),
-  description: await t(locale, 'pricing.packages.private.description'),
-  features: await tObject(locale, 'pricing.packages.private.features') as string[]
-};
-
-// Kleuren voor de knoppen en styling
+// Kleuren
 const headerLightBlue = "#00AEEF";
 const headerDarkBlue = "#001F3F";
 ---
@@ -74,68 +52,65 @@ const headerDarkBlue = "#001F3F";
     <div class="flex flex-col md:flex-row items-stretch justify-center gap-6 lg:gap-8 max-w-6xl mx-auto mb-12 px-4">
 
       <div class="pricing-card">
-        <h3 class="package-name">{starter.name}</h3>
+        <h3 class="package-name">Starter</h3>
         <div class="price-container">
           <span class="currency">€</span>
-          <span class="amount">{starter.price}</span>
-          <span class="unit">{starter.priceUnit}</span>
+          <span class="amount">{prices.starter}</span>
+          <span class="unit">/ {locale === 'nl' ? 'les' : 'lesson'}</span>
         </div>
-        <p class="description">{starter.description}</p>
         <ul class="feature-list">
-          {starter.features.map(f => (
+          {starterFeatures.map(f => (
             <li>
               <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>
               <span>{f}</span>
             </li>
           ))}
         </ul>
-        <a href={registerUrl} class="cta-button">{cta}</a>
+        <a href={getRelativeLocaleUrl(locale, `${registerSlug}?pakket=Starter`)} class="cta-button">{cta}</a>
       </div>
 
       <div class="pricing-card featured">
         <div class="badge-container">
-          <span class="badge">{progress.badge}</span>
+          <span class="badge">{locale === 'nl' ? 'Meest Gekozen' : 'Most Popular'}</span>
         </div>
-        <h3 class="package-name">{progress.name}</h3>
+        <h3 class="package-name">Progress+</h3>
         <div class="price-container">
           <span class="currency">€</span>
-          <span class="amount">{progress.price}</span>
-          <span class="unit">{progress.priceUnit}</span>
+          <span class="amount">{prices.progress}</span>
+          <span class="unit">/ {locale === 'nl' ? 'maand' : 'month'}</span>
         </div>
-        <p class="description">{progress.description}</p>
         <ul class="feature-list">
-          {progress.features.map(f => (
+          {progressFeatures.map(f => (
             <li>
               <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>
               <span>{f}</span>
             </li>
           ))}
         </ul>
-        <a href={registerUrl} class="cta-button">{cta}</a>
+        <a href={getRelativeLocaleUrl(locale, `${registerSlug}?pakket=Progress-Plus`)} class="cta-button">{cta}</a>
       </div>
 
       <div class="pricing-card">
-        <h3 class="package-name">{priv.name}</h3>
+        <h3 class="package-name">{locale === 'nl' ? 'Privé' : 'Private'}</h3>
         <div class="price-container">
           <span class="currency">€</span>
-          <span class="amount">{priv.price}</span>
-          <span class="unit">{priv.priceUnit}</span>
+          <span class="amount">{prices.private}</span>
+          <span class="unit">/ {locale === 'nl' ? 'les' : 'lesson'}</span>
         </div>
-        <p class="description">{priv.description}</p>
         <ul class="feature-list">
-          {priv.features.map(f => (
+          {privateFeatures.map(f => (
             <li>
               <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>
               <span>{f}</span>
             </li>
           ))}
         </ul>
-        <a href={registerUrl} class="cta-button">{cta}</a>
+        <a href={getRelativeLocaleUrl(locale, `${registerSlug}?pakket=Prive-les`)} class="cta-button">{cta}</a>
       </div>
 
     </div>
 
-    <div class="max-w-3xl mx-auto text-center space-y-1 px-4 opacity-60">
+    <div class="max-w-3xl mx-auto text-center space-y-1 px-4 opacity-70">
       <p class="text-[11px] text-gray-500 italic font-medium">
         * {locale === 'nl' ? 'Inschrijfgeld bedraagt €25' : 'Registration fee is €25'}
       </p>
@@ -148,58 +123,46 @@ const headerDarkBlue = "#001F3F";
 </section>
 
 <style define:vars={{ headerLightBlue, headerDarkBlue }}>
-  /* Basis Styling Kaarten */
   .pricing-card {
     flex: 1;
     background: white;
     border: 1px solid #E1EEF7;
     border-radius: 1.25rem;
-    padding: 2rem;
+    padding: 2.5rem 2rem;
     display: flex;
     flex-direction: column;
     position: relative;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
   }
 
   .pricing-card.featured {
     border: 2px solid var(--headerLightBlue);
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
     z-index: 10;
   }
 
   @media (min-width: 768px) {
-    .pricing-card.featured {
-      transform: scale(1.05);
-    }
+    .pricing-card.featured { transform: scale(1.05); }
   }
 
-  /* Badge styling */
-  .badge-container {
-    position: absolute;
-    top: -0.75rem;
-    left: 50%;
-    transform: translateX(-50%);
-  }
+  .badge-container { position: absolute; top: -0.75rem; left: 50%; transform: translateX(-50%); }
   .badge {
     background-color: var(--headerLightBlue);
     color: white;
-    padding: 0.25rem 0.75rem;
+    padding: 0.35rem 1rem;
     border-radius: 9999px;
-    font-size: 0.65rem;
+    font-size: 0.7rem;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    white-space: nowrap;
   }
 
-  /* Tekst Styling */
   .package-name {
-    font-size: 1.125rem;
-    font-weight: 700;
+    font-size: 1.25rem;
+    font-weight: 800;
     color: var(--headerDarkBlue);
     text-align: center;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
     text-transform: uppercase;
   }
 
@@ -207,62 +170,33 @@ const headerDarkBlue = "#001F3F";
     display: flex;
     align-items: baseline;
     justify-content: center;
-    margin-bottom: 0.75rem;
+    margin-bottom: 2rem;
     color: var(--headerDarkBlue);
   }
-  .currency { font-weight: 700; margin-right: 0.125rem; }
-  .amount { font-size: 3rem; font-weight: 900; line-height: 1; }
+  .currency { font-weight: 700; font-size: 1.5rem; }
+  .amount { font-size: 3.5rem; font-weight: 900; line-height: 1; }
   .unit { font-size: 0.875rem; color: #6B7280; margin-left: 0.25rem; }
 
-  .description {
-    font-size: 0.75rem;
-    color: #6B7280;
-    text-align: center;
-    margin-bottom: 1.5rem;
-    min-height: 2.5rem;
-  }
+  .feature-list { margin-bottom: 2.5rem; flex: 1; display: flex; flex-direction: column; gap: 0.875rem; }
+  .feature-list li { display: flex; align-items: flex-start; gap: 0.625rem; font-size: 0.9rem; color: #4B5563; }
+  .feature-list svg { width: 1.2rem; height: 1.2rem; color: var(--headerLightBlue); flex-shrink: 0; margin-top: 0.1rem; }
 
-  /* Lijst Styling */
-  .feature-list {
-    margin-bottom: 2rem;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-  .feature-list li {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.5rem;
-    font-size: 0.875rem;
-    color: #374151;
-  }
-  .feature-list svg {
-    width: 1.1rem;
-    height: 1.1rem;
-    color: var(--headerLightBlue);
-    flex-shrink: 0;
-    margin-top: 0.125rem;
-  }
-
-  /* Knop Styling */
   .cta-button {
     display: block;
     width: 100%;
     text-align: center;
-    padding: 1rem;
+    padding: 1.125rem;
     background-color: var(--headerLightBlue);
     color: white;
     font-weight: 800;
-    border-radius: 0.75rem;
+    border-radius: 0.875rem;
     transition: all 0.3s ease;
-    font-size: 0.95rem;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   }
 
   .cta-button:hover {
     background-color: var(--headerDarkBlue);
-    transform: translateY(-2px);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 15px rgba(0,0,0,0.15);
   }
 </style>
