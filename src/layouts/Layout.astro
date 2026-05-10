@@ -83,8 +83,11 @@ const pageDescription = locale === 'en' ? descriptionEn : description;
     <!-- Performance: preconnect fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- Only load the weights we actually use -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+    <!-- Non-render-blocking font load -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" /></noscript>
+    <!-- Preload hero image for LCP -->
+    <link rel="preload" as="image" href="/hero-kids.webp" fetchpriority="high" />
 
     <!-- Structured Data: LocalBusiness -->
     <script type="application/ld+json" set:html={JSON.stringify({
@@ -132,7 +135,7 @@ const pageDescription = locale === 'en' ? descriptionEn : description;
     <footer class="mt-20 pt-12 pb-8 text-sm text-gray-500 border-t border-gray-100 bg-white">
       <div class="max-w-7xl mx-auto px-4">
         <div class="flex flex-col items-center gap-4 mb-8">
-          <img src="/yd-logo.png" alt="Young Dolphins logo" style="height: 90px; width: auto; object-fit: contain;" />
+          <img src="/yd-logo.webp" alt="Young Dolphins logo" width="180" height="180" style="height: 90px; width: auto; object-fit: contain;" loading="lazy" />
           <p class="text-base font-semibold text-[#001F3F]">Young Dolphins – Zwemschool Amsterdam</p>
           <div class="flex flex-wrap justify-center gap-4 text-sm text-gray-500">
             <a href="https://wa.me/31628421354" class="hover:text-[#001F3F] transition-colors">📞 06-28421354</a>
