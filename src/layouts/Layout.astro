@@ -86,8 +86,9 @@ const pageDescription = locale === 'en' ? descriptionEn : description;
     <!-- Non-render-blocking font load -->
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" /></noscript>
-    <!-- Preload hero image for LCP -->
-    <link rel="preload" as="image" href="/hero-kids.webp" fetchpriority="high" />
+    <!-- Preload logo (LCP on mobile) and hero image -->
+    <link rel="preload" as="image" href="/yd-logo.webp" fetchpriority="high" />
+    <link rel="preload" as="image" href="/hero-kids.webp" />
 
     <!-- Structured Data: LocalBusiness -->
     <script type="application/ld+json" set:html={JSON.stringify({
