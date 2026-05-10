@@ -11,19 +11,24 @@ const { locale = 'nl' } = Astro.props;
 
 const title = await t(locale, 'hero.title');
 const subtitle = await t(locale, 'hero.subtitle');
-const ctaPrimary = await t(locale, 'hero.cta_primary');
-const ctaSecondary = await t(locale, 'hero.cta_secondary');
 const statDiplomas = await t(locale, 'hero.stats.diplomas');
 const statSuccess = await t(locale, 'hero.stats.success');
 const statRating = await t(locale, 'hero.stats.rating');
 const continueReading = await t(locale, 'hero.continue_reading');
+
+// Nieuwe labels voor de knoppen
+const labels = {
+  directRegister: locale === 'en' ? 'Register Now' : 'Direct Aanmelden',
+  directContact: locale === 'en' ? 'Direct Contact' : 'Direct Contact'
+};
+
+const registerHref = `/${locale}/aanmelden`;
 ---
 
 <section
   id="hero"
   class="relative pt-24 pb-16 sm:pt-32 sm:pb-20 bg-gradient-to-b from-[#E6F4FF] to-white overflow-hidden"
 >
-  <!-- Decorative bubbles -->
   <div class="absolute inset-0 opacity-30 pointer-events-none" aria-hidden="true">
     <div class="absolute top-10 left-10 w-32 h-32 sm:w-40 sm:h-40 bg-[#00AEEF]/20 rounded-full blur-3xl"></div>
     <div class="absolute bottom-10 right-10 w-44 h-44 sm:w-56 sm:h-56 bg-[#001F3F]/20 rounded-full blur-3xl"></div>
@@ -32,7 +37,6 @@ const continueReading = await t(locale, 'hero.continue_reading');
   <Container class="relative z-10">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 
-      <!-- LEFT COLUMN: text -->
       <div class="text-center lg:text-left space-y-5 sm:space-y-6 hero-fade px-2 sm:px-4">
 
         <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-[#001F3F]">
@@ -43,44 +47,44 @@ const continueReading = await t(locale, 'hero.continue_reading');
           {subtitle}
         </p>
 
-        <!-- CTA Buttons: stacked on mobile, side-by-side on sm+ -->
         <div class="flex flex-col sm:flex-row gap-3 pt-2 justify-center lg:justify-start">
           <a
-            href="/#pricing"
-            class="cta-primary w-full sm:w-auto text-center"
+            href={registerHref}
+            class="cta-register w-full sm:w-auto text-center"
           >
-            {ctaPrimary}
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/>
+            </svg>
+            {labels.directRegister}
           </a>
           <a
-            href="/#faq"
-            class="cta-secondary w-full sm:w-auto text-center"
+            href="https://wa.me/31628421354"
+            target="_blank"
+            class="cta-whatsapp w-full sm:w-auto text-center"
           >
-            {ctaSecondary}
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2" viewBox="0 0 48 48" fill="currentColor">
+              <path d="M24 4C13 4 4 13 4 24c0 3.6 1 7 2.7 9.9L4 44l10.4-2.7C17.2 43 20.5 44 24 44c11 0 20-9 20-20S35 4 24 4zm0 36c-3.1 0-6.1-.8-8.7-2.4l-.6-.4-6.2 1.6 1.6-6-.4-.6C8.8 30.1 8 27.1 8 24 8 15.2 15.2 8 24 8s16 7.2 16 16-7.2 16-16 16zm8.8-11.8c-.5-.2-2.8-1.4-3.2-1.5-.4-.2-.7-.2-1 .2-.3.4-1.1 1.5-1.4 1.8-.3.3-.5.4-1 .1-.5-.2-2-.7-3.8-2.3-1.4-1.2-2.3-2.8-2.6-3.2-.3-.5 0-.7.2-1 .2-.2.5-.5.7-.8.2-.3.3-.5.4-.8.1-.3 0-.6-.1-.8-.1-.2-1-2.5-1.4-3.4-.4-.9-.7-.8-1-.8h-.9c-.3 0-.8.1-1.2.6-.4.5-1.6 1.6-1.6 3.8 0 2.2 1.6 4.4 1.9 4.7.3.3 3.2 4.8 7.7 6.7 1.1.5 1.9.7 2.6.9 1.1.3 2.1.3 2.9.2.9-.1 2.8-1.1 3.2-2.2.4-1.1.4-2 .3-2.2-.2-.3-.5-.4-1-.6z"/>
+            </svg>
+            {labels.directContact}
           </a>
         </div>
 
-        <!-- Stats: 3 kolommen, grotere tekst op mobile -->
         <div class="grid grid-cols-3 gap-3 sm:gap-6 pt-4 max-w-xs sm:max-w-md mx-auto lg:mx-0">
-
           <div class="text-center lg:text-left">
             <div class="text-2xl sm:text-3xl font-bold text-[#001F3F]">1200+</div>
             <div class="text-[10px] sm:text-xs text-gray-600 leading-tight mt-0.5">{statDiplomas}</div>
           </div>
-
           <div class="text-center lg:text-left">
             <div class="text-2xl sm:text-3xl font-bold text-[#001F3F]">98%</div>
             <div class="text-[10px] sm:text-xs text-gray-600 leading-tight mt-0.5">{statSuccess}</div>
           </div>
-
           <div class="text-center lg:text-left">
             <div class="text-2xl sm:text-3xl font-bold text-[#001F3F]">4.9★</div>
             <div class="text-[10px] sm:text-xs text-gray-600 leading-tight mt-0.5">{statRating}</div>
           </div>
-
         </div>
       </div>
 
-      <!-- RIGHT COLUMN: afbeelding -->
       <div class="flex justify-center items-center hero-fade px-4 sm:px-8 lg:px-4">
         <img
           src="/hero-kids.webp"
@@ -97,7 +101,6 @@ const continueReading = await t(locale, 'hero.continue_reading');
     </div>
   </Container>
 
-  <!-- Scroll indicator - alleen op grotere schermen -->
   <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 hero-fade hidden sm:flex">
     <a href="#features" class="group flex flex-col items-center gap-1" aria-label={continueReading}>
       <span class="text-xs text-gray-500 font-medium">{continueReading}</span>
@@ -122,48 +125,47 @@ const continueReading = await t(locale, 'hero.continue_reading');
     }
   }
 
-  .cta-primary {
+  .cta-register {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background-color: #001F3F;
+    background-color: #00AEEF; /* Match met header 'Aanmelden' */
     color: #ffffff !important;
-    font-weight: 600;
+    font-weight: 700;
     padding: 0.875rem 1.75rem;
-    border-radius: 0.5rem;
+    border-radius: 0.75rem;
     transition: all 0.2s ease;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-    font-size: 0.9375rem;
-    /* Minimum touch target */
-    min-height: 48px;
+    box-shadow: 0 4px 12px rgba(0, 174, 239, 0.25);
+    font-size: 1rem;
+    min-height: 54px;
     text-decoration: none !important;
   }
 
-  .cta-primary:hover {
-    background-color: #003366;
-    transform: scale(1.02);
-    text-decoration: none !important;
+  .cta-register:hover {
+    background-color: #0096ce;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 174, 239, 0.35);
   }
 
-  .cta-secondary {
+  .cta-whatsapp {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background-color: transparent;
-    color: #001F3F !important;
-    font-weight: 600;
+    background-color: #25D366; /* WhatsApp Groen */
+    color: #ffffff !important;
+    font-weight: 700;
     padding: 0.875rem 1.75rem;
-    border-radius: 0.5rem;
-    border: 2px solid #001F3F;
+    border-radius: 0.75rem;
     transition: all 0.2s ease;
-    font-size: 0.9375rem;
-    min-height: 48px;
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
+    font-size: 1rem;
+    min-height: 54px;
     text-decoration: none !important;
   }
 
-  .cta-secondary:hover {
-    background-color: #001F3F;
-    color: #ffffff !important;
-    text-decoration: none !important;
+  .cta-whatsapp:hover {
+    background-color: #1ebe57;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(37, 211, 102, 0.35);
   }
 </style>
