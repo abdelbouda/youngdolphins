@@ -2,8 +2,11 @@ export type Locale = 'en' | 'nl';
 
 export interface TranslationData {
   nav: {
-    features: string;
-    faq: string;
+    home: string;
+    lessons: string;
+    pricing: string;
+    about: string;
+    contact: string;
     cta: string;
   };
   hero: {

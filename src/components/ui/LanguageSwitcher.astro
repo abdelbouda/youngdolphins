@@ -3,6 +3,11 @@ const locale = Astro.currentLocale ?? 'nl';
 const targetLocale = locale === 'nl' ? 'en' : 'nl';
 const targetLabel = locale === 'nl' ? 'English' : 'Nederlands';
 
+// Preserve current path and hash when switching language
+const currentPath = Astro.url.pathname.replace(/^\/(nl|en)/, '') || '/';
+const currentHash = Astro.url.hash;
+const targetUrl = `/${targetLocale}${currentPath}${currentHash}`;
+
 const nlFlag = `<svg viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg" style="width:22px;height:15px;border-radius:2px;display:block;flex-shrink:0;"><rect width="60" height="30" fill="#AE1C28"/><rect width="60" height="20" y="10" fill="#FFF"/><rect width="60" height="10" y="20" fill="#21468B"/></svg>`;
 const enFlag = `<svg viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg" style="width:22px;height:15px;border-radius:2px;display:block;flex-shrink:0;"><clipPath id="uk2"><path d="M0 0v30h60V0z"/></clipPath><path fill="#012169" d="M0 0v30h60V0z"/><path stroke="#FFF" stroke-width="6" d="M0 0l60 30m0-30L0 30" clip-path="url(#uk2)"/><path stroke="#C8102E" stroke-width="4" d="M0 0l60 30m0-30L0 30" clip-path="url(#uk2)"/><path stroke="#FFF" stroke-width="10" d="M30 0v30M0 15h60"/><path stroke="#C8102E" stroke-width="6" d="M30 0v30M0 15h60"/></svg>`;
 
@@ -27,7 +32,7 @@ const targetFlag = locale === 'nl' ? enFlag : nlFlag;
 
   <ul class="lang-menu" role="menu" aria-label="Taalkeuze" style="display:none;position:absolute;right:0;margin-top:0.5rem;background:white;border-radius:0.5rem;box-shadow:0 6px 18px rgba(0,0,0,0.12);padding:0.25rem;list-style:none;z-index:60;min-width:150px;">
     <li role="none">
-      <a role="menuitem" href={`/${targetLocale}`} style="display:flex;align-items:center;gap:0.6rem;padding:0.5rem 0.75rem;text-decoration:none;color:#001F3F;border-radius:0.375rem;font-size:0.875rem;font-weight:500;">
+      <a role="menuitem" href={targetUrl} style="display:flex;align-items:center;gap:0.6rem;padding:0.5rem 0.75rem;text-decoration:none;color:#001F3F;border-radius:0.375rem;font-size:0.875rem;font-weight:500;">
         <span aria-hidden="true" set:html={targetFlag}></span>
         <span>{targetLabel}</span>
       </a>
