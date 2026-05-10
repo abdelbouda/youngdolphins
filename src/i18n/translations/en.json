@@ -249,6 +249,89 @@
     "more_cta": "Contact support"
   },
 
+  "privacy": {
+    "title": "Privacy Policy",
+    "subtitle": "How we collect and use your personal information",
+    "data": {
+      "title": "Data We Collect",
+      "description": "We collect and use your personal information to provide our swimming lessons. This includes contact details and lesson information.",
+      "collection": {
+        "title": "Data Collection",
+        "description": "We collect the following information to provide our services: name, contact details, and lesson preferences."
+      },
+      "usage": {
+        "title": "How We Use Your Data",
+        "description": "We use your data to schedule lessons, communicate with parents, and improve our services."
+      },
+      "sharing": {
+        "title": "Data Sharing",
+        "description": "We do not share your personal data with third parties without your consent."
+      },
+      "cookies": {
+        "title": "Cookies",
+        "description": "We use cookies to improve your experience on our website."
+      },
+      "security": {
+        "title": "Data Security",
+        "description": "We implement appropriate security measures to protect your personal information."
+      },
+      "rights": {
+        "title": "Your Rights",
+        "description": "You have the right to access, correct, or delete your personal information."
+      }
+    },
+    "contact": {
+      "title": "Contact Information",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "address": {
+        "title": "Address",
+        "text": "Young Dolphins Swimming School\nAmsterdam\nNetherlands"
+      }
+    }
+  },
+
+  "terms": {
+    "title": "Terms & Conditions",
+    "subtitle": "Terms for using our swimming school services",
+    "service": {
+      "title": "Service Description",
+      "description": "Young Dolphins provides professional swimming lessons for children in Amsterdam."
+    },
+    "liability": {
+      "title": "Liability",
+      "description": "We are not liable for damages arising from the use of our swimming lessons."
+    },
+    "intellectual": {
+      "title": "Intellectual Property",
+      "description": "All content on our website remains the property of Young Dolphins."
+    },
+    "usage": {
+      "title": "Usage Terms",
+      "description": "By using our services, you agree to these terms and conditions."
+    },
+    "privacy": {
+      "title": "Privacy",
+      "description": "We respect your privacy and protect your personal data."
+    },
+    "cookies": {
+      "title": "Cookies",
+      "description": "We use cookies to enhance your website experience."
+    },
+    "modifications": {
+      "title": "Modifications",
+      "description": "We reserve the right to modify these terms at any time."
+    },
+    "governing": {
+      "title": "Governing Law",
+      "description": "These terms are governed by the laws of Netherlands."
+    },
+    "contact": {
+      "title": "Contact",
+      "description": "Contact us for any questions about these terms."
+    }
+  },
+
   "join": {
     "title": "Want to join us?",
     "subtitle": "We’re always looking for passionate instructors who love helping children grow in the water.",

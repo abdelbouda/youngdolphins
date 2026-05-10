@@ -291,6 +291,89 @@
     "cta": "Bekijk openstaande vacatures"
   },
 
+  "privacy": {
+    "title": "Privacybeleid",
+    "subtitle": "Hoe we uw persoonlijke gegevens verzamelen en gebruiken",
+    "data": {
+      "title": "Gegevens die we verzamelen",
+      "description": "We verzamelen en gebruiken uw persoonlijke informatie om onze zwemlessen te bieden. Dit omvat contactgegevens en lesinformatie.",
+      "collection": {
+        "title": "Gegevensverzameling",
+        "description": "We verzamelen de volgende informatie om onze diensten te bieden: naam, contactgegevens en lesvoorkeuren."
+      },
+      "usage": {
+        "title": "Hoe we uw gegevens gebruiken",
+        "description": "We gebruiken uw gegevens om lessen te plannen, te communiceren met ouders en onze diensten te verbeteren."
+      },
+      "sharing": {
+        "title": "Gegevensdeling",
+        "description": "We delen uw persoonlijke gegevens niet met derden zonder uw toestemming."
+      },
+      "cookies": {
+        "title": "Cookies",
+        "description": "We gebruiken cookies om uw ervaring op onze website te verbeteren."
+      },
+      "security": {
+        "title": "Gegevensbeveiliging",
+        "description": "We implementeren passende beveiligingsmaatregelen om uw persoonlijke informatie te beschermen."
+      },
+      "rights": {
+        "title": "Uw rechten",
+        "description": "U heeft het recht om uw persoonlijke informatie in te zien, te corrigeren of te verwijderen."
+      }
+    },
+    "contact": {
+      "title": "Contactinformatie",
+      "email": "E-mailadres",
+      "phone": "Telefoonnummer",
+      "address": {
+        "title": "Adres",
+        "text": "Young Dolphins Zwemschool\nAmsterdam\nNederland"
+      }
+    }
+  },
+
+  "terms": {
+    "title": "Algemene Voorwaarden",
+    "subtitle": "Voorwaarden voor het gebruik van onze zwemschool diensten",
+    "service": {
+      "title": "Dienstbeschrijving",
+      "description": "Young Dolphins biedt professionele zwemlessen voor kinderen in Amsterdam."
+    },
+    "liability": {
+      "title": "Aansprakelijkheid",
+      "description": "Wij zijn niet aansprakelijk voor schade die voortkomt uit het gebruik van onze zwemlessen."
+    },
+    "intellectual": {
+      "title": "Intellectueel Eigendom",
+      "description": "Alle inhoud op onze website blijft eigendom van Young Dolphins."
+    },
+    "usage": {
+      "title": "Gebruiksvoorwaarden",
+      "description": "Door gebruik te maken van onze diensten, gaat u akkoord met deze algemene voorwaarden."
+    },
+    "privacy": {
+      "title": "Privacy",
+      "description": "Wij respecteren uw privacy en beschermen uw persoonlijke gegevens."
+    },
+    "cookies": {
+      "title": "Cookies",
+      "description": "We gebruiken cookies om uw website-ervaring te verbeteren."
+    },
+    "modifications": {
+      "title": "Wijzigingen",
+      "description": "Wij behouden ons het recht voor om deze voorwaarden op elk moment te wijzigen."
+    },
+    "governing": {
+      "title": "Toepasselijk Recht",
+      "description": "Deze voorwaarden worden beheerst door het recht van Nederland."
+    },
+    "contact": {
+      "title": "Contact",
+      "description": "Neem contact met ons op voor vragen over deze voorwaarden."
+    }
+  },
+
   "final": {
     "title": "Klaar om te starten?",
     "subtitle": "Schrijf je kind vandaag nog in voor zwemles",
