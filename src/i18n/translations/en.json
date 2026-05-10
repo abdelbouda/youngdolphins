@@ -199,8 +199,8 @@
       "private": {
         "name": "Private",
         "price_unit": "/ lesson",
-        "description": "1‑on‑1 coaching for maximum progress.",
-    },
+        "description": "1‑on‑1 coaching for maximum progress."
+      },
     "supervision": {
       "title": "Lifeguard supervision",
       "text": "Every lesson is supervised by certified lifeguards to ensure maximum safety for all children."
@@ -229,20 +229,19 @@
     "items": [
       {
         "question": "What should my child bring to the first lesson?",
-        "description": "A swimsuit, towel, and slippers are enough. We provide all floating materials and safety equipment."
+        "answer": "A swimsuit, towel, and slippers are enough. We provide all floating materials and safety equipment."
       },
       {
         "question": "Can parents watch lessons?",
-        "answer": "Yes! All pools have viewing areas where parents can watch comfortably.",
-        "description": "Safety always comes first. Our instructors are fully certified and trained in child‑friendly methods."
+        "answer": "Yes! All pools have viewing areas where parents can watch comfortably."
       },
       {
-        "title": "Fun & Confidence",
-        "description": "Children learn fastest when they enjoy themselves. We build confidence at every step."
+        "question": "What if my child is afraid of water?",
+        "answer": "Our instructors are trained to handle water anxiety and will work with your child to build confidence."
       },
       {
-        "title": "Personal Attention",
-        "description": "Small groups and personal guidance ensure maximum progress."
+        "question": "How long does it take to get a diploma?",
+        "answer": "This varies by child, but most students complete A, B, and C diplomas within 1-2 years."
       }
     ],
     "more_title": "Still have questions?",
