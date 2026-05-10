@@ -26,7 +26,7 @@
     "points": [
       "Kleine groepen voor maximale aandacht",
       "Gediplomeerde en ervaren instructeurs",
-      "Warme en veilige zwembaden in Amsterdam",
+      "Warme en veilige zwembaden",
       "Geen lange wachtlijsten",
       "Plezier en vertrouwen staan centraal"
     ]
@@ -35,10 +35,6 @@
   "features": {
     "title": "Zwemlessen voor elke leeftijd",
     "items": [
-      {
-        "title": "Baby & Peuter (0–4 jaar)",
-        "description": "Spelenderwijs wennen aan water, samen met ouder of verzorger."
-      },
       {
         "title": "Kinderen (4–12 jaar)",
         "description": "Stap‑voor‑stap leren zwemmen volgens ENVOZ / NRZ‑normen."
@@ -52,7 +48,7 @@
 
   "testimonials": {
     "title": "Wat ouders zeggen",
-    "subtitle": "Echte ervaringen van gezinnen in Amsterdam"
+    "subtitle": "Echte ervaringen van gezinnen"
   },
 
   "stats": {
@@ -66,28 +62,35 @@
 
   "team": {
     "title": "Onze instructeurs",
-    "subtitle": "Gediplomeerd, ervaren en met hart voor kinderen"
+    "subtitle": "Gediplomeerd, ervaren en met hart voor kinderen",
+    "instructors": {
+      "noureddine": {
+        "name": "Noureddine Bouda",
+        "role": "Hoofdinstructeur",
+        "bio": "12+ jaar ervaring met zwemonderwijs. Gespecialiseerd in kinderen met watervrees en A/B/C-diploma trajecten."
+      },
+      "nasredine": {
+        "name": "Nasredine",
+        "role": "Zwemleraar",
+        "bio": "8+ jaar ervaring met zwemonderwijs. Gespecialiseerd in kinderen met watervrees en A/B/C-diploma trajecten."
+      }
+    }
   },
 
   "integrations": {
     "title": "Onze locaties",
-    "subtitle": "Moderne, warme zwembaden in Amsterdam",
+    "subtitle": "Moderne, warme zwembaden",
 
     "groups": [
       {
-        "name": "Amsterdam West",
+        "name": "Amsterdam",
         "items": [
           "De Mirandabad",
           "Sportfondsenbad",
           "Sloterparkbad",
           "Noorderparkbad",
           "Het Marnix",
-          "Flevoparkbad"
-        ]
-      },
-      {
-        "name": "Amsterdam Oost",
-        "items": [
+          "Flevoparkbad",
           "Zeeburgbad",
           "Oosterparkbad",
           "Wibautbad",
@@ -95,9 +98,14 @@
         ]
       },
       {
+        "name": "Monnickendam",
+        "items": [
+          "Sportfondsen Monnickendam"
+        ]
+      },
+      {
         "name": "Speciale programma’s",
         "items": [
-          "Baby & Peuter lessen",
           "Privélessen",
           "Versneld A/B/C traject"
         ]
@@ -221,15 +229,15 @@
     "items": [
       {
         "question": "Hoe lang duurt het om een zwemdiploma te halen?",
-        "answer": "Dit hangt af van leeftijd, zelfvertrouwen en lesfrequentie. De meeste kinderen halen diploma A in 6–12 maanden met wekelijkse lessen. Met Progress+ of privélessen gaat het vaak sneller."
+        "answer": "Dit hangt af van leeftijd, zelfvertrouwen en lesfrequentie. De meeste kinderen halen diploma A in ongeveer 12–18 maanden met wekelijkse lessen. Met Progress+ of privélessen gaat het vaak sneller."
       },
       {
         "question": "Wat moet mijn kind meenemen naar de eerste les?",
-        "answer": "Een badpak of zwembroek, handdoek en slippers zijn voldoende. Voor baby- en peuterlessen is een zwemluier verplicht. Wij zorgen voor alle drijfmaterialen en veiligheidsmiddelen."
+        "answer": "Een badpak of zwembroek, handdoek en slippers zijn voldoende. Wij zorgen voor alle drijfmaterialen en veiligheidsmiddelen."
       },
       {
         "question": "Mogen ouders de lessen bekijken?",
-        "answer": "Ja! Alle zwembaden hebben kijkruimtes waar ouders comfortabel kunnen meekijken. Bij baby- en peuterlessen gaan ouders mee het water in."
+        "answer": "Ja! Alle zwembaden hebben kijkruimtes waar ouders comfortabel kunnen meekijken."
       },
       {
         "question": "Wat als mijn kind bang is voor water?",
@@ -241,7 +249,7 @@
       },
       {
         "question": "Op welke locaties geven jullie les?",
-        "answer": "We geven les in meerdere warme, kindvriendelijke zwembaden in Amsterdam. Je kunt de locatie kiezen die het beste bij jullie planning past."
+        "answer": "We geven les in meerdere warme, kindvriendelijke zwembaden. Je kunt de locatie kiezen die het beste bij jullie planning past."
       }
     ],
 
