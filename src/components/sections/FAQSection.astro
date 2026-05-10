@@ -41,6 +41,8 @@ const moreCTA = await t(locale, 'faq.more_cta');
           <button 
             class="w-full flex items-center justify-between text-left group"
             onclick={`toggleFAQ('faq-${index}')`}
+            aria-expanded="false"
+            aria-controls={`faq-${index}`}
           >
             <span class="text-base sm:text-lg font-semibold text-[#001F3F] group-hover:text-[#00AEEF] transition-colors">
               {item.question}
@@ -48,14 +50,15 @@ const moreCTA = await t(locale, 'faq.more_cta');
 
             <svg id={`faq-${index}-icon`} 
                  class="w-5 h-5 text-gray-500 transform transition-transform ml-4"
-                 fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                 fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                 aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
                     d="M19 9l-7 7-7-7"/>
             </svg>
           </button>
 
           <!-- Answer -->
-          <div id={`faq-${index}`} class="hidden mt-4">
+          <div id={`faq-${index}`} class="hidden mt-4" role="region">
             <p class="text-gray-700 leading-relaxed text-sm sm:text-base">
               {item.answer}
             </p>
@@ -101,10 +104,13 @@ const moreCTA = await t(locale, 'faq.more_cta');
   window.toggleFAQ = function(id) {
     const content = document.getElementById(id);
     const icon = document.getElementById(id + '-icon');
+    const btn = document.querySelector(`[aria-controls="${id}"]`);
 
     if (content && icon) {
+      const isOpen = !content.classList.contains('hidden');
       content.classList.toggle('hidden');
       icon.classList.toggle('rotate-180');
+      if (btn) btn.setAttribute('aria-expanded', String(!isOpen));
     }
   }
 </script>
