@@ -10,115 +10,175 @@ interface Props {
 
 const { locale = 'nl' } = Astro.props;
 
-// Prijzen hardcoded conform jouw verzoek
-const starterPrice = "25";
-const progressPrice = "170";
-const privatePrice = "50";
+// Prijzen conform verzoek
+const prices = {
+  starter: "25",
+  progress: "170",
+  private: "50"
+};
+
+// URL Logica op basis van je screenshots:
+// NL: youngdolphins.nl/register/
+// EN: youngdolphins.nl/en/aanmelden
+const registerSlug = locale === 'nl' ? 'register' : 'aanmelden';
+const registerUrl = getRelativeLocaleUrl(locale, registerSlug);
 
 const title = await t(locale, 'pricing.title');
 const subtitle = await t(locale, 'pricing.subtitle');
 const cta = await t(locale, 'pricing.cta');
 
-const starterFeatures = await tObject(locale, 'pricing.packages.starter.features') as string[];
-const progressFeatures = await tObject(locale, 'pricing.packages.progress.features') as string[];
-const privateFeatures = await tObject(locale, 'pricing.packages.private.features') as string[];
+const starter = {
+  id: 'starter',
+  name: await t(locale, 'pricing.packages.starter.name'),
+  price: prices.starter,
+  priceUnit: await t(locale, 'pricing.packages.starter.price_unit'),
+  description: await t(locale, 'pricing.packages.starter.description'),
+  features: await tObject(locale, 'pricing.packages.starter.features') as string[]
+};
 
-const registerUrl = getRelativeLocaleUrl(locale, 'register');
+const progress = {
+  id: 'progress',
+  name: await t(locale, 'pricing.packages.progress.name'),
+  badge: await t(locale, 'pricing.packages.progress.badge'),
+  price: prices.progress,
+  priceUnit: await t(locale, 'pricing.packages.progress.price_unit'),
+  description: await t(locale, 'pricing.packages.progress.description'),
+  features: await tObject(locale, 'pricing.packages.progress.features') as string[]
+};
 
+const priv = {
+  id: 'private',
+  name: await t(locale, 'pricing.packages.private.name'),
+  price: prices.private,
+  priceUnit: await t(locale, 'pricing.packages.private.price_unit'),
+  description: await t(locale, 'pricing.packages.private.description'),
+  features: await tObject(locale, 'pricing.packages.private.features') as string[]
+};
+
+// Kleuren uit de Header
 const headerLightBlue = "#00AEEF";
 const headerDarkBlue = "#001F3F";
 ---
 
-<section id="pricing" class="py-16 bg-[#F7FBFF] overflow-hidden">
+<section id="pricing" class="py-16 sm:py-24 bg-[#F7FBFF] overflow-hidden">
   <Container>
-    <div class="text-center mb-12">
-      <h2 class="text-3xl md:text-4xl font-bold text-[#001F3F] mb-4">{title}</h2>
-      <p class="text-gray-600 max-w-2xl mx-auto">{subtitle}</p>
+
+    <div class="text-center mb-10 sm:mb-14 px-4">
+      <h2 class="text-2xl sm:text-4xl font-bold text-[#001F3F] mb-3 uppercase tracking-tight">
+        {title}
+      </h2>
+      <p class="text-gray-600 max-w-2xl mx-auto text-sm sm:text-base">
+        {subtitle}
+      </p>
     </div>
 
-    <div class="flex flex-col md:flex-row items-stretch justify-center gap-6 lg:gap-8 max-w-6xl mx-auto mb-10">
-      
-      <div class="flex-1 bg-white border border-[#E1EEF7] rounded-2xl p-8 flex flex-col shadow-sm">
-        <h3 class="text-xl font-bold text-[#001F3F] mb-4 text-center uppercase tracking-tight">Starter</h3>
-        <div class="flex items-baseline justify-center mb-6">
-          <span class="text-xl font-bold text-[#001F3F]">€</span>
-          <span class="text-5xl font-black text-[#001F3F]">{starterPrice}</span>
-          <span class="text-gray-500 ml-1 text-sm">/ les</span>
+    <div class="flex flex-col md:flex-row items-stretch justify-center gap-6 lg:gap-8 max-w-6xl mx-auto mb-12 px-4">
+
+      <div class="flex-1 bg-white border border-[#E1EEF7] rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-all flex flex-col relative">
+        <h3 class="text-lg font-bold text-[#001F3F] mb-2 text-center uppercase">{starter.name}</h3>
+        <div class="flex items-baseline justify-center mb-3">
+          <span class="text-base font-bold text-[#001F3F] mr-1">€</span>
+          <span class="text-4xl font-black text-[#001F3F]">{starter.price}</span>
+          <span class="text-gray-500 ml-1 text-sm">{starter.priceUnit}</span>
         </div>
-        <ul class="space-y-3 mb-10 flex-1">
-          {starterFeatures.map(f => (
-            <li class="flex items-start gap-2 text-sm text-gray-700">
-              <svg class="w-5 h-5 text-[#00AEEF] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>
+        <p class="text-gray-500 text-xs text-center mb-6 min-h-[32px]">{starter.description}</p>
+        <ul class="space-y-3 mb-8 text-sm text-gray-700 flex-1">
+          {starter.features.map(f => (
+            <li class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-[#00AEEF] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+              </svg>
               <span>{f}</span>
             </li>
           ))}
         </ul>
-        <a href={registerUrl} class="btn-pricing"> {cta} </a>
+        <a href={registerUrl} class="cta-pricing-btn">{cta}</a>
       </div>
 
-      <div class="flex-1 bg-white border-2 border-[#00AEEF] rounded-2xl p-8 flex flex-col shadow-xl relative md:scale-105 z-10">
-        <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#00AEEF] text-white px-4 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">
-          Meest Gekozen
+      <div class="flex-1 bg-white border-2 border-[#00AEEF] rounded-2xl p-6 sm:p-8 shadow-xl flex flex-col relative md:scale-105 z-10 transition-transform">
+        <div class="absolute -top-3 left-1/2 -translate-x-1/2">
+          <span class="px-3 py-1 text-[10px] bg-[#00AEEF] text-white rounded-full font-bold uppercase tracking-widest whitespace-nowrap">
+            {progress.badge}
+          </span>
         </div>
-        <h3 class="text-xl font-bold text-[#001F3F] mb-4 text-center uppercase tracking-tight">Progress+</h3>
-        <div class="flex items-baseline justify-center mb-6">
-          <span class="text-xl font-bold text-[#001F3F]">€</span>
-          <span class="text-5xl font-black text-[#001F3F]">{progressPrice}</span>
-          <span class="text-gray-500 ml-1 text-sm">/ maand</span>
+        <h3 class="text-lg font-bold text-[#001F3F] mb-2 text-center uppercase">{progress.name}</h3>
+        <div class="flex items-baseline justify-center mb-3">
+          <span class="text-base font-bold text-[#001F3F] mr-1">€</span>
+          <span class="text-4xl font-black text-[#001F3F]">{progress.price}</span>
+          <span class="text-gray-500 ml-1 text-sm">{progress.priceUnit}</span>
         </div>
-        <ul class="space-y-3 mb-10 flex-1">
-          {progressFeatures.map(f => (
-            <li class="flex items-start gap-2 text-sm text-gray-700">
-              <svg class="w-5 h-5 text-[#00AEEF] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>
+        <p class="text-gray-500 text-xs text-center mb-6 min-h-[32px]">{progress.description}</p>
+        <ul class="space-y-3 mb-8 text-sm text-gray-700 flex-1">
+          {progress.features.map(f => (
+            <li class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-[#00AEEF] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+              </svg>
               <span>{f}</span>
             </li>
           ))}
         </ul>
-        <a href={registerUrl} class="btn-pricing"> {cta} </a>
+        <a href={registerUrl} class="cta-pricing-btn">{cta}</a>
       </div>
 
-      <div class="flex-1 bg-white border border-[#E1EEF7] rounded-2xl p-8 flex flex-col shadow-sm">
-        <h3 class="text-xl font-bold text-[#001F3F] mb-4 text-center uppercase tracking-tight">Privé</h3>
-        <div class="flex items-baseline justify-center mb-6">
-          <span class="text-xl font-bold text-[#001F3F]">€</span>
-          <span class="text-5xl font-black text-[#001F3F]">{privatePrice}</span>
-          <span class="text-gray-500 ml-1 text-sm">/ les</span>
+      <div class="flex-1 bg-white border border-[#E1EEF7] rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-all flex flex-col relative">
+        <h3 class="text-lg font-bold text-[#001F3F] mb-2 text-center uppercase">{priv.name}</h3>
+        <div class="flex items-baseline justify-center mb-3">
+          <span class="text-base font-bold text-[#001F3F] mr-1">€</span>
+          <span class="text-4xl font-black text-[#001F3F]">{priv.price}</span>
+          <span class="text-gray-500 ml-1 text-sm">{priv.priceUnit}</span>
         </div>
-        <ul class="space-y-3 mb-10 flex-1">
-          {privateFeatures.map(f => (
-            <li class="flex items-start gap-2 text-sm text-gray-700">
-              <svg class="w-5 h-5 text-[#00AEEF] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>
+        <p class="text-gray-500 text-xs text-center mb-6 min-h-[32px]">{priv.description}</p>
+        <ul class="space-y-3 mb-8 text-sm text-gray-700 flex-1">
+          {priv.features.map(f => (
+            <li class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-[#00AEEF] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+              </svg>
               <span>{f}</span>
             </li>
           ))}
         </ul>
-        <a href={registerUrl} class="btn-pricing"> {cta} </a>
+        <a href={registerUrl} class="cta-pricing-btn">{cta}</a>
       </div>
 
     </div>
 
-    <div class="text-center mt-8 text-gray-400 text-[11px] italic space-y-1">
-      <p>* {locale === 'nl' ? 'Inschrijfgeld bedraagt €25' : 'Registration fee is €25'}</p>
-      <p>* {locale === 'nl' ? 'Kosten Afzwemmen incl. zwemdiploma €25' : 'Graduation costs incl. diploma €25'}</p>
+    <div class="max-w-3xl mx-auto text-center space-y-1 px-4">
+      <p class="text-[11px] text-gray-400 italic">
+        * {locale === 'nl' ? 'Inschrijfgeld bedraagt €25' : 'Registration fee is €25'}
+      </p>
+      <p class="text-[11px] text-gray-400 italic">
+        * {locale === 'nl' ? 'Kosten Afzwemmen incl. zwemdiploma €25' : 'Graduation costs incl. diploma €25'}
+      </p>
     </div>
+
   </Container>
 </section>
 
 <style define:vars={{ headerLightBlue, headerDarkBlue }}>
-  .btn-pricing {
+  .cta-pricing-btn {
     display: block;
     width: 100%;
     text-align: center;
-    padding: 0.875rem;
+    padding: 0.875rem 1rem;
     background-color: var(--headerLightBlue);
     color: white;
-    font-weight: 900;
+    font-weight: 800;
     border-radius: 0.75rem;
     transition: all 0.3s ease;
+    text-transform: capitalize;
+    font-size: 0.95rem;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   }
-  .btn-pricing:hover {
+
+  .cta-pricing-btn:hover {
     background-color: var(--headerDarkBlue);
     transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  }
+
+  .cta-pricing-btn:active {
+    transform: translateY(0);
   }
 </style>
