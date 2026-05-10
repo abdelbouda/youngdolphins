@@ -65,6 +65,24 @@
     <priority>0.3</priority>
   </url>
 
+  <!-- Aanmelden NL -->
+  <url>
+    <loc>https://youngdolphins.nl/nl/aanmelden</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://youngdolphins.nl/nl/aanmelden"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://youngdolphins.nl/en/aanmelden"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Register EN -->
+  <url>
+    <loc>https://youngdolphins.nl/en/aanmelden</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://youngdolphins.nl/nl/aanmelden"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://youngdolphins.nl/en/aanmelden"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Voorwaarden NL -->
   <url>
     <loc>https://youngdolphins.nl/nl/terms</loc>
