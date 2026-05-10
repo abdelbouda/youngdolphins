@@ -19,7 +19,7 @@ const navItems = [
 ];
 
 // De aanmeld-slug is voor beide talen nu /aanmelden binnen de taalfolder
-const registerHref = getRelativeLocaleUrl(locale, 'aanmelden');
+const registerHref = locale === 'nl' ? 'https://www.youngdolphins.nl/nl/aanmelden/' : getRelativeLocaleUrl(locale, 'aanmelden');
 
 const labels = {
   directRegister: locale === 'en' ? 'Register Now' : 'Direct Aanmelden',
