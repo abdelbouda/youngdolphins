@@ -8,9 +8,86 @@ export async function getStaticPaths() {
 
 const { locale } = Astro.params;
 import Layout from '../../layouts/Layout.astro';
-import Terms from '../terms.astro';
+import Container from '../../components/ui/Container.astro';
+import { t } from '../../i18n/utils';
+
+const title = await t(locale, 'terms.title');
+const subtitle = await t(locale, 'terms.subtitle');
 ---
 
-<Layout locale={locale}>
-  <Terms locale={locale} />
-</Layout>
+<Layout locale={locale} title={title} description={subtitle}>
+  <Container class="py-16">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="prose prose-lg max-w-none">
+        <h1 class="text-3xl font-bold text-[#001F3F] mb-8">{title}</h1>
+        <p class="text-lg text-gray-600 mb-12">{subtitle}</p>
+        
+        <div class="space-y-8">
+          <section>
+            <h2 class="text-2xl font-semibold text-[#001F3F] mb-4">
+              {await t(locale, 'terms.service.title')}
+            </h2>
+            <p class="text-gray-700 mb-4">
+              {await t(locale, 'terms.service.description')}
+            </p>
+            
+            <h2 class="text-2xl font-semibold text-[#001F3F] mb-4">
+              {await t(locale, 'terms.liability.title')}
+            </h2>
+            <p class="text-gray-700 mb-4">
+              {await t(locale, 'terms.liability.description')}
+            </p>
+            
+            <h2 class="text-2xl font-semibold text-[#001F3F] mb-4">
+              {await t(locale, 'terms.intellectual.title')}
+            </h2>
+            <p class="text-gray-700 mb-4">
+              {await t(locale, 'terms.intellectual.description')}
+            </p>
+            
+            <h2 class="text-2xl font-semibold text-[#001F3F] mb-4">
+              {await t(locale, 'terms.usage.title')}
+            </h2>
+            <p class="text-gray-700 mb-4">
+              {await t(locale, 'terms.usage.description')}
+            </p>
+            
+            <h2 class="text-2xl font-semibold text-[#001F3F] mb-4">
+              {await t(locale, 'terms.privacy.title')}
+            </h2>
+            <p class="text-gray-700 mb-4">
+              {await t(locale, 'terms.privacy.description')}
+            </p>
+            
+            <h2 class="text-2xl font-semibold text-[#001F3F] mb-4">
+              {await t(locale, 'terms.cookies.title')}
+            </h2>
+            <p class="text-gray-700 mb-4">
+              {await t(locale, 'terms.cookies.description')}
+            </p>
+            
+            <h2 class="text-2xl font-semibold text-[#001F3F] mb-4">
+              {await t(locale, 'terms.modifications.title')}
+            </h2>
+            <p class="text-gray-700 mb-4">
+              {await t(locale, 'terms.modifications.description')}
+            </p>
+            
+            <h2 class="text-2xl font-semibold text-[#001F3F] mb-4">
+              {await t(locale, 'terms.governing.title')}
+            </h2>
+            <p class="text-gray-700 mb-4">
+              {await t(locale, 'terms.governing.description')}
+            </p>
+            
+            <h2 class="text-2xl font-semibold text-[#001F3F] mb-4">
+              {await t(locale, 'terms.contact.title')}
+            </h2>
+            <p class="text-gray-700 mb-4">
+              {await t(locale, 'terms.contact.description')}
+            </p>
+          </section>
+        </div>
+      </div>
+    </Container>
+  </Layout>

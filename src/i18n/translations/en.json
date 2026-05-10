@@ -200,69 +200,37 @@
         "name": "Private",
         "price_unit": "/ lesson",
         "description": "1‑on‑1 coaching for maximum progress.",
-        "features": [
-          "Private lesson",
-          "Faster progress",
-          "Personal lesson plan",
-          "Flexible times",
-          "Accelerated A/B/C program"
-        ]
-      }
     },
-
-    "compare": {
-      "title": "Compare packages",
-      "feature": "Feature",
-      "rows": {
-        "lessons": "Lessons per week",
-        "report": "Progress reporting",
-        "personal": "Personal guidance",
-        "access": "Access to all pools"
-      }
+    "supervision": {
+      "title": "Lifeguard supervision",
+      "text": "Every lesson is supervised by certified lifeguards to ensure maximum safety for all children."
+    },
+    "facilities": {
+      "title": "Clean & hygienic facilities",
+      "text": "Our pools are cleaned daily, and water quality is tested multiple times per day according to Dutch regulations."
+    },
+    "emergency": {
+      "title": "Emergency readiness",
+      "text": "Our team is trained in emergency response, CPR, and child rescue techniques to ensure a safe environment."
+    },
+    "transparency": {
+      "title": "Parent transparency",
+      "text": "Parents can always observe lessons and receive updates on progress, safety, and comfort."
     }
   },
-
+  "footer": {
+    "title": "Certified & trustworthy"
+  },
   "faq": {
     "title": "Frequently asked questions",
-    "subtitle": "Everything parents want to know",
-
     "items": [
-      {
-        "question": "How long does it take to get a swimming diploma?",
-        "answer": "This depends on age, confidence, and lesson frequency. Most children earn diploma A in approximately 12–18 months with weekly lessons. With Progress+ or private lessons, progress is often faster."
-      },
       {
         "question": "What should my child bring to the first lesson?",
         "answer": "A swimsuit, towel, and slippers are enough. We provide all floating materials and safety equipment."
       },
       {
-        "question": "Can parents watch the lessons?",
+        "question": "Can parents watch lessons?",
         "answer": "Yes! All pools have viewing areas where parents can watch comfortably."
-      },
-      {
-        "question": "What if my child is afraid of water?",
-        "answer": "Our instructors are trained in helping anxious swimmers. We start slowly, build trust, and use playful exercises to help children feel safe and confident."
-      },
-      {
-        "question": "Do you offer private lessons?",
-        "answer": "Yes, we offer 1‑on‑1 private lessons and duo lessons. These are ideal for faster progress or children who need extra attention."
-      },
-      {
-        "question": "What locations do you teach at?",
-        "answer": "We teach in multiple warm, child‑friendly pools. You can choose the location that works best for your schedule."
-      }
-    ],
-
-    "more_title": "Still have questions?",
-    "more_subtitle": "Our team is here to help you with anything related to swimming lessons.",
-    "more_cta": "Contact support"
-  },
-
-  "values": {
-    "title": "Our values",
-    "items": [
-      {
-        "title": "Safety First",
         "description": "Safety always comes first. Our instructors are fully certified and trained in child‑friendly methods."
       },
       {

@@ -162,7 +162,14 @@
       }
     },
     "footer": {
-      "title": "Gecertificeerd & betrouwbaar"
+      "tagline": "Jonge dolfijnen die leren zwemmen met plezier",
+      "links": {
+        "product": "Product",
+        "company": "Bedrijf",
+        "resources": "Bronnen",
+        "legal": "Juridisch"
+      },
+      "copyright": " 2024 Young Dolphins Zwemschool"
     }
   },
 
