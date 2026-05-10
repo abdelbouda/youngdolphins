@@ -10,111 +10,115 @@ interface Props {
 
 const { locale = 'nl' } = Astro.props;
 
+// Prijzen hardcoded conform jouw verzoek
+const starterPrice = "25";
+const progressPrice = "170";
+const privatePrice = "50";
+
 const title = await t(locale, 'pricing.title');
 const subtitle = await t(locale, 'pricing.subtitle');
 const cta = await t(locale, 'pricing.cta');
 
-// Pakketten met de nieuwe prijzen
-const starter = {
-  id: 'starter',
-  name: await t(locale, 'pricing.packages.starter.name'),
-  price: '25',
-  priceUnit: await t(locale, 'pricing.packages.starter.price_unit'),
-  description: await t(locale, 'pricing.packages.starter.description'),
-  features: await tObject(locale, 'pricing.packages.starter.features') as string[]
-};
+const starterFeatures = await tObject(locale, 'pricing.packages.starter.features') as string[];
+const progressFeatures = await tObject(locale, 'pricing.packages.progress.features') as string[];
+const privateFeatures = await tObject(locale, 'pricing.packages.private.features') as string[];
 
-const progress = {
-  id: 'progress',
-  name: await t(locale, 'pricing.packages.progress.name'),
-  badge: await t(locale, 'pricing.packages.progress.badge'),
-  price: '170',
-  priceUnit: await t(locale, 'pricing.packages.progress.price_unit'),
-  description: await t(locale, 'pricing.packages.progress.description'),
-  features: await tObject(locale, 'pricing.packages.progress.features') as string[]
-};
-
-const priv = {
-  id: 'private',
-  name: await t(locale, 'pricing.packages.private.name'),
-  price: '50',
-  priceUnit: await t(locale, 'pricing.packages.private.price_unit'),
-  description: await t(locale, 'pricing.packages.private.description'),
-  features: await tObject(locale, 'pricing.packages.private.features') as string[]
-};
-
-// URL naar de aanmeldpagina (bijv. /nl/register)
 const registerUrl = getRelativeLocaleUrl(locale, 'register');
 
-// Kleuren uit de header
 const headerLightBlue = "#00AEEF";
 const headerDarkBlue = "#001F3F";
 ---
 
-<section id="pricing" class="py-16 sm:py-24 bg-[#F7FBFF]">
+<section id="pricing" class="py-16 bg-[#F7FBFF] overflow-hidden">
   <Container>
-
-    <div class="text-center mb-10 sm:mb-14 px-4">
-      <h2 class="text-2xl sm:text-4xl font-bold text-[#001F3F] mb-3">{title}</h2>
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-[#001F3F] mb-4">{title}</h2>
       <p class="text-gray-600 max-w-2xl mx-auto">{subtitle}</p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto mb-10 px-4">
-      {[starter, progress, priv].map((pkg) => (
-        <div class={`bg-white border ${pkg.id === 'progress' ? 'border-[#00AEEF] border-2 md:scale-[1.05] z-10 shadow-lg' : 'border-[#E1EEF7] shadow-sm'} rounded-2xl p-6 sm:p-8 flex flex-col relative transition-all`}>
-          
-          {pkg.id === 'progress' && (
-            <div class="absolute -top-3 left-1/2 -translate-x-1/2">
-              <span class="px-3 py-1 text-[10px] bg-[#00AEEF] text-white rounded-full font-bold uppercase tracking-widest whitespace-nowrap">
-                {progress.badge}
-              </span>
-            </div>
-          )}
-
-          <h3 class="text-lg font-bold text-[#001F3F] mb-2 text-center uppercase tracking-tight">{pkg.name}</h3>
-          
-          <div class="flex items-baseline justify-center mb-4">
-            <span class="text-base font-bold text-[#001F3F] mr-1">€</span>
-            <span class="text-4xl font-black text-[#001F3F]">{pkg.price}</span>
-            <span class="text-gray-500 ml-1 text-sm">{pkg.priceUnit}</span>
-          </div>
-
-          <ul class="space-y-3 mb-8 flex-1">
-            {pkg.features.map(f => (
-              <li class="flex items-start gap-2 text-sm text-gray-700 leading-snug">
-                <svg class="w-4 h-4 text-[#00AEEF] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                {f}
-              </li>
-            ))}
-          </ul>
-
-          <a 
-            href={registerUrl} 
-            class="w-full text-center py-3.5 px-6 text-white font-black rounded-xl transition-all shadow-md active:scale-95"
-            style={`background-color: ${headerLightBlue};`}
-          >
-            {cta}
-          </a>
+    <div class="flex flex-col md:flex-row items-stretch justify-center gap-6 lg:gap-8 max-w-6xl mx-auto mb-10">
+      
+      <div class="flex-1 bg-white border border-[#E1EEF7] rounded-2xl p-8 flex flex-col shadow-sm">
+        <h3 class="text-xl font-bold text-[#001F3F] mb-4 text-center uppercase tracking-tight">Starter</h3>
+        <div class="flex items-baseline justify-center mb-6">
+          <span class="text-xl font-bold text-[#001F3F]">€</span>
+          <span class="text-5xl font-black text-[#001F3F]">{starterPrice}</span>
+          <span class="text-gray-500 ml-1 text-sm">/ les</span>
         </div>
-      ))}
+        <ul class="space-y-3 mb-10 flex-1">
+          {starterFeatures.map(f => (
+            <li class="flex items-start gap-2 text-sm text-gray-700">
+              <svg class="w-5 h-5 text-[#00AEEF] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>
+              <span>{f}</span>
+            </li>
+          ))}
+        </ul>
+        <a href={registerUrl} class="btn-pricing"> {cta} </a>
+      </div>
+
+      <div class="flex-1 bg-white border-2 border-[#00AEEF] rounded-2xl p-8 flex flex-col shadow-xl relative md:scale-105 z-10">
+        <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#00AEEF] text-white px-4 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">
+          Meest Gekozen
+        </div>
+        <h3 class="text-xl font-bold text-[#001F3F] mb-4 text-center uppercase tracking-tight">Progress+</h3>
+        <div class="flex items-baseline justify-center mb-6">
+          <span class="text-xl font-bold text-[#001F3F]">€</span>
+          <span class="text-5xl font-black text-[#001F3F]">{progressPrice}</span>
+          <span class="text-gray-500 ml-1 text-sm">/ maand</span>
+        </div>
+        <ul class="space-y-3 mb-10 flex-1">
+          {progressFeatures.map(f => (
+            <li class="flex items-start gap-2 text-sm text-gray-700">
+              <svg class="w-5 h-5 text-[#00AEEF] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>
+              <span>{f}</span>
+            </li>
+          ))}
+        </ul>
+        <a href={registerUrl} class="btn-pricing"> {cta} </a>
+      </div>
+
+      <div class="flex-1 bg-white border border-[#E1EEF7] rounded-2xl p-8 flex flex-col shadow-sm">
+        <h3 class="text-xl font-bold text-[#001F3F] mb-4 text-center uppercase tracking-tight">Privé</h3>
+        <div class="flex items-baseline justify-center mb-6">
+          <span class="text-xl font-bold text-[#001F3F]">€</span>
+          <span class="text-5xl font-black text-[#001F3F]">{privatePrice}</span>
+          <span class="text-gray-500 ml-1 text-sm">/ les</span>
+        </div>
+        <ul class="space-y-3 mb-10 flex-1">
+          {privateFeatures.map(f => (
+            <li class="flex items-start gap-2 text-sm text-gray-700">
+              <svg class="w-5 h-5 text-[#00AEEF] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>
+              <span>{f}</span>
+            </li>
+          ))}
+        </ul>
+        <a href={registerUrl} class="btn-pricing"> {cta} </a>
+      </div>
+
     </div>
 
-    <div class="max-w-3xl mx-auto text-center space-y-1 px-4">
-      <p class="text-[11px] text-gray-400 italic">
-        * {locale === 'nl' ? 'Inschrijfgeld bedraagt €25' : 'Registration fee is €25'}
-      </p>
-      <p class="text-[11px] text-gray-400 italic">
-        * {locale === 'nl' ? 'Kosten Afzwemmen incl. zwemdiploma €25' : 'Graduation costs incl. diploma €25'}
-      </p>
+    <div class="text-center mt-8 text-gray-400 text-[11px] italic space-y-1">
+      <p>* {locale === 'nl' ? 'Inschrijfgeld bedraagt €25' : 'Registration fee is €25'}</p>
+      <p>* {locale === 'nl' ? 'Kosten Afzwemmen incl. zwemdiploma €25' : 'Graduation costs incl. diploma €25'}</p>
     </div>
-
   </Container>
 </section>
 
-<style>
-  /* Extra hover voor de knoppen zonder inline JS clutter */
-  a:hover {
-    filter: brightness(90%);
-    background-color: #001F3F !important;
+<style define:vars={{ headerLightBlue, headerDarkBlue }}>
+  .btn-pricing {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 0.875rem;
+    background-color: var(--headerLightBlue);
+    color: white;
+    font-weight: 900;
+    border-radius: 0.75rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+  .btn-pricing:hover {
+    background-color: var(--headerDarkBlue);
+    transform: translateY(-2px);
   }
 </style>
