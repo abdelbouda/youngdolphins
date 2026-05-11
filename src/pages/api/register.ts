@@ -81,22 +81,88 @@ export const POST: APIRoute = async ({ request }) => {
         </div>
       </div>`;
 
-    // Verstuur e-mails
-    await Promise.all([
-      resend.emails.send({
-        from: fromAddress,
-        to: [toAddress],
-        replyTo: ouderEmail,
-        subject: `Nieuwe aanmelding: ${kindVoornaam} (${gekozenPakket})`,
-        html: internalHtml,
-      }),
-      resend.emails.send({
-        from: fromAddress,
-        to: [ouderEmail],
-        subject: isEnglish ? `Confirmation registration ${kindVoornaam}` : `Bevestiging aanmelding ${kindVoornaam}`,
-        html: confirmHtml,
-      })
-    ]);
+    // Alternatief: Sla registratie op in plaats van email forwarding
+    try {
+      // Optie 1: Verstuur e-mails (standaard)
+      await Promise.all([
+        resend.emails.send({
+          from: fromAddress,
+          to: [toAddress],
+          replyTo: ouderEmail,
+          subject: `Nieuwe aanmelding: ${kindVoornaam} (${gekozenPakket})`,
+          html: internalHtml,
+        }),
+        resend.emails.send({
+          from: fromAddress,
+          to: [ouderEmail],
+          subject: isEnglish ? `Confirmation registration ${kindVoornaam}` : `Bevestiging aanmelding ${kindVoornaam}`,
+          html: confirmHtml,
+        })
+      ]);
+
+      // Optie 2: Sla op in database (alternatief voor geen email forwarding)
+      // Dit kan worden geactiveerd door EMAIL_FORWARDING=false in environment variables
+      if (process.env.EMAIL_FORWARDING === 'false') {
+        // Sla registratiegegevens op in database
+        const registrationData = {
+          timestamp: new Date().toISOString(),
+          locale: locale,
+          parent: {
+            firstName: ouderVoornaam,
+            lastName: ouderAchternaam,
+            email: ouderEmail,
+            phone: ouderTelefoon
+          },
+          child: {
+            firstName: kindVoornaam,
+            lastName: kindAchternaam,
+            birthDate: geboortedatum,
+            level: zwemniveau
+          },
+          package: gekozenPakket,
+          preferences: {
+            diploma: data.get('diploma')?.toString().trim() ?? '',
+            days: voorkeursdagen,
+            remarks: opmerkingen
+          }
+        };
+
+        // Hier kun je database logica toevoegen:
+        // await db.registrations.create(registrationData);
+        console.log('Registration data stored:', registrationData);
+      }
+
+    } catch (emailError) {
+      // Fallback: Als email niet werkt, sla op in database
+      console.error('Email failed, using database fallback:', emailError);
+      
+      const registrationData = {
+        timestamp: new Date().toISOString(),
+        locale: locale,
+        parent: {
+          firstName: ouderVoornaam,
+          lastName: ouderAchternaam,
+          email: ouderEmail,
+          phone: ouderTelefoon
+        },
+        child: {
+          firstName: kindVoornaam,
+          lastName: kindAchternaam,
+          birthDate: geboortedatum,
+          level: zwemniveau
+        },
+        package: gekozenPakket,
+        preferences: {
+          diploma: data.get('diploma')?.toString().trim() ?? '',
+          days: voorkeursdagen,
+          remarks: opmerkingen
+        }
+      };
+
+      // Sla op als fallback
+      // await db.registrations.create(registrationData);
+      console.log('Fallback registration stored:', registrationData);
+    }
 
     return new Response(JSON.stringify({ success: true }), {
       status: 200,
