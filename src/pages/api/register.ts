@@ -2,6 +2,18 @@ import type { APIRoute } from 'astro';
 import { Resend } from 'resend';
 
 export const POST: APIRoute = async ({ request }) => {
+  // CORS headers
+  const corsHeaders = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type',
+  };
+
+  // Handle OPTIONS request for CORS preflight
+  if (request.method === 'OPTIONS') {
+    return new Response(null, { headers: corsHeaders });
+  }
+
   try {
     const data = await request.formData();
 
@@ -30,7 +42,7 @@ export const POST: APIRoute = async ({ request }) => {
         error: isEnglish ? 'Please fill in all required fields.' : 'Vul alle verplichte velden in.'
       }), {
         status: 400,
-        headers: { 'Content-Type': 'application/json' },
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       });
     }
 
@@ -138,7 +150,7 @@ export const POST: APIRoute = async ({ request }) => {
         // Sla registratiegegevens op in database
         const registrationData = {
           timestamp: new Date().toISOString(),
-          locale: locale,
+          locale: isEnglish ? 'en' : 'nl',
           parent: {
             firstName: ouderVoornaam,
             lastName: ouderAchternaam,
@@ -170,7 +182,7 @@ export const POST: APIRoute = async ({ request }) => {
       
       const registrationData = {
         timestamp: new Date().toISOString(),
-        locale: locale,
+        locale: isEnglish ? 'en' : 'nl',
         parent: {
           firstName: ouderVoornaam,
           lastName: ouderAchternaam,
@@ -198,13 +210,13 @@ export const POST: APIRoute = async ({ request }) => {
 
     return new Response(JSON.stringify({ success: true }), {
       status: 200,
-      headers: { 'Content-Type': 'application/json' },
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     });
 
   } catch (err) {
     return new Response(JSON.stringify({ error: 'Server error' }), {
       status: 500,
-      headers: { 'Content-Type': 'application/json' },
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     });
   }
 };
