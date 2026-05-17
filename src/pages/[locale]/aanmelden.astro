@@ -263,6 +263,14 @@ const pageDesc = isNL
   const statusEl = document.getElementById('form-status');
   const submitBtn = document.getElementById('submit-btn');
   const submitLabel = document.getElementById('submit-label');
+  const pakketSelect = document.getElementById('pakket');
+
+  // Lees URL parameter en stel pakket in
+  const urlParams = new URLSearchParams(window.location.search);
+  const pakketParam = urlParams.get('pakket');
+  if (pakketParam && pakketSelect) {
+    pakketSelect.value = pakketParam;
+  }
 
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
