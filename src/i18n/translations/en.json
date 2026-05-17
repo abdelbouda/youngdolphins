@@ -8,9 +8,9 @@
     "cta": "Enroll now"
   },
   "hero": {
-    "title": "Learn to swim with confidence and fun",
-    "subtitle": "At Young Dolphins, we help children earn their A, B, and C diplomas safely and happily.",
-    "cta_primary": "View our rates",
+    "title": "Swimming Lessons Direct Without Waiting Time in Monnickendam",
+    "subtitle": "At Young Dolphins in Monnickendam, children start swimming lessons immediately. No waiting lists, safe learning with fun for A, B, and C diplomas.",
+    "cta_primary": "Enroll Now",
     "cta_secondary": "Frequently asked questions",
     "stats": {
       "diplomas": "A, B, and C diplomas achieved",
@@ -20,12 +20,12 @@
     "continue_reading": "View our offer"
   },
   "problem": {
-    "title": "Why choose Young Dolphins?",
+    "title": "Why choose Young Dolphins in Monnickendam?",
     "points": [
+      "Start swimming lessons immediately - no waiting time",
       "Small groups for maximum attention",
       "Certified and experienced instructors",
-      "Warm and safe swimming pools",
-      "No long waiting lists",
+      "Warm and safe swimming pools in Monnickendam",
       "Fun and confidence come first"
     ]
   },
@@ -72,8 +72,14 @@
   },
   "integrations": {
     "title": "Our locations",
-    "subtitle": "Modern, warm swimming pools",
+    "subtitle": "Modern, warm swimming pools - Start immediately without waiting",
     "groups": [
+      {
+        "name": "Monnickendam - Direct Start",
+        "items": [
+          "Sportfondsen Monnickendam - No waiting list"
+        ]
+      },
       {
         "name": "Amsterdam",
         "items": [
@@ -90,15 +96,9 @@
         ]
       },
       {
-        "name": "Monnickendam",
-        "items": [
-          "Sportfondsen Monnickendam"
-        ]
-      },
-      {
         "name": "Special Programs",
         "items": [
-          "Private lessons",
+          "Private lessons - Start immediately",
           "Accelerated A/B/C program"
         ]
       }
@@ -214,6 +214,18 @@
       {
         "question": "How long does it take to get a diploma?",
         "answer": "This varies by child, but most students complete A, B, and C diplomas within 1-2 years."
+      },
+      {
+        "question": "Can I start swimming lessons immediately in Monnickendam?",
+        "answer": "Yes! At Young Dolphins in Monnickendam, your child can start swimming lessons immediately. We have no waiting lists, so your child can begin learning to swim safely right away at Sportfondsen Monnickendam."
+      },
+      {
+        "question": "Are there waiting lists for swimming lessons in Monnickendam?",
+        "answer": "No, at Young Dolphins in Monnickendam there are no waiting lists. Children can start swimming lessons immediately, without long waiting times. This is unique in the region."
+      },
+      {
+        "question": "Why choose swimming lessons in Monnickendam?",
+        "answer": "Monnickendam offers an ideal location with Sportfondsen Monnickendam as a warm, child-friendly swimming pool. Combine this with our immediate start without waiting time, small groups, and certified instructors for the best swimming experience."
       }
     ],
     "more_title": "Still have questions?",
@@ -309,9 +321,9 @@
     "cta": "View open positions"
   },
   "final": {
-    "title": "Ready to begin?",
-    "subtitle": "Join Young Dolphins today and give your child the gift of water confidence.",
-    "cta": "Get started now"
+    "title": "Ready to start swimming lessons in Monnickendam?",
+    "subtitle": "Enroll your child today for swimming lessons - start immediately without waiting list at Sportfondsen Monnickendam",
+    "cta": "Enroll Now"
   },
   "footer": {
     "title": "Certified & trustworthy",

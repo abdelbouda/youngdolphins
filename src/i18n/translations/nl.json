@@ -9,12 +9,12 @@
   },
 
   "hero": {
-    "title": "Leren zwemmen met plezier en vertrouwen",
-    "subtitle": "Bij Young Dolphins helpen we kinderen veilig en met plezier hun A-, B- en C-diploma te behalen.",
-    "cta_primary": "Bekijk onze tarieven",
+    "title": "Zwemles Direct Zonder Wachttijd in Monnickendam",
+    "subtitle": "Bij Young Dolphins in Monnickendam starten kinderen direct met zwemles. Geen wachtlijsten, veilig leren zwemmen met plezier voor A-, B- en C-diploma.",
+    "cta_primary": "Direct Inschrijven",
     "cta_secondary": "Veelgestelde vragen",
     "stats": {
-      "diplomas": "A-, B- en C-diploma’s behaald",
+      "diplomas": "A-, B- en C-diploma's behaald",
       "success": "Succesvolle zwemmers",
       "rating": "Gemiddelde beoordeling"
     },
@@ -22,12 +22,12 @@
   },
 
   "problem": {
-    "title": "Waarom kiezen voor Young Dolphins?",
+    "title": "Waarom kiezen voor Young Dolphins in Monnickendam?",
     "points": [
+      "Direct starten met zwemles - geen wachttijd",
       "Kleine groepen voor maximale aandacht",
       "Gediplomeerde en ervaren instructeurs",
-      "Warme en veilige zwembaden",
-      "Geen lange wachtlijsten",
+      "Warme en veilige zwembaden in Monnickendam",
       "Plezier en vertrouwen staan centraal"
     ]
   },
@@ -79,9 +79,15 @@
 
   "integrations": {
     "title": "Onze locaties",
-    "subtitle": "Moderne, warme zwembaden",
+    "subtitle": "Moderne, warme zwembaden - Direct starten zonder wachttijd",
 
     "groups": [
+      {
+        "name": "Monnickendam - Direct Start",
+        "items": [
+          "Sportfondsen Monnickendam - Geen wachtlijst"
+        ]
+      },
       {
         "name": "Amsterdam",
         "items": [
@@ -98,15 +104,9 @@
         ]
       },
       {
-        "name": "Monnickendam",
-        "items": [
-          "Sportfondsen Monnickendam"
-        ]
-      },
-      {
         "name": "Speciale programma’s",
         "items": [
-          "Privélessen",
+          "Privélessen - Direct starten",
           "Versneld A/B/C traject"
         ]
       }
@@ -259,6 +259,18 @@
       {
         "question": "Op welke locaties geven jullie les?",
         "answer": "We geven les in meerdere warme, kindvriendelijke zwembaden. Je kunt de locatie kiezen die het beste bij jullie planning past."
+      },
+      {
+        "question": "Kan ik direct starten met zwemles in Monnickendam?",
+        "answer": "Ja! Bij Young Dolphins in Monnickendam kan je kind direct starten met zwemles. We hebben geen wachtlijsten, dus je kind kan meteen beginnen met veilig leren zwemmen bij Sportfondsen Monnickendam."
+      },
+      {
+        "question": "Zijn er wachtlijsten voor zwemles in Monnickendam?",
+        "answer": "Nee, bij Young Dolphins in Monnickendam zijn er geen wachtlijsten. Kinderen kunnen direct starten met zwemlessen, zonder lange wachttijd. Dit is uniek in de regio."
+      },
+      {
+        "question": "Waarom kiezen voor zwemles in Monnickendam?",
+        "answer": "Monnickendam biedt een ideale locatie met Sportfondsen Monnickendam als warm, kindvriendelijk zwembad. Combineer dit met onze directe start zonder wachttijd, kleine groepen en gediplomeerde instructeurs voor de beste zwemervaring."
       }
     ],
 
@@ -375,8 +387,8 @@
   },
 
   "final": {
-    "title": "Klaar om te starten?",
-    "subtitle": "Schrijf je kind vandaag nog in voor zwemles",
-    "cta": "Inschrijven"
+    "title": "Klaar om te starten met zwemles in Monnickendam?",
+    "subtitle": "Schrijf je kind vandaag nog in voor zwemles - direct starten zonder wachttijd bij Sportfondsen Monnickendam",
+    "cta": "Direct Inschrijven"
   }
 }

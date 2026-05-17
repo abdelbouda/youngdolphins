@@ -13,8 +13,8 @@ interface Props {
 }
 
 const {
-  title = "Young Dolphins – Zwemschool Amsterdam",
-  description = "Zwemlessen voor kinderen in Amsterdam. Veilig leren zwemmen met plezier, vertrouwen en persoonlijke aandacht. A-, B- en C-diploma's.",
+  title = "Zwemles Direct Zonder Wachttijd in Monnickendam | Young Dolphins",
+  description = "Zwemlessen voor kinderen in Monnickendam - direct starten zonder wachttijd. Veilig leren zwemmen met plezier, vertrouwen en persoonlijke aandacht. A-, B- en C-diploma's bij Sportfondsen Monnickendam.",
   image = "/og-image.jpg",
   canonical,
   noindex = false,
@@ -31,8 +31,8 @@ const currentPath = Astro.url.pathname.replace(/^\/(nl|en)/, '') || '/';
 const nlURL = new URL(`/nl${currentPath}`, siteUrl);
 const enURL = new URL(`/en${currentPath}`, siteUrl);
 
-const titleEn = "Young Dolphins – Swimming School Amsterdam";
-const descriptionEn = "Swimming lessons for children in Amsterdam. Learn to swim safely and joyfully. A, B and C certificates.";
+const titleEn = "Swimming Lessons Direct Without Waiting Time in Monnickendam | Young Dolphins";
+const descriptionEn = "Swimming lessons for children in Monnickendam - start immediately without waiting list. Learn to swim safely with joy, confidence and personal attention. A, B and C certificates at Sportfondsen Monnickendam.";
 const pageTitle = locale === 'en' ? titleEn : title;
 const pageDescription = locale === 'en' ? descriptionEn : description;
 ---
@@ -88,8 +88,8 @@ const pageDescription = locale === 'en' ? descriptionEn : description;
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" /></noscript>
     <!-- Preload critical images (LCP optimization) -->
-    <link rel="preload" as="image" href="/yd-logo.webp" fetchpriority="high" />
-    <link rel="preload" as="image" href="/hero-kids.webp" fetchpriority="high" />
+    <link rel="preload" as="image" href="/yd-logo.webp" />
+    <link rel="preload" as="image" href="/hero-kids.webp" />
     <!-- DNS prefetch for external resources -->
     <link rel="dns-prefetch" href="//fonts.googleapis.com" />
     <link rel="dns-prefetch" href="//fonts.gstatic.com" />
@@ -105,16 +105,17 @@ const pageDescription = locale === 'en' ? descriptionEn : description;
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "SportsActivityLocation",
-      "name": "Young Dolphins",
+      "name": "Young Dolphins - Zwemles Monnickendam",
       "url": siteUrl.toString(),
       "logo": new URL("/favicon.png", siteUrl).toString(),
       "image": imageURL.toString(),
       "description": locale === 'en'
-        ? "Professional swimming lessons for children in Amsterdam."
-        : "Professionele zwemlessen voor kinderen in Amsterdam.",
+        ? "Professional swimming lessons for children in Monnickendam. Start immediately without waiting list at Sportfondsen Monnickendam."
+        : "Professionele zwemlessen voor kinderen in Monnickendam. Direct starten zonder wachttijd bij Sportfondsen Monnickendam.",
       "address": {
         "@type": "PostalAddress",
-        "addressLocality": "Amsterdam",
+        "addressLocality": "Monnickendam",
+        "addressRegion": "Noord-Holland",
         "addressCountry": "NL"
       },
       "telephone": "+31628421354",
@@ -126,7 +127,7 @@ const pageDescription = locale === 'en' ? descriptionEn : description;
         "@type": "ContactPoint",
         "telephone": "+31628421354",
         "contactType": "customer service",
-        "areaServed": "Amsterdam",
+        "areaServed": "Monnickendam",
         "availableLanguage": ["Dutch", "English"]
       },
       "aggregateRating": {
@@ -139,22 +140,22 @@ const pageDescription = locale === 'en' ? descriptionEn : description;
         "itemOffered": [
           {
             "@type": "Service",
-            "name": locale === 'en' ? "Starter Swimming Lessons" : "Starter Zwemlessen",
-            "description": locale === 'en' ? "1 lesson per week for beginners" : "1 les per week voor beginners",
+            "name": locale === 'en' ? "Starter Swimming Lessons Monnickendam" : "Starter Zwemlessen Monnickendam",
+            "description": locale === 'en' ? "1 lesson per week for beginners - start immediately without waiting" : "1 les per week voor beginners - direct starten zonder wachttijd",
             "price": "€25",
             "priceCurrency": "EUR"
           },
           {
             "@type": "Service", 
-            "name": locale === 'en' ? "Progress+ Swimming Lessons" : "Progress+ Zwemlessen",
-            "description": locale === 'en' ? "2 lessons per week for faster progress" : "2 lessen per week voor snellere vooruitgang",
+            "name": locale === 'en' ? "Progress+ Swimming Lessons Monnickendam" : "Progress+ Zwemlessen Monnickendam",
+            "description": locale === 'en' ? "2 lessons per week for faster progress - no waiting list" : "2 lessen per week voor snellere vooruitgang - geen wachtlijst",
             "price": "€170",
             "priceCurrency": "EUR"
           },
           {
             "@type": "Service",
-            "name": locale === 'en' ? "Private Swimming Lessons" : "Privé Zwemlessen", 
-            "description": locale === 'en' ? "1-on-1 coaching for maximum progress" : "1-op-1 coaching voor maximale vooruitgang",
+            "name": locale === 'en' ? "Private Swimming Lessons Monnickendam" : "Privé Zwemlessen Monnickendam", 
+            "description": locale === 'en' ? "1-on-1 coaching for maximum progress - immediate start" : "1-op-1 coaching voor maximale vooruitgang - direct starten",
             "price": "€50",
             "priceCurrency": "EUR"
           }
@@ -162,27 +163,27 @@ const pageDescription = locale === 'en' ? descriptionEn : description;
       },
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
-        "name": locale === 'en' ? "Swimming Lesson Packages" : "Zwemles Pakketten",
+        "name": locale === 'en' ? "Swimming Lesson Packages Monnickendam" : "Zwemles Pakketten Monnickendam",
         "itemListElement": [
           {
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "name": locale === 'en' ? "Starter Package" : "Starter Pakket"
+              "name": locale === 'en' ? "Starter Package Monnickendam" : "Starter Pakket Monnickendam"
             }
           },
           {
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service", 
-              "name": locale === 'en' ? "Progress+ Package" : "Progress+ Pakket"
+              "name": locale === 'en' ? "Progress+ Package Monnickendam" : "Progress+ Pakket Monnickendam"
             }
           },
           {
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "name": locale === 'en' ? "Private Package" : "Privé Pakket"
+              "name": locale === 'en' ? "Private Package Monnickendam" : "Privé Pakket Monnickendam"
             }
           }
         ]
@@ -201,14 +202,14 @@ const pageDescription = locale === 'en' ? descriptionEn : description;
       <div class="max-w-7xl mx-auto px-4">
         <div class="flex flex-col items-center gap-4 mb-8">
           <img src="/yd-logo.webp" alt="Young Dolphins logo" width="180" height="180" style="height: 90px; width: auto; object-fit: contain;" loading="lazy" />
-          <p class="text-base font-semibold text-[#001F3F]">Young Dolphins – Zwemschool Amsterdam</p>
+          <p class="text-base font-semibold text-[#001F3F]">Young Dolphins – Zwemles Direct Zonder Wachttijd in Monnickendam</p>
           <div class="flex flex-wrap justify-center gap-4 text-sm text-gray-500">
             <a href="https://wa.me/31628421354" class="hover:text-[#001F3F] transition-colors">📞 06-28421354</a>
             <a href="mailto:info@youngdolphins.nl" class="hover:text-[#001F3F] transition-colors">✉️ info@youngdolphins.nl</a>
           </div>
         </div>
         <div class="border-t border-gray-100 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
-          <span>© {new Date().getFullYear()} Young Dolphins – Zwemschool Amsterdam</span>
+          <span>© {new Date().getFullYear()} Young Dolphins – Zwemles Monnickendam</span>
           <div class="flex gap-4">
             <a href={`/${locale}/privacy`} class="hover:text-gray-700 transition-colors">Privacy</a>
             <a href={`/${locale}/terms`} class="hover:text-gray-700 transition-colors">{locale === 'en' ? 'Terms' : 'Voorwaarden'}</a>

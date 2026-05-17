@@ -2,17 +2,18 @@
 const locale = Astro.props.locale ?? 'nl';
 import { tSync } from '../i18n/utils';
 
+import Layout from '../layouts/Layout.astro';
 import Header from '../components/ui/Header.astro';
 import Container from '../components/ui/Container.astro';
 import TeamSection from '../components/sections/TeamSection.astro';
 import FinalSections from '../components/sections/FinalSections.astro';
 
-const pageTitle = locale === 'en' 
-  ? 'About Young Dolphins - Swimming School Amsterdam'
-  : 'Over Young Dolphins - Zwemschool Amsterdam';
+const pageTitle = locale === 'en'
+  ? 'About Young Dolphins - Swimming Lessons Monnickendam Direct Without Waiting'
+  : 'Over Young Dolphins - Zwemles Monnickendam Direct Zonder Wachttijd';
 const pageDesc = locale === 'en'
-  ? 'Learn about Young Dolphins swimming school in Amsterdam. Our story, mission, and professional swimming instructors.'
-  : 'Lees over Young Dolphins zwemschool in Amsterdam. Ons verhaal, missie en professionele zweminstructeurs.';
+  ? 'Learn about Young Dolphins swimming school in Monnickendam. Start swimming lessons immediately without waiting list. Our story, mission, and professional swimming instructors.'
+  : 'Lees over Young Dolphins zwemschool in Monnickendam. Direct starten met zwemles zonder wachttijd. Ons verhaal, missie en professionele zweminstructeurs.';
 ---
 
 <Layout title={pageTitle} description={pageDesc} locale={locale}>
@@ -43,19 +44,19 @@ const pageDesc = locale === 'en'
       </h2>
 
       <p>
-        Young Dolphins is ontstaan vanuit één duidelijke overtuiging: elk kind verdient zwemles in een 
-        veilige, positieve en persoonlijke omgeving. Geen grote groepen, geen stress, geen druk — maar 
-        aandacht, vertrouwen en plezier.
+        Young Dolphins is ontstaan vanuit één duidelijke overtuiging: elk kind verdient zwemles in een
+        veilige, positieve en persoonlijke omgeving. Geen grote groepen, geen stress, geen druk — maar
+        aandacht, vertrouwen en plezier. In Monnickendam bieden wij zwemlessen aan zonder wachttijd, zodat kinderen direct kunnen starten.
       </p>
 
       <p>
-        Onze instructeurs hebben jarenlange ervaring in het begeleiden van kinderen van alle leeftijden. 
-        We werken met kleine groepen zodat ieder kind écht gezien wordt en op zijn eigen tempo kan groeien.
+        Onze instructeurs hebben jarenlange ervaring in het begeleiden van kinderen van alle leeftijden.
+        We werken met kleine groepen zodat ieder kind écht gezien wordt en op zijn eigen tempo kan groeien. Bij Sportfondsen Monnickendam bieden wij een warme, kindvriendelijke omgeving.
       </p>
 
       <p>
-        Waterveiligheid staat bij ons centraal. Daarom leren we kinderen niet alleen de technieken voor 
-        hun A-, B- en C‑diploma, maar ook hoe ze zich veilig en zelfverzekerd voelen in het water.
+        Waterveiligheid staat bij ons centraal. Daarom leren we kinderen niet alleen de technieken voor
+        hun A-, B- en C‑diploma, maar ook hoe ze zich veilig en zelfverzekerd voelen in het water. Direct starten zonder wachttijd maakt het mogelijk om snel voortgang te boeken.
       </p>
     </div>
   </Container>

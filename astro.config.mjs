@@ -23,10 +23,13 @@ export default defineConfig({
   },
 
   output: 'server',
- adapter: vercel({
+  adapter: vercel({
   nodeVersion: "20"
 }),
-  build: { inlineStylesheets: 'auto' },
+  build: {
+    inlineStylesheets: 'auto',
+    format: 'file',
+  },
 
   prefetch: {
     prefetchAll: true,
@@ -35,8 +38,30 @@ export default defineConfig({
 
   compressHTML: true,
 
+  image: {
+    service: {
+      entrypoint: 'astro/assets/services/sharp',
+    },
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**',
+      },
+    ],
+  },
+
   vite: {
-    build: { cssMinify: true },
-    
+    build: {
+      cssMinify: true,
+      minify: 'terser',
+      terserOptions: {
+        compress: {
+          drop_console: true,
+        },
+      },
+    },
+    optimizeDeps: {
+      include: ['react', 'react-dom'],
+    },
   },
 });
