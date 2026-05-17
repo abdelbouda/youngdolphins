@@ -258,11 +258,8 @@ const pageDesc = isNL
   </section>
 </Layout>
 
-<script define:vars={{ errorMsg: copy.errorMsg, successMsg: copy.successMsg, sendingLabel: copy.sending }}>
+<script define:vars={{ isNL }}>
   const form = document.getElementById('register-form');
-  const statusEl = document.getElementById('form-status');
-  const submitBtn = document.getElementById('submit-btn');
-  const submitLabel = document.getElementById('submit-label');
   const pakketSelect = document.getElementById('pakket');
 
   // Lees URL parameter en stel pakket in
@@ -272,7 +269,7 @@ const pageDesc = isNL
     pakketSelect.value = pakketParam;
   }
 
-  form?.addEventListener('submit', async (e) => {
+  form?.addEventListener('submit', (e) => {
     e.preventDefault();
 
     if (!form.checkValidity()) {
@@ -280,30 +277,28 @@ const pageDesc = isNL
       return;
     }
 
-    submitBtn.disabled = true;
-    submitLabel.textContent = sendingLabel;
-    statusEl.className = 'hidden mb-6 rounded-lg p-4 text-sm font-medium';
+    // Verzamel formuliergegevens
+    const formData = new FormData(form);
+    const ouderVoornaam = formData.get('ouder_voornaam');
+    const ouderAchternaam = formData.get('ouder_achternaam');
+    const ouderEmail = formData.get('ouder_email');
+    const ouderTelefoon = formData.get('ouder_telefoon');
+    const kindVoornaam = formData.get('kind_voornaam');
+    const kindAchternaam = formData.get('kind_achternaam');
+    const geboortedatum = formData.get('geboortedatum');
+    const zwemniveau = formData.get('zwemniveau');
+    const pakket = formData.get('pakket');
+    const diploma = formData.get('diploma');
+    const voorkeursdagen = formData.getAll('voorkeursdagen').join(', ');
+    const opmerkingen = formData.get('opmerkingen');
 
-    try {
-      const formData = new FormData(form);
-      const res = await fetch('/api/register', { method: 'POST', body: formData });
-      const json = await res.json();
+    // Bouw WhatsApp bericht
+    const message = isNL
+      ? `🐬 *Nieuwe Aanmelding*\n\n*Ouder:* ${ouderVoornaam} ${ouderAchternaam}\n*Telefoon:* ${ouderTelefoon}\n*Email:* ${ouderEmail}\n\n*Kind:* ${kindVoornaam} ${kindAchternaam}\n*Geb. datum:* ${geboortedatum}\n*Niveau:* ${zwemniveau}\n\n*Pakket:* ${pakket}\n*Diploma:* ${diploma}\n*Voorkeursdagen:* ${voorkeursdagen}\n\n${opmerkingen ? `*Opmerkingen:* ${opmerkingen}` : ''}`
+      : `🐬 *New Registration*\n\n*Parent:* ${ouderVoornaam} ${ouderAchternaam}\n*Phone:* ${ouderTelefoon}\n*Email:* ${ouderEmail}\n\n*Child:* ${kindVoornaam} ${kindAchternaam}\n*DOB:* ${geboortedatum}\n*Level:* ${zwemniveau}\n\n*Package:* ${pakket}\n*Certificate:* ${diploma}\n*Preferred Days:* ${voorkeursdagen}\n\n${opmerkingen ? `*Remarks:* ${opmerkingen}` : ''}`;
 
-      if (res.ok && json.success) {
-        statusEl.textContent = successMsg;
-        statusEl.className = 'mb-6 rounded-lg p-4 text-sm font-medium bg-green-50 text-green-800 border border-green-200';
-        form.reset();
-      } else {
-        statusEl.textContent = json.error ?? errorMsg;
-        statusEl.className = 'mb-6 rounded-lg p-4 text-sm font-medium bg-red-50 text-red-800 border border-red-200';
-      }
-    } catch {
-      statusEl.textContent = errorMsg;
-      statusEl.className = 'mb-6 rounded-lg p-4 text-sm font-medium bg-red-50 text-red-800 border border-red-200';
-    } finally {
-      submitBtn.disabled = false;
-      submitLabel.textContent = submitLabel.dataset.original ?? submitLabel.textContent;
-      statusEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
+    // Verstuur via WhatsApp
+    const whatsappUrl = `https://wa.me/31628421354?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
   });
 </script>
