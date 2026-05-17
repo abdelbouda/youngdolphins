@@ -86,60 +86,60 @@ const registerHref = `/${locale}/aanmelden`;
       </div>
 
       <div class="flex justify-center items-center hero-fade px-4 sm:px-8 lg:px-4">
-        <div class="grid grid-cols-1 gap-4 w-full max-w-lg">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 w-full max-w-5xl">
           <!-- Starter Card -->
-          <div class="pricing-card-3d bg-white rounded-2xl p-6 shadow-xl border border-gray-100 transform hover:scale-105 transition-all duration-300">
+          <div class="pricing-card-3d bg-white rounded-xl p-4 shadow-lg border border-gray-100 transform hover:scale-105 transition-all duration-300">
             <div class="text-center">
-              <h3 class="text-xl font-bold text-[#001F3F] mb-2">Starter</h3>
-              <div class="text-3xl font-bold text-[#00AEEF] mb-1">€25</div>
-              <div class="text-sm text-gray-600 mb-4">/ les</div>
-              <p class="text-sm text-gray-700 mb-4">Perfect voor kennismaking en eerste zwemlessen.</p>
-              <ul class="text-left text-sm text-gray-600 space-y-2 mb-4">
-                <li class="flex items-center"><span class="text-green-500 mr-2">✓</span>1 les per week</li>
-                <li class="flex items-center"><span class="text-green-500 mr-2">✓</span>Kleine groepen</li>
-                <li class="flex items-center"><span class="text-green-500 mr-2">✓</span>Warm zwembad</li>
-                <li class="flex items-center"><span class="text-green-500 mr-2">✓</span>Gecertificeerde instructeurs</li>
+              <h3 class="text-lg font-bold text-[#001F3F] mb-1">Starter</h3>
+              <div class="text-2xl font-bold text-[#00AEEF] mb-1">€25</div>
+              <div class="text-xs text-gray-600 mb-2">/ les</div>
+              <p class="text-xs text-gray-700 mb-2">Perfect voor kennismaking.</p>
+              <ul class="text-left text-xs text-gray-600 space-y-1 mb-3">
+                <li class="flex items-center"><span class="text-green-500 mr-1">✓</span>1 les per week</li>
+                <li class="flex items-center"><span class="text-green-500 mr-1">✓</span>Kleine groepen</li>
+                <li class="flex items-center"><span class="text-green-500 mr-1">✓</span>Warm zwembad</li>
+                <li class="flex items-center"><span class="text-green-500 mr-1">✓</span>Gecertificeerde instructeurs</li>
               </ul>
-              <a href={registerHref} class="cta-register w-full text-center block">Inschrijven</a>
+              <a href={registerHref} class="cta-register w-full text-center block py-2 text-sm">Inschrijven</a>
             </div>
           </div>
 
           <!-- Progress+ Card -->
-          <div class="pricing-card-3d bg-gradient-to-br from-[#00AEEF] to-[#0096ce] rounded-2xl p-6 shadow-2xl border-2 border-[#00AEEF] transform hover:scale-105 transition-all duration-300 relative">
-            <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#001F3F] text-white text-xs font-bold px-3 py-1 rounded-full">
+          <div class="pricing-card-3d bg-gradient-to-br from-[#00AEEF] to-[#0096ce] rounded-xl p-4 shadow-xl border-2 border-[#00AEEF] transform hover:scale-105 transition-all duration-300 relative">
+            <div class="absolute -top-2 left-1/2 -translate-x-1/2 bg-[#001F3F] text-white text-xs font-bold px-2 py-0.5 rounded-full">
               MEEST GEKOZEN
             </div>
             <div class="text-center">
-              <h3 class="text-xl font-bold text-white mb-2">Progress+</h3>
-              <div class="text-3xl font-bold text-white mb-1">€170</div>
-              <div class="text-sm text-white/90 mb-4">/ maand</div>
-              <p class="text-sm text-white/90 mb-4">Sneller leren met extra begeleiding.</p>
-              <ul class="text-left text-sm text-white space-y-2 mb-4">
-                <li class="flex items-center"><span class="mr-2">✓</span>2 lessen per week</li>
-                <li class="flex items-center"><span class="mr-2">✓</span>Voortgangsrapportage</li>
-                <li class="flex items-center"><span class="mr-2">✓</span>Extra persoonlijke aandacht</li>
-                <li class="flex items-center"><span class="mr-2">✓</span>Toegang tot alle locaties</li>
-                <li class="flex items-center"><span class="mr-2">✓</span>Diploma A/B/C begeleiding</li>
+              <h3 class="text-lg font-bold text-white mb-1">Progress+</h3>
+              <div class="text-2xl font-bold text-white mb-1">€170</div>
+              <div class="text-xs text-white/90 mb-2">/ maand</div>
+              <p class="text-xs text-white/90 mb-2">Sneller leren met extra begeleiding.</p>
+              <ul class="text-left text-xs text-white space-y-1 mb-3">
+                <li class="flex items-center"><span class="mr-1">✓</span>2 lessen per week</li>
+                <li class="flex items-center"><span class="mr-1">✓</span>Voortgangsrapportage</li>
+                <li class="flex items-center"><span class="mr-1">✓</span>Extra persoonlijke aandacht</li>
+                <li class="flex items-center"><span class="mr-1">✓</span>Toegang tot alle locaties</li>
+                <li class="flex items-center"><span class="mr-1">✓</span>Diploma A/B/C begeleiding</li>
               </ul>
-              <a href={registerHref} class="bg-white text-[#00AEEF] font-bold w-full text-center block py-3 rounded-lg hover:bg-gray-100 transition-colors">Inschrijven</a>
+              <a href={registerHref} class="bg-white text-[#00AEEF] font-bold w-full text-center block py-2 rounded-lg hover:bg-gray-100 transition-colors text-sm">Inschrijven</a>
             </div>
           </div>
 
           <!-- Privé Card -->
-          <div class="pricing-card-3d bg-white rounded-2xl p-6 shadow-xl border border-gray-100 transform hover:scale-105 transition-all duration-300">
+          <div class="pricing-card-3d bg-white rounded-xl p-4 shadow-lg border border-gray-100 transform hover:scale-105 transition-all duration-300">
             <div class="text-center">
-              <h3 class="text-xl font-bold text-[#001F3F] mb-2">Privé</h3>
-              <div class="text-3xl font-bold text-[#00AEEF] mb-1">€50</div>
-              <div class="text-sm text-gray-600 mb-4">/ les</div>
-              <p class="text-sm text-gray-700 mb-4">1‑op‑1 begeleiding voor maximale progressie.</p>
-              <ul class="text-left text-sm text-gray-600 space-y-2 mb-4">
-                <li class="flex items-center"><span class="text-green-500 mr-2">✓</span>Privéles</li>
-                <li class="flex items-center"><span class="text-green-500 mr-2">✓</span>Snellere vooruitgang</li>
-                <li class="flex items-center"><span class="text-green-500 mr-2">✓</span>Persoonlijk lesplan</li>
-                <li class="flex items-center"><span class="text-green-500 mr-2">✓</span>Flexibele tijden</li>
-                <li class="flex items-center"><span class="text-green-500 mr-2">✓</span>Diploma A/B/C versneld traject</li>
+              <h3 class="text-lg font-bold text-[#001F3F] mb-1">Privé</h3>
+              <div class="text-2xl font-bold text-[#00AEEF] mb-1">€50</div>
+              <div class="text-xs text-gray-600 mb-2">/ les</div>
+              <p class="text-xs text-gray-700 mb-2">1‑op‑1 begeleiding voor maximale progressie.</p>
+              <ul class="text-left text-xs text-gray-600 space-y-1 mb-3">
+                <li class="flex items-center"><span class="text-green-500 mr-1">✓</span>Privéles</li>
+                <li class="flex items-center"><span class="text-green-500 mr-1">✓</span>Snellere vooruitgang</li>
+                <li class="flex items-center"><span class="text-green-500 mr-1">✓</span>Persoonlijk lesplan</li>
+                <li class="flex items-center"><span class="text-green-500 mr-1">✓</span>Flexibele tijden</li>
+                <li class="flex items-center"><span class="text-green-500 mr-1">✓</span>Diploma A/B/C versneld traject</li>
               </ul>
-              <a href={registerHref} class="cta-register w-full text-center block">Inschrijven</a>
+              <a href={registerHref} class="cta-register w-full text-center block py-2 text-sm">Inschrijven</a>
             </div>
           </div>
         </div>
