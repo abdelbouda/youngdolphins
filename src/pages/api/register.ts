@@ -48,7 +48,7 @@ export const POST: APIRoute = async ({ request }) => {
 
     const apiKey = process.env.RESEND_API_KEY;
     const resend = new Resend(apiKey);
-    const fromAddress = 'Young Dolphins <info@youngdolphins.nl>';
+    const fromAddress = 'Young Dolphins <noreply@youngdolphins.nl>';
     const toAddress   = 'info@youngdolphins.nl';
 
     // WhatsApp nummer voor Young Dolphins
