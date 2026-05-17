@@ -1,6 +1,6 @@
 ---
 import Container from '../ui/Container.astro';
-import { t } from '../../i18n/utils';
+import { t, tObject } from '../../i18n/utils';
 import type { Locale } from '../../i18n/types';
 
 interface Props {
@@ -15,6 +15,12 @@ const statDiplomas = await t(locale, 'hero.stats.diplomas');
 const statSuccess = await t(locale, 'hero.stats.success');
 const statRating = await t(locale, 'hero.stats.rating');
 const continueReading = await t(locale, 'hero.continue_reading');
+
+// Pricing translations
+const pricingStarter = tObject(locale, 'pricing.packages.starter');
+const pricingProgress = tObject(locale, 'pricing.packages.progress');
+const pricingPrivate = tObject(locale, 'pricing.packages.private');
+const pricingButton = await t(locale, 'pricing.cta');
 
 // Nieuwe labels voor de knoppen
 const labels = {
@@ -90,56 +96,51 @@ const registerHref = `/${locale}/aanmelden`;
           <!-- Starter Card -->
           <div class="pricing-card-3d bg-white rounded-xl p-4 shadow-lg border border-gray-100 transform hover:scale-105 transition-all duration-300">
             <div class="text-center">
-              <h3 class="text-lg font-bold text-[#001F3F] mb-1">Starter</h3>
+              <h3 class="text-lg font-bold text-[#001F3F] mb-1">{pricingStarter.name}</h3>
               <div class="text-2xl font-bold text-[#00AEEF] mb-1">€25</div>
-              <div class="text-xs text-gray-600 mb-2">/ les</div>
-              <p class="text-xs text-gray-700 mb-2">Perfect voor kennismaking.</p>
+              <div class="text-xs text-gray-600 mb-2">{pricingStarter.price_unit}</div>
+              <p class="text-xs text-gray-700 mb-2">{pricingStarter.description}</p>
               <ul class="text-left text-xs text-gray-600 space-y-1 mb-3">
-                <li class="flex items-center"><span class="text-green-500 mr-1">✓</span>1 les per week</li>
-                <li class="flex items-center"><span class="text-green-500 mr-1">✓</span>Kleine groepen</li>
-                <li class="flex items-center"><span class="text-green-500 mr-1">✓</span>Warm zwembad</li>
-                <li class="flex items-center"><span class="text-green-500 mr-1">✓</span>Gecertificeerde instructeurs</li>
+                {pricingStarter.features.map(feature => (
+                  <li class="flex items-center"><span class="text-green-500 mr-1">✓</span>{feature}</li>
+                ))}
               </ul>
-              <a href={`${registerHref}?pakket=starter`} class="cta-register w-full text-center block py-2 text-sm">Inschrijven</a>
+              <a href={`${registerHref}?pakket=starter`} class="cta-register w-full text-center block py-2 text-sm">{pricingButton}</a>
             </div>
           </div>
 
           <!-- Progress+ Card -->
           <div class="pricing-card-3d bg-gradient-to-br from-[#00AEEF] to-[#0096ce] rounded-xl p-4 shadow-xl border-2 border-[#00AEEF] transform hover:scale-105 transition-all duration-300 relative">
             <div class="absolute -top-2 left-1/2 -translate-x-1/2 bg-[#001F3F] text-white text-xs font-bold px-2 py-0.5 rounded-full">
-              MEEST GEKOZEN
+              {pricingProgress.badge}
             </div>
             <div class="text-center">
-              <h3 class="text-lg font-bold text-white mb-1">Progress+</h3>
+              <h3 class="text-lg font-bold text-white mb-1">{pricingProgress.name}</h3>
               <div class="text-2xl font-bold text-white mb-1">€170</div>
-              <div class="text-xs text-white/90 mb-2">/ maand</div>
-              <p class="text-xs text-white/90 mb-2">Sneller leren met extra begeleiding.</p>
+              <div class="text-xs text-white/90 mb-2">{pricingProgress.price_unit}</div>
+              <p class="text-xs text-white/90 mb-2">{pricingProgress.description}</p>
               <ul class="text-left text-xs text-white space-y-1 mb-3">
-                <li class="flex items-center"><span class="mr-1">✓</span>2 lessen per week</li>
-                <li class="flex items-center"><span class="mr-1">✓</span>Voortgangsrapportage</li>
-                <li class="flex items-center"><span class="mr-1">✓</span>Extra persoonlijke aandacht</li>
-                <li class="flex items-center"><span class="mr-1">✓</span>Toegang tot alle locaties</li>
-                <li class="flex items-center"><span class="mr-1">✓</span>Diploma A/B/C begeleiding</li>
+                {pricingProgress.features.map((feature: string) => (
+                  <li class="flex items-center"><span class="mr-1">✓</span>{feature}</li>
+                ))}
               </ul>
-              <a href={`${registerHref}?pakket=progress`} class="bg-white text-[#00AEEF] font-bold w-full text-center block py-2 rounded-lg hover:bg-gray-100 transition-colors text-sm">Inschrijven</a>
+              <a href={`${registerHref}?pakket=progress`} class="bg-white text-[#00AEEF] font-bold w-full text-center block py-2 rounded-lg hover:bg-gray-100 transition-colors text-sm">{pricingButton}</a>
             </div>
           </div>
 
           <!-- Privé Card -->
           <div class="pricing-card-3d bg-white rounded-xl p-4 shadow-lg border border-gray-100 transform hover:scale-105 transition-all duration-300">
             <div class="text-center">
-              <h3 class="text-lg font-bold text-[#001F3F] mb-1">Privé</h3>
+              <h3 class="text-lg font-bold text-[#001F3F] mb-1">{pricingPrivate.name}</h3>
               <div class="text-2xl font-bold text-[#00AEEF] mb-1">€50</div>
-              <div class="text-xs text-gray-600 mb-2">/ les</div>
-              <p class="text-xs text-gray-700 mb-2">1‑op‑1 begeleiding voor maximale progressie.</p>
+              <div class="text-xs text-gray-600 mb-2">{pricingPrivate.price_unit}</div>
+              <p class="text-xs text-gray-700 mb-2">{pricingPrivate.description}</p>
               <ul class="text-left text-xs text-gray-600 space-y-1 mb-3">
-                <li class="flex items-center"><span class="text-green-500 mr-1">✓</span>Privéles</li>
-                <li class="flex items-center"><span class="text-green-500 mr-1">✓</span>Snellere vooruitgang</li>
-                <li class="flex items-center"><span class="text-green-500 mr-1">✓</span>Persoonlijk lesplan</li>
-                <li class="flex items-center"><span class="text-green-500 mr-1">✓</span>Flexibele tijden</li>
-                <li class="flex items-center"><span class="text-green-500 mr-1">✓</span>Diploma A/B/C versneld traject</li>
+                {pricingPrivate.features.map((feature: string) => (
+                  <li class="flex items-center"><span class="text-green-500 mr-1">✓</span>{feature}</li>
+                ))}
               </ul>
-              <a href={`${registerHref}?pakket=private`} class="cta-register w-full text-center block py-2 text-sm">Inschrijven</a>
+              <a href={`${registerHref}?pakket=private`} class="cta-register w-full text-center block py-2 text-sm">{pricingButton}</a>
             </div>
           </div>
         </div>
