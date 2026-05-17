@@ -20,24 +20,27 @@ export const POST: APIRoute = async ({ request }) => {
     const geboortedatum   = data.get('geboortedatum')?.toString().trim() ?? '';
     const zwemniveau      = data.get('zwemniveau')?.toString().trim() ?? '';
     const gekozenPakket   = data.get('pakket')?.toString().trim() ?? ''; // Gekozen pakket
-    
+
     const voorkeursdagen  = data.getAll('voorkeursdagen').map(d => d.toString()).join(', ');
     const opmerkingen     = data.get('opmerkingen')?.toString().trim() ?? '';
 
     // Validatie
     if (!ouderVoornaam || !ouderEmail || !kindVoornaam || !geboortedatum) {
-      return new Response(JSON.stringify({ 
-        error: isEnglish ? 'Please fill in all required fields.' : 'Vul alle verplichte velden in.' 
+      return new Response(JSON.stringify({
+        error: isEnglish ? 'Please fill in all required fields.' : 'Vul alle verplichte velden in.'
       }), {
         status: 400,
         headers: { 'Content-Type': 'application/json' },
       });
     }
 
-    const apiKey = import.meta.env.RESEND_API_KEY;
+    const apiKey = process.env.RESEND_API_KEY;
     const resend = new Resend(apiKey);
     const fromAddress = 'Young Dolphins <info@youngdolphins.nl>';
     const toAddress   = 'info@youngdolphins.nl';
+
+    // WhatsApp nummer voor Young Dolphins
+    const whatsappNumber = process.env.WHATSAPP_NUMBER || '31628421354';
 
     // 3. Interne e-mail (altijd Nederlands voor eigen administratie)
     const internalHtml = `
@@ -99,6 +102,35 @@ export const POST: APIRoute = async ({ request }) => {
           html: confirmHtml,
         })
       ]);
+
+      // Optie 2: Verstuur WhatsApp bericht
+      try {
+        const whatsappMessage = isEnglish
+          ? `🐬 *New Registration (EN)*\n\n*Location:* Monnickendam\n*Package:* ${gekozenPakket}\n\n*Parent:* ${ouderVoornaam} ${ouderAchternaam}\n*Phone:* ${ouderTelefoon}\n*Email:* ${ouderEmail}\n\n*Child:* ${kindVoornaam} ${kindAchternaam}\n*DOB:* ${geboortedatum}\n*Level:* ${zwemniveau}\n*Preferred Days:* ${voorkeursdagen}\n\n${opmerkingen ? `*Remarks:* ${opmerkingen}\n` : ''}`
+          : `🐬 *Nieuwe Aanmelding (NL)*\n\n*Locatie:* Monnickendam\n*Pakket:* ${gekozenPakket}\n\n*Ouder:* ${ouderVoornaam} ${ouderAchternaam}\n*Telefoon:* ${ouderTelefoon}\n*Email:* ${ouderEmail}\n\n*Kind:* ${kindVoornaam} ${kindAchternaam}\n*Geb. datum:* ${geboortedatum}\n*Niveau:* ${zwemniveau}\n*Voorkeursdagen:* ${voorkeursdagen}\n\n${opmerkingen ? `*Opmerkingen:* ${opmerkingen}\n` : ''}`;
+
+        // Verstuur via WhatsApp API (bijvoorbeeld via Twilio of andere provider)
+        const whatsappApiUrl = process.env.WHATSAPP_API_URL;
+        if (whatsappApiUrl) {
+          await fetch(whatsappApiUrl, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${process.env.WHATSAPP_API_KEY}`,
+            },
+            body: JSON.stringify({
+              to: whatsappNumber,
+              message: whatsappMessage,
+            }),
+          });
+        } else {
+          // Fallback: log naar console als API niet geconfigureerd is
+          console.log('WhatsApp message (API not configured):', whatsappMessage);
+        }
+      } catch (whatsappError) {
+        console.error('WhatsApp sending failed:', whatsappError);
+        // Breek de flow niet af als WhatsApp faalt
+      }
 
       // Optie 2: Sla op in database (alternatief voor geen email forwarding)
       // Dit kan worden geactiveerd door EMAIL_FORWARDING=false in environment variables
